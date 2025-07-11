@@ -1,0 +1,5 @@
+error: Structs can't be empty. If a Move struct is empty, then in the Rust equivalent it must have a single field of type `bool`. This is because the BCS of an empty Move struct encodes a single boolean dummy field.
+ --> tests/empty_braced_struct.rs:6:16
+  |
+6 | pub struct Otw {}
+  |                ^^

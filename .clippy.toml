@@ -1,0 +1,4 @@
+# Add clippy specific configurations here
+
+# I like this one to reduce annoyances while developing
+allow-unwrap-in-tests = true

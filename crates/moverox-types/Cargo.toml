@@ -1,0 +1,39 @@
+[package]
+description = "Building blocks for oxidized Move types"
+name        = "moverox-types"
+version     = "0.0.0"
+
+authors.workspace      = true
+categories.workspace   = true
+edition.workspace      = true
+license.workspace      = true
+repository.workspace   = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[features]
+proptest = ["dep:proptest", "dep:test-strategy"]
+serde    = ["dep:serde_with", "serde/derive"]
+
+[dependencies]
+proptest = { version = "1", optional = true, public = true }
+serde    = { version = "1", optional = true, public = true }
+
+const-hex = "1"
+ref-cast  = "1"
+thiserror = "2"
+winnow    = "0.7"
+
+serde_with    = { version = "3", optional = true }
+test-strategy = { version = "0.4", optional = true }
+
+# For U256
+primitive-types = { version = "0.12", features = ["fp-conversion"] }
+uint            = "0.9"
+
+
+[dev-dependencies]
+bcs        = "0.1"
+serde_json = "1"

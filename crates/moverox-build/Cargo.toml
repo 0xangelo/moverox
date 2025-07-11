@@ -1,0 +1,33 @@
+[package]
+description = "Build script utilities to oxidize an entire Move package"
+name        = "moverox-build"
+version     = "0.0.0"
+
+authors.workspace      = true
+categories.workspace   = true
+edition.workspace      = true
+license.workspace      = true
+repository.workspace   = true
+rust-version.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+move-syn        = { version = "0.0.0", path = "../move-syn" }
+moverox-codegen = { version = "0.0.0", path = "../moverox-codegen" }
+
+anyhow = "1"
+
+
+[dev-dependencies]
+indoc        = "2"
+insta        = "1"
+itertools    = "0.14"
+prettyplease = "0.2"
+syn          = { version = "2", default-features = false, features = ["parsing"] }
+tempfile     = "3"
+testresult   = "0.4"
+trybuild     = { version = "1", features = ["diff"] }
+
+moverox = { path = "../moverox" }

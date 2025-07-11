@@ -1,0 +1,18 @@
+[workspace]
+members  = ["crates/*"]
+resolver = "3"
+
+[workspace.package]
+authors      = ["Angelo <doom444@pm.me>"]
+categories   = ["cryptography::cryptocurrencies"]
+edition      = "2024"
+license      = "MIT OR Apache-2.0"
+repository   = "https://github.com/0xangelo/move-rs"
+rust-version = "1.85"
+
+[workspace.lints.clippy]
+nursery               = { level = "warn", priority = 1 }
+redundant_pub_crate   = { level = "allow", priority = 2 }
+todo                  = "warn"
+uninlined_format_args = "allow"
+unwrap_used           = "warn"

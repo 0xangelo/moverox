@@ -1,0 +1,5 @@
+---
+source: crates/move-syn/tests/move-stdlib.rs
+expression: ast.tokens_to_string()
+---
+# [doc = " Module providing debug functionality."] module std :: debug ; public native fun print < T > (x : & T) ; public native fun print_stack_trace () ;
