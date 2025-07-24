@@ -1,6 +1,6 @@
 #![cfg_attr(all(doc, not(doctest)), feature(doc_auto_cfg))]
 
-//! Oxidized Sui Move framework packages.
+//! Oxidized Sui Move framework packages and compatibility layer for `sui_sdk_types`.
 
 /// Oxidized `MoveStdlib` @ `0x1`.
 pub mod move_stdlib {
