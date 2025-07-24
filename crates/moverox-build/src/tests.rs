@@ -16,12 +16,15 @@ fn generate_rust_for_move_stdlib() -> TestResult {
         .join("move-stdlib");
 
     let builder = move_package(pkg_path, "MoveStdlib").published_at("0x1");
-    let move_files = builder.collect_move_files()?;
+    let move_files = {
+        let mut paths = builder.collect_move_files()?;
+        paths.sort();
+        paths
+    };
 
     let files_found = move_files
         .iter()
-        .map(|path| path.file_name().unwrap().display().to_string())
-        .sorted()
+        .map(|path| path.file_name().unwrap().display())
         .join("\n");
     insta::assert_snapshot!(files_found, @r"
     address.move
@@ -70,12 +73,15 @@ fn generate_rust_for_sui_framework() -> TestResult {
         .published_at("0x2")
         .with_implicit_sui_imports()
         .map_address("std", "::moverox_sui::std");
-    let move_files = builder.collect_move_files()?;
+    let move_files = {
+        let mut paths = builder.collect_move_files()?;
+        paths.sort();
+        paths
+    };
 
     let files_found = move_files
         .iter()
-        .map(|path| path.file_name().unwrap().display().to_string())
-        .sorted()
+        .map(|path| path.file_name().unwrap().display())
         .join("\n");
     insta::assert_snapshot!(files_found, @r"
     accumulator.move

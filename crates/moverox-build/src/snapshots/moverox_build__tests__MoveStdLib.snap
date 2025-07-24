@@ -2,245 +2,6 @@
 source: crates/moverox-build/src/tests.rs
 expression: move_stdlib
 ---
-/// The `string` module defines the `String` type which represents UTF8 encoded
-/// strings.
-#[allow(rustdoc::all)]
-#[cfg(not(doctest))]
-pub mod string {
-    #[allow(non_camel_case_types, unused)]
-    type address = ::moverox::types::Address;
-    #[allow(non_camel_case_types, unused)]
-    type u256 = ::moverox::types::U256;
-    #[allow(non_camel_case_types, unused)]
-    type vector<T> = ::std::vec::Vec<T>;
-    /// A `String` holds a sequence of bytes which is guaranteed to be in utf8
-    /// format.
-    #[derive(
-        Clone,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        ::moverox::traits::MoveDatatype,
-        ::moverox::serde::Deserialize,
-        ::moverox::serde::Serialize,
-    )]
-    #[move_(crate = ::moverox::traits)]
-    #[serde(crate = "::moverox::serde")]
-    #[move_(address = "0x1")]
-    #[move_(module = string)]
-    #[allow(non_snake_case)]
-    pub struct String {
-        pub bytes: vector<u8>,
-    }
-    impl String {
-        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
-        pub const fn new(bytes: vector<u8>) -> Self {
-            Self { bytes }
-        }
-    }
-}
-#[allow(rustdoc::all)]
-#[cfg(not(doctest))]
-pub mod bit_vector {
-    #[allow(non_camel_case_types, unused)]
-    type address = ::moverox::types::Address;
-    #[allow(non_camel_case_types, unused)]
-    type u256 = ::moverox::types::U256;
-    #[allow(non_camel_case_types, unused)]
-    type vector<T> = ::std::vec::Vec<T>;
-    #[derive(
-        Clone,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        ::moverox::traits::MoveDatatype,
-        ::moverox::serde::Deserialize,
-        ::moverox::serde::Serialize,
-    )]
-    #[move_(crate = ::moverox::traits)]
-    #[serde(crate = "::moverox::serde")]
-    #[move_(address = "0x1")]
-    #[move_(module = bit_vector)]
-    #[allow(non_snake_case)]
-    pub struct BitVector {
-        pub length: u64,
-        pub bit_field: vector<bool>,
-    }
-    impl BitVector {
-        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
-        pub const fn new(length: u64, bit_field: vector<bool>) -> Self {
-            Self { length, bit_field }
-        }
-    }
-}
-/// Defines an unsigned, fixed-point numeric type with a 32-bit integer part and a 32-bit fractional
-/// part. The notation `uq32_32` and `UQ32_32` is based on
-/// [Q notation](https://en.wikipedia.org/wiki/Q_(number_format)). `q` indicates it a fixed-point
-/// number. The `u` prefix indicates it is unsigned. The `32_32` suffix indicates the number of
-/// bits, where the first number indicates the number of bits in the integer part, and the second
-/// the number of bits in the fractional part--in this case 32 bits for each.
-#[allow(rustdoc::all)]
-#[cfg(not(doctest))]
-pub mod uq32_32 {
-    #[allow(non_camel_case_types, unused)]
-    type address = ::moverox::types::Address;
-    #[allow(non_camel_case_types, unused)]
-    type u256 = ::moverox::types::U256;
-    #[allow(non_camel_case_types, unused)]
-    type vector<T> = ::std::vec::Vec<T>;
-    /// A fixed-point numeric type with 32 integer bits and 32 fractional bits, represented by an
-    /// underlying 64 bit value. This is a binary representation, so decimal values may not be exactly
-    /// representable, but it provides more than 9 decimal digits of precision both before and after the
-    /// decimal point (18 digits total).
-    #[derive(
-        Clone,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        ::moverox::traits::MoveDatatype,
-        ::moverox::serde::Deserialize,
-        ::moverox::serde::Serialize,
-    )]
-    #[move_(crate = ::moverox::traits)]
-    #[serde(crate = "::moverox::serde")]
-    #[move_(address = "0x1")]
-    #[move_(module = uq32_32)]
-    #[allow(non_snake_case)]
-    pub struct UQ32_32(pub u64);
-    impl UQ32_32 {
-        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
-        pub const fn new(_0: u64) -> Self {
-            Self(_0)
-        }
-    }
-}
-/// Defines a fixed-point numeric type with a 32-bit integer part and
-/// a 32-bit fractional part.
-#[allow(rustdoc::all)]
-#[cfg(not(doctest))]
-pub mod fixed_point32 {
-    #[allow(non_camel_case_types, unused)]
-    type address = ::moverox::types::Address;
-    #[allow(non_camel_case_types, unused)]
-    type u256 = ::moverox::types::U256;
-    #[allow(non_camel_case_types, unused)]
-    type vector<T> = ::std::vec::Vec<T>;
-    /// Define a fixed-point numeric type with 32 fractional bits.
-    /// This is just a u64 integer but it is wrapped in a struct to
-    /// make a unique type. This is a binary representation, so decimal
-    /// values may not be exactly representable, but it provides more
-    /// than 9 decimal digits of precision both before and after the
-    /// decimal point (18 digits total). For comparison, double precision
-    /// floating-point has less than 16 decimal digits of precision, so
-    /// be careful about using floating-point to convert these values to
-    /// decimal.
-    #[derive(
-        Clone,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        ::moverox::traits::MoveDatatype,
-        ::moverox::serde::Deserialize,
-        ::moverox::serde::Serialize,
-    )]
-    #[move_(crate = ::moverox::traits)]
-    #[serde(crate = "::moverox::serde")]
-    #[move_(address = "0x1")]
-    #[move_(module = fixed_point32)]
-    #[allow(non_snake_case)]
-    pub struct FixedPoint32 {
-        pub value: u64,
-    }
-    impl FixedPoint32 {
-        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
-        pub const fn new(value: u64) -> Self {
-            Self { value }
-        }
-    }
-}
-/// Functionality for converting Move types into values. Use with care!
-#[allow(rustdoc::all)]
-#[cfg(not(doctest))]
-pub mod type_name {
-    #[allow(non_camel_case_types, unused)]
-    type address = ::moverox::types::Address;
-    #[allow(non_camel_case_types, unused)]
-    type u256 = ::moverox::types::U256;
-    #[allow(non_camel_case_types, unused)]
-    type vector<T> = ::std::vec::Vec<T>;
-    #[derive(
-        Clone,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        ::moverox::traits::MoveDatatype,
-        ::moverox::serde::Deserialize,
-        ::moverox::serde::Serialize,
-    )]
-    #[move_(crate = ::moverox::traits)]
-    #[serde(crate = "::moverox::serde")]
-    #[move_(address = "0x1")]
-    #[move_(module = type_name)]
-    #[allow(non_snake_case)]
-    pub struct TypeName {
-        /// String representation of the type. All types are represented
-        /// using their source syntax:
-        /// "u8", "u64", "bool", "address", "vector", and so on for primitive types.
-        /// Struct types are represented as fully qualified type names; e.g.
-        /// `00000000000000000000000000000001::string::String` or
-        /// `0000000000000000000000000000000a::module_name1::type_name1<0000000000000000000000000000000a::module_name2::type_name2<u64>>`
-        /// Addresses are hex-encoded lowercase values of length ADDRESS_LENGTH (16, 20, or 32 depending on the Move platform)
-        pub name: super::ascii::String,
-    }
-    impl TypeName {
-        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
-        pub const fn new(name: super::ascii::String) -> Self {
-            Self { name }
-        }
-    }
-}
-/// This module defines the Option type and its methods to represent and handle an optional value.
-#[allow(rustdoc::all)]
-#[cfg(not(doctest))]
-pub mod option {
-    #[allow(non_camel_case_types, unused)]
-    type address = ::moverox::types::Address;
-    #[allow(non_camel_case_types, unused)]
-    type u256 = ::moverox::types::U256;
-    #[allow(non_camel_case_types, unused)]
-    type vector<T> = ::std::vec::Vec<T>;
-    /// Abstraction of a value that may or may not be present. Implemented with a vector of size
-    /// zero or one because Move bytecode does not have ADTs.
-    #[derive(
-        Clone,
-        Debug,
-        PartialEq,
-        Eq,
-        Hash,
-        ::moverox::traits::MoveDatatype,
-        ::moverox::serde::Deserialize,
-        ::moverox::serde::Serialize,
-    )]
-    #[move_(crate = ::moverox::traits)]
-    #[serde(crate = "::moverox::serde")]
-    #[move_(address = "0x1")]
-    #[move_(module = option)]
-    #[allow(non_snake_case)]
-    pub struct Option<Element> {
-        pub vec: vector<Element>,
-    }
-    impl<Element> Option<Element> {
-        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
-        pub const fn new(vec: vector<Element>) -> Self {
-            Self { vec }
-        }
-    }
-}
 /// The `ASCII` module defines basic string and char newtypes in Move that verify
 /// that characters are valid ASCII, and that strings consist of only valid ASCII characters.
 #[allow(rustdoc::all)]
@@ -304,6 +65,245 @@ pub mod ascii {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
         pub const fn new(byte: u8) -> Self {
             Self { byte }
+        }
+    }
+}
+#[allow(rustdoc::all)]
+#[cfg(not(doctest))]
+pub mod bit_vector {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x1")]
+    #[move_(module = bit_vector)]
+    #[allow(non_snake_case)]
+    pub struct BitVector {
+        pub length: u64,
+        pub bit_field: vector<bool>,
+    }
+    impl BitVector {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(length: u64, bit_field: vector<bool>) -> Self {
+            Self { length, bit_field }
+        }
+    }
+}
+/// Defines a fixed-point numeric type with a 32-bit integer part and
+/// a 32-bit fractional part.
+#[allow(rustdoc::all)]
+#[cfg(not(doctest))]
+pub mod fixed_point32 {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    /// Define a fixed-point numeric type with 32 fractional bits.
+    /// This is just a u64 integer but it is wrapped in a struct to
+    /// make a unique type. This is a binary representation, so decimal
+    /// values may not be exactly representable, but it provides more
+    /// than 9 decimal digits of precision both before and after the
+    /// decimal point (18 digits total). For comparison, double precision
+    /// floating-point has less than 16 decimal digits of precision, so
+    /// be careful about using floating-point to convert these values to
+    /// decimal.
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x1")]
+    #[move_(module = fixed_point32)]
+    #[allow(non_snake_case)]
+    pub struct FixedPoint32 {
+        pub value: u64,
+    }
+    impl FixedPoint32 {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(value: u64) -> Self {
+            Self { value }
+        }
+    }
+}
+/// This module defines the Option type and its methods to represent and handle an optional value.
+#[allow(rustdoc::all)]
+#[cfg(not(doctest))]
+pub mod option {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    /// Abstraction of a value that may or may not be present. Implemented with a vector of size
+    /// zero or one because Move bytecode does not have ADTs.
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x1")]
+    #[move_(module = option)]
+    #[allow(non_snake_case)]
+    pub struct Option<Element> {
+        pub vec: vector<Element>,
+    }
+    impl<Element> Option<Element> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(vec: vector<Element>) -> Self {
+            Self { vec }
+        }
+    }
+}
+/// The `string` module defines the `String` type which represents UTF8 encoded
+/// strings.
+#[allow(rustdoc::all)]
+#[cfg(not(doctest))]
+pub mod string {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    /// A `String` holds a sequence of bytes which is guaranteed to be in utf8
+    /// format.
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x1")]
+    #[move_(module = string)]
+    #[allow(non_snake_case)]
+    pub struct String {
+        pub bytes: vector<u8>,
+    }
+    impl String {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(bytes: vector<u8>) -> Self {
+            Self { bytes }
+        }
+    }
+}
+/// Functionality for converting Move types into values. Use with care!
+#[allow(rustdoc::all)]
+#[cfg(not(doctest))]
+pub mod type_name {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x1")]
+    #[move_(module = type_name)]
+    #[allow(non_snake_case)]
+    pub struct TypeName {
+        /// String representation of the type. All types are represented
+        /// using their source syntax:
+        /// "u8", "u64", "bool", "address", "vector", and so on for primitive types.
+        /// Struct types are represented as fully qualified type names; e.g.
+        /// `00000000000000000000000000000001::string::String` or
+        /// `0000000000000000000000000000000a::module_name1::type_name1<0000000000000000000000000000000a::module_name2::type_name2<u64>>`
+        /// Addresses are hex-encoded lowercase values of length ADDRESS_LENGTH (16, 20, or 32 depending on the Move platform)
+        pub name: super::ascii::String,
+    }
+    impl TypeName {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(name: super::ascii::String) -> Self {
+            Self { name }
+        }
+    }
+}
+/// Defines an unsigned, fixed-point numeric type with a 32-bit integer part and a 32-bit fractional
+/// part. The notation `uq32_32` and `UQ32_32` is based on
+/// [Q notation](https://en.wikipedia.org/wiki/Q_(number_format)). `q` indicates it a fixed-point
+/// number. The `u` prefix indicates it is unsigned. The `32_32` suffix indicates the number of
+/// bits, where the first number indicates the number of bits in the integer part, and the second
+/// the number of bits in the fractional part--in this case 32 bits for each.
+#[allow(rustdoc::all)]
+#[cfg(not(doctest))]
+pub mod uq32_32 {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    /// A fixed-point numeric type with 32 integer bits and 32 fractional bits, represented by an
+    /// underlying 64 bit value. This is a binary representation, so decimal values may not be exactly
+    /// representable, but it provides more than 9 decimal digits of precision both before and after the
+    /// decimal point (18 digits total).
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x1")]
+    #[move_(module = uq32_32)]
+    #[allow(non_snake_case)]
+    pub struct UQ32_32(pub u64);
+    impl UQ32_32 {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(_0: u64) -> Self {
+            Self(_0)
         }
     }
 }
