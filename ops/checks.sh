@@ -20,7 +20,7 @@ cargo test $SCOPE --all-features --doc
 
 $DIR/docs.sh $1
 
-# if [ -z "$1" ]
-# then
-#   cargo ws exec cargo rdme --check --intralinks-strip-links
-# fi
+if [ -z "$1" ]
+then
+  cargo ws exec cargo rdme --check --intralinks-strip-links
+fi
