@@ -7,7 +7,7 @@ are useful trait bounds to use when dealing with generic off-chain Move type rep
 They are implemented for the primitive types that correspond to Move's primitives
 (integers/bool).
 
-For Move structs (objects), `MoveDatatype` should be used as it has an
+For Move structs, `MoveDatatype` should be used as it has an
 associated `MoveDatatypeTag`. The
 [`MoveDatatype`](moverox_traits_derive::MoveDatatype) derive macro is exported for automatically
 creating a `MoveDatatypeTag` implementation from normal Rust struct declarations.
