@@ -20,31 +20,32 @@ fn generate_rust_for_move_stdlib() -> TestResult {
 
     let files_found = move_files
         .iter()
-        .map(|path| path.file_name().unwrap().display())
+        .map(|path| path.file_name().unwrap().display().to_string())
+        .sorted()
         .join("\n");
     insta::assert_snapshot!(files_found, @r"
-    u32.move
-    u64.move
-    string.move
+    address.move
+    ascii.move
+    bcs.move
     bit_vector.move
     bool.move
-    uq32_32.move
-    fixed_point32.move
-    type_name.move
-    address.move
-    unit_test.move
-    u256.move
-    hash.move
-    vector.move
-    u16.move
-    u128.move
-    option.move
-    u8.move
-    bcs.move
-    macros.move
     debug.move
-    ascii.move
+    fixed_point32.move
+    hash.move
+    macros.move
+    option.move
+    string.move
+    type_name.move
+    u128.move
+    u16.move
+    u256.move
+    u32.move
+    u64.move
+    u8.move
+    unit_test.move
+    uq32_32.move
     uq64_64.move
+    vector.move
     ");
 
     let modules = builder.parse_files(&move_files)?;
@@ -73,47 +74,48 @@ fn generate_rust_for_sui_framework() -> TestResult {
 
     let files_found = move_files
         .iter()
-        .map(|path| path.file_name().unwrap().display())
+        .map(|path| path.file_name().unwrap().display().to_string())
+        .sorted()
         .join("\n");
     insta::assert_snapshot!(files_found, @r"
-    token.move
-    bag.move
-    priority_queue.move
-    borrow.move
-    config.move
-    table.move
-    dynamic_field.move
-    linked_table.move
-    vec_set.move
-    party.move
-    deny_list.move
-    url.move
-    object_bag.move
+    accumulator.move
     address.move
     authenticator_state.move
-    versioned.move
-    pay.move
+    bag.move
     balance.move
-    sui.move
-    package.move
-    math.move
-    table_vec.move
-    event.move
-    accumulator.move
-    hex.move
-    tx_context.move
-    transfer.move
-    clock.move
-    display.move
-    vec_map.move
-    dynamic_object_field.move
-    object.move
-    coin.move
     bcs.move
-    types.move
+    borrow.move
+    clock.move
+    coin.move
+    config.move
+    deny_list.move
+    display.move
+    dynamic_field.move
+    dynamic_object_field.move
+    event.move
+    hex.move
+    linked_table.move
+    math.move
+    object.move
+    object_bag.move
     object_table.move
-    random.move
+    package.move
+    party.move
+    pay.move
+    priority_queue.move
     prover.move
+    random.move
+    sui.move
+    table.move
+    table_vec.move
+    token.move
+    transfer.move
+    tx_context.move
+    types.move
+    url.move
+    vec_map.move
+    vec_set.move
+    versioned.move
     ");
 
     let modules = builder.parse_files(&move_files)?;
