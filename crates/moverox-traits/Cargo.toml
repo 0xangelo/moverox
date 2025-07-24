@@ -14,18 +14,18 @@ rust-version.workspace = true
 workspace = true
 
 [features]
-derive = ["dep:moverox-traits-derive", "serde"]
+derive = ["dep:derive-where", "dep:moverox-traits-derive", "dep:serde_with"]
 serde  = ["serde/derive"]
 
 [dependencies]
 # Public dependencies; a SemVer-breaking bump in one of these must come with a SemVer-breaking bump
 # to this crate
 # https://rust-lang.github.io/rfcs/3516-public-private-dependencies.html
-moverox-types = { version = "0.0.0", path = "../moverox-types", public = true }
-serde         = { version = "1", public = true, optional = true }
+moverox-traits-derive = { version = "0.0.0", optional = true, path = "../moverox-traits-derive", public = true }
+moverox-types         = { version = "0.0.0", path = "../moverox-types", public = true }
+serde                 = { version = "1", public = true, optional = true }
 
-moverox-traits-derive = { version = "0.0.0", optional = true, path = "../moverox-traits-derive" }
 
-derive-where = "1"
-serde_with   = "3"
+derive-where = { version = "1", optional = true }
+serde_with   = { version = "3", optional = true }
 thiserror    = "2"

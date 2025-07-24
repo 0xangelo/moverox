@@ -1,7 +1,6 @@
 //! Re-exports for derive
 pub use moverox_types::{Address, IdentStr, Identifier, StructTag, TypeTag, U256, const_address};
-pub use serde::{Deserialize, Serialize};
-pub use serde_with::{DeserializeFromStr, SerializeDisplay};
+#[allow(exported_private_dependencies, clippy::useless_attribute)]
 pub use {derive_where, serde_with};
 
 pub const fn const_ident(s: &'static str) -> &'static IdentStr {

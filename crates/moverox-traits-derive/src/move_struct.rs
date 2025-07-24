@@ -227,8 +227,8 @@ impl TypeTagStruct {
                 PartialOrd,
                 Ord,
                 Hash,
-                #thecrate::external::DeserializeFromStr,
-                #thecrate::external::SerializeDisplay,
+                #thecrate::external::serde_with::DeserializeFromStr,
+                #thecrate::external::serde_with::SerializeDisplay,
             )]
             #[serde_with(crate = #serde_with_crate)]
             pub struct #ident #generics {
