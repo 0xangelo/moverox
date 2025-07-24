@@ -30,7 +30,7 @@ serde_with    = { version = "3", optional = true }
 test-strategy = { version = "0.4", optional = true }
 
 # For U256
-primitive-types = { version = "0.12", features = ["fp-conversion"] }
+primitive-types = { version = "0.13", features = ["fp-conversion"] }
 uint            = "0.9"
 
 
