@@ -106,7 +106,7 @@ jobs:
       - name: Install Cargo tools
         uses: taiki-e/install-action@v2
         with:
-          tool: cargo-workspaces,cargo-rdme
+          tool: cargo-workspaces,cargo-rdme@1.4.8
       - name: Check if READMEs are up to date.
         run: |
           cargo ws exec cargo rdme --check --intralinks-strip-links
