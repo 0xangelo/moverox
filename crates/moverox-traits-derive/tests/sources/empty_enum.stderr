@@ -1,0 +1,7 @@
+error: A Move 'enum' must define at least one variant
+ --> tests/sources/empty_enum.rs:3:10
+  |
+3 | #[derive(MoveDatatype)]
+  |          ^^^^^^^^^^^^
+  |
+  = note: this error originates in the derive macro `MoveDatatype` (in Nightly builds, run with -Z macro-backtrace for more info)

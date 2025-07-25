@@ -73,6 +73,14 @@ fn ensure_nonempty_struct(ast: &DeriveInput) -> deluxe::Result<()> {
                 ));
             }
         }
+        syn::Data::Enum(data) => {
+            if data.variants.is_empty() {
+                return Err(syn::Error::new(
+                    data.variants.span(),
+                    "A Move 'enum' must define at least one variant",
+                ));
+            }
+        }
         _ => {
             return Err(syn::Error::new(
                 ast.span(),
