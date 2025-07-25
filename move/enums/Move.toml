@@ -1,0 +1,13 @@
+[package]
+edition = "2024"
+name    = "Enums"
+
+[dependencies]
+MoveStdlib.local = "../move-stdlib"
+Sui.local        = "../sui-framework"
+
+[addresses]
+enums = "_"
+
+[dev-addresses]
+enums = "0x0"
