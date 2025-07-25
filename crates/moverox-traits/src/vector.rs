@@ -8,7 +8,7 @@ impl<T: MoveType> MoveType for Vec<T> {
 
 #[derive(Clone, PartialOrd, Ord, PartialEq, Eq, Debug, Hash)]
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
-pub struct VecTypeTag<T: MoveTypeTag>(T);
+pub struct VecTypeTag<T: MoveTypeTag>(pub T);
 
 impl<T: MoveTypeTag> From<VecTypeTag<T>> for TypeTag {
     fn from(value: VecTypeTag<T>) -> Self {
