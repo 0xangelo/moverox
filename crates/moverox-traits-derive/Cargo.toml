@@ -10,8 +10,6 @@ license.workspace      = true
 repository.workspace   = true
 rust-version.workspace = true
 
-autotests = false
-
 [lib]
 proc-macro = true
 
@@ -31,7 +29,3 @@ rustversion  = "1"
 moverox-traits = { path = "../moverox-traits", features = ["derive"] }
 serde          = { version = "1", features = ["derive"] }
 trybuild       = { version = "1", features = ["diff"] }
-
-[[test]]
-name = "tests"
-path = "tests/tests.rs"
