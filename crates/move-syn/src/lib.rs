@@ -576,8 +576,11 @@ impl Module {
             .flat_map(|import| import.flatten())
             .collect();
 
-        for type_ in self.datatype_fields_mut().flat_map(FieldsGroup::types_mut) {
-            type_.resolve(&imports);
+        for datatype in self.datatypes_mut() {
+            let generics = datatype.generics();
+            for type_ in datatype.field_types_mut() {
+                type_.resolve(&imports, &generics);
+            }
         }
         self
     }
@@ -586,20 +589,14 @@ impl Module {
         self.contents.content.iter()
     }
 
-    fn datatype_fields_mut(&mut self) -> impl Iterator<Item = &mut dyn FieldsGroup> {
-        use ItemKind as K;
-
-        self.contents
-            .content
-            .iter_mut()
-            .filter_map(|item| {
-                Some(match &mut item.kind {
-                    K::Enum(e) => e.fields_mut().boxed(),
-                    K::Struct(s) => std::iter::once(s.fields_mut()).boxed(),
-                    _ => return None,
-                })
+    fn datatypes_mut(&mut self) -> impl Iterator<Item = &mut dyn Datatype> {
+        self.contents.content.iter_mut().filter_map(|item| {
+            Some(match &mut item.kind {
+                ItemKind::Enum(e) => e as _,
+                ItemKind::Struct(s) => s as _,
+                _ => return None,
             })
-            .flatten()
+        })
     }
 
     fn add_implicit_imports(&mut self, mut implicit_imports: HashMap<Ident, Import>) -> &mut Self {
@@ -777,7 +774,7 @@ impl Struct {
         }
     }
 
-    fn fields_mut(&mut self) -> &mut dyn FieldsGroup {
+    fn fields_group_mut(&mut self) -> &mut dyn FieldsGroup {
         match &mut self.kind {
             StructKind::Braced(braced) => &mut braced.fields,
             StructKind::Tuple(tuple) => &mut tuple.fields,
@@ -823,7 +820,7 @@ impl Enum {
             .map(|Delimited { value, .. }| value)
     }
 
-    fn fields_mut(&mut self) -> impl Iterator<Item = &mut dyn FieldsGroup> {
+    fn field_groups_mut(&mut self) -> impl Iterator<Item = &mut dyn FieldsGroup> {
         self.content
             .content
             .0
@@ -872,18 +869,17 @@ impl Default for PositionalFields {
 
 impl Type {
     /// Resolve the types' path to a fully-qualified declaration, recursively.
-    fn resolve(&mut self, imports: &HashMap<Ident, FlatImport>) {
+    fn resolve(&mut self, imports: &HashMap<Ident, FlatImport>, generics: &[Ident]) {
         use TypePath as P;
         // First, resolve the type arguments
         for ty in self.type_args_mut() {
-            ty.resolve(imports);
+            ty.resolve(imports, generics);
         }
 
         // Then resolve its own path
         // HACK: We trust the Move code is valid, so the expected import should always be found,
         // hence we don't error/panic if it isn't
         let resolved = match &self.path {
-            P::Full { .. } => return,
             P::Module { module, r#type, .. } => {
                 let Some(FlatImport::Module {
                     named_address,
@@ -900,7 +896,7 @@ impl Type {
                     r#type: r#type.clone(),
                 }
             }
-            P::Ident(ident) => {
+            P::Ident(ident) if !generics.contains(ident) => {
                 let Some(FlatImport::Item {
                     named_address,
                     module,
@@ -917,6 +913,8 @@ impl Type {
                     r#type: r#type.clone(),
                 }
             }
+            // Already fully-qualified types or idents shadowed by generics should be left alone
+            _ => return,
         };
         self.path = resolved;
     }
@@ -968,6 +966,43 @@ trait IteratorBoxed<'a>: Iterator + 'a {
 }
 
 impl<'a, T> IteratorBoxed<'a> for T where T: Iterator + 'a {}
+
+/// An enum or struct.
+trait Datatype {
+    fn generics(&self) -> Vec<Ident>;
+
+    fn field_types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_>;
+}
+
+impl Datatype for Enum {
+    fn generics(&self) -> Vec<Ident> {
+        self.generics
+            .iter()
+            .flat_map(|generics| generics.generics())
+            .map(|generic| generic.ident.clone())
+            .collect()
+    }
+
+    fn field_types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
+        self.field_groups_mut()
+            .flat_map(|group| group.types_mut())
+            .boxed()
+    }
+}
+
+impl Datatype for Struct {
+    fn generics(&self) -> Vec<Ident> {
+        self.generics
+            .iter()
+            .flat_map(|generics| generics.generics())
+            .map(|generic| generic.ident.clone())
+            .collect()
+    }
+
+    fn field_types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
+        self.fields_group_mut().types_mut()
+    }
+}
 
 /// A group of named or positional datatype fields.
 trait FieldsGroup {
