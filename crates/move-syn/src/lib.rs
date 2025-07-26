@@ -503,21 +503,6 @@ impl LabeledModule {
 }
 
 impl Module {
-    pub fn structs_mut(&mut self) -> impl Iterator<Item = &mut Struct> {
-        self.items_mut().filter_map(|item| match item.kind {
-            ItemKind::Struct(ref mut s) => Some(s),
-            _ => None,
-        })
-    }
-
-    pub fn items(&self) -> impl Iterator<Item = &Item> {
-        self.contents.content.iter()
-    }
-
-    fn items_mut(&mut self) -> impl Iterator<Item = &mut Item> {
-        self.contents.content.iter_mut()
-    }
-
     /// Add `sui` implicit imports as explicit `use` statements to the module.
     ///
     /// [Reference](https://move-book.com/programmability/sui-framework#implicit-imports)
@@ -580,8 +565,8 @@ impl Module {
         self.add_implicit_imports(implicit_imports)
     }
 
-    /// Resolve all struct field types to their fully-qualified paths.
-    pub fn fully_qualify_struct_field_types(&mut self) -> &mut Self {
+    /// Resolve all datatype field types to their fully-qualified paths.
+    pub fn fully_qualify_datatype_field_types(&mut self) -> &mut Self {
         let imports: HashMap<_, _> = self
             .items()
             .filter_map(|item| match &item.kind {
@@ -591,10 +576,30 @@ impl Module {
             .flat_map(|import| import.flatten())
             .collect();
 
-        for struct_ in self.structs_mut() {
-            struct_.resolve_field_types(&imports);
+        for type_ in self.datatype_fields_mut().flat_map(FieldsGroup::types_mut) {
+            type_.resolve(&imports);
         }
         self
+    }
+
+    pub fn items(&self) -> impl Iterator<Item = &Item> {
+        self.contents.content.iter()
+    }
+
+    fn datatype_fields_mut(&mut self) -> impl Iterator<Item = &mut dyn FieldsGroup> {
+        use ItemKind as K;
+
+        self.contents
+            .content
+            .iter_mut()
+            .filter_map(|item| {
+                Some(match &mut item.kind {
+                    K::Enum(e) => e.fields_mut().boxed(),
+                    K::Struct(s) => std::iter::once(s.fields_mut()).boxed(),
+                    _ => return None,
+                })
+            })
+            .flatten()
     }
 
     fn add_implicit_imports(&mut self, mut implicit_imports: HashMap<Ident, Import>) -> &mut Self {
@@ -734,6 +739,13 @@ impl Attribute {
     }
 }
 
+impl ItemKind {
+    /// Whether this item is a datatype (enum/struct) declaration.
+    pub const fn is_datatype(&self) -> bool {
+        matches!(self, Self::Enum(_) | Self::Struct(_))
+    }
+}
+
 impl Struct {
     pub fn abilities(&self) -> impl Iterator<Item = &Ability> {
         use StructKind as K;
@@ -765,9 +777,10 @@ impl Struct {
         }
     }
 
-    fn resolve_field_types(&mut self, imports: &HashMap<Ident, FlatImport>) {
-        for ty in self.field_types_mut() {
-            ty.resolve(imports);
+    fn fields_mut(&mut self) -> &mut dyn FieldsGroup {
+        match &mut self.kind {
+            StructKind::Braced(braced) => &mut braced.fields,
+            StructKind::Tuple(tuple) => &mut tuple.fields,
         }
     }
 }
@@ -809,6 +822,20 @@ impl Enum {
             .iter()
             .map(|Delimited { value, .. }| value)
     }
+
+    fn fields_mut(&mut self) -> impl Iterator<Item = &mut dyn FieldsGroup> {
+        self.content
+            .content
+            .0
+            .iter_mut()
+            .flat_map(|Delimited { value, .. }| value.fields_mut())
+    }
+}
+
+impl EnumVariant {
+    fn fields_mut(&mut self) -> Option<&mut dyn FieldsGroup> {
+        self.fields.as_mut().map(|x| x as _)
+    }
 }
 
 impl NamedFields {
@@ -818,14 +845,6 @@ impl NamedFields {
 
     pub fn is_empty(&self) -> bool {
         self.0.content.0.is_empty()
-    }
-
-    fn types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
-        self.0
-            .content
-            .0
-            .iter_mut()
-            .map(|Delimited { value: field, .. }| &mut field.ty)
     }
 }
 
@@ -843,14 +862,6 @@ impl PositionalFields {
     pub fn is_empty(&self) -> bool {
         self.0.content.0.is_empty()
     }
-
-    fn types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
-        self.0
-            .content
-            .0
-            .iter_mut()
-            .map(|Delimited { value: field, .. }| &mut field.ty)
-    }
 }
 
 impl Default for PositionalFields {
@@ -860,12 +871,6 @@ impl Default for PositionalFields {
 }
 
 impl Type {
-    pub fn type_args_mut(&mut self) -> impl Iterator<Item = &mut Self> {
-        self.type_args
-            .iter_mut()
-            .flat_map(|args| args.args.0.iter_mut().map(|d| &mut *d.value))
-    }
-
     /// Resolve the types' path to a fully-qualified declaration, recursively.
     fn resolve(&mut self, imports: &HashMap<Ident, FlatImport>) {
         use TypePath as P;
@@ -915,6 +920,12 @@ impl Type {
         };
         self.path = resolved;
     }
+
+    fn type_args_mut(&mut self) -> impl Iterator<Item = &mut Self> {
+        self.type_args
+            .iter_mut()
+            .flat_map(|args| args.args.0.iter_mut().map(|d| &mut *d.value))
+    }
 }
 
 impl TypeArgs {
@@ -957,3 +968,40 @@ trait IteratorBoxed<'a>: Iterator + 'a {
 }
 
 impl<'a, T> IteratorBoxed<'a> for T where T: Iterator + 'a {}
+
+/// A group of named or positional datatype fields.
+trait FieldsGroup {
+    /// Field types. Used to resolve into fully-qualified paths.
+    fn types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_>;
+}
+
+impl FieldsGroup for FieldsKind {
+    fn types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
+        match self {
+            Self::Named(named) => named.types_mut(),
+            Self::Positional(positional) => positional.types_mut(),
+        }
+    }
+}
+
+impl FieldsGroup for NamedFields {
+    fn types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
+        self.0
+            .content
+            .0
+            .iter_mut()
+            .map(|Delimited { value: field, .. }| &mut field.ty)
+            .boxed()
+    }
+}
+
+impl FieldsGroup for PositionalFields {
+    fn types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
+        self.0
+            .content
+            .0
+            .iter_mut()
+            .map(|Delimited { value: field, .. }| &mut field.ty)
+            .boxed()
+    }
+}

@@ -270,6 +270,8 @@ pub move_syn::ItemKind::MacroFun(move_syn::MacroFun)
 pub move_syn::ItemKind::NativeFun(move_syn::NativeFun)
 pub move_syn::ItemKind::Struct(move_syn::Struct)
 pub move_syn::ItemKind::UseFun(move_syn::UseFun)
+impl move_syn::ItemKind
+pub const fn move_syn::ItemKind::is_datatype(&self) -> bool
 impl unsynn::Parser for move_syn::ItemKind
 pub fn move_syn::ItemKind::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::ItemKind
@@ -385,9 +387,8 @@ pub move_syn::Module::attrs: alloc::vec::Vec<move_syn::Attribute>
 pub move_syn::Module::ident: proc_macro2::Ident
 pub move_syn::Module::named_addres: proc_macro2::Ident
 impl move_syn::Module
-pub fn move_syn::Module::fully_qualify_struct_field_types(&mut self) -> &mut Self
+pub fn move_syn::Module::fully_qualify_datatype_field_types(&mut self) -> &mut Self
 pub fn move_syn::Module::items(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Item>
-pub fn move_syn::Module::structs_mut(&mut self) -> impl core::iter::traits::iterator::Iterator<Item = &mut move_syn::Struct>
 pub fn move_syn::Module::with_implicit_iota_imports(&mut self) -> &mut Self
 pub fn move_syn::Module::with_implicit_sui_imports(&mut self) -> &mut Self
 impl unsynn::Parser for move_syn::Module
@@ -449,8 +450,6 @@ pub fn move_syn::TupleStruct::to_tokens(&self, tokens: &mut proc_macro2::TokenSt
 pub struct move_syn::Type
 pub move_syn::Type::path: move_syn::TypePath
 pub move_syn::Type::type_args: core::option::Option<move_syn::TypeArgs>
-impl move_syn::Type
-pub fn move_syn::Type::type_args_mut(&mut self) -> impl core::iter::traits::iterator::Iterator<Item = &mut Self>
 impl unsynn::Parser for move_syn::Type
 pub fn move_syn::Type::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Type
