@@ -1,0 +1,9 @@
+---
+source: crates/moverox/tests/public-api.rs
+expression: public_api
+---
+pub mod moverox
+pub use moverox::serde
+pub use moverox::traits
+pub use moverox::types
+pub macro moverox::include_oxidized!

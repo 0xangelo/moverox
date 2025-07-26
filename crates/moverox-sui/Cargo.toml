@@ -19,3 +19,10 @@ moverox = { version = "0.0.0", path = "../moverox", public = true }
 
 [build-dependencies]
 moverox-build = { version = "0.0.0", path = "../moverox-build" }
+
+
+[dev-dependencies]
+insta            = "1"
+public-api       = "0.49"
+rustdoc-json     = "0.9"
+rustup-toolchain = "0.1"

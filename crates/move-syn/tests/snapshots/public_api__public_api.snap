@@ -1,0 +1,447 @@
+---
+source: crates/move-syn/tests/public-api.rs
+expression: public_api
+---
+pub mod move_syn
+pub use move_syn::unsynn
+pub mod move_syn::kw
+pub struct move_syn::kw::As(_)
+impl move_syn::kw::As
+pub fn move_syn::kw::As::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::As
+pub fn move_syn::kw::As::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::As
+pub fn move_syn::kw::As::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::As
+pub fn move_syn::kw::As::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::As
+pub fn move_syn::kw::As::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Const(_)
+impl move_syn::kw::Const
+pub fn move_syn::kw::Const::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Const
+pub fn move_syn::kw::Const::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Const
+pub fn move_syn::kw::Const::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Const
+pub fn move_syn::kw::Const::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Const
+pub fn move_syn::kw::Const::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Copy(_)
+impl move_syn::kw::Copy
+pub fn move_syn::kw::Copy::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Copy
+pub fn move_syn::kw::Copy::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Copy
+pub fn move_syn::kw::Copy::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Copy
+pub fn move_syn::kw::Copy::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Copy
+pub fn move_syn::kw::Copy::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Drop(_)
+impl move_syn::kw::Drop
+pub fn move_syn::kw::Drop::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Drop
+pub fn move_syn::kw::Drop::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Drop
+pub fn move_syn::kw::Drop::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Drop
+pub fn move_syn::kw::Drop::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Drop
+pub fn move_syn::kw::Drop::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Entry(_)
+impl move_syn::kw::Entry
+pub fn move_syn::kw::Entry::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Entry
+pub fn move_syn::kw::Entry::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Entry
+pub fn move_syn::kw::Entry::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Entry
+pub fn move_syn::kw::Entry::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Entry
+pub fn move_syn::kw::Entry::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Enum(_)
+impl move_syn::kw::Enum
+pub fn move_syn::kw::Enum::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Enum
+pub fn move_syn::kw::Enum::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Enum
+pub fn move_syn::kw::Enum::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Enum
+pub fn move_syn::kw::Enum::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Enum
+pub fn move_syn::kw::Enum::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Friend(_)
+impl move_syn::kw::Friend
+pub fn move_syn::kw::Friend::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Friend
+pub fn move_syn::kw::Friend::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Friend
+pub fn move_syn::kw::Friend::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Friend
+pub fn move_syn::kw::Friend::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Friend
+pub fn move_syn::kw::Friend::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Fun(_)
+impl move_syn::kw::Fun
+pub fn move_syn::kw::Fun::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Fun
+pub fn move_syn::kw::Fun::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Fun
+pub fn move_syn::kw::Fun::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Fun
+pub fn move_syn::kw::Fun::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Fun
+pub fn move_syn::kw::Fun::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Has(_)
+impl move_syn::kw::Has
+pub fn move_syn::kw::Has::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Has
+pub fn move_syn::kw::Has::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Has
+pub fn move_syn::kw::Has::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Has
+pub fn move_syn::kw::Has::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Has
+pub fn move_syn::kw::Has::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Key(_)
+impl move_syn::kw::Key
+pub fn move_syn::kw::Key::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Key
+pub fn move_syn::kw::Key::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Key
+pub fn move_syn::kw::Key::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Key
+pub fn move_syn::kw::Key::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Key
+pub fn move_syn::kw::Key::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Macro(_)
+impl move_syn::kw::Macro
+pub fn move_syn::kw::Macro::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Macro
+pub fn move_syn::kw::Macro::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Macro
+pub fn move_syn::kw::Macro::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Macro
+pub fn move_syn::kw::Macro::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Macro
+pub fn move_syn::kw::Macro::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Module(_)
+impl move_syn::kw::Module
+pub fn move_syn::kw::Module::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Module
+pub fn move_syn::kw::Module::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Module
+pub fn move_syn::kw::Module::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Module
+pub fn move_syn::kw::Module::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Module
+pub fn move_syn::kw::Module::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Mut(_)
+impl move_syn::kw::Mut
+pub fn move_syn::kw::Mut::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Mut
+pub fn move_syn::kw::Mut::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Mut
+pub fn move_syn::kw::Mut::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Mut
+pub fn move_syn::kw::Mut::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Mut
+pub fn move_syn::kw::Mut::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Native(_)
+impl move_syn::kw::Native
+pub fn move_syn::kw::Native::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Native
+pub fn move_syn::kw::Native::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Native
+pub fn move_syn::kw::Native::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Native
+pub fn move_syn::kw::Native::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Native
+pub fn move_syn::kw::Native::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Package(_)
+impl move_syn::kw::Package
+pub fn move_syn::kw::Package::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Package
+pub fn move_syn::kw::Package::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Package
+pub fn move_syn::kw::Package::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Package
+pub fn move_syn::kw::Package::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Package
+pub fn move_syn::kw::Package::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Phantom(_)
+impl move_syn::kw::Phantom
+pub fn move_syn::kw::Phantom::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Phantom
+pub fn move_syn::kw::Phantom::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Phantom
+pub fn move_syn::kw::Phantom::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Phantom
+pub fn move_syn::kw::Phantom::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Phantom
+pub fn move_syn::kw::Phantom::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Public(_)
+impl move_syn::kw::Public
+pub fn move_syn::kw::Public::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Public
+pub fn move_syn::kw::Public::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Public
+pub fn move_syn::kw::Public::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Public
+pub fn move_syn::kw::Public::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Public
+pub fn move_syn::kw::Public::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Store(_)
+impl move_syn::kw::Store
+pub fn move_syn::kw::Store::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Store
+pub fn move_syn::kw::Store::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Store
+pub fn move_syn::kw::Store::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Store
+pub fn move_syn::kw::Store::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Store
+pub fn move_syn::kw::Store::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Struct(_)
+impl move_syn::kw::Struct
+pub fn move_syn::kw::Struct::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Struct
+pub fn move_syn::kw::Struct::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Struct
+pub fn move_syn::kw::Struct::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Struct
+pub fn move_syn::kw::Struct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Struct
+pub fn move_syn::kw::Struct::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Use(_)
+impl move_syn::kw::Use
+pub fn move_syn::kw::Use::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Use
+pub fn move_syn::kw::Use::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Use
+pub fn move_syn::kw::Use::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Use
+pub fn move_syn::kw::Use::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Use
+pub fn move_syn::kw::Use::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::kw::Vector(_)
+impl move_syn::kw::Vector
+pub fn move_syn::kw::Vector::as_str(&self) -> &str
+impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Vector
+pub fn move_syn::kw::Vector::as_ref(&self) -> &proc_macro2::Ident
+impl core::convert::AsRef<str> for move_syn::kw::Vector
+pub fn move_syn::kw::Vector::as_ref(&self) -> &str
+impl unsynn::Parser for move_syn::kw::Vector
+pub fn move_syn::kw::Vector::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::kw::Vector
+pub fn move_syn::kw::Vector::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub enum move_syn::Ability
+pub move_syn::Ability::Copy(move_syn::kw::Copy)
+pub move_syn::Ability::Drop(move_syn::kw::Drop)
+pub move_syn::Ability::Key(move_syn::kw::Key)
+pub move_syn::Ability::Store(move_syn::kw::Store)
+impl unsynn::Parser for move_syn::Ability
+pub fn move_syn::Ability::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Ability
+pub fn move_syn::Ability::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub enum move_syn::File
+pub move_syn::File::Legacy(alloc::vec::Vec<move_syn::Module>)
+pub move_syn::File::ModuleLabel(move_syn::LabeledModule)
+impl move_syn::File
+pub fn move_syn::File::into_modules(self) -> impl core::iter::traits::iterator::Iterator<Item = move_syn::Module>
+impl unsynn::Parser for move_syn::File
+pub fn move_syn::File::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::File
+pub fn move_syn::File::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+#[non_exhaustive] pub enum move_syn::ItemKind
+pub move_syn::ItemKind::Const(move_syn::Const)
+pub move_syn::ItemKind::Enum(move_syn::Enum)
+pub move_syn::ItemKind::Function(move_syn::Function)
+pub move_syn::ItemKind::Import(move_syn::Import)
+pub move_syn::ItemKind::MacroFun(move_syn::MacroFun)
+pub move_syn::ItemKind::NativeFun(move_syn::NativeFun)
+pub move_syn::ItemKind::Struct(move_syn::Struct)
+pub move_syn::ItemKind::UseFun(move_syn::UseFun)
+impl unsynn::Parser for move_syn::ItemKind
+pub fn move_syn::ItemKind::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::ItemKind
+pub fn move_syn::ItemKind::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub enum move_syn::StructKind
+pub move_syn::StructKind::Braced(move_syn::BracedStruct)
+pub move_syn::StructKind::Tuple(move_syn::TupleStruct)
+impl unsynn::Parser for move_syn::StructKind
+pub fn move_syn::StructKind::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::StructKind
+pub fn move_syn::StructKind::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub enum move_syn::TypePath
+pub move_syn::TypePath::Full
+pub move_syn::TypePath::Full::module: proc_macro2::Ident
+pub move_syn::TypePath::Full::named_address: proc_macro2::Ident
+pub move_syn::TypePath::Full::sep0: unsynn::operator::names::PathSep
+pub move_syn::TypePath::Full::sep1: unsynn::operator::names::PathSep
+pub move_syn::TypePath::Full::type: proc_macro2::Ident
+pub move_syn::TypePath::Ident(proc_macro2::Ident)
+pub move_syn::TypePath::Module
+pub move_syn::TypePath::Module::module: proc_macro2::Ident
+pub move_syn::TypePath::Module::sep: unsynn::operator::names::PathSep
+pub move_syn::TypePath::Module::type: proc_macro2::Ident
+impl unsynn::Parser for move_syn::TypePath
+pub fn move_syn::TypePath::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::TypePath
+pub fn move_syn::TypePath::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Attribute
+impl move_syn::Attribute
+pub const fn move_syn::Attribute::is_doc(&self) -> bool
+impl unsynn::Parser for move_syn::Attribute
+pub fn move_syn::Attribute::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Attribute
+pub fn move_syn::Attribute::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::BracedStruct
+impl move_syn::BracedStruct
+pub fn move_syn::BracedStruct::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::NamedField> + core::clone::Clone + '_
+pub fn move_syn::BracedStruct::is_empty(&self) -> bool
+impl unsynn::Parser for move_syn::BracedStruct
+pub fn move_syn::BracedStruct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::BracedStruct
+pub fn move_syn::BracedStruct::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Const
+impl unsynn::Parser for move_syn::Const
+pub fn move_syn::Const::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Const
+pub fn move_syn::Const::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Enum
+pub move_syn::Enum::abilities: core::option::Option<Abilities>
+pub move_syn::Enum::generics: core::option::Option<move_syn::Generics>
+pub move_syn::Enum::ident: proc_macro2::Ident
+impl move_syn::Enum
+pub fn move_syn::Enum::abilities(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Ability>
+impl unsynn::Parser for move_syn::Enum
+pub fn move_syn::Enum::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Enum
+pub fn move_syn::Enum::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::EnumVariant
+pub move_syn::EnumVariant::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::EnumVariant::ident: proc_macro2::Ident
+impl unsynn::Parser for move_syn::EnumVariant
+pub fn move_syn::EnumVariant::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::EnumVariant
+pub fn move_syn::EnumVariant::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Function
+impl unsynn::Parser for move_syn::Function
+pub fn move_syn::Function::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Function
+pub fn move_syn::Function::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Generic
+pub move_syn::Generic::ident: proc_macro2::Ident
+pub move_syn::Generic::phantom: core::option::Option<move_syn::kw::Phantom>
+impl unsynn::Parser for move_syn::Generic
+pub fn move_syn::Generic::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Generic
+pub fn move_syn::Generic::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Generics
+impl move_syn::Generics
+pub fn move_syn::Generics::generics(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Generic> + '_
+impl unsynn::Parser for move_syn::Generics
+pub fn move_syn::Generics::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Generics
+pub fn move_syn::Generics::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Import
+impl unsynn::Parser for move_syn::Import
+pub fn move_syn::Import::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Import
+pub fn move_syn::Import::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Item
+pub move_syn::Item::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::Item::kind: move_syn::ItemKind
+impl unsynn::Parser for move_syn::Item
+pub fn move_syn::Item::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Item
+pub fn move_syn::Item::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::LabeledModule
+impl move_syn::LabeledModule
+pub fn move_syn::LabeledModule::into_module(self) -> move_syn::Module
+impl unsynn::Parser for move_syn::LabeledModule
+pub fn move_syn::LabeledModule::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::LabeledModule
+pub fn move_syn::LabeledModule::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::MacroFun
+impl unsynn::Parser for move_syn::MacroFun
+pub fn move_syn::MacroFun::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::MacroFun
+pub fn move_syn::MacroFun::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Module
+pub move_syn::Module::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::Module::ident: proc_macro2::Ident
+pub move_syn::Module::named_addres: proc_macro2::Ident
+impl move_syn::Module
+pub fn move_syn::Module::fully_qualify_struct_field_types(&mut self) -> &mut Self
+pub fn move_syn::Module::items(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Item>
+pub fn move_syn::Module::structs_mut(&mut self) -> impl core::iter::traits::iterator::Iterator<Item = &mut move_syn::Struct>
+pub fn move_syn::Module::with_implicit_iota_imports(&mut self) -> &mut Self
+pub fn move_syn::Module::with_implicit_sui_imports(&mut self) -> &mut Self
+impl unsynn::Parser for move_syn::Module
+pub fn move_syn::Module::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Module
+pub fn move_syn::Module::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::NamedField
+pub move_syn::NamedField::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::NamedField::ident: proc_macro2::Ident
+pub move_syn::NamedField::ty: move_syn::Type
+impl unsynn::Parser for move_syn::NamedField
+pub fn move_syn::NamedField::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::NamedField
+pub fn move_syn::NamedField::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::NativeFun
+impl unsynn::Parser for move_syn::NativeFun
+pub fn move_syn::NativeFun::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::NativeFun
+pub fn move_syn::NativeFun::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Struct
+pub move_syn::Struct::generics: core::option::Option<move_syn::Generics>
+pub move_syn::Struct::ident: proc_macro2::Ident
+pub move_syn::Struct::kind: move_syn::StructKind
+impl move_syn::Struct
+pub fn move_syn::Struct::abilities(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Ability>
+pub fn move_syn::Struct::field_types_mut(&mut self) -> impl core::iter::traits::iterator::Iterator<Item = &mut move_syn::Type>
+impl unsynn::Parser for move_syn::Struct
+pub fn move_syn::Struct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Struct
+pub fn move_syn::Struct::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::TupleStruct
+impl move_syn::TupleStruct
+pub fn move_syn::TupleStruct::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::UnnamedField> + core::clone::Clone + '_
+pub fn move_syn::TupleStruct::is_empty(&self) -> bool
+impl unsynn::Parser for move_syn::TupleStruct
+pub fn move_syn::TupleStruct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::TupleStruct
+pub fn move_syn::TupleStruct::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Type
+pub move_syn::Type::path: move_syn::TypePath
+pub move_syn::Type::type_args: core::option::Option<move_syn::TypeArgs>
+impl move_syn::Type
+pub fn move_syn::Type::type_args_mut(&mut self) -> impl core::iter::traits::iterator::Iterator<Item = &mut Self>
+impl unsynn::Parser for move_syn::Type
+pub fn move_syn::Type::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Type
+pub fn move_syn::Type::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::TypeArgs
+impl move_syn::TypeArgs
+pub fn move_syn::TypeArgs::types(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Type>
+impl unsynn::Parser for move_syn::TypeArgs
+pub fn move_syn::TypeArgs::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::TypeArgs
+pub fn move_syn::TypeArgs::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::UnnamedField
+pub move_syn::UnnamedField::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::UnnamedField::ty: move_syn::Type
+impl unsynn::Parser for move_syn::UnnamedField
+pub fn move_syn::UnnamedField::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::UnnamedField
+pub fn move_syn::UnnamedField::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::UseFun
+impl unsynn::Parser for move_syn::UseFun
+pub fn move_syn::UseFun::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::UseFun
+pub fn move_syn::UseFun::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub fn move_syn::sanitize_for_tokenizer(content: &str) -> alloc::string::String

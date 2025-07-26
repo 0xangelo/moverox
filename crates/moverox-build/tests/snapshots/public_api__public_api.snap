@@ -1,0 +1,16 @@
+---
+source: crates/moverox-build/tests/public-api.rs
+expression: public_api
+---
+pub mod moverox_build
+pub struct moverox_build::Builder<'a>
+impl<'a> moverox_build::Builder<'a>
+pub fn moverox_build::Builder<'a>::build(self) -> core::result::Result<(), alloc::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>>
+pub const fn moverox_build::Builder<'a>::emit_rerun_if_changed(self, enable: bool) -> Self
+pub fn moverox_build::Builder<'a>::map_address(self, named_address: &str, rust_path: &str) -> Self
+pub fn moverox_build::Builder<'a>::moverox_path(self, rust_path: &str) -> Self
+pub fn moverox_build::Builder<'a>::out_dir(self, path: impl core::convert::Into<std::path::PathBuf>) -> Self
+pub const fn moverox_build::Builder<'a>::published_at(self, hex_address: &'a str) -> Self
+pub const fn moverox_build::Builder<'a>::with_implicit_iota_imports(self) -> Self
+pub const fn moverox_build::Builder<'a>::with_implicit_sui_imports(self) -> Self
+pub fn moverox_build::move_package(pkg_path: impl core::convert::AsRef<std::path::Path>, name: &str) -> moverox_build::Builder<'_>

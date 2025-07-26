@@ -1,0 +1,13 @@
+---
+source: crates/moverox-codegen/tests/public-api.rs
+expression: public_api
+---
+pub mod moverox_codegen
+pub trait moverox_codegen::ItemGen: moverox_codegen::__seal_item_gen::Sealed
+pub fn moverox_codegen::ItemGen::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, module: core::option::Option<&proc_macro2::Ident>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> proc_macro2::TokenStream
+impl moverox_codegen::ItemGen for move_syn::Item
+pub fn move_syn::Item::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, module: core::option::Option<&proc_macro2::Ident>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> proc_macro2::TokenStream
+pub trait moverox_codegen::ModuleGen: moverox_codegen::__seal_module_gen::Sealed
+pub fn moverox_codegen::ModuleGen::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> proc_macro2::TokenStream
+impl moverox_codegen::ModuleGen for move_syn::Module
+pub fn move_syn::Module::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> proc_macro2::TokenStream

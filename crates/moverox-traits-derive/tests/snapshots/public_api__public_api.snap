@@ -1,0 +1,6 @@
+---
+source: crates/moverox-traits-derive/tests/public-api.rs
+expression: public_api
+---
+pub mod moverox_traits_derive
+pub proc macro moverox_traits_derive::#[derive(MoveDatatype)]

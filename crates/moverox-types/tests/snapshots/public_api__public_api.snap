@@ -1,0 +1,342 @@
+---
+source: crates/moverox-types/tests/public-api.rs
+expression: public_api
+---
+pub mod moverox_types
+pub mod moverox_types::u256
+pub enum moverox_types::u256::U256CastErrorKind
+pub moverox_types::u256::U256CastErrorKind::TooLargeForU128
+pub moverox_types::u256::U256CastErrorKind::TooLargeForU16
+pub moverox_types::u256::U256CastErrorKind::TooLargeForU32
+pub moverox_types::u256::U256CastErrorKind::TooLargeForU64
+pub moverox_types::u256::U256CastErrorKind::TooLargeForU8
+pub struct moverox_types::u256::U256(_)
+impl moverox_types::u256::U256
+pub fn moverox_types::u256::U256::checked_add(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_div(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_mul(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_rem(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_shl(self, rhs: u32) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_shr(self, rhs: u32) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_sub(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::down_cast_lossy<T: core::convert::TryFrom<u128>>(self) -> T
+pub fn moverox_types::u256::U256::from_f64_lossy(value: f64) -> Self
+pub fn moverox_types::u256::U256::from_le_bytes(slice: &[u8; 32]) -> Self
+pub fn moverox_types::u256::U256::from_str_radix(src: &str, radix: u32) -> core::result::Result<Self, moverox_types::u256::U256FromStrError>
+pub fn moverox_types::u256::U256::leading_zeros(&self) -> u32
+pub const fn moverox_types::u256::U256::max_value() -> Self
+pub const fn moverox_types::u256::U256::one() -> Self
+pub fn moverox_types::u256::U256::to_f64_lossy(self) -> f64
+pub fn moverox_types::u256::U256::to_le_bytes(self) -> [u8; 32]
+pub const fn moverox_types::u256::U256::unchecked_as_u128(&self) -> u128
+pub const fn moverox_types::u256::U256::unchecked_as_u16(&self) -> u16
+pub const fn moverox_types::u256::U256::unchecked_as_u32(&self) -> u32
+pub const fn moverox_types::u256::U256::unchecked_as_u64(&self) -> u64
+pub const fn moverox_types::u256::U256::unchecked_as_u8(&self) -> u8
+pub fn moverox_types::u256::U256::wrapping_add(self, rhs: Self) -> Self
+pub fn moverox_types::u256::U256::wrapping_mul(self, rhs: Self) -> Self
+pub fn moverox_types::u256::U256::wrapping_sub(self, rhs: Self) -> Self
+pub const fn moverox_types::u256::U256::zero() -> Self
+impl core::convert::From<u128> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u128) -> Self
+impl core::convert::From<u16> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u16) -> Self
+impl core::convert::From<u32> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u32) -> Self
+impl core::convert::From<u64> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u64) -> Self
+impl core::convert::From<u8> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u8) -> Self
+impl core::convert::TryFrom<moverox_types::u256::U256> for u128
+pub type u128::Error = moverox_types::u256::U256CastError
+pub fn u128::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::convert::TryFrom<moverox_types::u256::U256> for u16
+pub type u16::Error = moverox_types::u256::U256CastError
+pub fn u16::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::convert::TryFrom<moverox_types::u256::U256> for u32
+pub type u32::Error = moverox_types::u256::U256CastError
+pub fn u32::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::convert::TryFrom<moverox_types::u256::U256> for u64
+pub type u64::Error = moverox_types::u256::U256CastError
+pub fn u64::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::convert::TryFrom<moverox_types::u256::U256> for u8
+pub type u8::Error = moverox_types::u256::U256CastError
+pub fn u8::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::fmt::Display for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::fmt::LowerHex for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::fmt::UpperHex for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::ops::arith::Add for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::add(self, rhs: Self) -> Self::Output
+impl core::ops::arith::AddAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::add_assign(&mut self, rhs: Self)
+impl core::ops::arith::Div for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::div(self, rhs: Self) -> Self::Output
+impl core::ops::arith::DivAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::div_assign(&mut self, rhs: Self)
+impl core::ops::arith::Mul for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::mul(self, rhs: Self) -> Self::Output
+impl core::ops::arith::MulAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::mul_assign(&mut self, rhs: Self)
+impl core::ops::arith::Rem for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::rem(self, rhs: Self) -> Self::Output
+impl core::ops::arith::RemAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::rem_assign(&mut self, rhs: Self)
+impl core::ops::arith::Sub for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::sub(self, rhs: Self) -> Self::Output
+impl core::ops::arith::SubAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::sub_assign(&mut self, rhs: Self)
+impl core::ops::bit::BitAnd for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::bitand(self, rhs: Self) -> Self::Output
+impl core::ops::bit::BitAndAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::bitand_assign(&mut self, rhs: Self)
+impl core::ops::bit::BitOr for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::bitor(self, rhs: Self) -> Self::Output
+impl core::ops::bit::BitXor for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::bitxor(self, rhs: Self) -> Self::Output
+impl core::ops::bit::Shl<u32> for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::shl(self, rhs: u32) -> Self::Output
+impl core::ops::bit::Shl<u8> for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::shl(self, rhs: u8) -> Self::Output
+impl core::ops::bit::Shr<u8> for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::shr(self, rhs: u8) -> Self::Output
+impl core::str::traits::FromStr for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Err = moverox_types::u256::U256FromStrError
+pub fn moverox_types::u256::U256::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_types::u256::U256CastError
+impl moverox_types::u256::U256CastError
+pub fn moverox_types::u256::U256CastError::new<T: core::convert::Into<moverox_types::u256::U256>>(val: T, kind: moverox_types::u256::U256CastErrorKind) -> Self
+impl core::error::Error for moverox_types::u256::U256CastError
+impl core::fmt::Display for moverox_types::u256::U256CastError
+pub fn moverox_types::u256::U256CastError::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+pub struct moverox_types::u256::U256FromStrError(_)
+impl core::error::Error for moverox_types::u256::U256FromStrError
+pub fn moverox_types::u256::U256FromStrError::source(&self) -> core::option::Option<&(dyn core::error::Error + 'static)>
+impl core::fmt::Display for moverox_types::u256::U256FromStrError
+pub fn moverox_types::u256::U256FromStrError::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+pub const moverox_types::u256::U256_NUM_BYTES: usize
+pub enum moverox_types::TypeTag
+pub moverox_types::TypeTag::Address
+pub moverox_types::TypeTag::Bool
+pub moverox_types::TypeTag::Signer
+pub moverox_types::TypeTag::Struct(alloc::boxed::Box<moverox_types::StructTag>)
+pub moverox_types::TypeTag::U128
+pub moverox_types::TypeTag::U16
+pub moverox_types::TypeTag::U256
+pub moverox_types::TypeTag::U32
+pub moverox_types::TypeTag::U64
+pub moverox_types::TypeTag::U8
+pub moverox_types::TypeTag::Vector(alloc::boxed::Box<moverox_types::TypeTag>)
+impl core::convert::From<moverox_types::StructTag> for moverox_types::TypeTag
+pub fn moverox_types::TypeTag::from(value: moverox_types::StructTag) -> Self
+impl core::fmt::Display for moverox_types::TypeTag
+pub fn moverox_types::TypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_types::TypeTag
+pub type moverox_types::TypeTag::Err = moverox_types::TypeParseError
+pub fn moverox_types::TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_types::Address(_)
+impl moverox_types::Address
+pub const moverox_types::Address::LENGTH: usize
+pub const moverox_types::Address::THREE: Self
+pub const moverox_types::Address::TWO: Self
+pub const moverox_types::Address::ZERO: Self
+pub const fn moverox_types::Address::as_bytes(&self) -> &[u8]
+pub fn moverox_types::Address::as_hex(&self) -> alloc::string::String
+pub fn moverox_types::Address::from_bytes<T: core::convert::AsRef<[u8]>>(bytes: T) -> core::result::Result<Self, moverox_types::AddressParseError>
+pub fn moverox_types::Address::from_hex<T: core::convert::AsRef<[u8]>>(hex: T) -> core::result::Result<Self, moverox_types::AddressParseError>
+pub const fn moverox_types::Address::inner(&self) -> &[u8; 32]
+pub const fn moverox_types::Address::into_inner(self) -> [u8; 32]
+pub const fn moverox_types::Address::new(bytes: [u8; 32]) -> Self
+impl core::convert::AsRef<[u8; 32]> for moverox_types::Address
+pub fn moverox_types::Address::as_ref(&self) -> &[u8; 32]
+impl core::convert::AsRef<[u8]> for moverox_types::Address
+pub fn moverox_types::Address::as_ref(&self) -> &[u8]
+impl core::convert::From<[u8; 32]> for moverox_types::Address
+pub fn moverox_types::Address::from(address: [u8; 32]) -> Self
+impl core::convert::From<moverox_types::Address> for [u8; 32]
+pub fn [u8; 32]::from(address: moverox_types::Address) -> Self
+impl core::convert::From<moverox_types::Address> for alloc::vec::Vec<u8>
+pub fn alloc::vec::Vec<u8>::from(value: moverox_types::Address) -> Self
+impl core::fmt::Debug for moverox_types::Address
+pub fn moverox_types::Address::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::fmt::Display for moverox_types::Address
+pub fn moverox_types::Address::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_types::Address
+pub type moverox_types::Address::Err = moverox_types::AddressParseError
+pub fn moverox_types::Address::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_types::AddressParseError
+impl core::error::Error for moverox_types::AddressParseError
+impl core::fmt::Display for moverox_types::AddressParseError
+pub fn moverox_types::AddressParseError::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+#[repr(transparent)] pub struct moverox_types::IdentStr(_)
+impl moverox_types::IdentStr
+pub const fn moverox_types::IdentStr::as_bytes(&self) -> &[u8]
+pub const fn moverox_types::IdentStr::as_str(&self) -> &str
+pub const fn moverox_types::IdentStr::cast(s: &'static str) -> &'static Self
+pub const fn moverox_types::IdentStr::is_empty(&self) -> bool
+pub fn moverox_types::IdentStr::is_valid(s: impl core::convert::AsRef<str>) -> bool
+pub const fn moverox_types::IdentStr::len(&self) -> usize
+pub fn moverox_types::IdentStr::new(s: &str) -> core::result::Result<&Self, moverox_types::InvalidIdentifierError>
+impl alloc::borrow::ToOwned for moverox_types::IdentStr
+pub type moverox_types::IdentStr::Owned = moverox_types::Identifier
+pub fn moverox_types::IdentStr::to_owned(&self) -> moverox_types::Identifier
+impl core::borrow::Borrow<moverox_types::IdentStr> for moverox_types::Identifier
+pub fn moverox_types::Identifier::borrow(&self) -> &moverox_types::IdentStr
+impl core::fmt::Display for moverox_types::IdentStr
+pub fn moverox_types::IdentStr::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+pub struct moverox_types::Identifier(_)
+impl moverox_types::Identifier
+pub fn moverox_types::Identifier::as_str(&self) -> &str
+pub fn moverox_types::Identifier::into_inner(self) -> alloc::boxed::Box<str>
+pub fn moverox_types::Identifier::new<T: core::convert::AsRef<str>>(identifier: T) -> core::result::Result<Self, moverox_types::TypeParseError>
+impl core::borrow::Borrow<moverox_types::IdentStr> for moverox_types::Identifier
+pub fn moverox_types::Identifier::borrow(&self) -> &moverox_types::IdentStr
+impl core::cmp::PartialEq<str> for moverox_types::Identifier
+pub fn moverox_types::Identifier::eq(&self, other: &str) -> bool
+impl core::fmt::Display for moverox_types::Identifier
+pub fn moverox_types::Identifier::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_types::Identifier
+pub type moverox_types::Identifier::Err = moverox_types::TypeParseError
+pub fn moverox_types::Identifier::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_types::InvalidIdentifierError(pub alloc::string::String)
+pub struct moverox_types::StructTag
+pub moverox_types::StructTag::address: moverox_types::Address
+pub moverox_types::StructTag::module: moverox_types::Identifier
+pub moverox_types::StructTag::name: moverox_types::Identifier
+pub moverox_types::StructTag::type_params: alloc::vec::Vec<moverox_types::TypeTag>
+impl moverox_types::StructTag
+pub fn moverox_types::StructTag::coin(type_tag: moverox_types::TypeTag) -> Self
+pub fn moverox_types::StructTag::gas_coin() -> Self
+pub fn moverox_types::StructTag::is_coin(&self) -> core::option::Option<&moverox_types::TypeTag>
+pub fn moverox_types::StructTag::staked_sui() -> Self
+impl core::convert::From<moverox_types::StructTag> for moverox_types::TypeTag
+pub fn moverox_types::TypeTag::from(value: moverox_types::StructTag) -> Self
+impl core::fmt::Display for moverox_types::StructTag
+pub fn moverox_types::StructTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_types::StructTag
+pub type moverox_types::StructTag::Err = moverox_types::TypeParseError
+pub fn moverox_types::StructTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_types::TypeParseError
+impl core::error::Error for moverox_types::TypeParseError
+impl core::fmt::Display for moverox_types::TypeParseError
+pub fn moverox_types::TypeParseError::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+pub struct moverox_types::U256(_)
+impl moverox_types::u256::U256
+pub fn moverox_types::u256::U256::checked_add(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_div(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_mul(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_rem(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_shl(self, rhs: u32) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_shr(self, rhs: u32) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::checked_sub(self, rhs: Self) -> core::option::Option<Self>
+pub fn moverox_types::u256::U256::down_cast_lossy<T: core::convert::TryFrom<u128>>(self) -> T
+pub fn moverox_types::u256::U256::from_f64_lossy(value: f64) -> Self
+pub fn moverox_types::u256::U256::from_le_bytes(slice: &[u8; 32]) -> Self
+pub fn moverox_types::u256::U256::from_str_radix(src: &str, radix: u32) -> core::result::Result<Self, moverox_types::u256::U256FromStrError>
+pub fn moverox_types::u256::U256::leading_zeros(&self) -> u32
+pub const fn moverox_types::u256::U256::max_value() -> Self
+pub const fn moverox_types::u256::U256::one() -> Self
+pub fn moverox_types::u256::U256::to_f64_lossy(self) -> f64
+pub fn moverox_types::u256::U256::to_le_bytes(self) -> [u8; 32]
+pub const fn moverox_types::u256::U256::unchecked_as_u128(&self) -> u128
+pub const fn moverox_types::u256::U256::unchecked_as_u16(&self) -> u16
+pub const fn moverox_types::u256::U256::unchecked_as_u32(&self) -> u32
+pub const fn moverox_types::u256::U256::unchecked_as_u64(&self) -> u64
+pub const fn moverox_types::u256::U256::unchecked_as_u8(&self) -> u8
+pub fn moverox_types::u256::U256::wrapping_add(self, rhs: Self) -> Self
+pub fn moverox_types::u256::U256::wrapping_mul(self, rhs: Self) -> Self
+pub fn moverox_types::u256::U256::wrapping_sub(self, rhs: Self) -> Self
+pub const fn moverox_types::u256::U256::zero() -> Self
+impl core::convert::From<u128> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u128) -> Self
+impl core::convert::From<u16> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u16) -> Self
+impl core::convert::From<u32> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u32) -> Self
+impl core::convert::From<u64> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u64) -> Self
+impl core::convert::From<u8> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::from(n: u8) -> Self
+impl core::convert::TryFrom<moverox_types::u256::U256> for u128
+pub type u128::Error = moverox_types::u256::U256CastError
+pub fn u128::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::convert::TryFrom<moverox_types::u256::U256> for u16
+pub type u16::Error = moverox_types::u256::U256CastError
+pub fn u16::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::convert::TryFrom<moverox_types::u256::U256> for u32
+pub type u32::Error = moverox_types::u256::U256CastError
+pub fn u32::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::convert::TryFrom<moverox_types::u256::U256> for u64
+pub type u64::Error = moverox_types::u256::U256CastError
+pub fn u64::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::convert::TryFrom<moverox_types::u256::U256> for u8
+pub type u8::Error = moverox_types::u256::U256CastError
+pub fn u8::try_from(n: moverox_types::u256::U256) -> core::result::Result<Self, Self::Error>
+impl core::fmt::Display for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::fmt::LowerHex for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::fmt::UpperHex for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::ops::arith::Add for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::add(self, rhs: Self) -> Self::Output
+impl core::ops::arith::AddAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::add_assign(&mut self, rhs: Self)
+impl core::ops::arith::Div for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::div(self, rhs: Self) -> Self::Output
+impl core::ops::arith::DivAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::div_assign(&mut self, rhs: Self)
+impl core::ops::arith::Mul for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::mul(self, rhs: Self) -> Self::Output
+impl core::ops::arith::MulAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::mul_assign(&mut self, rhs: Self)
+impl core::ops::arith::Rem for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::rem(self, rhs: Self) -> Self::Output
+impl core::ops::arith::RemAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::rem_assign(&mut self, rhs: Self)
+impl core::ops::arith::Sub for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::sub(self, rhs: Self) -> Self::Output
+impl core::ops::arith::SubAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::sub_assign(&mut self, rhs: Self)
+impl core::ops::bit::BitAnd for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::bitand(self, rhs: Self) -> Self::Output
+impl core::ops::bit::BitAndAssign for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::bitand_assign(&mut self, rhs: Self)
+impl core::ops::bit::BitOr for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::bitor(self, rhs: Self) -> Self::Output
+impl core::ops::bit::BitXor for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::bitxor(self, rhs: Self) -> Self::Output
+impl core::ops::bit::Shl<u32> for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::shl(self, rhs: u32) -> Self::Output
+impl core::ops::bit::Shl<u8> for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::shl(self, rhs: u8) -> Self::Output
+impl core::ops::bit::Shr<u8> for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Output = moverox_types::u256::U256
+pub fn moverox_types::u256::U256::shr(self, rhs: u8) -> Self::Output
+impl core::str::traits::FromStr for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Err = moverox_types::u256::U256FromStrError
+pub fn moverox_types::u256::U256::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub const fn moverox_types::const_address(bytes: &[u8]) -> moverox_types::Address

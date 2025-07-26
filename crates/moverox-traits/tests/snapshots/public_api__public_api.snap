@@ -1,0 +1,148 @@
+---
+source: crates/moverox-traits/tests/public-api.rs
+expression: public_api
+---
+pub mod moverox_traits
+pub enum moverox_traits::ParseStructTagError
+pub moverox_traits::ParseStructTagError::FromStr(alloc::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>)
+pub moverox_traits::ParseStructTagError::StructTag(moverox_traits::StructTagError)
+pub enum moverox_traits::ParseTypeTagError
+pub moverox_traits::ParseTypeTagError::FromStr(alloc::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>)
+pub moverox_traits::ParseTypeTagError::TypeTag(moverox_traits::TypeTagError)
+pub enum moverox_traits::StructTagError
+pub moverox_traits::StructTagError::Address
+pub moverox_traits::StructTagError::Address::expected: moverox_types::address::Address
+pub moverox_traits::StructTagError::Address::got: moverox_types::address::Address
+pub moverox_traits::StructTagError::Module
+pub moverox_traits::StructTagError::Module::expected: moverox_types::type_tag::Identifier
+pub moverox_traits::StructTagError::Module::got: moverox_types::type_tag::Identifier
+pub moverox_traits::StructTagError::Name
+pub moverox_traits::StructTagError::Name::expected: moverox_types::type_tag::Identifier
+pub moverox_traits::StructTagError::Name::got: moverox_types::type_tag::Identifier
+pub moverox_traits::StructTagError::TypeParams(moverox_traits::TypeParamsError)
+pub enum moverox_traits::TypeParamsError
+pub moverox_traits::TypeParamsError::Number
+pub moverox_traits::TypeParamsError::Number::expected: usize
+pub moverox_traits::TypeParamsError::Number::got: usize
+pub moverox_traits::TypeParamsError::TypeTag(alloc::boxed::Box<moverox_traits::TypeTagError>)
+impl core::convert::From<moverox_traits::TypeTagError> for moverox_traits::TypeParamsError
+pub fn moverox_traits::TypeParamsError::from(value: moverox_traits::TypeTagError) -> Self
+pub enum moverox_traits::TypeTagError
+pub moverox_traits::TypeTagError::StructTag(moverox_traits::StructTagError)
+pub moverox_traits::TypeTagError::Variant
+pub moverox_traits::TypeTagError::Variant::expected: alloc::string::String
+pub moverox_traits::TypeTagError::Variant::got: moverox_types::type_tag::TypeTag
+impl core::convert::From<moverox_traits::TypeTagError> for moverox_traits::TypeParamsError
+pub fn moverox_traits::TypeParamsError::from(value: moverox_traits::TypeTagError) -> Self
+pub struct moverox_traits::AddressTypeTag
+impl core::convert::From<moverox_traits::AddressTypeTag> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(_value: moverox_traits::AddressTypeTag) -> Self
+impl core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::AddressTypeTag
+pub type moverox_traits::AddressTypeTag::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::AddressTypeTag::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+impl core::str::traits::FromStr for moverox_traits::AddressTypeTag
+pub type moverox_traits::AddressTypeTag::Err = moverox_traits::ParseTypeTagError
+pub fn moverox_traits::AddressTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_traits::BoolTypeTag
+impl core::convert::From<moverox_traits::BoolTypeTag> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(_value: moverox_traits::BoolTypeTag) -> Self
+impl core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::BoolTypeTag
+pub type moverox_traits::BoolTypeTag::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::BoolTypeTag::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+impl core::str::traits::FromStr for moverox_traits::BoolTypeTag
+pub type moverox_traits::BoolTypeTag::Err = moverox_traits::ParseTypeTagError
+pub fn moverox_traits::BoolTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_traits::U128TypeTag
+impl core::convert::From<moverox_traits::U128TypeTag> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(_value: moverox_traits::U128TypeTag) -> Self
+impl core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::U128TypeTag
+pub type moverox_traits::U128TypeTag::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::U128TypeTag::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+impl core::str::traits::FromStr for moverox_traits::U128TypeTag
+pub type moverox_traits::U128TypeTag::Err = moverox_traits::ParseTypeTagError
+pub fn moverox_traits::U128TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_traits::U16TypeTag
+impl core::convert::From<moverox_traits::U16TypeTag> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(_value: moverox_traits::U16TypeTag) -> Self
+impl core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::U16TypeTag
+pub type moverox_traits::U16TypeTag::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::U16TypeTag::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+impl core::str::traits::FromStr for moverox_traits::U16TypeTag
+pub type moverox_traits::U16TypeTag::Err = moverox_traits::ParseTypeTagError
+pub fn moverox_traits::U16TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_traits::U256TypeTag
+impl core::convert::From<moverox_traits::U256TypeTag> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(_value: moverox_traits::U256TypeTag) -> Self
+impl core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::U256TypeTag
+pub type moverox_traits::U256TypeTag::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::U256TypeTag::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+impl core::str::traits::FromStr for moverox_traits::U256TypeTag
+pub type moverox_traits::U256TypeTag::Err = moverox_traits::ParseTypeTagError
+pub fn moverox_traits::U256TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_traits::U32TypeTag
+impl core::convert::From<moverox_traits::U32TypeTag> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(_value: moverox_traits::U32TypeTag) -> Self
+impl core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::U32TypeTag
+pub type moverox_traits::U32TypeTag::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::U32TypeTag::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+impl core::str::traits::FromStr for moverox_traits::U32TypeTag
+pub type moverox_traits::U32TypeTag::Err = moverox_traits::ParseTypeTagError
+pub fn moverox_traits::U32TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_traits::U64TypeTag
+impl core::convert::From<moverox_traits::U64TypeTag> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(_value: moverox_traits::U64TypeTag) -> Self
+impl core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::U64TypeTag
+pub type moverox_traits::U64TypeTag::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::U64TypeTag::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+impl core::str::traits::FromStr for moverox_traits::U64TypeTag
+pub type moverox_traits::U64TypeTag::Err = moverox_traits::ParseTypeTagError
+pub fn moverox_traits::U64TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_traits::U8TypeTag
+impl core::convert::From<moverox_traits::U8TypeTag> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(_value: moverox_traits::U8TypeTag) -> Self
+impl core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::U8TypeTag
+pub type moverox_traits::U8TypeTag::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::U8TypeTag::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+impl core::str::traits::FromStr for moverox_traits::U8TypeTag
+pub type moverox_traits::U8TypeTag::Err = moverox_traits::ParseTypeTagError
+pub fn moverox_traits::U8TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+pub struct moverox_traits::VecTypeTag<T: moverox_traits::MoveTypeTag>(pub T)
+impl<T: moverox_traits::MoveTypeTag> core::convert::From<moverox_traits::VecTypeTag<T>> for moverox_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from(value: moverox_traits::VecTypeTag<T>) -> Self
+impl<T: moverox_traits::MoveTypeTag> core::convert::TryFrom<moverox_types::type_tag::TypeTag> for moverox_traits::VecTypeTag<T>
+pub type moverox_traits::VecTypeTag<T>::Error = moverox_traits::TypeTagError
+pub fn moverox_traits::VecTypeTag<T>::try_from(value: moverox_types::type_tag::TypeTag) -> core::result::Result<Self, Self::Error>
+pub trait moverox_traits::ConstAddress
+pub const moverox_traits::ConstAddress::ADDRESS: moverox_types::address::Address
+pub trait moverox_traits::ConstModule
+pub const moverox_traits::ConstModule::MODULE: &moverox_types::ident_str::IdentStr
+pub trait moverox_traits::ConstName
+pub const moverox_traits::ConstName::NAME: &moverox_types::ident_str::IdentStr
+pub trait moverox_traits::HasKey: moverox_traits::MoveDatatype
+pub fn moverox_traits::HasKey::address(&self) -> moverox_types::address::Address
+pub trait moverox_traits::MoveDatatype: moverox_traits::MoveType<TypeTag = Self::StructTag>
+pub type moverox_traits::MoveDatatype::StructTag: moverox_traits::MoveDatatypeTag
+pub trait moverox_traits::MoveDatatypeTag: core::convert::Into<moverox_types::type_tag::StructTag> + core::convert::TryFrom<moverox_types::type_tag::StructTag, Error = moverox_traits::StructTagError> + moverox_traits::MoveTypeTag
+impl<T> moverox_traits::MoveDatatypeTag for T where T: core::convert::Into<moverox_types::type_tag::StructTag> + core::convert::TryFrom<moverox_types::type_tag::StructTag, Error = moverox_traits::StructTagError> + moverox_traits::MoveTypeTag
+pub trait moverox_traits::MoveType
+pub type moverox_traits::MoveType::TypeTag: moverox_traits::MoveTypeTag
+impl moverox_traits::MoveType for bool
+pub type bool::TypeTag = moverox_traits::BoolTypeTag
+impl moverox_traits::MoveType for moverox_types::address::Address
+pub type moverox_types::address::Address::TypeTag = moverox_traits::AddressTypeTag
+impl moverox_traits::MoveType for moverox_types::u256::U256
+pub type moverox_types::u256::U256::TypeTag = moverox_traits::U256TypeTag
+impl moverox_traits::MoveType for u128
+pub type u128::TypeTag = moverox_traits::U128TypeTag
+impl moverox_traits::MoveType for u16
+pub type u16::TypeTag = moverox_traits::U16TypeTag
+impl moverox_traits::MoveType for u32
+pub type u32::TypeTag = moverox_traits::U32TypeTag
+impl moverox_traits::MoveType for u64
+pub type u64::TypeTag = moverox_traits::U64TypeTag
+impl moverox_traits::MoveType for u8
+pub type u8::TypeTag = moverox_traits::U8TypeTag
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for alloc::vec::Vec<T>
+pub type alloc::vec::Vec<T>::TypeTag = moverox_traits::VecTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub trait moverox_traits::MoveTypeTag: core::convert::Into<moverox_types::type_tag::TypeTag> + core::convert::TryFrom<moverox_types::type_tag::TypeTag, Error = moverox_traits::TypeTagError>
+impl<T> moverox_traits::MoveTypeTag for T where T: core::convert::Into<moverox_types::type_tag::TypeTag> + core::convert::TryFrom<moverox_types::type_tag::TypeTag, Error = moverox_traits::TypeTagError>
