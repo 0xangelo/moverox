@@ -1,7 +1,7 @@
 [package]
 description = "Oxidized Sui MoveStdlib and Sui packages."
 name        = "moverox-sui"
-version     = "0.0.0"
+version     = "0.0.1"
 
 authors.workspace      = true
 categories.workspace   = true
@@ -14,11 +14,11 @@ rust-version.workspace = true
 workspace = true
 
 [dependencies]
-moverox = { version = "0.0.0", path = "../moverox", public = true }
+moverox = { version = "0.0.1", path = "../moverox", public = true }
 
 
 [build-dependencies]
-moverox-build = { version = "0.0.0", path = "../moverox-build" }
+moverox-build = { version = "0.0.1", path = "../moverox-build" }
 
 
 [dev-dependencies]
