@@ -8,7 +8,7 @@ categories   = ["cryptography::cryptocurrencies"]
 edition      = "2024"
 license      = "MIT OR Apache-2.0"
 repository   = "https://github.com/0xangelo/move-rs"
-rust-version = "1.85"
+rust-version = "1.87"
 
 [workspace.lints.clippy]
 nursery               = { level = "warn", priority = 1 }
