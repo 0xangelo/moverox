@@ -72,3 +72,32 @@ pub mod enums {
         Struct { value: u64 },
     }
 }
+#[allow(rustdoc::all)]
+#[cfg(not(doctest))]
+pub mod other {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(module = other)]
+    #[allow(non_snake_case)]
+    pub enum Wrapper<T> {
+        Single(super::enums::Single),
+        OtherPositional(T),
+        OtherNamed { inner: T },
+    }
+}

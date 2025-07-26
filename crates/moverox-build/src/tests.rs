@@ -135,7 +135,10 @@ fn generate_rust_for_enums() -> TestResult {
         .iter()
         .map(|path| path.file_name().unwrap().display())
         .join("\n");
-    insta::assert_snapshot!(files_found, @"main.move");
+    insta::assert_snapshot!(files_found, @r"
+    main.move
+    other.move
+    ");
 
     let modules = builder.parse_files(&move_files)?;
     let rust_code = builder.generate_rust_str(&modules)?;
