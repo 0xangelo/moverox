@@ -103,12 +103,15 @@ unsynn! {
         pub ident: Ident,
         contents: BraceGroupContaining<Vec<Item>>,
     }
+
     /// A Move language item.
     pub struct Item {
         pub attrs: Vec<Attribute>,
         vis: Option<Visibility>,
         pub kind: ItemKind,
     }
+
+    // === Attributes ===
 
     /// An attribute like `#[test_only]`, `#[allow(...)]`, doc comment (`/// ...`), etc.
     #[derive(Clone)]
@@ -124,6 +127,8 @@ unsynn! {
     }
 
     keyword DocKw = "doc";
+
+    // === Visibility modifiers ===
 
     /// Move item visibility.
     ///
@@ -145,6 +150,8 @@ unsynn! {
         Friend(kw::Friend)
     }
 
+    // === ===
+
     /// All Move item types.
     #[non_exhaustive]
     pub enum ItemKind {
@@ -158,75 +165,19 @@ unsynn! {
         NativeFun(NativeFun)
     }
 
-    pub struct MacroFun {
-        macro_kw: kw::Macro,
+    pub struct UseFun {
+        keyword: kw::Use,
         fun_kw: kw::Fun,
-        ident: Ident,
-        generics: Option<MacroGenerics>,
-        args: ParenthesisGroup,
-        ret: Option<Cons<Colon, Either<MacroReturn, ParenthesisGroup>>>,
-        body: BraceGroup,
+        path_prefix: Option<Cons<Ident, PathSep, Ident, PathSep>>,
+        fun: Ident,
+        as_kw: kw::As,
+        ty: Ident,
+        dot: Dot,
+        method: Ident,
+        semicolon: Semicolon,
     }
 
-    struct MacroGenerics {
-        lt_token: Lt,
-        type_args: DelimitedVec<MacroTypeArg, Comma>,
-        gt_token: Gt,
-    }
-
-    /// `$T: drop + store`
-    struct MacroTypeArg{
-        name: MacroTypeName,
-        bounds: Option<GenericBounds>,
-    }
-
-    /// Either `_` or a 'concrete' type
-    enum MacroReturn {
-        Underscore(Underscore),
-        Concrete(Cons<Option<Ref>, MacroReturnType>),
-    }
-
-    /// Return type for macro funs.
-    ///
-    /// - `$T`
-    /// - `&mut $T`
-    /// - `&String`
-    /// - `Option<$T>`
-    enum MacroReturnType {
-        MacroTypeName(MacroTypeName),
-        Hybrid(HybridMacroType)
-    }
-
-    struct HybridMacroType {
-        ident: Ident,
-        type_args: Option<Cons<Lt, Many<Either<Type, MacroTypeName, Box<HybridMacroType>>, Comma>, Gt>>
-    }
-
-    /// `$T`
-    struct MacroTypeName {
-        dollar: Dollar,
-        ident: Ident,
-    }
-
-    pub struct NativeFun {
-        native_kw: kw::Native,
-        fun_kw: kw::Fun,
-        ident: Ident,
-        generics: Option<Generics>,
-        args: ParenthesisGroup,
-        ret: Option<Cons<Colon, Either<MaybeRefType, ParenthesisGroup>>>,
-        semicolon: Semicolon
-    }
-
-    pub struct Function {
-        entry: Option<kw::Entry>,
-        fun_kw: kw::Fun,
-        ident: Ident,
-        generics: Option<Generics>,
-        args: ParenthesisGroup,
-        ret: Option<Cons<Colon, Either<MaybeRefType, ParenthesisGroup>>>,
-        body: BraceGroup,
-    }
+    // === Constants ===
 
     pub struct Const {
         const_kw: kw::Const,
@@ -245,6 +196,8 @@ unsynn! {
         // Hack to parse anything until (but excluding) a `;`
         Expr(Vec<Cons<Except<Semicolon>, TokenTree>>),
     }
+
+    // === Imports ===
 
     pub struct Import {
         keyword: kw::Use,
@@ -276,18 +229,6 @@ unsynn! {
     struct MaybeAliased {
         ident: Ident,
         alias: Option<Cons<kw::As, Ident>>,
-    }
-
-    pub struct UseFun {
-        keyword: kw::Use,
-        fun_kw: kw::Fun,
-        path_prefix: Option<Cons<Ident, PathSep, Ident, PathSep>>,
-        fun: Ident,
-        as_kw: kw::As,
-        ty: Ident,
-        dot: Dot,
-        method: Ident,
-        semicolon: Semicolon,
     }
 
     // === Structs ===
@@ -351,13 +292,15 @@ unsynn! {
 
     // === Datatype fields ===
 
+    /// Parenthesis group containing comma-delimited unnamed fields.
     #[derive(Clone)]
     pub struct PositionalFields(ParenthesisGroupContaining<DelimitedVec<UnnamedField, Comma>>);
 
+    /// Brace group containing comma-delimited named fields.
     #[derive(Clone)]
     pub struct NamedFields(BraceGroupContaining<DelimitedVec<NamedField, Comma>>);
 
-    /// Field in a braced struct.
+    /// Named datatype field.
     #[derive(Clone)]
     pub struct NamedField {
         pub attrs: Vec<Attribute>,
@@ -366,23 +309,16 @@ unsynn! {
         pub ty: Type,
     }
 
-    /// Field in a tuple struct.
+    /// Unnamed datatype field.
     #[derive(Clone)]
     pub struct UnnamedField {
         pub attrs: Vec<Attribute>,
         pub ty: Type,
     }
 
-    /// Type of a datatype field.
-    #[derive(Clone)]
-    pub struct Type {
-        pub path: TypePath,
-        pub type_args: Option<TypeArgs>
-    }
-
     // === Generics ===
 
-    /// The generics of a type.
+    /// The generics of a datatype or function.
     ///
     /// # Example
     /// `<T, U: drop, V: key + store>`
@@ -437,6 +373,8 @@ unsynn! {
         Store(kw::Store),
     }
 
+    // === Types ===
+
     /// Type of function arguments or returns.
     struct MaybeRefType {
         r#ref: Option<Ref>,
@@ -447,6 +385,13 @@ unsynn! {
     struct Ref {
         and: And,
         r#mut: Option<kw::Mut>,
+    }
+
+    /// Non-reference type, used in datatype fields.
+    #[derive(Clone)]
+    pub struct Type {
+        pub path: TypePath,
+        pub type_args: Option<TypeArgs>
     }
 
     /// Path to a type.
@@ -470,11 +415,86 @@ unsynn! {
         Ident(Ident),
     }
 
+    /// Angle bracket group (`<...>`) containing comma-delimited types.
     #[derive(Clone)]
     pub struct TypeArgs {
         lt: Lt,
         args: Many<Box<Type>, Comma>,
         gt: Gt,
+    }
+
+    // === Functions ===
+
+    pub struct NativeFun {
+        native_kw: kw::Native,
+        fun_kw: kw::Fun,
+        ident: Ident,
+        generics: Option<Generics>,
+        args: ParenthesisGroup,
+        ret: Option<Cons<Colon, Either<MaybeRefType, ParenthesisGroup>>>,
+        semicolon: Semicolon
+    }
+
+    pub struct Function {
+        entry: Option<kw::Entry>,
+        fun_kw: kw::Fun,
+        ident: Ident,
+        generics: Option<Generics>,
+        args: ParenthesisGroup,
+        ret: Option<Cons<Colon, Either<MaybeRefType, ParenthesisGroup>>>,
+        body: BraceGroup,
+    }
+
+    // === Macros ===
+
+    pub struct MacroFun {
+        macro_kw: kw::Macro,
+        fun_kw: kw::Fun,
+        ident: Ident,
+        generics: Option<MacroGenerics>,
+        args: ParenthesisGroup,
+        ret: Option<Cons<Colon, Either<MacroReturn, ParenthesisGroup>>>,
+        body: BraceGroup,
+    }
+
+    struct MacroGenerics {
+        lt_token: Lt,
+        type_args: DelimitedVec<MacroTypeArg, Comma>,
+        gt_token: Gt,
+    }
+
+    /// `$T: drop + store`
+    struct MacroTypeArg{
+        name: MacroTypeName,
+        bounds: Option<GenericBounds>,
+    }
+
+    /// Either `_` or a 'concrete' type
+    enum MacroReturn {
+        Underscore(Underscore),
+        Concrete(Cons<Option<Ref>, MacroReturnType>),
+    }
+
+    /// Return type for macro funs.
+    ///
+    /// - `$T`
+    /// - `&mut $T`
+    /// - `&String`
+    /// - `Option<$T>`
+    enum MacroReturnType {
+        MacroTypeName(MacroTypeName),
+        Hybrid(HybridMacroType)
+    }
+
+    struct HybridMacroType {
+        ident: Ident,
+        type_args: Option<Cons<Lt, Many<Either<Type, MacroTypeName, Box<HybridMacroType>>, Comma>, Gt>>
+    }
+
+    /// `$T`
+    struct MacroTypeName {
+        dollar: Dollar,
+        ident: Ident,
     }
 }
 
