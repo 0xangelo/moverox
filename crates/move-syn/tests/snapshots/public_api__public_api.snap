@@ -310,7 +310,7 @@ pub struct move_syn::BracedStruct
 pub move_syn::BracedStruct::fields: move_syn::NamedFields
 impl move_syn::BracedStruct
 pub fn move_syn::BracedStruct::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::NamedField> + core::clone::Clone + '_
-pub fn move_syn::BracedStruct::is_empty(&self) -> bool
+pub const fn move_syn::BracedStruct::is_empty(&self) -> bool
 impl unsynn::Parser for move_syn::BracedStruct
 pub fn move_syn::BracedStruct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::BracedStruct
@@ -406,7 +406,7 @@ pub fn move_syn::NamedField::to_tokens(&self, tokens: &mut proc_macro2::TokenStr
 pub struct move_syn::NamedFields(_)
 impl move_syn::NamedFields
 pub fn move_syn::NamedFields::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::NamedField> + core::clone::Clone + '_
-pub fn move_syn::NamedFields::is_empty(&self) -> bool
+pub const fn move_syn::NamedFields::is_empty(&self) -> bool
 impl unsynn::Parser for move_syn::NamedFields
 pub fn move_syn::NamedFields::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::NamedFields
@@ -419,7 +419,7 @@ pub fn move_syn::NativeFun::to_tokens(&self, tokens: &mut proc_macro2::TokenStre
 pub struct move_syn::PositionalFields(_)
 impl move_syn::PositionalFields
 pub fn move_syn::PositionalFields::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::UnnamedField> + core::clone::Clone + '_
-pub fn move_syn::PositionalFields::is_empty(&self) -> bool
+pub const fn move_syn::PositionalFields::is_empty(&self) -> bool
 pub const fn move_syn::PositionalFields::new() -> Self
 impl core::default::Default for move_syn::PositionalFields
 pub fn move_syn::PositionalFields::default() -> Self
@@ -442,7 +442,7 @@ pub struct move_syn::TupleStruct
 pub move_syn::TupleStruct::fields: move_syn::PositionalFields
 impl move_syn::TupleStruct
 pub fn move_syn::TupleStruct::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::UnnamedField> + core::clone::Clone + '_
-pub fn move_syn::TupleStruct::is_empty(&self) -> bool
+pub const fn move_syn::TupleStruct::is_empty(&self) -> bool
 impl unsynn::Parser for move_syn::TupleStruct
 pub fn move_syn::TupleStruct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::TupleStruct

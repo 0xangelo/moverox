@@ -808,7 +808,7 @@ impl BracedStruct {
     }
 
     /// Whether this struct has no fields.
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.fields.is_empty()
     }
 }
@@ -819,7 +819,7 @@ impl TupleStruct {
     }
 
     /// Whether this struct has no fields.
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.fields.is_empty()
     }
 }
@@ -860,7 +860,7 @@ impl NamedFields {
         self.0.content.0.iter().map(|d| &d.value)
     }
 
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.0.content.0.is_empty()
     }
 }
@@ -876,7 +876,7 @@ impl PositionalFields {
         self.0.content.0.iter().map(|d| &d.value)
     }
 
-    pub fn is_empty(&self) -> bool {
+    pub const fn is_empty(&self) -> bool {
         self.0.content.0.is_empty()
     }
 }
