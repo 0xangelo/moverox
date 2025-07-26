@@ -28,31 +28,16 @@ impl TupleStructExt for move_syn::TupleStruct {
         phantoms: impl Iterator<Item = &'a Ident>,
         address_map: &HashMap<Ident, TokenStream>,
     ) -> TokenStream {
-        let move_fields = self.fields();
-
-        let phantom_data = phantoms.map(|ty| {
-            quote! {
-                #[serde(skip)]
-                ::std::marker::PhantomData<#ty>
-            }
-        });
-
-        let rs_fields: &mut dyn Iterator<Item = TokenStream> = if self.is_empty() {
-            &mut std::iter::once(quote!(bool)).chain(phantom_data)
-        } else {
-            &mut move_fields
-                .map(|d| {
-                    let attrs = d.attrs.to_token_stream();
-                    let ty = move_type::to_rust_with_substitutions(&d.ty, address_map);
-                    quote! {
-                        #attrs pub #ty
-                    }
-                })
-                .chain(phantom_data)
-        };
+        let parenthesized_fields = crate::positional_fields::to_rust(
+            &self.fields,
+            phantoms,
+            address_map,
+            true, // bool_if_empty
+            true, // visibility
+        );
 
         quote! {
-            ( #(#rs_fields),* );
+            #parenthesized_fields;
         }
     }
 

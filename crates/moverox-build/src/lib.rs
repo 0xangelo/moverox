@@ -178,7 +178,7 @@ impl<'a> Builder<'a> {
                 if self.with_implicit_sui_imports {
                     module.with_implicit_sui_imports();
                 }
-                module.fully_qualify_struct_field_types();
+                module.fully_qualify_datatype_field_types();
                 move_modules.push(module);
             }
         }
@@ -186,10 +186,8 @@ impl<'a> Builder<'a> {
     }
 
     fn generate_rust_str(&self, move_modules: &[move_syn::Module]) -> Result<String> {
-        use move_syn::ItemKind;
-
         let mut address_map = self.address_map.clone();
-        // If any type path starts with one the named addresses of the package's modules,
+        // If any type path starts with one of the named addresses of the package's modules,
         // substitute that named address prefix with `super`, since oxidized modules will all
         // be right under the same 'super' module.
         for module in move_modules {
@@ -203,11 +201,8 @@ impl<'a> Builder<'a> {
         // Collect generated Rust code
         let mut generated_code = String::new();
         for module in move_modules {
-            // Skip module generation if no structs are found
-            if !module
-                .items()
-                .any(|item| matches!(item.kind, ItemKind::Struct(_)))
-            {
+            // Skip module generation if no datatypes are found
+            if !module.items().any(|item| item.kind.is_datatype()) {
                 continue;
             }
             let rust_code = module

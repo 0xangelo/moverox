@@ -10,6 +10,8 @@ mod tuple;
 use braced::BracedStructExt as _;
 use tuple::TupleStructExt as _;
 
+use crate::generics::GenericsExt;
+
 pub(super) trait StructGen {
     /// The full Rust struct declaration, its `new` constructor and potentially its `HasKey`
     /// implementation.
@@ -191,35 +193,5 @@ impl StructExt for move_syn::Struct {
             .as_ref()
             .into_iter()
             .flat_map(GenericsExt::phantoms)
-    }
-}
-
-trait GenericsExt {
-    fn to_rust(&self) -> TokenStream;
-
-    fn to_rust_with_bound(&self, bound: &TokenStream) -> TokenStream;
-
-    fn phantoms(&self) -> impl Iterator<Item = &Ident>;
-}
-
-impl GenericsExt for move_syn::Generics {
-    fn to_rust(&self) -> TokenStream {
-        let idents = self.generics().map(|g| &g.ident);
-        quote! {
-            <#(#idents),*>
-        }
-    }
-
-    fn to_rust_with_bound(&self, bound: &TokenStream) -> TokenStream {
-        let idents = self.generics().map(|d| &d.ident);
-        quote! {
-            <#(#idents: #bound),*>
-        }
-    }
-
-    fn phantoms(&self) -> impl Iterator<Item = &Ident> {
-        self.generics()
-            .filter(|d| d.phantom.is_some())
-            .map(|d| &d.ident)
     }
 }

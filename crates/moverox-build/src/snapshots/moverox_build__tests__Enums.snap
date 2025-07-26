@@ -1,0 +1,74 @@
+---
+source: crates/moverox-build/src/tests.rs
+expression: enums
+---
+#[allow(rustdoc::all)]
+#[cfg(not(doctest))]
+pub mod enums {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(module = enums)]
+    #[allow(non_snake_case)]
+    pub enum Single {
+        Only,
+    }
+    /// `Segment` enum definition.
+    /// Defines various string segments.
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(module = enums)]
+    #[allow(non_snake_case)]
+    pub enum Segment {
+        /// Empty variant, no value.
+        Empty,
+        /// Variant with a value (positional style).
+        String(std::string::String),
+        /// Variant with named fields.
+        Special { content: vector<u8>, encoding: u8 },
+    }
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(module = enums)]
+    #[allow(non_snake_case)]
+    pub enum Generic<T> {
+        Unit(#[serde(skip)] ::std::marker::PhantomData<T>),
+        Tuple(u64),
+        Struct { value: u64 },
+    }
+}

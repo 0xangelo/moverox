@@ -16,8 +16,12 @@ use proc_macro2::{Ident, TokenStream};
 use quote::quote;
 use unsynn::{LiteralString, ToTokens as _};
 
+mod generics;
+mod move_enum;
 mod move_struct;
 mod move_type;
+mod named_fields;
+mod positional_fields;
 #[cfg(test)]
 mod tests;
 
@@ -93,6 +97,7 @@ impl ItemGen for Item {
         let Self { attrs, kind, .. } = self;
         let generated = match kind {
             K::Struct(s) => s.to_rust(thecrate, package, module, address_map),
+            K::Enum(e) => self::move_enum::to_rust(e, thecrate, package, module, address_map),
             _ => return Default::default(),
         };
         let attrs = attrs

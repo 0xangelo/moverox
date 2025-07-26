@@ -1,5 +1,6 @@
 use std::fmt::Display;
 
+use indoc::indoc;
 use move_syn::ItemKind;
 use unsynn::IParse as _;
 
@@ -34,7 +35,154 @@ fn from_struct(s: &str) -> impl Display {
     )
 }
 
+fn from_enum(s: &str) -> impl Display {
+    let ast: Item = s.to_token_iter().parse_all().unwrap();
+    assert!(matches!(
+        ast,
+        Item {
+            kind: ItemKind::Enum(_),
+            ..
+        }
+    ));
+    let content = ast
+        .to_rust(&quote!(::moverox), None, None, &Default::default())
+        .to_string();
+    prettyplease::unparse(&syn::parse_file(&content).unwrap())
+}
+
 //=Test cases=======================================================================================
+
+#[test]
+fn empty_enum() {
+    let move_enum = indoc! {"
+        public enum Single {
+            Only,
+        }
+    "};
+    insta::assert_snapshot!(from_enum(move_enum), @r#"
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub enum Single {
+        Only,
+    }
+    "#
+    );
+}
+
+#[test]
+fn empty_enum_with_phantoms() {
+    let move_enum = indoc! {"
+        public enum Single<phantom T> {
+            Only,
+        }
+    "};
+    insta::assert_snapshot!(from_enum(move_enum), @r#"
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub enum Single<T> {
+        Only(#[serde(skip)] ::std::marker::PhantomData<T>),
+    }
+    "#);
+}
+
+#[test]
+fn enum_with_variants() {
+    let move_enum = indoc! {"
+        /// `Segment` enum definition.
+        /// Defines various string segments.
+        public enum Segment has copy, drop {
+            /// Empty variant, no value.
+            Empty,
+            /// Variant with a value (positional style).
+            String(String),
+            /// Variant with named fields.
+            Special {
+                content: vector<u8>,
+                encoding: u8, // Encoding tag.
+            },
+        }
+    "};
+    insta::assert_snapshot!(from_enum(move_enum), @r#"
+    /// `Segment` enum definition.
+    /// Defines various string segments.
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub enum Segment {
+        /// Empty variant, no value.
+        Empty,
+        /// Variant with a value (positional style).
+        String(String),
+        /// Variant with named fields.
+        Special { content: vector<u8>, encoding: u8 },
+    }
+    "#);
+}
+
+#[test]
+fn enum_with_generics_and_variants() {
+    let move_enum = indoc! {"
+        public enum Generic<phantom T> has copy, drop, store {
+            Unit,
+            Tuple(u64),
+            Struct {
+                value: u64,
+            }
+        }
+    "};
+    insta::assert_snapshot!(from_enum(move_enum), @r#"
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub enum Generic<T> {
+        Unit(#[serde(skip)] ::std::marker::PhantomData<T>),
+        Tuple(u64),
+        Struct { value: u64 },
+    }
+    "#);
+}
 
 #[test]
 fn struct_with_keyword_in_field_name() {

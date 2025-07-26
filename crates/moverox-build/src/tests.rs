@@ -7,13 +7,7 @@ use crate::move_package;
 
 #[test]
 fn generate_rust_for_move_stdlib() -> TestResult {
-    let pkg_path = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .parent()
-        .unwrap()
-        .parent()
-        .unwrap()
-        .join("move")
-        .join("move-stdlib");
+    let pkg_path = move_dir()?.join("move-stdlib");
 
     let builder = move_package(pkg_path, "MoveStdlib").published_at("0x1");
     let move_files = {
@@ -61,13 +55,7 @@ fn generate_rust_for_move_stdlib() -> TestResult {
 
 #[test]
 fn generate_rust_for_sui_framework() -> TestResult {
-    let pkg_path = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .parent()
-        .unwrap()
-        .parent()
-        .unwrap()
-        .join("move")
-        .join("sui-framework");
+    let pkg_path = move_dir()?.join("sui-framework");
 
     let builder = move_package(pkg_path, "Sui")
         .published_at("0x2")
@@ -130,4 +118,38 @@ fn generate_rust_for_sui_framework() -> TestResult {
     let sui_framework = prettyplease::unparse(&syn::parse_file(&rust_code).unwrap());
     insta::assert_snapshot!("Sui", sui_framework);
     Ok(())
+}
+
+#[test]
+fn generate_rust_for_enums() -> TestResult {
+    let pkg_path = move_dir()?.join("enums");
+
+    let builder = move_package(pkg_path, "Enums");
+    let move_files = {
+        let mut paths = builder.collect_move_files()?;
+        paths.sort();
+        paths
+    };
+
+    let files_found = move_files
+        .iter()
+        .map(|path| path.file_name().unwrap().display())
+        .join("\n");
+    insta::assert_snapshot!(files_found, @"main.move");
+
+    let modules = builder.parse_files(&move_files)?;
+    let rust_code = builder.generate_rust_str(&modules)?;
+
+    let enums = prettyplease::unparse(&syn::parse_file(&rust_code).unwrap());
+    insta::assert_snapshot!("Enums", enums);
+    Ok(())
+}
+
+fn move_dir() -> TestResult<std::path::PathBuf> {
+    Ok(Path::new(env!("CARGO_MANIFEST_DIR"))
+        .parent()
+        .ok_or("moverox-build/../")?
+        .parent()
+        .ok_or("moverox-build/../../")?
+        .join("move"))
 }

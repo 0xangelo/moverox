@@ -23,6 +23,7 @@ unsynn = "0.1"
 
 
 [dev-dependencies]
+indoc        = "2"
 insta        = "1"
 prettyplease = "0.2"
 syn          = { version = "2", default-features = false, features = ["parsing"] }
