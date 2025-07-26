@@ -200,8 +200,6 @@ impl std::error::Error for AddressParseError {}
 
 #[cfg(test)]
 mod test {
-    use test_strategy::proptest;
-
     use super::*;
 
     #[test]
@@ -223,7 +221,8 @@ mod test {
         println!("{a}");
     }
 
-    #[proptest]
+    #[cfg(feature = "proptest")]
+    #[test_strategy::proptest]
     fn roundtrip_display_fromstr(address: Address) {
         let s = address.to_string();
         let a = s.parse::<Address>().unwrap();

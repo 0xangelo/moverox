@@ -526,7 +526,7 @@ impl TryFrom<U256> for u128 {
 
 // Rand impl below are inspired by u128 impl found in https://rust-random.github.io/rand/src/rand/distributions/uniform.rs.html
 
-#[cfg(any(test, feature = "proptest"))]
+#[cfg(feature = "proptest")]
 impl proptest::prelude::Arbitrary for U256 {
     type Strategy = proptest::prelude::BoxedStrategy<Self>;
     type Parameters = ();
