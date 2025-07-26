@@ -312,14 +312,14 @@ unsynn! {
     #[derive(Clone)]
     pub struct BracedStruct {
         abilities: Option<Abilities>,
-        contents: NamedFields,
+        pub fields: NamedFields,
     }
 
     /// Tuple structs have their abilities declared after their fields, with a trailing semicolon
     /// if so.
     #[derive(Clone)]
     pub struct TupleStruct {
-        contents: PositionalFields,
+        pub fields: PositionalFields,
         abilities: Option<Cons<Abilities, Semicolon>>
     }
 
@@ -338,11 +338,13 @@ unsynn! {
     pub struct EnumVariant {
         pub attrs: Vec<Attribute>,
         pub ident: Ident,
-        fields: Option<FieldsKind>
+        /// The fields of the enum variants. If none, it's a "unit" or "empty" variant.
+        pub fields: Option<FieldsKind>
     }
 
+    /// Kinds of fields for a Move enum.
     #[derive(Clone)]
-    enum FieldsKind {
+    pub enum FieldsKind {
         Positional(PositionalFields),
         Named(NamedFields),
     }
@@ -350,10 +352,10 @@ unsynn! {
     // === Datatype fields ===
 
     #[derive(Clone)]
-    struct PositionalFields(ParenthesisGroupContaining<DelimitedVec<UnnamedField, Comma>>);
+    pub struct PositionalFields(ParenthesisGroupContaining<DelimitedVec<UnnamedField, Comma>>);
 
     #[derive(Clone)]
-    struct NamedFields(BraceGroupContaining<DelimitedVec<NamedField, Comma>>);
+    pub struct NamedFields(BraceGroupContaining<DelimitedVec<NamedField, Comma>>);
 
     /// Field in a braced struct.
     #[derive(Clone)]
@@ -754,8 +756,12 @@ impl Struct {
     pub fn field_types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
         use StructKind as K;
         match &mut self.kind {
-            K::Tuple(TupleStruct { contents, .. }) => contents.types_mut().boxed(),
-            K::Braced(BracedStruct { contents, .. }) => contents.types_mut().boxed(),
+            K::Tuple(TupleStruct {
+                fields: contents, ..
+            }) => contents.types_mut().boxed(),
+            K::Braced(BracedStruct {
+                fields: contents, ..
+            }) => contents.types_mut().boxed(),
         }
     }
 
@@ -766,7 +772,54 @@ impl Struct {
     }
 }
 
+impl BracedStruct {
+    pub fn fields(&self) -> impl Iterator<Item = &NamedField> + Clone + '_ {
+        self.fields.fields()
+    }
+
+    /// Whether this struct has no fields.
+    pub fn is_empty(&self) -> bool {
+        self.fields.is_empty()
+    }
+}
+
+impl TupleStruct {
+    pub fn fields(&self) -> impl Iterator<Item = &UnnamedField> + Clone + '_ {
+        self.fields.fields()
+    }
+
+    /// Whether this struct has no fields.
+    pub fn is_empty(&self) -> bool {
+        self.fields.is_empty()
+    }
+}
+
+impl Enum {
+    pub fn abilities(&self) -> impl Iterator<Item = &Ability> {
+        self.abilities
+            .iter()
+            .flat_map(|a| a.keywords.0.iter())
+            .map(|d| &d.value)
+    }
+
+    pub fn variants(&self) -> impl Iterator<Item = &EnumVariant> {
+        self.content
+            .content
+            .0
+            .iter()
+            .map(|Delimited { value, .. }| value)
+    }
+}
+
 impl NamedFields {
+    pub fn fields(&self) -> impl Iterator<Item = &NamedField> + Clone + '_ {
+        self.0.content.0.iter().map(|d| &d.value)
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.0.content.0.is_empty()
+    }
+
     fn types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
         self.0
             .content
@@ -777,6 +830,20 @@ impl NamedFields {
 }
 
 impl PositionalFields {
+    pub const fn new() -> Self {
+        Self(ParenthesisGroupContaining {
+            content: DelimitedVec(vec![]),
+        })
+    }
+
+    pub fn fields(&self) -> impl Iterator<Item = &UnnamedField> + Clone + '_ {
+        self.0.content.0.iter().map(|d| &d.value)
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.0.content.0.is_empty()
+    }
+
     fn types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
         self.0
             .content
@@ -786,40 +853,9 @@ impl PositionalFields {
     }
 }
 
-impl Generics {
-    pub fn generics(&self) -> impl Iterator<Item = &Generic> + '_ {
-        self.type_args.0.iter().map(|d| &d.value)
-    }
-}
-
-impl BracedStruct {
-    pub fn fields(&self) -> impl Iterator<Item = &NamedField> + Clone + '_ {
-        self.contents.0.content.0.iter().map(|d| &d.value)
-    }
-
-    /// Whether this struct has no fields.
-    pub fn is_empty(&self) -> bool {
-        self.contents.0.content.0.is_empty()
-    }
-}
-
-impl TupleStruct {
-    pub fn fields(&self) -> impl Iterator<Item = &UnnamedField> + Clone + '_ {
-        self.contents.0.content.0.iter().map(|d| &d.value)
-    }
-
-    /// Whether this struct has no fields.
-    pub fn is_empty(&self) -> bool {
-        self.contents.0.content.0.is_empty()
-    }
-}
-
-impl Enum {
-    pub fn abilities(&self) -> impl Iterator<Item = &Ability> {
-        self.abilities
-            .iter()
-            .flat_map(|a| a.keywords.0.iter())
-            .map(|d| &d.value)
+impl Default for PositionalFields {
+    fn default() -> Self {
+        Self::new()
     }
 }
 
@@ -885,6 +921,12 @@ impl TypeArgs {
     /// Guaranteed to be non-empty.
     pub fn types(&self) -> impl Iterator<Item = &Type> {
         self.args.0.iter().map(|args| &*args.value)
+    }
+}
+
+impl Generics {
+    pub fn generics(&self) -> impl Iterator<Item = &Generic> + '_ {
+        self.type_args.0.iter().map(|d| &d.value)
     }
 }
 

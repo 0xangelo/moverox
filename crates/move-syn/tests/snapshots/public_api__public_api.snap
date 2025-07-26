@@ -245,6 +245,13 @@ impl unsynn::Parser for move_syn::Ability
 pub fn move_syn::Ability::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Ability
 pub fn move_syn::Ability::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub enum move_syn::FieldsKind
+pub move_syn::FieldsKind::Named(move_syn::NamedFields)
+pub move_syn::FieldsKind::Positional(move_syn::PositionalFields)
+impl unsynn::Parser for move_syn::FieldsKind
+pub fn move_syn::FieldsKind::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::FieldsKind
+pub fn move_syn::FieldsKind::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub enum move_syn::File
 pub move_syn::File::Legacy(alloc::vec::Vec<move_syn::Module>)
 pub move_syn::File::ModuleLabel(move_syn::LabeledModule)
@@ -298,6 +305,7 @@ pub fn move_syn::Attribute::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn
 impl unsynn::ToTokens for move_syn::Attribute
 pub fn move_syn::Attribute::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::BracedStruct
+pub move_syn::BracedStruct::fields: move_syn::NamedFields
 impl move_syn::BracedStruct
 pub fn move_syn::BracedStruct::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::NamedField> + core::clone::Clone + '_
 pub fn move_syn::BracedStruct::is_empty(&self) -> bool
@@ -316,12 +324,14 @@ pub move_syn::Enum::generics: core::option::Option<move_syn::Generics>
 pub move_syn::Enum::ident: proc_macro2::Ident
 impl move_syn::Enum
 pub fn move_syn::Enum::abilities(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Ability>
+pub fn move_syn::Enum::variants(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::EnumVariant>
 impl unsynn::Parser for move_syn::Enum
 pub fn move_syn::Enum::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Enum
 pub fn move_syn::Enum::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::EnumVariant
 pub move_syn::EnumVariant::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::EnumVariant::fields: core::option::Option<move_syn::FieldsKind>
 pub move_syn::EnumVariant::ident: proc_macro2::Ident
 impl unsynn::Parser for move_syn::EnumVariant
 pub fn move_syn::EnumVariant::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
@@ -392,11 +402,30 @@ impl unsynn::Parser for move_syn::NamedField
 pub fn move_syn::NamedField::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::NamedField
 pub fn move_syn::NamedField::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::NamedFields(_)
+impl move_syn::NamedFields
+pub fn move_syn::NamedFields::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::NamedField> + core::clone::Clone + '_
+pub fn move_syn::NamedFields::is_empty(&self) -> bool
+impl unsynn::Parser for move_syn::NamedFields
+pub fn move_syn::NamedFields::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::NamedFields
+pub fn move_syn::NamedFields::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::NativeFun
 impl unsynn::Parser for move_syn::NativeFun
 pub fn move_syn::NativeFun::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::NativeFun
 pub fn move_syn::NativeFun::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::PositionalFields(_)
+impl move_syn::PositionalFields
+pub fn move_syn::PositionalFields::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::UnnamedField> + core::clone::Clone + '_
+pub fn move_syn::PositionalFields::is_empty(&self) -> bool
+pub const fn move_syn::PositionalFields::new() -> Self
+impl core::default::Default for move_syn::PositionalFields
+pub fn move_syn::PositionalFields::default() -> Self
+impl unsynn::Parser for move_syn::PositionalFields
+pub fn move_syn::PositionalFields::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::PositionalFields
+pub fn move_syn::PositionalFields::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Struct
 pub move_syn::Struct::generics: core::option::Option<move_syn::Generics>
 pub move_syn::Struct::ident: proc_macro2::Ident
@@ -409,6 +438,7 @@ pub fn move_syn::Struct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::e
 impl unsynn::ToTokens for move_syn::Struct
 pub fn move_syn::Struct::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::TupleStruct
+pub move_syn::TupleStruct::fields: move_syn::PositionalFields
 impl move_syn::TupleStruct
 pub fn move_syn::TupleStruct::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::UnnamedField> + core::clone::Clone + '_
 pub fn move_syn::TupleStruct::is_empty(&self) -> bool
