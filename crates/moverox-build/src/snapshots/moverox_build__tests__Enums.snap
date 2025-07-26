@@ -100,4 +100,22 @@ pub mod other {
         OtherPositional(T),
         OtherNamed { inner: T },
     }
+    /// Type parameter `Single` should shadow the imported type with the same name.
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(module = other)]
+    #[allow(non_snake_case)]
+    pub enum Shadowed<Single> {
+        Only(Single),
+    }
 }
