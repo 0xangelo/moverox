@@ -1,0 +1,5 @@
+---
+source: crates/move-syn/tests/enums.rs
+expression: ast.tokens_to_string()
+---
+module enums :: enums ; use std :: string :: String ; public enum Single { Only , } # [doc = " `Segment` enum definition."] # [doc = " Defines various string segments."] public enum Segment has copy , drop { # [doc = " Empty variant, no value."] Empty , # [doc = " Variant with a value (positional style)."] String (String) , # [doc = " Variant with named fields."] Special { content : vector < u8 > , encoding : u8 , } , } public enum Generic < phantom T > has copy , drop , store { Unit , Tuple (u64) , Struct { value : u64 , } }

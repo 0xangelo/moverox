@@ -69,6 +69,7 @@ pub mod kw {
         pub keyword Native = "native";
         pub keyword Macro = "macro";
         pub keyword Vector = "vector";
+        pub keyword Enum = "enum";
     }
 }
 
@@ -148,6 +149,7 @@ unsynn! {
     #[non_exhaustive]
     pub enum ItemKind {
         Struct(Struct),
+        Enum(Enum),
         Import(Import),
         UseFun(UseFun),
         Const(Const),
@@ -288,6 +290,8 @@ unsynn! {
         semicolon: Semicolon,
     }
 
+    // === Structs ===
+
     /// A Move struct.
     #[derive(Clone)]
     pub struct Struct {
@@ -296,6 +300,85 @@ unsynn! {
         pub generics: Option<Generics>,
         pub kind: StructKind,
     }
+
+    /// The kinds of structs; either a braced or tuple one.
+    #[derive(Clone)]
+    pub enum StructKind {
+        Braced(BracedStruct),
+        Tuple(TupleStruct),
+    }
+
+    /// Braced structs have their abilities declared before their fields.
+    #[derive(Clone)]
+    pub struct BracedStruct {
+        abilities: Option<Abilities>,
+        contents: NamedFields,
+    }
+
+    /// Tuple structs have their abilities declared after their fields, with a trailing semicolon
+    /// if so.
+    #[derive(Clone)]
+    pub struct TupleStruct {
+        contents: PositionalFields,
+        abilities: Option<Cons<Abilities, Semicolon>>
+    }
+
+    // === Enums ===
+
+    #[derive(Clone)]
+    pub struct Enum {
+        keyword: kw::Enum,
+        pub ident: Ident,
+        pub generics: Option<Generics>,
+        pub abilities: Option<Abilities>,
+        content: BraceGroupContaining<CommaDelimitedVec<EnumVariant>>,
+    }
+
+    #[derive(Clone)]
+    pub struct EnumVariant {
+        pub attrs: Vec<Attribute>,
+        pub ident: Ident,
+        fields: Option<FieldsKind>
+    }
+
+    #[derive(Clone)]
+    enum FieldsKind {
+        Positional(PositionalFields),
+        Named(NamedFields),
+    }
+
+    // === Datatype fields ===
+
+    #[derive(Clone)]
+    struct PositionalFields(ParenthesisGroupContaining<DelimitedVec<UnnamedField, Comma>>);
+
+    #[derive(Clone)]
+    struct NamedFields(BraceGroupContaining<DelimitedVec<NamedField, Comma>>);
+
+    /// Field in a braced struct.
+    #[derive(Clone)]
+    pub struct NamedField {
+        pub attrs: Vec<Attribute>,
+        pub ident: Ident,
+        colon: Colon,
+        pub ty: Type,
+    }
+
+    /// Field in a tuple struct.
+    #[derive(Clone)]
+    pub struct UnnamedField {
+        pub attrs: Vec<Attribute>,
+        pub ty: Type,
+    }
+
+    /// Type of a datatype field.
+    #[derive(Clone)]
+    pub struct Type {
+        pub path: TypePath,
+        pub type_args: Option<TypeArgs>
+    }
+
+    // === Generics ===
 
     /// The generics of a type.
     ///
@@ -332,27 +415,7 @@ unsynn! {
         extra_abilities: Vec<Cons<Plus, Ability>>
     }
 
-    /// The kinds of structs; either a braced or tuple one.
-    #[derive(Clone)]
-    pub enum StructKind {
-        Braced(BracedStruct),
-        Tuple(TupleStruct),
-    }
-
-    /// Braced structs have their abilities declared before their fields.
-    #[derive(Clone)]
-    pub struct BracedStruct {
-        abilities: Option<Abilities>,
-        contents: BraceGroupContaining<DelimitedVec<NamedField, Comma>>,
-    }
-
-    /// Tuple structs have their abilities declared after their fields, with a trailing semicolon
-    /// if so.
-    #[derive(Clone)]
-    pub struct TupleStruct {
-        contents: ParenthesisGroupContaining<DelimitedVec<UnnamedField, Comma>>,
-        abilities: Option<Cons<Abilities, Semicolon>>
-    }
+    // === Abilities ===
 
     /// Abilities declaration for a datatype.
     ///
@@ -372,22 +435,6 @@ unsynn! {
         Store(kw::Store),
     }
 
-    /// Field in a braced struct.
-    #[derive(Clone)]
-    pub struct NamedField {
-        pub attrs: Vec<Attribute>,
-        pub ident: Ident,
-        colon: Colon,
-        pub ty: Type,
-    }
-
-    /// Field in a tuple struct.
-    #[derive(Clone)]
-    pub struct UnnamedField {
-        pub attrs: Vec<Attribute>,
-        pub ty: Type,
-    }
-
     /// Type of function arguments or returns.
     struct MaybeRefType {
         r#ref: Option<Ref>,
@@ -398,13 +445,6 @@ unsynn! {
     struct Ref {
         and: And,
         r#mut: Option<kw::Mut>,
-    }
-
-    /// Type of a datatype field.
-    #[derive(Clone)]
-    pub struct Type {
-        pub path: TypePath,
-        pub type_args: Option<TypeArgs>
     }
 
     /// Path to a type.
@@ -713,27 +753,9 @@ impl Struct {
 
     pub fn field_types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
         use StructKind as K;
-        match self.kind {
-            K::Tuple(TupleStruct {
-                contents:
-                    ParenthesisGroupContaining {
-                        content: DelimitedVec(ref mut fields),
-                    },
-                ..
-            }) => fields
-                .iter_mut()
-                .map(|Delimited { value: field, .. }| &mut field.ty)
-                .boxed(),
-            K::Braced(BracedStruct {
-                contents:
-                    BraceGroupContaining {
-                        content: DelimitedVec(ref mut fields),
-                    },
-                ..
-            }) => fields
-                .iter_mut()
-                .map(|Delimited { value: field, .. }| &mut field.ty)
-                .boxed(),
+        match &mut self.kind {
+            K::Tuple(TupleStruct { contents, .. }) => contents.types_mut().boxed(),
+            K::Braced(BracedStruct { contents, .. }) => contents.types_mut().boxed(),
         }
     }
 
@@ -741,6 +763,26 @@ impl Struct {
         for ty in self.field_types_mut() {
             ty.resolve(imports);
         }
+    }
+}
+
+impl NamedFields {
+    fn types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
+        self.0
+            .content
+            .0
+            .iter_mut()
+            .map(|Delimited { value: field, .. }| &mut field.ty)
+    }
+}
+
+impl PositionalFields {
+    fn types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
+        self.0
+            .content
+            .0
+            .iter_mut()
+            .map(|Delimited { value: field, .. }| &mut field.ty)
     }
 }
 
@@ -752,23 +794,32 @@ impl Generics {
 
 impl BracedStruct {
     pub fn fields(&self) -> impl Iterator<Item = &NamedField> + Clone + '_ {
-        self.contents.content.0.iter().map(|d| &d.value)
+        self.contents.0.content.0.iter().map(|d| &d.value)
     }
 
     /// Whether this struct has no fields.
     pub fn is_empty(&self) -> bool {
-        self.contents.content.0.is_empty()
+        self.contents.0.content.0.is_empty()
     }
 }
 
 impl TupleStruct {
     pub fn fields(&self) -> impl Iterator<Item = &UnnamedField> + Clone + '_ {
-        self.contents.content.0.iter().map(|d| &d.value)
+        self.contents.0.content.0.iter().map(|d| &d.value)
     }
 
     /// Whether this struct has no fields.
     pub fn is_empty(&self) -> bool {
-        self.contents.content.0.is_empty()
+        self.contents.0.content.0.is_empty()
+    }
+}
+
+impl Enum {
+    pub fn abilities(&self) -> impl Iterator<Item = &Ability> {
+        self.abilities
+            .iter()
+            .flat_map(|a| a.keywords.0.iter())
+            .map(|d| &d.value)
     }
 }
 
