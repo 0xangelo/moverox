@@ -8,7 +8,7 @@ SUI_REPO=mystenlabs/sui
 
 set -e
 
-cd $REPO_ROOT
+cd $DIR
 
 LOCAL_PATH="$REPO_ROOT/.move/$SUI_REPO/$SUI_TAG"
 if [ ! -e $LOCAL_PATH ]
@@ -17,12 +17,9 @@ then
   git clone https://github.com/${SUI_REPO}.git --depth 1 --branch $SUI_TAG $LOCAL_PATH
 fi
 
-mkdir -p ./crates/moverox-sui/move/move-stdlib
-cp -r $LOCAL_PATH/crates/sui-framework/packages/move-stdlib/sources ./crates/moverox-sui/move/move-stdlib/
-cp -r $LOCAL_PATH/crates/sui-framework/packages/move-stdlib/Move.toml ./crates/moverox-sui/move/move-stdlib/
-ln -s ../crates/moverox-sui/move/move-stdlib ./move/move-stdlib
-
-mkdir -p ./crates/moverox-sui/move/sui-framework
-cp -r $LOCAL_PATH/crates/sui-framework/packages/sui-framework/sources ./crates/moverox-sui/move/sui-framework
-cp -r $LOCAL_PATH/crates/sui-framework/packages/sui-framework/Move.toml ./crates/moverox-sui/move/sui-framework
-ln -s ../crates/moverox-sui/move/sui-framework ./move/sui-framework
+mkdir -p ./move-stdlib
+cp -r $LOCAL_PATH/crates/sui-framework/packages/move-stdlib/sources ./move-stdlib/
+cp -r $LOCAL_PATH/crates/sui-framework/packages/move-stdlib/Move.toml ./move-stdlib/
+mkdir -p ./sui-framework
+cp -r $LOCAL_PATH/crates/sui-framework/packages/sui-framework/sources ./sui-framework/
+cp -r $LOCAL_PATH/crates/sui-framework/packages/sui-framework/Move.toml ./sui-framework/
