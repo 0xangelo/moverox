@@ -67,11 +67,6 @@ impl Datatype {
             ..
         } = type_tag;
 
-        let type_tag_type = {
-            let type_generics = type_arguments_in_associated_type(&ast.generics);
-            quote!(#type_tag_ident < #type_generics >)
-        };
-
         // for use in function signatures
         let type_tag_fn_args: Vec<_> = type_tag
             .non_type_fields()
@@ -88,6 +83,7 @@ impl Datatype {
             }))
             .collect();
 
+        // to use in constructing the type tag struct
         let type_tag_field_names: Vec<_> = type_tag
             .fields()
             .into_iter()
@@ -97,6 +93,8 @@ impl Datatype {
         let ident = &ast.ident;
         let generics = add_type_bound(ast.generics.clone(), parse_quote!(#thecrate::MoveType));
         let (impl_generics, type_generics, where_clause) = generics.split_for_impl();
+
+        let type_tag_type = self.type_tag_type();
 
         quote! {
             impl #impl_generics #ident #type_generics #where_clause {
@@ -108,6 +106,62 @@ impl Datatype {
                 }
             }
         }
+    }
+
+    /// If the type tag's address, module and name are const, implement `ConstStructTag`
+    /// conditional on all type parameters implementing `ConstTypeTag`.
+    pub(crate) fn impl_const_struct_tag(&self) -> Option<TokenStream> {
+        let Self {
+            type_tag:
+                TypeTagStruct {
+                    ident: type_tag_ident,
+                    address,
+                    module,
+                    name,
+                    thecrate,
+                    ..
+                },
+            value,
+        } = self;
+        if address.is_none() || module.is_none() || name.is_none() {
+            return None;
+        }
+
+        let ident = &value.ident;
+        let generics = add_type_bound(
+            value.generics.clone(),
+            parse_quote!(#thecrate::ConstTypeTag),
+        );
+        let (impl_generics, type_generics, where_clause) = generics.split_for_impl();
+
+        let type_tag_type = self.type_tag_type();
+
+        let type_tag_constructor = self
+            .type_tag
+            .type_fields() // We know address, module and name are const
+            .into_iter()
+            .filter_map(|f| {
+                let name = f.ident?;
+                let ty = f.ty;
+                Some(quote!(#name: <#ty as #thecrate::ConstTypeTag>::TYPE_TAG))
+            });
+
+        Some(quote! {
+            impl #impl_generics #thecrate::ConstStructTag for #ident #type_generics #where_clause {
+                const STRUCT_TAG: #type_tag_type = #type_tag_ident {
+                    #(#type_tag_constructor),*
+                };
+            }
+        })
+    }
+
+    /// This datatype's associated type tag as `_TypeTag<T::TypeTag, U::TypeTag, ...>`, where `T,
+    /// U, ...` are this type's generic types.
+    fn type_tag_type(&self) -> TokenStream {
+        let type_tag_ident = &self.type_tag.ident;
+
+        let type_generics = type_arguments_in_associated_type(&self.value.generics);
+        quote!(#type_tag_ident < #type_generics >)
     }
 }
 

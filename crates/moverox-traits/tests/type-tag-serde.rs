@@ -1,4 +1,5 @@
 use moverox_traits::{
+    ConstStructTag as _,
     ConstTypeTag as _,
     MoveDatatype,
     MoveType,
@@ -81,9 +82,9 @@ fn field_type_tag_display() {
     type BytesTypeTag = <Vec<u8> as MoveType>::TypeTag;
     type TypeTag2 = <Field<Vec<u8>, u64> as MoveDatatype>::StructTag;
 
-    const TYPE_TAG1: TypeTag1 = Field::<bool, u64>::type_tag(bool::TYPE_TAG, u64::TYPE_TAG);
+    const TYPE_TAG1: TypeTag1 = Field::<bool, u64>::STRUCT_TAG;
     const BYTES_TYPE_TAG: BytesTypeTag = Vec::<u8>::TYPE_TAG;
-    const TYPE_TAG2: TypeTag2 = Field::<Vec<u8>, u64>::type_tag(BYTES_TYPE_TAG, u64::TYPE_TAG);
+    const TYPE_TAG2: TypeTag2 = Field::<Vec<u8>, u64>::STRUCT_TAG;
 
     insta::assert_snapshot!(TYPE_TAG1, @"0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<bool, u64>");
     insta::assert_snapshot!(BYTES_TYPE_TAG, @"vector<u8>");

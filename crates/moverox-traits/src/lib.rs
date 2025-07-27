@@ -129,6 +129,13 @@ pub trait ConstTypeTag: MoveType {
     const TYPE_TAG: Self::TypeTag;
 }
 
+impl<T> ConstTypeTag for T
+where
+    T: ConstStructTag,
+{
+    const TYPE_TAG: Self::TypeTag = Self::STRUCT_TAG;
+}
+
 /// [`MoveDatatype`] with a constant struct tag.
 pub trait ConstStructTag: MoveDatatype {
     const STRUCT_TAG: Self::StructTag;

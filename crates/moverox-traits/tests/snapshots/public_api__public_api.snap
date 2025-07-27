@@ -143,6 +143,8 @@ impl moverox_traits::ConstTypeTag for u8
 pub const u8::TYPE_TAG: moverox_traits::U8TypeTag
 impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstTypeTag for alloc::vec::Vec<T>
 pub const alloc::vec::Vec<T>::TYPE_TAG: moverox_traits::VecTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::ConstTypeTag for T where T: moverox_traits::ConstStructTag
+pub const T::TYPE_TAG: Self::TypeTag
 pub trait moverox_traits::HasKey
 pub fn moverox_traits::HasKey::address(&self) -> moverox_types::address::Address
 pub trait moverox_traits::MoveDatatype: moverox_traits::MoveType<TypeTag = Self::StructTag>

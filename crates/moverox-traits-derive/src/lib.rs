@@ -73,6 +73,7 @@ fn impl_move_datatype(item: TokenStream) -> deluxe::Result<TokenStream> {
 
     let impl_move_datatype = datatype.impl_move_datatype();
     let impl_type_tag_constructor = datatype.impl_type_tag_constructor();
+    let impl_const_struct_tag = datatype.impl_const_struct_tag().unwrap_or_default();
 
     Ok(quote! {
         #type_tag_decl
@@ -87,5 +88,6 @@ fn impl_move_datatype(item: TokenStream) -> deluxe::Result<TokenStream> {
 
         #impl_move_datatype
         #impl_type_tag_constructor
+        #impl_const_struct_tag
     })
 }
