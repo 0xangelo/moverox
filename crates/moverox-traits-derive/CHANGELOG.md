@@ -1,0 +1,24 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [Unreleased]
+
+## [0.0.1](https://github.com/0xangelo/moverox/compare/moverox-traits-derive-v0.0.0...moverox-traits-derive-v0.0.1)
+
+### ⛰️ Features
+
+- *(moverox-traits-derive)* Allow enums - ([6653e1a](https://github.com/0xangelo/moverox/commit/6653e1a5de9bddf337a5d0d48b7cd06fae3c3c7d))
+
+### 🚜 Refactor
+
+- *(moverox-traits)* Optional and public deps clarity - ([c18bec9](https://github.com/0xangelo/moverox/commit/c18bec963cfbf7c6df890ab3b9a673a9c92fd44a))
+- *(moverox-traits-derive)* Move sources for `trybuild` tests - ([efaaf2a](https://github.com/0xangelo/moverox/commit/efaaf2a3da361f7c6daaf92603f56a8478b1abc6))
+
+### 🧪 Testing
+
+- *(crates)* Snapshot public API - ([45a3b8e](https://github.com/0xangelo/moverox/commit/45a3b8e11ce76e14498965af61e457a1b80663fb))
+
