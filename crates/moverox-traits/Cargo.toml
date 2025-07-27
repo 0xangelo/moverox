@@ -14,7 +14,7 @@ rust-version.workspace = true
 workspace = true
 
 [features]
-derive = ["dep:derive-where", "dep:moverox-traits-derive", "dep:serde_with"]
+derive = ["dep:moverox-traits-derive", "dep:serde", "moverox-types/serde"]
 serde  = ["serde/derive"]
 
 [dependencies]

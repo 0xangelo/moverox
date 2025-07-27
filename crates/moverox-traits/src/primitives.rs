@@ -29,11 +29,19 @@ macro_rules! impl_primitive_type_tags {
                 type Error = TypeTagError;
 
                 fn try_from(value: TypeTag) -> Result<Self, Self::Error> {
+                    Self::try_from(&value)
+                }
+            }
+
+            impl TryFrom<&TypeTag> for $type_ {
+                type Error = TypeTagError;
+
+                fn try_from(value: &TypeTag) -> Result<Self, Self::Error> {
                     match value {
                         TypeTag::$variant => Ok(Self),
                         _ => Err(TypeTagError::Variant {
                             expected: stringify!($variant).to_owned(),
-                            got: value }
+                            got: value.clone() }
                         )
                     }
                 }

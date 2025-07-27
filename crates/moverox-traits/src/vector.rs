@@ -20,11 +20,19 @@ impl<T: MoveTypeTag> TryFrom<TypeTag> for VecTypeTag<T> {
     type Error = TypeTagError;
 
     fn try_from(value: TypeTag) -> Result<Self, Self::Error> {
+        Self::try_from(&value)
+    }
+}
+
+impl<T: MoveTypeTag> TryFrom<&TypeTag> for VecTypeTag<T> {
+    type Error = TypeTagError;
+
+    fn try_from(value: &TypeTag) -> Result<Self, Self::Error> {
         match value {
-            TypeTag::Vector(type_) => Ok(Self((*type_).try_into()?)),
+            TypeTag::Vector(type_) => Ok(Self(type_.as_ref().try_into()?)),
             _ => Err(TypeTagError::Variant {
                 expected: "Vector(_)".to_owned(),
-                got: value,
+                got: value.clone(),
             }),
         }
     }

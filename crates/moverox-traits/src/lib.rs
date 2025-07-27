@@ -45,9 +45,19 @@ pub trait MoveType {
     type TypeTag: MoveTypeTag;
 }
 
-pub trait MoveTypeTag: Into<TypeTag> + TryFrom<TypeTag, Error = TypeTagError> {}
+pub trait MoveTypeTag:
+    Into<TypeTag>
+    + for<'a> TryFrom<&'a TypeTag, Error = TypeTagError>
+    + TryFrom<TypeTag, Error = TypeTagError>
+{
+}
 
-impl<T> MoveTypeTag for T where T: Into<TypeTag> + TryFrom<TypeTag, Error = TypeTagError> {}
+impl<T> MoveTypeTag for T where
+    T: Into<TypeTag>
+        + for<'a> TryFrom<&'a TypeTag, Error = TypeTagError>
+        + TryFrom<TypeTag, Error = TypeTagError>
+{
+}
 
 // =============================================================================
 //  MoveDatatype
@@ -59,12 +69,18 @@ pub trait MoveDatatype: MoveType<TypeTag = Self::StructTag> {
 }
 
 pub trait MoveDatatypeTag:
-    Into<StructTag> + TryFrom<StructTag, Error = StructTagError> + MoveTypeTag
+    Into<StructTag>
+    + for<'a> TryFrom<&'a StructTag, Error = StructTagError>
+    + TryFrom<StructTag, Error = StructTagError>
+    + MoveTypeTag
 {
 }
 
 impl<T> MoveDatatypeTag for T where
-    T: Into<StructTag> + TryFrom<StructTag, Error = StructTagError> + MoveTypeTag
+    T: Into<StructTag>
+        + for<'a> TryFrom<&'a StructTag, Error = StructTagError>
+        + TryFrom<StructTag, Error = StructTagError>
+        + MoveTypeTag
 {
 }
 
