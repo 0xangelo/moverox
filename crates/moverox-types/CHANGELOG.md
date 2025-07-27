@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.2](https://github.com/0xangelo/moverox/compare/moverox-types-v0.0.1...moverox-types-v0.0.2)
+
+### 📚 Documentation
+
+- Tell docs.rs to build with all features and untable options - ([4e6596d](https://github.com/0xangelo/moverox/commit/4e6596d5e830a3d07fa0649b5da46726231718b1))
+
+
 ## [0.0.1](https://github.com/0xangelo/moverox/compare/moverox-types-v0.0.0...moverox-types-v0.0.1)
 
 ### 🐛 Bug Fixes
