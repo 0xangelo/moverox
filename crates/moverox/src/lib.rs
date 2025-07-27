@@ -4,4 +4,14 @@
 
 pub use {moverox_traits as traits, moverox_types as types, serde};
 
+#[cfg(feature = "bcs")]
+mod instance;
 mod macros;
+
+#[cfg(feature = "bcs")]
+pub use instance::{
+    FromRawDatatypeError,
+    FromRawInstanceError,
+    parse_move_datatype,
+    parse_move_instance,
+};

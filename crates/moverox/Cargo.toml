@@ -13,6 +13,9 @@ rust-version.workspace = true
 [lints]
 workspace = true
 
+[features]
+bcs = ["dep:bcs", "dep:thiserror"]
+
 [dependencies.moverox-traits]
 features = ["derive", "serde"]
 path     = "../moverox-traits"
@@ -29,6 +32,10 @@ version  = "0.0.0"
 features = ["derive"]
 public   = true
 version  = "1"
+
+[dependencies]
+bcs       = { version = "0.1", optional = true }
+thiserror = { version = "2", optional = true }
 
 [dev-dependencies]
 insta            = "1"
