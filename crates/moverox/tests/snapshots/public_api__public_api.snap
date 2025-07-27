@@ -7,3 +7,28 @@ pub use moverox::serde
 pub use moverox::traits
 pub use moverox::types
 pub macro moverox::include_oxidized!
+pub struct moverox::Otw
+impl moverox::Otw
+pub const fn moverox::Otw::new() -> Self
+impl moverox::Otw
+pub const fn moverox::Otw::type_tag(address: moverox_types::address::Address, module: moverox_types::type_tag::Identifier, name: moverox_types::type_tag::Identifier) -> moverox::OtwTypeTag
+impl moverox_traits::MoveDatatype for moverox::Otw
+pub type moverox::Otw::StructTag = moverox::OtwTypeTag
+impl moverox_traits::MoveType for moverox::Otw
+pub type moverox::Otw::TypeTag = moverox::OtwTypeTag
+pub struct moverox::OtwTypeTag
+pub moverox::OtwTypeTag::address: moverox_types::address::Address
+pub moverox::OtwTypeTag::module: moverox_types::type_tag::Identifier
+pub moverox::OtwTypeTag::name: moverox_types::type_tag::Identifier
+impl core::fmt::Display for moverox::OtwTypeTag
+pub fn moverox::OtwTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox::OtwTypeTag
+pub type moverox::OtwTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox::OtwTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::MoveDatatypeTag for moverox::OtwTypeTag
+pub fn moverox::OtwTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox::OtwTypeTag::to_struct_tag(&self) -> moverox_types::type_tag::StructTag
+impl serde::ser::Serialize for moverox::OtwTypeTag
+pub fn moverox::OtwTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde::ser::Serializer>::Ok, <S as serde::ser::Serializer>::Error> where S: serde::ser::Serializer
+impl<'de> serde::de::Deserialize<'de> for moverox::OtwTypeTag
+pub fn moverox::OtwTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde::de::Deserializer>::Error> where D: serde::de::Deserializer<'de>
