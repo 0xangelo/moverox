@@ -10,30 +10,18 @@ impl<T: MoveType> MoveType for Vec<T> {
 #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 pub struct VecTypeTag<T: MoveTypeTag>(pub T);
 
-impl<T: MoveTypeTag> From<VecTypeTag<T>> for TypeTag {
-    fn from(value: VecTypeTag<T>) -> Self {
-        Self::Vector(Box::new(value.0.into()))
-    }
-}
-
-impl<T: MoveTypeTag> TryFrom<TypeTag> for VecTypeTag<T> {
-    type Error = TypeTagError;
-
-    fn try_from(value: TypeTag) -> Result<Self, Self::Error> {
-        Self::try_from(&value)
-    }
-}
-
-impl<T: MoveTypeTag> TryFrom<&TypeTag> for VecTypeTag<T> {
-    type Error = TypeTagError;
-
-    fn try_from(value: &TypeTag) -> Result<Self, Self::Error> {
+impl<T: MoveTypeTag> MoveTypeTag for VecTypeTag<T> {
+    fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError> {
         match value {
-            TypeTag::Vector(type_) => Ok(Self(type_.as_ref().try_into()?)),
+            TypeTag::Vector(type_) => Ok(Self(MoveTypeTag::from_type_tag(type_)?)),
             _ => Err(TypeTagError::Variant {
                 expected: "Vector(_)".to_owned(),
-                got: value.clone(),
+                got: crate::type_tag_variant_name(value),
             }),
         }
+    }
+
+    fn to_type_tag(&self) -> TypeTag {
+        TypeTag::Vector(Box::new(self.0.to_type_tag()))
     }
 }

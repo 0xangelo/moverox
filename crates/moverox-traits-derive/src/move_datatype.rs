@@ -37,28 +37,26 @@ pub fn impl_move_datatype(item: TokenStream) -> deluxe::Result<TokenStream> {
 
     let type_tag = TypeTagStruct::new(&ast, &attrs);
     let type_tag_decl = type_tag.struct_declaration();
+    let type_tag_impl_move_datatype_tag = type_tag.impl_move_datatype_tag();
     let type_tag_deserialize = type_tag.impl_deserialize();
     let type_tag_serialize = type_tag.impl_serialize();
     let type_tag_impl_const_address = type_tag.impl_const_address();
     let type_tag_impl_const_module = type_tag.impl_const_module();
     let type_tag_impl_const_name = type_tag.impl_const_name();
-    let type_tag_impl_into_struct_tag = type_tag.impl_into_struct_tag();
-    let type_tag_impl_try_from_struct_tag = type_tag.impl_try_from_struct_tag();
-    let type_tag_impl_basics = type_tag.impl_basics();
+    let type_tag_impl_from_str = type_tag.impl_from_str();
     let type_tag_impl_display = type_tag.impl_display();
 
     let struct_impl_move_type = move_struct_impl_move_type(&ast, type_tag);
 
     Ok(quote! {
         #type_tag_decl
+        #type_tag_impl_move_datatype_tag
         #type_tag_deserialize
         #type_tag_serialize
         #type_tag_impl_const_address
         #type_tag_impl_const_module
         #type_tag_impl_const_name
-        #type_tag_impl_into_struct_tag
-        #type_tag_impl_try_from_struct_tag
-        #type_tag_impl_basics
+        #type_tag_impl_from_str
         #type_tag_impl_display
 
         #struct_impl_move_type
@@ -265,12 +263,11 @@ impl TypeTagStruct {
 
         quote! {
             impl #impl_generics #serde_crate::Deserialize<'de> for #ident #type_generics #where_clause {
-                // Required method
                 fn deserialize<D>(deserializer: D) -> #result_type<Self, D::Error>
                 where D: #serde_crate::Deserializer<'de>
                 {
                     let stag = #thecrate::external::StructTag::deserialize(deserializer)?;
-                    stag.try_into().map_err(#serde_crate::de::Error::custom)
+                    <Self as #thecrate::MoveDatatypeTag>::from_struct_tag(&stag).map_err(#serde_crate::de::Error::custom)
                 }
             }
         }
@@ -278,24 +275,23 @@ impl TypeTagStruct {
 
     fn impl_serialize(&self) -> TokenStream {
         let Self {
-            ident, thecrate, ..
+            ident,
+            generics,
+            thecrate,
+            ..
         } = self;
 
         let result_type = result_type();
         let serde_crate = quote!(#thecrate::external::serde);
 
-        // Need to add `Clone` to all generics since we need to clone the type tag to convert it
-        // into a generic StructTag that then gets serialized
-        let generics = add_type_bound(self.generics.clone(), parse_quote!(::std::clone::Clone));
         let (impl_generics, type_generics, where_clause) = generics.split_for_impl();
 
         quote! {
             impl #impl_generics #serde_crate::Serialize for #ident #type_generics #where_clause {
-                // Required method
                 fn serialize<S>(&self, serializer: S) -> #result_type<S::Ok, S::Error>
                 where S: #serde_crate::Serializer
                 {
-                    #thecrate::external::StructTag::from(self.clone()).serialize(serializer)
+                    #thecrate::MoveDatatypeTag::to_struct_tag(self).serialize(serializer)
                 }
             }
         }
@@ -364,68 +360,34 @@ impl TypeTagStruct {
     /// `Display` implementation for the generated type tag struct. Requires it to be `Clone`
     fn impl_display(&self) -> TokenStream {
         let Self {
-            ident, thecrate, ..
+            ident,
+            generics,
+            thecrate,
+            ..
         } = self;
-        let struct_tag_type = quote!(#thecrate::external::StructTag);
-        let generics = add_type_bound(self.generics.clone(), parse_quote!(::std::clone::Clone));
         let (impl_generics, type_generics, where_clause) = generics.split_for_impl();
         quote! {
             impl #impl_generics ::std::fmt::Display for #ident #type_generics
                 #where_clause
             {
                 fn fmt(&self, f: &mut ::std::fmt::Formatter<'_>) -> ::std::fmt::Result {
-                    let stag: #struct_tag_type = self.clone().into();
+                    let stag = #thecrate::MoveDatatypeTag::to_struct_tag(self);
                     write!(f, "{}", stag)
                 }
             }
         }
     }
 
-    fn impl_basics(&self) -> TokenStream {
+    fn impl_from_str(&self) -> TokenStream {
         let Self {
             ident, thecrate, ..
         } = self;
         let result_type = result_type();
         let external = self.external();
-        let type_tag_type = quote!(#external::TypeTag);
         let struct_tag_type = quote!(#external::StructTag);
         let (impl_generics, type_generics, where_clause) = self.generics.split_for_impl();
 
         quote! {
-            impl #impl_generics ::std::convert::From<#ident #type_generics> for #type_tag_type
-            #where_clause
-            {
-                fn from(value: #ident #type_generics) -> Self {
-                    Self::Struct(::std::boxed::Box::new(value.into()))
-                }
-            }
-
-            impl #impl_generics TryFrom<#type_tag_type> for #ident #type_generics
-            #where_clause
-            {
-                type Error = #thecrate::TypeTagError;
-
-                fn try_from(value: #type_tag_type) -> #result_type<Self, Self::Error> {
-                    Self::try_from(&value)
-                }
-            }
-
-            impl #impl_generics TryFrom<&#type_tag_type> for #ident #type_generics
-            #where_clause
-            {
-                type Error = #thecrate::TypeTagError;
-
-                fn try_from(value: &#type_tag_type) -> #result_type<Self, Self::Error> {
-                    match value {
-                        #type_tag_type::Struct(stag) => #result_type::Ok(stag.as_ref().try_into()?),
-                        other => #result_type::Err(#thecrate::TypeTagError::Variant {
-                            expected: "Struct(_)".to_owned(),
-                            got: other.clone(),
-                        }),
-                    }
-                }
-            }
-
             impl #impl_generics ::std::str::FromStr for #ident #type_generics
             #where_clause
             {
@@ -435,75 +397,40 @@ impl TypeTagStruct {
                     let stag = s
                         .parse::<#struct_tag_type>()
                         .map_err(|e| #thecrate::ParseStructTagError::FromStr(e.into()))?;
-                    #result_type::Ok(stag.try_into()?)
+                    #result_type::Ok(<Self as #thecrate::MoveDatatypeTag>::from_struct_tag(&stag)?)
                 }
             }
         }
     }
 
-    fn impl_into_struct_tag(&self) -> TokenStream {
+    fn impl_move_datatype_tag(&self) -> TokenStream {
         let Self {
-            ident, thecrate, ..
+            ident,
+            generics,
+            thecrate,
+            ..
         } = self;
-        let external = self.external();
-        let struct_tag_type = quote!(#external::StructTag);
-        let (impl_generics, type_generics, where_clause) = self.generics.split_for_impl();
 
-        let attr_idents: Vec<_> = self.fields().into_iter().filter_map(|f| f.ident).collect();
+        let to_struct_tag_impl = self.impl_to_struct_tag();
+        let from_struct_tag_impl = self.impl_from_struct_tag();
 
-        let struct_tag_var_attrs = std::iter::empty()
-            .chain(self.address.is_none().then_some(quote!(address)))
-            .chain(self.module.is_none().then_some(quote!(module)))
-            .chain(self.name.is_none().then_some(quote!(name)));
-
-        let type_param_idents = self.type_fields().into_iter().filter_map(|f| f.ident);
-
-        let struct_tag_const_declarations = std::iter::empty()
-            .chain(self.address.is_some().then(|| {
-                quote! {
-                    address: <#ident #type_generics as #thecrate::ConstAddress>::ADDRESS
-                }
-            }))
-            .chain(self.module.is_some().then(|| {
-                quote! {
-                    module: <#ident #type_generics as #thecrate::ConstModule>::MODULE.to_owned()
-                }
-            }))
-            .chain(self.name.is_some().then(|| {
-                quote! {
-                    name: <#ident #type_generics as #thecrate::ConstName>::NAME.to_owned()
-                }
-            }))
-            .chain(std::iter::once(
-                quote!(type_params: vec![#(#type_param_idents.into()),*]),
-            ));
+        let (impl_generics, type_generics, where_clause) = generics.split_for_impl();
 
         quote! {
-            impl #impl_generics ::std::convert::From<#ident #type_generics> for #struct_tag_type
+            impl #impl_generics #thecrate::MoveDatatypeTag for #ident #type_generics
             #where_clause
             {
-                fn from(value: #ident #type_generics) -> Self {
-                    let #ident {
-                        #(#attr_idents),*
-                    } = value;
-                    Self {
-                        #(#struct_tag_var_attrs,)*
-                        #(#struct_tag_const_declarations),*
-                    }
-                }
+                #to_struct_tag_impl
+                #from_struct_tag_impl
             }
         }
     }
 
-    fn impl_ref_into_struct_tag(&self) -> TokenStream {
-        let Self {
-            ident, thecrate, ..
-        } = self;
+    fn impl_to_struct_tag(&self) -> TokenStream {
+        let Self { thecrate, .. } = self;
 
         let external = self.external();
         let struct_tag_type = quote!(#external::StructTag);
-
-        let (impl_generics, type_generics, where_clause) = self.generics.split_for_impl();
 
         let field_idents: Vec<_> = self.fields().into_iter().filter_map(|f| f.ident).collect();
 
@@ -517,48 +444,41 @@ impl TypeTagStruct {
         let struct_tag_const_declarations = std::iter::empty()
             .chain(self.address.is_some().then(|| {
                 quote! {
-                    address: <#ident #type_generics as #thecrate::ConstAddress>::ADDRESS
+                    address: <Self as #thecrate::ConstAddress>::ADDRESS
                 }
             }))
             .chain(self.module.is_some().then(|| {
                 quote! {
-                    module: <#ident #type_generics as #thecrate::ConstModule>::MODULE.to_owned()
+                    module: <Self as #thecrate::ConstModule>::MODULE.to_owned()
                 }
             }))
             .chain(self.name.is_some().then(|| {
                 quote! {
-                    name: <#ident #type_generics as #thecrate::ConstName>::NAME.to_owned()
+                    name: <Self as #thecrate::ConstName>::NAME.to_owned()
                 }
             }))
             .chain(std::iter::once(
-                quote!(type_params: vec![#(#type_param_idents.into()),*]),
+                quote!(type_params: vec![#(#type_param_idents.to_type_tag()),*]),
             ));
 
         quote! {
-            impl #impl_generics ::std::convert::From<&#ident #type_generics> for #struct_tag_type
-            #where_clause
-            {
-                fn from(value: #ident #type_generics) -> Self {
-                    let #ident {
-                        #(#field_idents),*
-                    } = value;
-                    Self {
-                        #(#struct_tag_var_attrs: #struct_tag_var_attrs.clone(),)*
-                        #(#struct_tag_const_declarations),*
-                    }
+            fn to_struct_tag(&self) -> #struct_tag_type {
+                let Self {
+                    #(#field_idents),*
+                } = self;
+                #struct_tag_type {
+                    #(#struct_tag_var_attrs: #struct_tag_var_attrs.clone(),)*
+                    #(#struct_tag_const_declarations),*
                 }
             }
         }
     }
 
-    fn impl_try_from_struct_tag(&self) -> TokenStream {
-        let Self {
-            ident, thecrate, ..
-        } = self;
+    fn impl_from_struct_tag(&self) -> TokenStream {
+        let Self { thecrate, .. } = self;
         let result_type = result_type();
         let external = self.external();
         let struct_tag_type = quote!(#external::StructTag);
-        let (impl_generics, type_generics, where_clause) = self.generics.split_for_impl();
 
         let address_check = if self.address.is_some() {
             quote! {
@@ -610,55 +530,40 @@ impl TypeTagStruct {
         let type_field_idents: Vec<_> = self.type_field_pairs().map(|pair| pair.0).collect();
 
         quote! {
-            impl #impl_generics TryFrom<#struct_tag_type> for #ident #type_generics
-            #where_clause
-            {
-                type Error = #thecrate::StructTagError;
+            fn from_struct_tag(value: &#struct_tag_type) -> #result_type<Self, #thecrate::StructTagError> {
+                use #thecrate::StructTagError as E;
+                let #struct_tag_type {
+                    address,
+                    module,
+                    name,
+                    type_params,
+                } = value;
 
-                fn try_from(value: #struct_tag_type) -> #result_type<Self, Self::Error> {
-                    Self::try_from(&value)
+                #address_check
+                #module_check
+                #name_check
+
+                // Extract type parameters
+                let expected = #n_types_expected;
+                if expected != type_params.len() {
+                    return #result_type::Err(E::TypeParams(#thecrate::TypeParamsError::Number {
+                        expected, got: type_params.len()
+                    }));
                 }
-            }
-
-            impl #impl_generics TryFrom<&#struct_tag_type> for #ident #type_generics
-            #where_clause
-            {
-                type Error = #thecrate::StructTagError;
-
-                fn try_from(value: &#struct_tag_type) -> #result_type<Self, Self::Error> {
-                    use #thecrate::StructTagError as E;
-                    let #struct_tag_type {
-                        address,
-                        module,
-                        name,
-                        type_params,
-                    } = value;
-
-                    #address_check
-                    #module_check
-                    #name_check
-
-                    // Extract type parameters
-                    let expected = #n_types_expected;
-                    if expected != type_params.len() {
-                        return #result_type::Err(E::TypeParams(#thecrate::TypeParamsError::Number {
-                            expected, got: type_params.len()
-                        }));
-                    }
-                    let mut type_params_iter = type_params.iter();
-                    #(
-                        let #type_field_idents = type_params_iter
+                let mut type_params_iter = type_params.iter();
+                #(
+                    let #type_field_idents = #thecrate::MoveTypeTag::from_type_tag(
+                        type_params_iter
                             .next()
                             .expect("Checked type_params.len() above")
-                            .try_into()
-                            .map_err(#thecrate::TypeParamsError::from)?;
-                    )*
+                    )
+                    .map_err(#thecrate::TypeParamsError::from)?;
+                )*
 
-                    #result_type::Ok(Self {
-                        #(#field_idents: #field_idents.clone(),)*
-                        #(#type_field_idents),*
-                    })
-                }
+                #result_type::Ok(Self {
+                    #(#field_idents: #field_idents.clone(),)*
+                    #(#type_field_idents),*
+                })
             }
         }
     }

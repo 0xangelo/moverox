@@ -2,7 +2,7 @@ use std::str::FromStr;
 
 use moverox_types::{Address, TypeTag, U256};
 
-use crate::{MoveType, ParseTypeTagError, TypeTagError};
+use crate::{MoveType, MoveTypeTag, ParseTypeTagError, TypeTagError};
 
 macro_rules! impl_primitive_type_tags {
     ($($typ:ty: ($type_:ident, $variant:ident)),*) => {
@@ -19,31 +19,19 @@ macro_rules! impl_primitive_type_tags {
             #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
             pub struct $type_;
 
-            impl From<$type_> for TypeTag {
-                fn from(_value: $type_) -> Self {
-                    Self::$variant
-                }
-            }
-
-            impl TryFrom<TypeTag> for $type_ {
-                type Error = TypeTagError;
-
-                fn try_from(value: TypeTag) -> Result<Self, Self::Error> {
-                    Self::try_from(&value)
-                }
-            }
-
-            impl TryFrom<&TypeTag> for $type_ {
-                type Error = TypeTagError;
-
-                fn try_from(value: &TypeTag) -> Result<Self, Self::Error> {
+            impl MoveTypeTag for $type_ {
+                fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError> {
                     match value {
                         TypeTag::$variant => Ok(Self),
                         _ => Err(TypeTagError::Variant {
                             expected: stringify!($variant).to_owned(),
-                            got: value.clone() }
+                            got: crate::type_tag_variant_name(value) }
                         )
                     }
+                }
+
+                fn to_type_tag(&self) -> TypeTag {
+                    TypeTag::$variant
                 }
             }
 
@@ -52,7 +40,7 @@ macro_rules! impl_primitive_type_tags {
 
                 fn from_str(s: &str) -> Result<Self, Self::Err> {
                     let tag: TypeTag = s.parse().map_err(ParseTypeTagError::from_str)?;
-                    Ok(tag.try_into()?)
+                    Ok(MoveTypeTag::from_type_tag(&tag)?)
                 }
             }
 

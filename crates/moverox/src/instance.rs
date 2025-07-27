@@ -1,6 +1,13 @@
 use std::error::Error as StdError;
 
-use moverox_traits::{MoveDatatype, MoveType, StructTagError, TypeTagError};
+use moverox_traits::{
+    MoveDatatype,
+    MoveDatatypeTag as _,
+    MoveType,
+    MoveTypeTag as _,
+    StructTagError,
+    TypeTagError,
+};
 use moverox_types::{StructTag, TypeTag};
 use serde::Deserialize;
 
@@ -9,11 +16,11 @@ use serde::Deserialize;
 /// This function short-circuits if the type tag can't be converted to the [`MoveType::TypeTag`],
 /// avoiding deserialization of the BCS bytes in such cases.
 pub fn parse_move_instance<T: MoveType + for<'de> Deserialize<'de>>(
-    type_: &TypeTag,
+    type_tag: &TypeTag,
     bytes: &[u8],
 ) -> Result<(T::TypeTag, T), FromRawInstanceError> {
     Ok((
-        type_.try_into()?,
+        T::TypeTag::from_type_tag(type_tag)?,
         bcs::from_bytes(bytes).map_err(|e| FromRawInstanceError::Bcs(e.into()))?,
     ))
 }
@@ -23,11 +30,11 @@ pub fn parse_move_instance<T: MoveType + for<'de> Deserialize<'de>>(
 /// This function short-circuits if the type tag can't be converted to the
 /// [`MoveDatatype::StructTag`], avoiding deserialization of the BCS bytes in such cases.
 pub fn parse_move_datatype<T: MoveDatatype + for<'de> Deserialize<'de>>(
-    type_: &StructTag,
+    struct_tag: &StructTag,
     bytes: &[u8],
 ) -> Result<(T::StructTag, T), FromRawDatatypeError> {
     Ok((
-        type_.try_into()?,
+        T::StructTag::from_struct_tag(struct_tag)?,
         bcs::from_bytes(bytes).map_err(|e| FromRawDatatypeError::Bcs(e.into()))?,
     ))
 }
