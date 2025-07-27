@@ -1,12 +1,7 @@
 use std::path::Path;
 
 fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>> {
-    let move_dir = Path::new(env!("CARGO_MANIFEST_DIR"))
-        .parent()
-        .expect("crates/")
-        .parent()
-        .expect("Repo root")
-        .join("move");
+    let move_dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("move");
 
     moverox_build::move_package(move_dir.join("move-stdlib"), "std")
         .published_at("0x1")
