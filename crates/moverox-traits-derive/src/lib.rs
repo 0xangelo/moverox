@@ -2,10 +2,14 @@
 
 //! Derive macros for `moverox-traits`.
 
-mod move_datatype;
+use proc_macro2::TokenStream;
+use quote::quote;
 
-use move_datatype::impl_move_datatype;
-use proc_macro::TokenStream;
+use crate::datatype::Datatype;
+
+mod attributes;
+mod datatype;
+mod type_tag;
 
 /// Derives `moverox_traits` trait implementations for an oxidized Move datatype.
 ///
@@ -48,8 +52,40 @@ use proc_macro::TokenStream;
 /// - `moverox_traits::ConstModule` if `#[move_(module = "...")]` is specified
 /// - `moverox_traits::ConstName` if `#[move_(nameless)]` was **not** specified
 #[proc_macro_derive(MoveDatatype, attributes(move_))]
-pub fn move_datatype_derive_macro(item: TokenStream) -> TokenStream {
+pub fn move_datatype_derive_macro(item: proc_macro::TokenStream) -> proc_macro::TokenStream {
     impl_move_datatype(item.into())
         .unwrap_or_else(syn::Error::into_compile_error)
         .into()
+}
+
+fn impl_move_datatype(item: TokenStream) -> deluxe::Result<TokenStream> {
+    let datatype = Datatype::parse(item)?;
+
+    let type_tag_decl = datatype.type_tag.struct_declaration();
+    let type_tag_impl_move_datatype_tag = datatype.type_tag.impl_move_datatype_tag();
+    let type_tag_deserialize = datatype.type_tag.impl_deserialize();
+    let type_tag_serialize = datatype.type_tag.impl_serialize();
+    let type_tag_impl_const_address = datatype.type_tag.impl_const_address();
+    let type_tag_impl_const_module = datatype.type_tag.impl_const_module();
+    let type_tag_impl_const_name = datatype.type_tag.impl_const_name();
+    let type_tag_impl_from_str = datatype.type_tag.impl_from_str();
+    let type_tag_impl_display = datatype.type_tag.impl_display();
+
+    let impl_move_datatype = datatype.impl_move_datatype();
+    let impl_type_tag_constructor = datatype.impl_type_tag_constructor();
+
+    Ok(quote! {
+        #type_tag_decl
+        #type_tag_impl_move_datatype_tag
+        #type_tag_deserialize
+        #type_tag_serialize
+        #type_tag_impl_const_address
+        #type_tag_impl_const_module
+        #type_tag_impl_const_name
+        #type_tag_impl_from_str
+        #type_tag_impl_display
+
+        #impl_move_datatype
+        #impl_type_tag_constructor
+    })
 }

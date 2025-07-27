@@ -1,212 +1,34 @@
-use convert_case::{Case, Casing};
-use proc_macro2::{Ident, TokenStream};
+use convert_case::{Case, Casing as _};
+use proc_macro2::TokenStream;
 use quote::quote;
 use syn::punctuated::Punctuated;
-use syn::spanned::Spanned;
-use syn::{DeriveInput, GenericParam, Generics, Path, Token, TypeParamBound, parse_quote};
+use syn::{DeriveInput, GenericParam, Generics, Ident, Path, Token, parse_quote};
 
-#[derive(deluxe::ExtractAttributes)]
-#[deluxe(attributes(move_))]
-struct MoveAttributes {
-    #[deluxe(rename = crate)]
-    thecrate: Option<Path>,
-    address: Option<String>,
-    module: Option<Ident>,
-    #[deluxe(default = false)]
-    nameless: bool,
-}
+use crate::attributes::MoveAttributes;
 
-impl MoveAttributes {
-    fn thecrate(&self) -> Path {
-        self.thecrate
-            .as_ref()
-            .cloned()
-            .unwrap_or_else(|| parse_quote!(::moverox_traits))
-    }
-}
-
-pub fn impl_move_datatype(item: TokenStream) -> deluxe::Result<TokenStream> {
-    // parse
-    let mut ast: DeriveInput = syn::parse2(item)?;
-    ensure_nonempty_struct(&ast)?;
-    let attrs: MoveAttributes = deluxe::extract_attributes(&mut ast)?;
-
-    let thecrate = attrs.thecrate();
-    ast.generics = add_type_bound(ast.generics, parse_quote!(#thecrate::MoveType));
-    validate_datatype_generics(&ast.generics)?;
-
-    let type_tag = TypeTagStruct::new(&ast, &attrs);
-    let type_tag_decl = type_tag.struct_declaration();
-    let type_tag_impl_move_datatype_tag = type_tag.impl_move_datatype_tag();
-    let type_tag_deserialize = type_tag.impl_deserialize();
-    let type_tag_serialize = type_tag.impl_serialize();
-    let type_tag_impl_const_address = type_tag.impl_const_address();
-    let type_tag_impl_const_module = type_tag.impl_const_module();
-    let type_tag_impl_const_name = type_tag.impl_const_name();
-    let type_tag_impl_from_str = type_tag.impl_from_str();
-    let type_tag_impl_display = type_tag.impl_display();
-
-    let struct_impl_move_type = target_type_impl_move_datatype(&ast, type_tag);
-
-    Ok(quote! {
-        #type_tag_decl
-        #type_tag_impl_move_datatype_tag
-        #type_tag_deserialize
-        #type_tag_serialize
-        #type_tag_impl_const_address
-        #type_tag_impl_const_module
-        #type_tag_impl_const_name
-        #type_tag_impl_from_str
-        #type_tag_impl_display
-
-        #struct_impl_move_type
-    })
-}
-
-fn ensure_nonempty_struct(ast: &DeriveInput) -> deluxe::Result<()> {
-    match &ast.data {
-        syn::Data::Struct(data) => {
-            if data.fields.is_empty() {
-                return Err(syn::Error::new(
-                    data.fields.span(),
-                    "Structs can't be empty. If a Move struct is empty, then in the Rust equivalent it \
-                must have a single field of type `bool`. This is because the BCS of an empty Move \
-                struct encodes a single boolean dummy field.",
-                ));
-            }
-        }
-        syn::Data::Enum(data) => {
-            if data.variants.is_empty() {
-                return Err(syn::Error::new(
-                    data.variants.span(),
-                    "A Move 'enum' must define at least one variant",
-                ));
-            }
-        }
-        _ => {
-            return Err(syn::Error::new(
-                ast.span(),
-                "MoveDatatype only defined for structs",
-            ));
-        }
-    };
-    Ok(())
-}
-
-/// Check that the datatype (struct/enum) has valid generics.
-fn validate_datatype_generics(generics: &Generics) -> deluxe::Result<()> {
-    use syn::TypeParamBound;
-
-    for param in &generics.params {
-        match param {
-            GenericParam::Type(type_param) => {
-                if type_param.bounds.iter().all(|bound| {
-                    matches!(
-                        bound,
-                        TypeParamBound::Trait(trait_bound) if expected_trait_bound(trait_bound)
-                    )
-                }) {
-                    continue;
-                }
-                return Err(deluxe::Error::new_spanned(
-                    type_param,
-                    "Move datatypes can at most have the `moverox_traits::MoveType` bound on its \
-                        type parameters",
-                ));
-            }
-            _ => {
-                return Err(deluxe::Error::new_spanned(
-                    param,
-                    "Only Type generics are supported",
-                ));
-            }
-        }
-    }
-    Ok(())
-}
-
-/// `MoveDatatype` implementaion for the input Rust type and additional `impl` block with the
-/// `type_tag` method.
-fn target_type_impl_move_datatype(ast: &DeriveInput, type_tag: TypeTagStruct) -> TokenStream {
-    let TypeTagStruct {
-        ident: type_tag_ident,
-        thecrate,
-        ..
-    } = &type_tag;
-
-    let type_tag_type = {
-        let type_generics = type_arguments_in_associated_type(&ast.generics);
-        quote!(#type_tag_ident < #type_generics >)
-    };
-
-    // for use in function signatures
-    let type_tag_fn_args: Vec<_> = type_tag
-        .non_type_fields()
-        .into_iter()
-        .filter_map(|f| {
-            let name = f.ident?;
-            let ty = f.ty;
-            Some(quote!(#name: #ty))
-        })
-        .chain(type_tag.type_fields().into_iter().filter_map(|f| {
-            let name = f.ident?;
-            let ty = f.ty;
-            Some(quote!(#name: #ty::TypeTag))
-        }))
-        .collect();
-
-    let type_tag_field_names: Vec<_> = type_tag
-        .fields()
-        .into_iter()
-        .filter_map(|f| f.ident)
-        .collect();
-
-    let ident = &ast.ident;
-    let (impl_generics, type_generics, where_clause) = ast.generics.split_for_impl();
-
-    quote! {
-        impl #impl_generics #thecrate::MoveType for #ident #type_generics #where_clause {
-            type TypeTag = #type_tag_type;
-        }
-
-        impl #impl_generics #thecrate::MoveDatatype for #ident #type_generics #where_clause {
-            type StructTag = #type_tag_type;
-        }
-
-        impl #impl_generics #ident #type_generics #where_clause {
-            /// Create this type's specialized type tag.
-            pub const fn type_tag(#(#type_tag_fn_args),*) -> #type_tag_type {
-                #type_tag_ident {
-                    #(#type_tag_field_names),*
-                }
-            }
-        }
-    }
-}
-
-struct TypeTagStruct {
+pub(crate) struct TypeTagStruct {
     /// Identifier of the type tag struct in Rust.
-    ident: Ident,
+    pub(crate) ident: Ident,
     // These have values if they are statically known
     /// The address of the Move package defining the type.
-    address: Option<String>,
+    pub(crate) address: Option<String>,
     /// The name of the Move module defining the type.
-    module: Option<String>,
+    pub(crate) module: Option<String>,
     /// The name of the type in Move.
-    name: Option<String>,
+    pub(crate) name: Option<String>,
 
     /// The type tag struct generics in Rust.
     ///
     /// Should mirror the data type's generics, but with the `: moverox_traits::MoveTypeTag` bound on
     /// each.
-    generics: Generics,
+    pub(crate) generics: Generics,
 
     /// Path to the `moverox_traits` crate
-    thecrate: Path,
+    pub(crate) thecrate: Path,
 }
 
 impl TypeTagStruct {
-    fn new(ast: &DeriveInput, attrs: &MoveAttributes) -> Self {
+    pub(crate) fn new(ast: &DeriveInput, attrs: &MoveAttributes) -> Self {
         Self {
             ident: type_tag_ident(ast),
             address: attrs.address.clone(),
@@ -221,7 +43,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn struct_declaration(&self) -> TokenStream {
+    pub(crate) fn struct_declaration(&self) -> TokenStream {
         let Self {
             ident, generics, ..
         } = self;
@@ -243,7 +65,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_deserialize(&self) -> TokenStream {
+    pub(crate) fn impl_deserialize(&self) -> TokenStream {
         let Self {
             ident,
             generics,
@@ -275,7 +97,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_serialize(&self) -> TokenStream {
+    pub(crate) fn impl_serialize(&self) -> TokenStream {
         let Self {
             ident,
             generics,
@@ -299,7 +121,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_const_address(&self) -> TokenStream {
+    pub(crate) fn impl_const_address(&self) -> TokenStream {
         let Self {
             ident,
             address,
@@ -319,7 +141,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_const_module(&self) -> TokenStream {
+    pub(crate) fn impl_const_module(&self) -> TokenStream {
         let Self {
             ident,
             module,
@@ -339,7 +161,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_const_name(&self) -> TokenStream {
+    pub(crate) fn impl_const_name(&self) -> TokenStream {
         let Self {
             ident,
             name,
@@ -360,7 +182,7 @@ impl TypeTagStruct {
     }
 
     /// `Display` implementation for the generated type tag struct. Requires it to be `Clone`
-    fn impl_display(&self) -> TokenStream {
+    pub(crate) fn impl_display(&self) -> TokenStream {
         let Self {
             ident,
             generics,
@@ -380,7 +202,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_from_str(&self) -> TokenStream {
+    pub(crate) fn impl_from_str(&self) -> TokenStream {
         let Self {
             ident, thecrate, ..
         } = self;
@@ -405,7 +227,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_move_datatype_tag(&self) -> TokenStream {
+    pub(crate) fn impl_move_datatype_tag(&self) -> TokenStream {
         let Self {
             ident,
             generics,
@@ -428,7 +250,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_to_struct_tag(&self) -> TokenStream {
+    pub(crate) fn impl_to_struct_tag(&self) -> TokenStream {
         let Self { thecrate, .. } = self;
 
         let external = self.external();
@@ -476,7 +298,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn impl_from_struct_tag(&self) -> TokenStream {
+    pub(crate) fn impl_from_struct_tag(&self) -> TokenStream {
         let Self { thecrate, .. } = self;
         let result_type = result_type();
         let external = self.external();
@@ -570,7 +392,7 @@ impl TypeTagStruct {
         }
     }
 
-    fn type_fields(&self) -> Punctuated<syn::Field, Token![,]> {
+    pub(crate) fn type_fields(&self) -> Punctuated<syn::Field, Token![,]> {
         self.fields()
             .into_iter()
             .skip(
@@ -581,7 +403,7 @@ impl TypeTagStruct {
             .collect()
     }
 
-    fn non_type_fields(&self) -> Punctuated<syn::Field, Token![,]> {
+    pub(crate) fn non_type_fields(&self) -> Punctuated<syn::Field, Token![,]> {
         self.fields()
             .into_iter()
             .take(
@@ -592,7 +414,7 @@ impl TypeTagStruct {
             .collect()
     }
 
-    fn fields(&self) -> Punctuated<syn::Field, Token![,]> {
+    pub(crate) fn fields(&self) -> Punctuated<syn::Field, Token![,]> {
         let thecrate = &self.thecrate;
         let mut punctuated = Punctuated::new();
         if self.address.is_none() {
@@ -636,15 +458,6 @@ impl TypeTagStruct {
     }
 }
 
-/// Move datatypes must have the `moverox_traits::MoveType` bound in all of its type parameters.
-fn expected_trait_bound(bound: &syn::TraitBound) -> bool {
-    matches!(bound.modifier, syn::TraitBoundModifier::None)
-        && bound.lifetimes.is_none()
-        && bound.path.segments.last().is_some_and(|ps| {
-            ps.ident == "MoveType" && matches!(ps.arguments, syn::PathArguments::None)
-        })
-}
-
 /// Transform the datatype's (struct/enum) generics into the generics for its type tag.
 ///
 /// Simply put, the type tag generated for a datatype has the `: MoveTypeTag` bound in all of its
@@ -666,29 +479,6 @@ fn type_tag_ident(ast: &DeriveInput) -> Ident {
     Ident::new(&format!("{ident}TypeTag"), ident.span())
 }
 
-// https://github.com/dtolnay/syn/blob/master/examples/heapsize/heapsize_derive/src/lib.rs#L36-L44
-fn add_type_bound(mut generics: Generics, bound: TypeParamBound) -> Generics {
-    for param in &mut generics.params {
-        if let GenericParam::Type(ref mut type_param) = *param {
-            type_param.bounds.push(bound.clone());
-        }
-    }
-    generics
-}
-
-/// The `TypeTag` and `StructTag` associated types have type parameters like `<T::TypeTag, ...>`.
-fn type_arguments_in_associated_type(generics: &Generics) -> Punctuated<Path, Token![,]> {
-    use syn::GenericParam as G;
-    let idents = generics.params.iter().filter_map(|p| {
-        if let G::Type(t) = p {
-            Some(&t.ident)
-        } else {
-            None
-        }
-    });
-    parse_quote!(#(#idents::TypeTag),*)
-}
-
 /// Unequivocal result type path
 fn result_type() -> TokenStream {
     quote!(::std::result::Result)
@@ -696,7 +486,7 @@ fn result_type() -> TokenStream {
 
 #[test]
 fn parse_quote_trait_bound() {
-    let mut bounds = Punctuated::<TypeParamBound, Token![+]>::new();
+    let mut bounds = Punctuated::<syn::TypeParamBound, Token![+]>::new();
     bounds.push(parse_quote!(crate::MoveTypeTag));
 }
 
