@@ -2,6 +2,12 @@
 
 //! Oxidized Sui Move framework packages and compatibility layer for `sui_sdk_types`.
 
+#[cfg(feature = "sui-sdk")]
+mod sui_sdk;
+
+#[cfg(feature = "sui-sdk")]
+pub use sui_sdk::Compat;
+
 /// Oxidized `MoveStdlib` @ `0x1`.
 pub mod move_stdlib {
     moverox::include_oxidized!("std");

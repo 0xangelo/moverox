@@ -1,5 +1,5 @@
 [package]
-description = "Oxidized Sui MoveStdlib and Sui packages."
+description = "Oxidized Sui Move framework packages and compatibility layer for `sui_sdk_types`"
 name        = "moverox-sui"
 version     = "0.0.0"
 
@@ -13,8 +13,14 @@ rust-version.workspace = true
 [lints]
 workspace = true
 
+[features]
+sui-sdk = ["dep:sealed", "dep:sui-sdk-types"]
+
 [dependencies]
-moverox = { version = "0.0.0", path = "../moverox", public = true }
+moverox       = { version = "0.0.0", path = "../moverox", public = true }
+sui-sdk-types = { version = "0.0.6", optional = true, public = true }
+
+sealed = { version = "0.6", optional = true }
 
 
 [build-dependencies]
