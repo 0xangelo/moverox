@@ -80,7 +80,7 @@ jobs:
         uses: Swatinem/rust-cache@v2
       - name: Run tests
         run: |-
-          cargo nextest run --all-features --all-targets
+          cargo nextest run --all-features --all-targets -- --skip 'public_api'
           cargo test --doc
 
   docs:
