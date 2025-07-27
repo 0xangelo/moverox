@@ -17,8 +17,6 @@ impl Datatype {
         let mut ast: DeriveInput = syn::parse2(item)?;
         ensure_nonempty_struct(&ast)?;
         let attrs: MoveAttributes = deluxe::extract_attributes(&mut ast)?;
-        let thecrate = attrs.thecrate();
-        ast.generics = add_type_bound(ast.generics, parse_quote!(#thecrate::MoveType));
         validate_datatype_generics(&ast.generics)?;
         let type_tag = TypeTagStruct::new(&ast, &attrs);
         Ok(Self {
@@ -44,7 +42,8 @@ impl Datatype {
         };
 
         let ident = &ast.ident;
-        let (impl_generics, type_generics, where_clause) = ast.generics.split_for_impl();
+        let generics = add_type_bound(ast.generics.clone(), parse_quote!(#thecrate::MoveType));
+        let (impl_generics, type_generics, where_clause) = generics.split_for_impl();
 
         quote! {
             impl #impl_generics #thecrate::MoveType for #ident #type_generics #where_clause {
@@ -64,6 +63,7 @@ impl Datatype {
         } = self;
         let TypeTagStruct {
             ident: type_tag_ident,
+            thecrate,
             ..
         } = type_tag;
 
@@ -95,7 +95,8 @@ impl Datatype {
             .collect();
 
         let ident = &ast.ident;
-        let (impl_generics, type_generics, where_clause) = ast.generics.split_for_impl();
+        let generics = add_type_bound(ast.generics.clone(), parse_quote!(#thecrate::MoveType));
+        let (impl_generics, type_generics, where_clause) = generics.split_for_impl();
 
         quote! {
             impl #impl_generics #ident #type_generics #where_clause {
