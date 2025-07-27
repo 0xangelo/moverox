@@ -2,10 +2,10 @@ use std::str::FromStr;
 
 use moverox_types::{Address, TypeTag, U256};
 
-use crate::{MoveType, ParseTypeTagError, TypeTagError};
+use crate::{ConstTypeTag, MoveType, MoveTypeTag, ParseTypeTagError, TypeTagError};
 
 macro_rules! impl_primitive_type_tags {
-    ($($typ:ty: ($type_:ident, $variant:ident)),*) => {
+    ($($typ:ty: ($type_tag:ident, $variant:ident)),*) => {
         $(
             #[derive(
                 Clone,
@@ -17,39 +17,46 @@ macro_rules! impl_primitive_type_tags {
                 Ord,
             )]
             #[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
-            pub struct $type_;
+            pub struct $type_tag;
 
-            impl From<$type_> for TypeTag {
-                fn from(_value: $type_) -> Self {
-                    Self::$variant
-                }
-            }
-
-            impl TryFrom<TypeTag> for $type_ {
-                type Error = TypeTagError;
-
-                fn try_from(value: TypeTag) -> Result<Self, Self::Error> {
+            impl MoveTypeTag for $type_tag {
+                fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError> {
                     match value {
                         TypeTag::$variant => Ok(Self),
                         _ => Err(TypeTagError::Variant {
                             expected: stringify!($variant).to_owned(),
-                            got: value }
+                            got: crate::type_tag_variant_name(value) }
                         )
                     }
                 }
+
+                fn to_type_tag(&self) -> TypeTag {
+                    TypeTag::$variant
+                }
             }
 
-            impl FromStr for $type_ {
+            impl std::fmt::Display for $type_tag {
+                fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+                    let stag = MoveTypeTag::to_type_tag(self);
+                    write!(f, "{}", stag)
+                }
+            }
+
+            impl FromStr for $type_tag {
                 type Err = ParseTypeTagError;
 
                 fn from_str(s: &str) -> Result<Self, Self::Err> {
                     let tag: TypeTag = s.parse().map_err(ParseTypeTagError::from_str)?;
-                    Ok(tag.try_into()?)
+                    Ok(MoveTypeTag::from_type_tag(&tag)?)
                 }
             }
 
             impl MoveType for $typ {
-                type TypeTag = $type_;
+                type TypeTag = $type_tag;
+            }
+
+            impl ConstTypeTag for $typ {
+                const TYPE_TAG: $type_tag = $type_tag;
             }
         )*
     };

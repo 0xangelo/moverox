@@ -600,7 +600,7 @@ pub mod coin {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for Coin<T> {
+    impl<T> ::moverox::traits::HasKey for Coin<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -661,7 +661,7 @@ pub mod coin {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for CoinMetadata<T> {
+    impl<T> ::moverox::traits::HasKey for CoinMetadata<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -707,8 +707,7 @@ pub mod coin {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey
-    for RegulatedCoinMetadata<T> {
+    impl<T> ::moverox::traits::HasKey for RegulatedCoinMetadata<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -749,7 +748,7 @@ pub mod coin {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for TreasuryCap<T> {
+    impl<T> ::moverox::traits::HasKey for TreasuryCap<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -790,7 +789,7 @@ pub mod coin {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for DenyCapV2<T> {
+    impl<T> ::moverox::traits::HasKey for DenyCapV2<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -855,7 +854,7 @@ pub mod coin {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for DenyCap<T> {
+    impl<T> ::moverox::traits::HasKey for DenyCap<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -899,8 +898,7 @@ pub mod config {
             }
         }
     }
-    impl<WriteCap: ::moverox::traits::MoveType> ::moverox::traits::HasKey
-    for Config<WriteCap> {
+    impl<WriteCap> ::moverox::traits::HasKey for Config<WriteCap> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -1274,7 +1272,7 @@ pub mod display {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for Display<T> {
+    impl<T> ::moverox::traits::HasKey for Display<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -1405,10 +1403,7 @@ pub mod dynamic_field {
             Self { id, name, value }
         }
     }
-    impl<
-        Name: ::moverox::traits::MoveType,
-        Value: ::moverox::traits::MoveType,
-    > ::moverox::traits::HasKey for Field<Name, Value> {
+    impl<Name, Value> ::moverox::traits::HasKey for Field<Name, Value> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -1507,10 +1502,7 @@ pub mod linked_table {
             }
         }
     }
-    impl<
-        K: ::moverox::traits::MoveType,
-        V: ::moverox::traits::MoveType,
-    > ::moverox::traits::HasKey for LinkedTable<K, V> {
+    impl<K, V> ::moverox::traits::HasKey for LinkedTable<K, V> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -1711,10 +1703,7 @@ pub mod object_table {
             }
         }
     }
-    impl<
-        K: ::moverox::traits::MoveType,
-        V: ::moverox::traits::MoveType,
-    > ::moverox::traits::HasKey for ObjectTable<K, V> {
+    impl<K, V> ::moverox::traits::HasKey for ObjectTable<K, V> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -2246,10 +2235,7 @@ pub mod table {
             }
         }
     }
-    impl<
-        K: ::moverox::traits::MoveType,
-        V: ::moverox::traits::MoveType,
-    > ::moverox::traits::HasKey for Table<K, V> {
+    impl<K, V> ::moverox::traits::HasKey for Table<K, V> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -2360,7 +2346,7 @@ pub mod token {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for Token<T> {
+    impl<T> ::moverox::traits::HasKey for Token<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -2398,8 +2384,7 @@ pub mod token {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey
-    for TokenPolicyCap<T> {
+    impl<T> ::moverox::traits::HasKey for TokenPolicyCap<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }
@@ -2465,7 +2450,7 @@ pub mod token {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for TokenPolicy<T> {
+    impl<T> ::moverox::traits::HasKey for TokenPolicy<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }

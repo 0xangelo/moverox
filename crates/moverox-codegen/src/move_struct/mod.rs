@@ -155,16 +155,8 @@ impl StructExt for move_syn::Struct {
         }
         let ident = &self.ident;
         let generics = self.type_generics();
-        // NOTE: `HasKey: MoveType` so we add the bound to the impl generics here, since `MoveType`
-        // is implemented for `T` when all its types are `MoveType` as well (see
-        // `moverox-traits-derive`)
-        let impl_generics = self
-            .generics
-            .as_ref()
-            .map(|g| g.to_rust_with_bound(&quote!(#thecrate::traits::MoveType)))
-            .unwrap_or_default();
         Some(quote! {
-            impl #impl_generics #thecrate::traits::HasKey for  #ident #generics {
+            impl #generics #thecrate::traits::HasKey for  #ident #generics {
                 fn address(&self) -> #thecrate::types::Address {
                     self.id.id.bytes
                 }

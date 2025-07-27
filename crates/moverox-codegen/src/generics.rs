@@ -4,8 +4,6 @@ use unsynn::{Ident, TokenStream};
 pub(super) trait GenericsExt {
     fn to_rust(&self) -> TokenStream;
 
-    fn to_rust_with_bound(&self, bound: &TokenStream) -> TokenStream;
-
     fn phantoms(&self) -> impl Iterator<Item = &Ident>;
 }
 
@@ -14,13 +12,6 @@ impl GenericsExt for move_syn::Generics {
         let idents = self.generics().map(|g| &g.ident);
         quote! {
             <#(#idents),*>
-        }
-    }
-
-    fn to_rust_with_bound(&self, bound: &TokenStream) -> TokenStream {
-        let idents = self.generics().map(|d| &d.ident);
-        quote! {
-            <#(#idents: #bound),*>
         }
     }
 

@@ -40,39 +40,68 @@ pub use self::vector::VecTypeTag;
 //  MoveType
 // =============================================================================
 
-/// Trait marking a Move data type. Has a specific way to construct a `TypeTag`.
+/// Marker for a Move type with its associated type tag.
 pub trait MoveType {
     type TypeTag: MoveTypeTag;
 }
 
-pub trait MoveTypeTag: Into<TypeTag> + TryFrom<TypeTag, Error = TypeTagError> {}
+/// A specialized Move type tag, convertible from/to a generic [`TypeTag`] by reference.
+pub trait MoveTypeTag {
+    fn to_type_tag(&self) -> TypeTag;
 
-impl<T> MoveTypeTag for T where T: Into<TypeTag> + TryFrom<TypeTag, Error = TypeTagError> {}
+    fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError>
+    where
+        Self: Sized;
+}
+
+impl<T> MoveTypeTag for T
+where
+    T: MoveDatatypeTag,
+{
+    fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError>
+    where
+        Self: Sized,
+    {
+        match value {
+            TypeTag::Struct(stag) => Ok(Self::from_struct_tag(stag)?),
+            other => Err(TypeTagError::Variant {
+                expected: "Struct(_)".to_owned(),
+                got: type_tag_variant_name(other),
+            }),
+        }
+    }
+
+    fn to_type_tag(&self) -> TypeTag {
+        TypeTag::Struct(Box::new(self.to_struct_tag()))
+    }
+}
 
 // =============================================================================
 //  MoveDatatype
 // =============================================================================
 
-/// Trait marking a Move struct type. Has a specific way to construct a `StructTag`.
+/// Marker for a Move datatype with its associated struct tag.
 pub trait MoveDatatype: MoveType<TypeTag = Self::StructTag> {
     type StructTag: MoveDatatypeTag;
 }
 
-pub trait MoveDatatypeTag:
-    Into<StructTag> + TryFrom<StructTag, Error = StructTagError> + MoveTypeTag
-{
-}
+/// A specialized Move type tag for datatypes, convertible from/to a generic [`StructTag`] by
+/// reference.
+pub trait MoveDatatypeTag: MoveTypeTag {
+    fn to_struct_tag(&self) -> StructTag;
 
-impl<T> MoveDatatypeTag for T where
-    T: Into<StructTag> + TryFrom<StructTag, Error = StructTagError> + MoveTypeTag
-{
+    fn from_struct_tag(value: &StructTag) -> Result<Self, StructTagError>
+    where
+        Self: Sized;
 }
 
 // =============================================================================
 //  Abilities
 // =============================================================================
 
-pub trait HasKey: MoveDatatype {
+/// An oxidized object, i.e., originally a Move type with the `key` ability.
+pub trait HasKey {
+    /// This object's address on-chain.
     fn address(&self) -> Address;
 }
 
@@ -95,14 +124,31 @@ pub trait ConstName {
     const NAME: &IdentStr;
 }
 
+/// [`MoveType`] with a constant type tag.
+pub trait ConstTypeTag: MoveType {
+    const TYPE_TAG: Self::TypeTag;
+}
+
+impl<T> ConstTypeTag for T
+where
+    T: ConstStructTag,
+{
+    const TYPE_TAG: Self::TypeTag = Self::STRUCT_TAG;
+}
+
+/// [`MoveDatatype`] with a constant struct tag.
+pub trait ConstStructTag: MoveDatatype {
+    const STRUCT_TAG: Self::StructTag;
+}
+
 // =============================================================================
-//  Errors
+//  Errors used in traits
 // =============================================================================
 
 #[derive(thiserror::Error, Debug)]
 pub enum TypeTagError {
     #[error("Wrong TypeTag variant: expected {expected}, got {got}")]
-    Variant { expected: String, got: TypeTag },
+    Variant { expected: String, got: String },
     #[error("StructTag params: {0}")]
     StructTag(#[from] StructTagError),
 }
@@ -139,6 +185,10 @@ impl From<TypeTagError> for TypeParamsError {
     }
 }
 
+// =============================================================================
+//  Errors used in derived impls
+// =============================================================================
+
 #[derive(thiserror::Error, Debug)]
 pub enum ParseTypeTagError {
     #[error("Parsing TypeTag: {0}")]
@@ -159,4 +209,25 @@ pub enum ParseStructTagError {
     FromStr(Box<dyn StdError + Send + Sync + 'static>),
     #[error("Converting from StructTag: {0}")]
     StructTag(#[from] StructTagError),
+}
+
+// =============================================================================
+//  Internals
+// =============================================================================
+
+fn type_tag_variant_name(this: &TypeTag) -> String {
+    match this {
+        TypeTag::U8 => "U8",
+        TypeTag::U16 => "U16",
+        TypeTag::U32 => "U32",
+        TypeTag::U64 => "U64",
+        TypeTag::U128 => "U128",
+        TypeTag::U256 => "U256",
+        TypeTag::Bool => "Bool",
+        TypeTag::Address => "Address",
+        TypeTag::Signer => "Signer",
+        TypeTag::Vector(_) => "Vector",
+        TypeTag::Struct(_) => "Struct",
+    }
+    .to_owned()
 }
