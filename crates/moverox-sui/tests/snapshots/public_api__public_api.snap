@@ -10,7 +10,7 @@ pub moverox_sui::move_stdlib::ascii::Char::byte: u8
 impl moverox_sui::move_stdlib::ascii::Char
 pub const fn moverox_sui::move_stdlib::ascii::Char::new(byte: u8) -> Self
 impl moverox_sui::move_stdlib::ascii::Char
-pub fn moverox_sui::move_stdlib::ascii::Char::type_() -> moverox_sui::move_stdlib::ascii::CharTypeTag
+pub const fn moverox_sui::move_stdlib::ascii::Char::type_tag() -> moverox_sui::move_stdlib::ascii::CharTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::move_stdlib::ascii::Char
 pub type moverox_sui::move_stdlib::ascii::Char::StructTag = moverox_sui::move_stdlib::ascii::CharTypeTag
 impl moverox_traits::MoveType for moverox_sui::move_stdlib::ascii::Char
@@ -39,7 +39,7 @@ pub moverox_sui::move_stdlib::ascii::String::bytes: alloc::vec::Vec<u8>
 impl moverox_sui::move_stdlib::ascii::String
 pub const fn moverox_sui::move_stdlib::ascii::String::new(bytes: alloc::vec::Vec<u8>) -> Self
 impl moverox_sui::move_stdlib::ascii::String
-pub fn moverox_sui::move_stdlib::ascii::String::type_() -> moverox_sui::move_stdlib::ascii::StringTypeTag
+pub const fn moverox_sui::move_stdlib::ascii::String::type_tag() -> moverox_sui::move_stdlib::ascii::StringTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::move_stdlib::ascii::String
 pub type moverox_sui::move_stdlib::ascii::String::StructTag = moverox_sui::move_stdlib::ascii::StringTypeTag
 impl moverox_traits::MoveType for moverox_sui::move_stdlib::ascii::String
@@ -70,7 +70,7 @@ pub moverox_sui::move_stdlib::bit_vector::BitVector::length: u64
 impl moverox_sui::move_stdlib::bit_vector::BitVector
 pub const fn moverox_sui::move_stdlib::bit_vector::BitVector::new(length: u64, bit_field: alloc::vec::Vec<bool>) -> Self
 impl moverox_sui::move_stdlib::bit_vector::BitVector
-pub fn moverox_sui::move_stdlib::bit_vector::BitVector::type_() -> moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag
+pub const fn moverox_sui::move_stdlib::bit_vector::BitVector::type_tag() -> moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::move_stdlib::bit_vector::BitVector
 pub type moverox_sui::move_stdlib::bit_vector::BitVector::StructTag = moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag
 impl moverox_traits::MoveType for moverox_sui::move_stdlib::bit_vector::BitVector
@@ -100,7 +100,7 @@ pub moverox_sui::move_stdlib::fixed_point32::FixedPoint32::value: u64
 impl moverox_sui::move_stdlib::fixed_point32::FixedPoint32
 pub const fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32::new(value: u64) -> Self
 impl moverox_sui::move_stdlib::fixed_point32::FixedPoint32
-pub fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32::type_() -> moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag
+pub const fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32::type_tag() -> moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::move_stdlib::fixed_point32::FixedPoint32
 pub type moverox_sui::move_stdlib::fixed_point32::FixedPoint32::StructTag = moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag
 impl moverox_traits::MoveType for moverox_sui::move_stdlib::fixed_point32::FixedPoint32
@@ -128,7 +128,7 @@ pub mod moverox_sui::move_stdlib::option
 pub struct moverox_sui::move_stdlib::option::Option<Element>
 pub moverox_sui::move_stdlib::option::Option::vec: alloc::vec::Vec<Element>
 impl<Element: moverox_traits::MoveType> moverox_sui::move_stdlib::option::Option<Element>
-pub fn moverox_sui::move_stdlib::option::Option<Element>::type_(type_element: <Element as moverox_traits::MoveType>::TypeTag) -> moverox_sui::move_stdlib::option::OptionTypeTag<<Element as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::move_stdlib::option::Option<Element>::type_tag(type_element: <Element as moverox_traits::MoveType>::TypeTag) -> moverox_sui::move_stdlib::option::OptionTypeTag<<Element as moverox_traits::MoveType>::TypeTag>
 impl<Element> moverox_sui::move_stdlib::option::Option<Element>
 pub const fn moverox_sui::move_stdlib::option::Option<Element>::new(vec: alloc::vec::Vec<Element>) -> Self
 impl<Element: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::move_stdlib::option::Option<Element>
@@ -161,7 +161,7 @@ pub moverox_sui::move_stdlib::string::String::bytes: alloc::vec::Vec<u8>
 impl moverox_sui::move_stdlib::string::String
 pub const fn moverox_sui::move_stdlib::string::String::new(bytes: alloc::vec::Vec<u8>) -> Self
 impl moverox_sui::move_stdlib::string::String
-pub fn moverox_sui::move_stdlib::string::String::type_() -> moverox_sui::move_stdlib::string::StringTypeTag
+pub const fn moverox_sui::move_stdlib::string::String::type_tag() -> moverox_sui::move_stdlib::string::StringTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::move_stdlib::string::String
 pub type moverox_sui::move_stdlib::string::String::StructTag = moverox_sui::move_stdlib::string::StringTypeTag
 impl moverox_traits::MoveType for moverox_sui::move_stdlib::string::String
@@ -191,7 +191,7 @@ pub moverox_sui::move_stdlib::type_name::TypeName::name: moverox_sui::move_stdli
 impl moverox_sui::move_stdlib::type_name::TypeName
 pub const fn moverox_sui::move_stdlib::type_name::TypeName::new(name: moverox_sui::move_stdlib::ascii::String) -> Self
 impl moverox_sui::move_stdlib::type_name::TypeName
-pub fn moverox_sui::move_stdlib::type_name::TypeName::type_() -> moverox_sui::move_stdlib::type_name::TypeNameTypeTag
+pub const fn moverox_sui::move_stdlib::type_name::TypeName::type_tag() -> moverox_sui::move_stdlib::type_name::TypeNameTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::move_stdlib::type_name::TypeName
 pub type moverox_sui::move_stdlib::type_name::TypeName::StructTag = moverox_sui::move_stdlib::type_name::TypeNameTypeTag
 impl moverox_traits::MoveType for moverox_sui::move_stdlib::type_name::TypeName
@@ -220,7 +220,7 @@ pub struct moverox_sui::move_stdlib::uq32_32::UQ32_32(pub u64)
 impl moverox_sui::move_stdlib::uq32_32::UQ32_32
 pub const fn moverox_sui::move_stdlib::uq32_32::UQ32_32::new(_0: u64) -> Self
 impl moverox_sui::move_stdlib::uq32_32::UQ32_32
-pub fn moverox_sui::move_stdlib::uq32_32::UQ32_32::type_() -> moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag
+pub const fn moverox_sui::move_stdlib::uq32_32::UQ32_32::type_tag() -> moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::move_stdlib::uq32_32::UQ32_32
 pub type moverox_sui::move_stdlib::uq32_32::UQ32_32::StructTag = moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag
 impl moverox_traits::MoveType for moverox_sui::move_stdlib::uq32_32::UQ32_32
@@ -249,7 +249,7 @@ pub struct moverox_sui::move_stdlib::uq64_64::UQ64_64(pub u128)
 impl moverox_sui::move_stdlib::uq64_64::UQ64_64
 pub const fn moverox_sui::move_stdlib::uq64_64::UQ64_64::new(_0: u128) -> Self
 impl moverox_sui::move_stdlib::uq64_64::UQ64_64
-pub fn moverox_sui::move_stdlib::uq64_64::UQ64_64::type_() -> moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag
+pub const fn moverox_sui::move_stdlib::uq64_64::UQ64_64::type_tag() -> moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::move_stdlib::uq64_64::UQ64_64
 pub type moverox_sui::move_stdlib::uq64_64::UQ64_64::StructTag = moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag
 impl moverox_traits::MoveType for moverox_sui::move_stdlib::uq64_64::UQ64_64
@@ -280,7 +280,7 @@ pub moverox_sui::sui::accumulator::AccumulatorRoot::id: moverox_sui::sui::object
 impl moverox_sui::sui::accumulator::AccumulatorRoot
 pub const fn moverox_sui::sui::accumulator::AccumulatorRoot::new(id: moverox_sui::sui::object::UID) -> Self
 impl moverox_sui::sui::accumulator::AccumulatorRoot
-pub fn moverox_sui::sui::accumulator::AccumulatorRoot::type_() -> moverox_sui::sui::accumulator::AccumulatorRootTypeTag
+pub const fn moverox_sui::sui::accumulator::AccumulatorRoot::type_tag() -> moverox_sui::sui::accumulator::AccumulatorRootTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::accumulator::AccumulatorRoot
 pub fn moverox_sui::sui::accumulator::AccumulatorRoot::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::accumulator::AccumulatorRoot
@@ -314,7 +314,7 @@ pub moverox_sui::sui::authenticator_state::ActiveJwk::jwk_id: moverox_sui::sui::
 impl moverox_sui::sui::authenticator_state::ActiveJwk
 pub const fn moverox_sui::sui::authenticator_state::ActiveJwk::new(jwk_id: moverox_sui::sui::authenticator_state::JwkId, jwk: moverox_sui::sui::authenticator_state::JWK, epoch: u64) -> Self
 impl moverox_sui::sui::authenticator_state::ActiveJwk
-pub fn moverox_sui::sui::authenticator_state::ActiveJwk::type_() -> moverox_sui::sui::authenticator_state::ActiveJwkTypeTag
+pub const fn moverox_sui::sui::authenticator_state::ActiveJwk::type_tag() -> moverox_sui::sui::authenticator_state::ActiveJwkTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::authenticator_state::ActiveJwk
 pub type moverox_sui::sui::authenticator_state::ActiveJwk::StructTag = moverox_sui::sui::authenticator_state::ActiveJwkTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::authenticator_state::ActiveJwk
@@ -344,7 +344,7 @@ pub moverox_sui::sui::authenticator_state::AuthenticatorState::version: u64
 impl moverox_sui::sui::authenticator_state::AuthenticatorState
 pub const fn moverox_sui::sui::authenticator_state::AuthenticatorState::new(id: moverox_sui::sui::object::UID, version: u64) -> Self
 impl moverox_sui::sui::authenticator_state::AuthenticatorState
-pub fn moverox_sui::sui::authenticator_state::AuthenticatorState::type_() -> moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag
+pub const fn moverox_sui::sui::authenticator_state::AuthenticatorState::type_tag() -> moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::authenticator_state::AuthenticatorState
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorState::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::authenticator_state::AuthenticatorState
@@ -357,7 +357,7 @@ pub moverox_sui::sui::authenticator_state::AuthenticatorStateInner::version: u64
 impl moverox_sui::sui::authenticator_state::AuthenticatorStateInner
 pub const fn moverox_sui::sui::authenticator_state::AuthenticatorStateInner::new(version: u64, active_jwks: alloc::vec::Vec<moverox_sui::sui::authenticator_state::ActiveJwk>) -> Self
 impl moverox_sui::sui::authenticator_state::AuthenticatorStateInner
-pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateInner::type_() -> moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag
+pub const fn moverox_sui::sui::authenticator_state::AuthenticatorStateInner::type_tag() -> moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::authenticator_state::AuthenticatorStateInner
 pub type moverox_sui::sui::authenticator_state::AuthenticatorStateInner::StructTag = moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::authenticator_state::AuthenticatorStateInner
@@ -408,7 +408,7 @@ pub moverox_sui::sui::authenticator_state::JWK::n: moverox_sui::move_stdlib::str
 impl moverox_sui::sui::authenticator_state::JWK
 pub const fn moverox_sui::sui::authenticator_state::JWK::new(kty: moverox_sui::move_stdlib::string::String, e: moverox_sui::move_stdlib::string::String, n: moverox_sui::move_stdlib::string::String, alg: moverox_sui::move_stdlib::string::String) -> Self
 impl moverox_sui::sui::authenticator_state::JWK
-pub fn moverox_sui::sui::authenticator_state::JWK::type_() -> moverox_sui::sui::authenticator_state::JWKTypeTag
+pub const fn moverox_sui::sui::authenticator_state::JWK::type_tag() -> moverox_sui::sui::authenticator_state::JWKTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::authenticator_state::JWK
 pub type moverox_sui::sui::authenticator_state::JWK::StructTag = moverox_sui::sui::authenticator_state::JWKTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::authenticator_state::JWK
@@ -438,7 +438,7 @@ pub moverox_sui::sui::authenticator_state::JwkId::kid: moverox_sui::move_stdlib:
 impl moverox_sui::sui::authenticator_state::JwkId
 pub const fn moverox_sui::sui::authenticator_state::JwkId::new(iss: moverox_sui::move_stdlib::string::String, kid: moverox_sui::move_stdlib::string::String) -> Self
 impl moverox_sui::sui::authenticator_state::JwkId
-pub fn moverox_sui::sui::authenticator_state::JwkId::type_() -> moverox_sui::sui::authenticator_state::JwkIdTypeTag
+pub const fn moverox_sui::sui::authenticator_state::JwkId::type_tag() -> moverox_sui::sui::authenticator_state::JwkIdTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::authenticator_state::JwkId
 pub type moverox_sui::sui::authenticator_state::JwkId::StructTag = moverox_sui::sui::authenticator_state::JwkIdTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::authenticator_state::JwkId
@@ -469,7 +469,7 @@ pub moverox_sui::sui::bag::Bag::size: u64
 impl moverox_sui::sui::bag::Bag
 pub const fn moverox_sui::sui::bag::Bag::new(id: moverox_sui::sui::object::UID, size: u64) -> Self
 impl moverox_sui::sui::bag::Bag
-pub fn moverox_sui::sui::bag::Bag::type_() -> moverox_sui::sui::bag::BagTypeTag
+pub const fn moverox_sui::sui::bag::Bag::type_tag() -> moverox_sui::sui::bag::BagTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::bag::Bag
 pub fn moverox_sui::sui::bag::Bag::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::bag::Bag
@@ -499,7 +499,7 @@ pub mod moverox_sui::sui::balance
 pub struct moverox_sui::sui::balance::Balance<T>
 pub moverox_sui::sui::balance::Balance::value: u64
 impl<T: moverox_traits::MoveType> moverox_sui::sui::balance::Balance<T>
-pub fn moverox_sui::sui::balance::Balance<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::balance::BalanceTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::balance::Balance<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::balance::BalanceTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::balance::Balance<T>
 pub const fn moverox_sui::sui::balance::Balance<T>::new(value: u64) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::balance::Balance<T>
@@ -529,7 +529,7 @@ pub fn moverox_sui::sui::balance::BalanceTypeTag<T>::serialize<S>(&self, seriali
 pub struct moverox_sui::sui::balance::Supply<T>
 pub moverox_sui::sui::balance::Supply::value: u64
 impl<T: moverox_traits::MoveType> moverox_sui::sui::balance::Supply<T>
-pub fn moverox_sui::sui::balance::Supply<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::balance::SupplyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::balance::Supply<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::balance::SupplyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::balance::Supply<T>
 pub const fn moverox_sui::sui::balance::Supply<T>::new(value: u64) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::balance::Supply<T>
@@ -562,7 +562,7 @@ pub moverox_sui::sui::bcs::BCS::bytes: alloc::vec::Vec<u8>
 impl moverox_sui::sui::bcs::BCS
 pub const fn moverox_sui::sui::bcs::BCS::new(bytes: alloc::vec::Vec<u8>) -> Self
 impl moverox_sui::sui::bcs::BCS
-pub fn moverox_sui::sui::bcs::BCS::type_() -> moverox_sui::sui::bcs::BCSTypeTag
+pub const fn moverox_sui::sui::bcs::BCS::type_tag() -> moverox_sui::sui::bcs::BCSTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::bcs::BCS
 pub type moverox_sui::sui::bcs::BCS::StructTag = moverox_sui::sui::bcs::BCSTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::bcs::BCS
@@ -593,7 +593,7 @@ pub moverox_sui::sui::borrow::Borrow::ref: moverox_types::address::Address
 impl moverox_sui::sui::borrow::Borrow
 pub const fn moverox_sui::sui::borrow::Borrow::new(ref: moverox_types::address::Address, obj: moverox_sui::sui::object::ID) -> Self
 impl moverox_sui::sui::borrow::Borrow
-pub fn moverox_sui::sui::borrow::Borrow::type_() -> moverox_sui::sui::borrow::BorrowTypeTag
+pub const fn moverox_sui::sui::borrow::Borrow::type_tag() -> moverox_sui::sui::borrow::BorrowTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::borrow::Borrow
 pub type moverox_sui::sui::borrow::Borrow::StructTag = moverox_sui::sui::borrow::BorrowTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::borrow::Borrow
@@ -621,7 +621,7 @@ pub struct moverox_sui::sui::borrow::Referent<T>
 pub moverox_sui::sui::borrow::Referent::id: moverox_types::address::Address
 pub moverox_sui::sui::borrow::Referent::value: core::option::Option<T>
 impl<T: moverox_traits::MoveType> moverox_sui::sui::borrow::Referent<T>
-pub fn moverox_sui::sui::borrow::Referent<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::borrow::ReferentTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::borrow::Referent<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::borrow::ReferentTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::borrow::Referent<T>
 pub const fn moverox_sui::sui::borrow::Referent<T>::new(id: moverox_types::address::Address, value: core::option::Option<T>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::borrow::Referent<T>
@@ -653,7 +653,7 @@ pub moverox_sui::sui::borrow::Test::id: moverox_sui::sui::object::UID
 impl moverox_sui::sui::borrow::Test
 pub const fn moverox_sui::sui::borrow::Test::new(id: moverox_sui::sui::object::UID) -> Self
 impl moverox_sui::sui::borrow::Test
-pub fn moverox_sui::sui::borrow::Test::type_() -> moverox_sui::sui::borrow::TestTypeTag
+pub const fn moverox_sui::sui::borrow::Test::type_tag() -> moverox_sui::sui::borrow::TestTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::borrow::Test
 pub fn moverox_sui::sui::borrow::Test::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::borrow::Test
@@ -686,7 +686,7 @@ pub moverox_sui::sui::clock::Clock::timestamp_ms: u64
 impl moverox_sui::sui::clock::Clock
 pub const fn moverox_sui::sui::clock::Clock::new(id: moverox_sui::sui::object::UID, timestamp_ms: u64) -> Self
 impl moverox_sui::sui::clock::Clock
-pub fn moverox_sui::sui::clock::Clock::type_() -> moverox_sui::sui::clock::ClockTypeTag
+pub const fn moverox_sui::sui::clock::Clock::type_tag() -> moverox_sui::sui::clock::ClockTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::clock::Clock
 pub fn moverox_sui::sui::clock::Clock::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::clock::Clock
@@ -717,7 +717,7 @@ pub struct moverox_sui::sui::coin::Coin<T>
 pub moverox_sui::sui::coin::Coin::balance: moverox_sui::sui::balance::Balance<T>
 pub moverox_sui::sui::coin::Coin::id: moverox_sui::sui::object::UID
 impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::Coin<T>
-pub fn moverox_sui::sui::coin::Coin<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::CoinTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::coin::Coin<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::CoinTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::Coin<T>
 pub const fn moverox_sui::sui::coin::Coin<T>::new(id: moverox_sui::sui::object::UID, balance: moverox_sui::sui::balance::Balance<T>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::Coin<T>
@@ -734,7 +734,7 @@ pub moverox_sui::sui::coin::CoinMetadata::id: moverox_sui::sui::object::UID
 pub moverox_sui::sui::coin::CoinMetadata::name: moverox_sui::move_stdlib::string::String
 pub moverox_sui::sui::coin::CoinMetadata::symbol: moverox_sui::move_stdlib::ascii::String
 impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::CoinMetadata<T>
-pub fn moverox_sui::sui::coin::CoinMetadata<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::CoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::coin::CoinMetadata<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::CoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::CoinMetadata<T>
 pub const fn moverox_sui::sui::coin::CoinMetadata<T>::new(id: moverox_sui::sui::object::UID, decimals: u8, name: moverox_sui::move_stdlib::string::String, symbol: moverox_sui::move_stdlib::ascii::String, description: moverox_sui::move_stdlib::string::String, icon_url: core::option::Option<moverox_sui::sui::url::Url>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::CoinMetadata<T>
@@ -786,7 +786,7 @@ pub fn moverox_sui::sui::coin::CoinTypeTag<T>::serialize<S>(&self, serializer: S
 pub struct moverox_sui::sui::coin::CurrencyCreated<T>
 pub moverox_sui::sui::coin::CurrencyCreated::decimals: u8
 impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::CurrencyCreated<T>
-pub fn moverox_sui::sui::coin::CurrencyCreated<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::CurrencyCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::coin::CurrencyCreated<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::CurrencyCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::CurrencyCreated<T>
 pub const fn moverox_sui::sui::coin::CurrencyCreated<T>::new(decimals: u8) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::coin::CurrencyCreated<T>
@@ -816,7 +816,7 @@ pub fn moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>::serialize<S>(&self, se
 pub struct moverox_sui::sui::coin::DenyCap<T>
 pub moverox_sui::sui::coin::DenyCap::id: moverox_sui::sui::object::UID
 impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::DenyCap<T>
-pub fn moverox_sui::sui::coin::DenyCap<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::DenyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::coin::DenyCap<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::DenyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::DenyCap<T>
 pub const fn moverox_sui::sui::coin::DenyCap<T>::new(id: moverox_sui::sui::object::UID) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::DenyCap<T>
@@ -849,7 +849,7 @@ pub struct moverox_sui::sui::coin::DenyCapV2<T>
 pub moverox_sui::sui::coin::DenyCapV2::allow_global_pause: bool
 pub moverox_sui::sui::coin::DenyCapV2::id: moverox_sui::sui::object::UID
 impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::DenyCapV2<T>
-pub fn moverox_sui::sui::coin::DenyCapV2<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::DenyCapV2TypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::coin::DenyCapV2<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::DenyCapV2TypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::DenyCapV2<T>
 pub const fn moverox_sui::sui::coin::DenyCapV2<T>::new(id: moverox_sui::sui::object::UID, allow_global_pause: bool) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::DenyCapV2<T>
@@ -883,7 +883,7 @@ pub moverox_sui::sui::coin::RegulatedCoinMetadata::coin_metadata_object: moverox
 pub moverox_sui::sui::coin::RegulatedCoinMetadata::deny_cap_object: moverox_sui::sui::object::ID
 pub moverox_sui::sui::coin::RegulatedCoinMetadata::id: moverox_sui::sui::object::UID
 impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::RegulatedCoinMetadata<T>
-pub fn moverox_sui::sui::coin::RegulatedCoinMetadata<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::coin::RegulatedCoinMetadata<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::RegulatedCoinMetadata<T>
 pub const fn moverox_sui::sui::coin::RegulatedCoinMetadata<T>::new(id: moverox_sui::sui::object::UID, coin_metadata_object: moverox_sui::sui::object::ID, deny_cap_object: moverox_sui::sui::object::ID) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::RegulatedCoinMetadata<T>
@@ -916,7 +916,7 @@ pub struct moverox_sui::sui::coin::TreasuryCap<T>
 pub moverox_sui::sui::coin::TreasuryCap::id: moverox_sui::sui::object::UID
 pub moverox_sui::sui::coin::TreasuryCap::total_supply: moverox_sui::sui::balance::Supply<T>
 impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::TreasuryCap<T>
-pub fn moverox_sui::sui::coin::TreasuryCap<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::TreasuryCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::coin::TreasuryCap<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::TreasuryCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::TreasuryCap<T>
 pub const fn moverox_sui::sui::coin::TreasuryCap<T>::new(id: moverox_sui::sui::object::UID, total_supply: moverox_sui::sui::balance::Supply<T>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::TreasuryCap<T>
@@ -949,7 +949,7 @@ pub mod moverox_sui::sui::config
 pub struct moverox_sui::sui::config::Config<WriteCap>
 pub moverox_sui::sui::config::Config::id: moverox_sui::sui::object::UID
 impl<WriteCap: moverox_traits::MoveType> moverox_sui::sui::config::Config<WriteCap>
-pub fn moverox_sui::sui::config::Config<WriteCap>::type_(type_write_cap: <WriteCap as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::config::ConfigTypeTag<<WriteCap as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::config::Config<WriteCap>::type_tag(type_write_cap: <WriteCap as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::config::ConfigTypeTag<<WriteCap as moverox_traits::MoveType>::TypeTag>
 impl<WriteCap> moverox_sui::sui::config::Config<WriteCap>
 pub const fn moverox_sui::sui::config::Config<WriteCap>::new(id: moverox_sui::sui::object::UID) -> Self
 impl<WriteCap: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::config::Config<WriteCap>
@@ -981,7 +981,7 @@ pub fn moverox_sui::sui::config::ConfigTypeTag<WriteCap>::serialize<S>(&self, se
 pub struct moverox_sui::sui::config::Setting<Value>
 pub moverox_sui::sui::config::Setting::data: core::option::Option<moverox_sui::sui::config::SettingData<Value>>
 impl<Value: moverox_traits::MoveType> moverox_sui::sui::config::Setting<Value>
-pub fn moverox_sui::sui::config::Setting<Value>::type_(type_value: <Value as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::config::SettingTypeTag<<Value as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::config::Setting<Value>::type_tag(type_value: <Value as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::config::SettingTypeTag<<Value as moverox_traits::MoveType>::TypeTag>
 impl<Value> moverox_sui::sui::config::Setting<Value>
 pub const fn moverox_sui::sui::config::Setting<Value>::new(data: core::option::Option<moverox_sui::sui::config::SettingData<Value>>) -> Self
 impl<Value: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::config::Setting<Value>
@@ -993,7 +993,7 @@ pub moverox_sui::sui::config::SettingData::newer_value: core::option::Option<Val
 pub moverox_sui::sui::config::SettingData::newer_value_epoch: u64
 pub moverox_sui::sui::config::SettingData::older_value_opt: core::option::Option<Value>
 impl<Value: moverox_traits::MoveType> moverox_sui::sui::config::SettingData<Value>
-pub fn moverox_sui::sui::config::SettingData<Value>::type_(type_value: <Value as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::config::SettingDataTypeTag<<Value as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::config::SettingData<Value>::type_tag(type_value: <Value as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::config::SettingDataTypeTag<<Value as moverox_traits::MoveType>::TypeTag>
 impl<Value> moverox_sui::sui::config::SettingData<Value>
 pub const fn moverox_sui::sui::config::SettingData<Value>::new(newer_value_epoch: u64, newer_value: core::option::Option<Value>, older_value_opt: core::option::Option<Value>) -> Self
 impl<Value: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::config::SettingData<Value>
@@ -1045,7 +1045,7 @@ pub struct moverox_sui::sui::deny_list::AddressKey(pub moverox_types::address::A
 impl moverox_sui::sui::deny_list::AddressKey
 pub const fn moverox_sui::sui::deny_list::AddressKey::new(_0: moverox_types::address::Address) -> Self
 impl moverox_sui::sui::deny_list::AddressKey
-pub fn moverox_sui::sui::deny_list::AddressKey::type_() -> moverox_sui::sui::deny_list::AddressKeyTypeTag
+pub const fn moverox_sui::sui::deny_list::AddressKey::type_tag() -> moverox_sui::sui::deny_list::AddressKeyTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::deny_list::AddressKey
 pub type moverox_sui::sui::deny_list::AddressKey::StructTag = moverox_sui::sui::deny_list::AddressKeyTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::deny_list::AddressKey
@@ -1075,7 +1075,7 @@ pub moverox_sui::sui::deny_list::ConfigKey::per_type_key: alloc::vec::Vec<u8>
 impl moverox_sui::sui::deny_list::ConfigKey
 pub const fn moverox_sui::sui::deny_list::ConfigKey::new(per_type_index: u64, per_type_key: alloc::vec::Vec<u8>) -> Self
 impl moverox_sui::sui::deny_list::ConfigKey
-pub fn moverox_sui::sui::deny_list::ConfigKey::type_() -> moverox_sui::sui::deny_list::ConfigKeyTypeTag
+pub const fn moverox_sui::sui::deny_list::ConfigKey::type_tag() -> moverox_sui::sui::deny_list::ConfigKeyTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::deny_list::ConfigKey
 pub type moverox_sui::sui::deny_list::ConfigKey::StructTag = moverox_sui::sui::deny_list::ConfigKeyTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::deny_list::ConfigKey
@@ -1103,7 +1103,7 @@ pub struct moverox_sui::sui::deny_list::ConfigWriteCap(_)
 impl moverox_sui::sui::deny_list::ConfigWriteCap
 pub const fn moverox_sui::sui::deny_list::ConfigWriteCap::new() -> Self
 impl moverox_sui::sui::deny_list::ConfigWriteCap
-pub fn moverox_sui::sui::deny_list::ConfigWriteCap::type_() -> moverox_sui::sui::deny_list::ConfigWriteCapTypeTag
+pub const fn moverox_sui::sui::deny_list::ConfigWriteCap::type_tag() -> moverox_sui::sui::deny_list::ConfigWriteCapTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::deny_list::ConfigWriteCap
 pub type moverox_sui::sui::deny_list::ConfigWriteCap::StructTag = moverox_sui::sui::deny_list::ConfigWriteCapTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::deny_list::ConfigWriteCap
@@ -1133,7 +1133,7 @@ pub moverox_sui::sui::deny_list::DenyList::lists: moverox_sui::sui::bag::Bag
 impl moverox_sui::sui::deny_list::DenyList
 pub const fn moverox_sui::sui::deny_list::DenyList::new(id: moverox_sui::sui::object::UID, lists: moverox_sui::sui::bag::Bag) -> Self
 impl moverox_sui::sui::deny_list::DenyList
-pub fn moverox_sui::sui::deny_list::DenyList::type_() -> moverox_sui::sui::deny_list::DenyListTypeTag
+pub const fn moverox_sui::sui::deny_list::DenyList::type_tag() -> moverox_sui::sui::deny_list::DenyListTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::deny_list::DenyList
 pub fn moverox_sui::sui::deny_list::DenyList::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::deny_list::DenyList
@@ -1163,7 +1163,7 @@ pub struct moverox_sui::sui::deny_list::GlobalPauseKey(_)
 impl moverox_sui::sui::deny_list::GlobalPauseKey
 pub const fn moverox_sui::sui::deny_list::GlobalPauseKey::new() -> Self
 impl moverox_sui::sui::deny_list::GlobalPauseKey
-pub fn moverox_sui::sui::deny_list::GlobalPauseKey::type_() -> moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag
+pub const fn moverox_sui::sui::deny_list::GlobalPauseKey::type_tag() -> moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::deny_list::GlobalPauseKey
 pub type moverox_sui::sui::deny_list::GlobalPauseKey::StructTag = moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::deny_list::GlobalPauseKey
@@ -1193,7 +1193,7 @@ pub moverox_sui::sui::deny_list::PerTypeConfigCreated::key: moverox_sui::sui::de
 impl moverox_sui::sui::deny_list::PerTypeConfigCreated
 pub const fn moverox_sui::sui::deny_list::PerTypeConfigCreated::new(key: moverox_sui::sui::deny_list::ConfigKey, config_id: moverox_sui::sui::object::ID) -> Self
 impl moverox_sui::sui::deny_list::PerTypeConfigCreated
-pub fn moverox_sui::sui::deny_list::PerTypeConfigCreated::type_() -> moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag
+pub const fn moverox_sui::sui::deny_list::PerTypeConfigCreated::type_tag() -> moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::deny_list::PerTypeConfigCreated
 pub type moverox_sui::sui::deny_list::PerTypeConfigCreated::StructTag = moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::deny_list::PerTypeConfigCreated
@@ -1224,7 +1224,7 @@ pub moverox_sui::sui::deny_list::PerTypeList::id: moverox_sui::sui::object::UID
 impl moverox_sui::sui::deny_list::PerTypeList
 pub const fn moverox_sui::sui::deny_list::PerTypeList::new(id: moverox_sui::sui::object::UID, denied_count: moverox_sui::sui::table::Table<moverox_types::address::Address, u64>, denied_addresses: moverox_sui::sui::table::Table<alloc::vec::Vec<u8>, moverox_sui::sui::vec_set::VecSet<moverox_types::address::Address>>) -> Self
 impl moverox_sui::sui::deny_list::PerTypeList
-pub fn moverox_sui::sui::deny_list::PerTypeList::type_() -> moverox_sui::sui::deny_list::PerTypeListTypeTag
+pub const fn moverox_sui::sui::deny_list::PerTypeList::type_tag() -> moverox_sui::sui::deny_list::PerTypeListTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::deny_list::PerTypeList
 pub fn moverox_sui::sui::deny_list::PerTypeList::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::deny_list::PerTypeList
@@ -1256,7 +1256,7 @@ pub moverox_sui::sui::display::Display::fields: moverox_sui::sui::vec_map::VecMa
 pub moverox_sui::sui::display::Display::id: moverox_sui::sui::object::UID
 pub moverox_sui::sui::display::Display::version: u16
 impl<T: moverox_traits::MoveType> moverox_sui::sui::display::Display<T>
-pub fn moverox_sui::sui::display::Display<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::display::DisplayTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::display::Display<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::display::DisplayTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::display::Display<T>
 pub const fn moverox_sui::sui::display::Display<T>::new(id: moverox_sui::sui::object::UID, fields: moverox_sui::sui::vec_map::VecMap<moverox_sui::move_stdlib::string::String, moverox_sui::move_stdlib::string::String>, version: u16) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::display::Display<T>
@@ -1268,7 +1268,7 @@ pub type moverox_sui::sui::display::Display<T>::TypeTag = moverox_sui::sui::disp
 pub struct moverox_sui::sui::display::DisplayCreated<T>
 pub moverox_sui::sui::display::DisplayCreated::id: moverox_sui::sui::object::ID
 impl<T: moverox_traits::MoveType> moverox_sui::sui::display::DisplayCreated<T>
-pub fn moverox_sui::sui::display::DisplayCreated<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::display::DisplayCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::display::DisplayCreated<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::display::DisplayCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::display::DisplayCreated<T>
 pub const fn moverox_sui::sui::display::DisplayCreated<T>::new(id: moverox_sui::sui::object::ID) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::display::DisplayCreated<T>
@@ -1320,7 +1320,7 @@ pub moverox_sui::sui::display::VersionUpdated::fields: moverox_sui::sui::vec_map
 pub moverox_sui::sui::display::VersionUpdated::id: moverox_sui::sui::object::ID
 pub moverox_sui::sui::display::VersionUpdated::version: u16
 impl<T: moverox_traits::MoveType> moverox_sui::sui::display::VersionUpdated<T>
-pub fn moverox_sui::sui::display::VersionUpdated<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::display::VersionUpdatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::display::VersionUpdated<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::display::VersionUpdatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::display::VersionUpdated<T>
 pub const fn moverox_sui::sui::display::VersionUpdated<T>::new(id: moverox_sui::sui::object::ID, version: u16, fields: moverox_sui::sui::vec_map::VecMap<moverox_sui::move_stdlib::string::String, moverox_sui::move_stdlib::string::String>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::display::VersionUpdated<T>
@@ -1355,7 +1355,7 @@ pub moverox_sui::sui::dynamic_field::Field::value: Value
 impl<Name, Value> moverox_sui::sui::dynamic_field::Field<Name, Value>
 pub const fn moverox_sui::sui::dynamic_field::Field<Name, Value>::new(id: moverox_sui::sui::object::UID, name: Name, value: Value) -> Self
 impl<Name: moverox_traits::MoveType, Value: moverox_traits::MoveType> moverox_sui::sui::dynamic_field::Field<Name, Value>
-pub fn moverox_sui::sui::dynamic_field::Field<Name, Value>::type_(type_name: <Name as moverox_traits::MoveType>::TypeTag, type_value: <Value as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::dynamic_field::FieldTypeTag<<Name as moverox_traits::MoveType>::TypeTag, <Value as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::dynamic_field::Field<Name, Value>::type_tag(type_name: <Name as moverox_traits::MoveType>::TypeTag, type_value: <Value as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::dynamic_field::FieldTypeTag<<Name as moverox_traits::MoveType>::TypeTag, <Value as moverox_traits::MoveType>::TypeTag>
 impl<Name: moverox_traits::MoveType, Value: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::dynamic_field::Field<Name, Value>
 pub fn moverox_sui::sui::dynamic_field::Field<Name, Value>::address(&self) -> moverox_types::address::Address
 impl<Name: moverox_traits::MoveType, Value: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::dynamic_field::Field<Name, Value>
@@ -1387,7 +1387,7 @@ pub mod moverox_sui::sui::dynamic_object_field
 pub struct moverox_sui::sui::dynamic_object_field::Wrapper<Name>
 pub moverox_sui::sui::dynamic_object_field::Wrapper::name: Name
 impl<Name: moverox_traits::MoveType> moverox_sui::sui::dynamic_object_field::Wrapper<Name>
-pub fn moverox_sui::sui::dynamic_object_field::Wrapper<Name>::type_(type_name: <Name as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::dynamic_object_field::WrapperTypeTag<<Name as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::dynamic_object_field::Wrapper<Name>::type_tag(type_name: <Name as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::dynamic_object_field::WrapperTypeTag<<Name as moverox_traits::MoveType>::TypeTag>
 impl<Name> moverox_sui::sui::dynamic_object_field::Wrapper<Name>
 pub const fn moverox_sui::sui::dynamic_object_field::Wrapper<Name>::new(name: Name) -> Self
 impl<Name: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::dynamic_object_field::Wrapper<Name>
@@ -1423,7 +1423,7 @@ pub moverox_sui::sui::linked_table::LinkedTable::tail: core::option::Option<K>
 impl<K, V> moverox_sui::sui::linked_table::LinkedTable<K, V>
 pub const fn moverox_sui::sui::linked_table::LinkedTable<K, V>::new(id: moverox_sui::sui::object::UID, size: u64, head: core::option::Option<K>, tail: core::option::Option<K>) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::linked_table::LinkedTable<K, V>
-pub fn moverox_sui::sui::linked_table::LinkedTable<K, V>::type_(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::linked_table::LinkedTableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::linked_table::LinkedTable<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::linked_table::LinkedTableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::linked_table::LinkedTable<K, V>
 pub fn moverox_sui::sui::linked_table::LinkedTable<K, V>::address(&self) -> moverox_types::address::Address
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::linked_table::LinkedTable<K, V>
@@ -1458,7 +1458,7 @@ pub moverox_sui::sui::linked_table::Node::value: V
 impl<K, V> moverox_sui::sui::linked_table::Node<K, V>
 pub const fn moverox_sui::sui::linked_table::Node<K, V>::new(prev: core::option::Option<K>, next: core::option::Option<K>, value: V) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::linked_table::Node<K, V>
-pub fn moverox_sui::sui::linked_table::Node<K, V>::type_(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::linked_table::NodeTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::linked_table::Node<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::linked_table::NodeTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::linked_table::Node<K, V>
 pub type moverox_sui::sui::linked_table::Node<K, V>::StructTag = moverox_sui::sui::linked_table::NodeTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::linked_table::Node<K, V>
@@ -1490,7 +1490,7 @@ pub moverox_sui::sui::object::ID::bytes: moverox_types::address::Address
 impl moverox_sui::sui::object::ID
 pub const fn moverox_sui::sui::object::ID::new(bytes: moverox_types::address::Address) -> Self
 impl moverox_sui::sui::object::ID
-pub fn moverox_sui::sui::object::ID::type_() -> moverox_sui::sui::object::IDTypeTag
+pub const fn moverox_sui::sui::object::ID::type_tag() -> moverox_sui::sui::object::IDTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::object::ID
 pub type moverox_sui::sui::object::ID::StructTag = moverox_sui::sui::object::IDTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::object::ID
@@ -1519,7 +1519,7 @@ pub moverox_sui::sui::object::UID::id: moverox_sui::sui::object::ID
 impl moverox_sui::sui::object::UID
 pub const fn moverox_sui::sui::object::UID::new(id: moverox_sui::sui::object::ID) -> Self
 impl moverox_sui::sui::object::UID
-pub fn moverox_sui::sui::object::UID::type_() -> moverox_sui::sui::object::UIDTypeTag
+pub const fn moverox_sui::sui::object::UID::type_tag() -> moverox_sui::sui::object::UIDTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::object::UID
 pub type moverox_sui::sui::object::UID::StructTag = moverox_sui::sui::object::UIDTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::object::UID
@@ -1550,7 +1550,7 @@ pub moverox_sui::sui::object_bag::ObjectBag::size: u64
 impl moverox_sui::sui::object_bag::ObjectBag
 pub const fn moverox_sui::sui::object_bag::ObjectBag::new(id: moverox_sui::sui::object::UID, size: u64) -> Self
 impl moverox_sui::sui::object_bag::ObjectBag
-pub fn moverox_sui::sui::object_bag::ObjectBag::type_() -> moverox_sui::sui::object_bag::ObjectBagTypeTag
+pub const fn moverox_sui::sui::object_bag::ObjectBag::type_tag() -> moverox_sui::sui::object_bag::ObjectBagTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::object_bag::ObjectBag
 pub fn moverox_sui::sui::object_bag::ObjectBag::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::object_bag::ObjectBag
@@ -1583,7 +1583,7 @@ pub moverox_sui::sui::object_table::ObjectTable::size: u64
 impl<K, V> moverox_sui::sui::object_table::ObjectTable<K, V>
 pub const fn moverox_sui::sui::object_table::ObjectTable<K, V>::new(id: moverox_sui::sui::object::UID, size: u64) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::object_table::ObjectTable<K, V>
-pub fn moverox_sui::sui::object_table::ObjectTable<K, V>::type_(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::object_table::ObjectTableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::object_table::ObjectTable<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::object_table::ObjectTableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::object_table::ObjectTable<K, V>
 pub fn moverox_sui::sui::object_table::ObjectTable<K, V>::address(&self) -> moverox_types::address::Address
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::object_table::ObjectTable<K, V>
@@ -1619,7 +1619,7 @@ pub moverox_sui::sui::package::Publisher::package: moverox_sui::move_stdlib::asc
 impl moverox_sui::sui::package::Publisher
 pub const fn moverox_sui::sui::package::Publisher::new(id: moverox_sui::sui::object::UID, package: moverox_sui::move_stdlib::ascii::String, module_name: moverox_sui::move_stdlib::ascii::String) -> Self
 impl moverox_sui::sui::package::Publisher
-pub fn moverox_sui::sui::package::Publisher::type_() -> moverox_sui::sui::package::PublisherTypeTag
+pub const fn moverox_sui::sui::package::Publisher::type_tag() -> moverox_sui::sui::package::PublisherTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::package::Publisher
 pub fn moverox_sui::sui::package::Publisher::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::package::Publisher
@@ -1653,7 +1653,7 @@ pub moverox_sui::sui::package::UpgradeCap::version: u64
 impl moverox_sui::sui::package::UpgradeCap
 pub const fn moverox_sui::sui::package::UpgradeCap::new(id: moverox_sui::sui::object::UID, package: moverox_sui::sui::object::ID, version: u64, policy: u8) -> Self
 impl moverox_sui::sui::package::UpgradeCap
-pub fn moverox_sui::sui::package::UpgradeCap::type_() -> moverox_sui::sui::package::UpgradeCapTypeTag
+pub const fn moverox_sui::sui::package::UpgradeCap::type_tag() -> moverox_sui::sui::package::UpgradeCapTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::package::UpgradeCap
 pub fn moverox_sui::sui::package::UpgradeCap::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::package::UpgradeCap
@@ -1685,7 +1685,7 @@ pub moverox_sui::sui::package::UpgradeReceipt::package: moverox_sui::sui::object
 impl moverox_sui::sui::package::UpgradeReceipt
 pub const fn moverox_sui::sui::package::UpgradeReceipt::new(cap: moverox_sui::sui::object::ID, package: moverox_sui::sui::object::ID) -> Self
 impl moverox_sui::sui::package::UpgradeReceipt
-pub fn moverox_sui::sui::package::UpgradeReceipt::type_() -> moverox_sui::sui::package::UpgradeReceiptTypeTag
+pub const fn moverox_sui::sui::package::UpgradeReceipt::type_tag() -> moverox_sui::sui::package::UpgradeReceiptTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::package::UpgradeReceipt
 pub type moverox_sui::sui::package::UpgradeReceipt::StructTag = moverox_sui::sui::package::UpgradeReceiptTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::package::UpgradeReceipt
@@ -1717,7 +1717,7 @@ pub moverox_sui::sui::package::UpgradeTicket::policy: u8
 impl moverox_sui::sui::package::UpgradeTicket
 pub const fn moverox_sui::sui::package::UpgradeTicket::new(cap: moverox_sui::sui::object::ID, package: moverox_sui::sui::object::ID, policy: u8, digest: alloc::vec::Vec<u8>) -> Self
 impl moverox_sui::sui::package::UpgradeTicket
-pub fn moverox_sui::sui::package::UpgradeTicket::type_() -> moverox_sui::sui::package::UpgradeTicketTypeTag
+pub const fn moverox_sui::sui::package::UpgradeTicket::type_tag() -> moverox_sui::sui::package::UpgradeTicketTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::package::UpgradeTicket
 pub type moverox_sui::sui::package::UpgradeTicket::StructTag = moverox_sui::sui::package::UpgradeTicketTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::package::UpgradeTicket
@@ -1748,7 +1748,7 @@ pub moverox_sui::sui::party::Party::members: moverox_sui::sui::vec_map::VecMap<m
 impl moverox_sui::sui::party::Party
 pub const fn moverox_sui::sui::party::Party::new(default: moverox_sui::sui::party::Permissions, members: moverox_sui::sui::vec_map::VecMap<moverox_types::address::Address, moverox_sui::sui::party::Permissions>) -> Self
 impl moverox_sui::sui::party::Party
-pub fn moverox_sui::sui::party::Party::type_() -> moverox_sui::sui::party::PartyTypeTag
+pub const fn moverox_sui::sui::party::Party::type_tag() -> moverox_sui::sui::party::PartyTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::party::Party
 pub type moverox_sui::sui::party::Party::StructTag = moverox_sui::sui::party::PartyTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::party::Party
@@ -1776,7 +1776,7 @@ pub struct moverox_sui::sui::party::Permissions(pub u64)
 impl moverox_sui::sui::party::Permissions
 pub const fn moverox_sui::sui::party::Permissions::new(_0: u64) -> Self
 impl moverox_sui::sui::party::Permissions
-pub fn moverox_sui::sui::party::Permissions::type_() -> moverox_sui::sui::party::PermissionsTypeTag
+pub const fn moverox_sui::sui::party::Permissions::type_tag() -> moverox_sui::sui::party::PermissionsTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::party::Permissions
 pub type moverox_sui::sui::party::Permissions::StructTag = moverox_sui::sui::party::PermissionsTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::party::Permissions
@@ -1805,7 +1805,7 @@ pub struct moverox_sui::sui::priority_queue::Entry<T>
 pub moverox_sui::sui::priority_queue::Entry::priority: u64
 pub moverox_sui::sui::priority_queue::Entry::value: T
 impl<T: moverox_traits::MoveType> moverox_sui::sui::priority_queue::Entry<T>
-pub fn moverox_sui::sui::priority_queue::Entry<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::priority_queue::EntryTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::priority_queue::Entry<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::priority_queue::EntryTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::priority_queue::Entry<T>
 pub const fn moverox_sui::sui::priority_queue::Entry<T>::new(priority: u64, value: T) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::priority_queue::Entry<T>
@@ -1835,7 +1835,7 @@ pub fn moverox_sui::sui::priority_queue::EntryTypeTag<T>::serialize<S>(&self, se
 pub struct moverox_sui::sui::priority_queue::PriorityQueue<T>
 pub moverox_sui::sui::priority_queue::PriorityQueue::entries: alloc::vec::Vec<moverox_sui::sui::priority_queue::Entry<T>>
 impl<T: moverox_traits::MoveType> moverox_sui::sui::priority_queue::PriorityQueue<T>
-pub fn moverox_sui::sui::priority_queue::PriorityQueue<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::priority_queue::PriorityQueueTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::priority_queue::PriorityQueue<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::priority_queue::PriorityQueueTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::priority_queue::PriorityQueue<T>
 pub const fn moverox_sui::sui::priority_queue::PriorityQueue<T>::new(entries: alloc::vec::Vec<moverox_sui::sui::priority_queue::Entry<T>>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::priority_queue::PriorityQueue<T>
@@ -1869,7 +1869,7 @@ pub moverox_sui::sui::random::Random::inner: moverox_sui::sui::versioned::Versio
 impl moverox_sui::sui::random::Random
 pub const fn moverox_sui::sui::random::Random::new(id: moverox_sui::sui::object::UID, inner: moverox_sui::sui::versioned::Versioned) -> Self
 impl moverox_sui::sui::random::Random
-pub fn moverox_sui::sui::random::Random::type_() -> moverox_sui::sui::random::RandomTypeTag
+pub const fn moverox_sui::sui::random::Random::type_tag() -> moverox_sui::sui::random::RandomTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::random::Random
 pub fn moverox_sui::sui::random::Random::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::random::Random
@@ -1883,7 +1883,7 @@ pub moverox_sui::sui::random::RandomGenerator::seed: alloc::vec::Vec<u8>
 impl moverox_sui::sui::random::RandomGenerator
 pub const fn moverox_sui::sui::random::RandomGenerator::new(seed: alloc::vec::Vec<u8>, counter: u16, buffer: alloc::vec::Vec<u8>) -> Self
 impl moverox_sui::sui::random::RandomGenerator
-pub fn moverox_sui::sui::random::RandomGenerator::type_() -> moverox_sui::sui::random::RandomGeneratorTypeTag
+pub const fn moverox_sui::sui::random::RandomGenerator::type_tag() -> moverox_sui::sui::random::RandomGeneratorTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::random::RandomGenerator
 pub type moverox_sui::sui::random::RandomGenerator::StructTag = moverox_sui::sui::random::RandomGeneratorTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::random::RandomGenerator
@@ -1915,7 +1915,7 @@ pub moverox_sui::sui::random::RandomInner::version: u64
 impl moverox_sui::sui::random::RandomInner
 pub const fn moverox_sui::sui::random::RandomInner::new(version: u64, epoch: u64, randomness_round: u64, random_bytes: alloc::vec::Vec<u8>) -> Self
 impl moverox_sui::sui::random::RandomInner
-pub fn moverox_sui::sui::random::RandomInner::type_() -> moverox_sui::sui::random::RandomInnerTypeTag
+pub const fn moverox_sui::sui::random::RandomInner::type_tag() -> moverox_sui::sui::random::RandomInnerTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::random::RandomInner
 pub type moverox_sui::sui::random::RandomInner::StructTag = moverox_sui::sui::random::RandomInnerTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::random::RandomInner
@@ -1963,7 +1963,7 @@ pub struct moverox_sui::sui::sui::SUI
 impl moverox_sui::sui::sui::SUI
 pub const fn moverox_sui::sui::sui::SUI::new() -> Self
 impl moverox_sui::sui::sui::SUI
-pub fn moverox_sui::sui::sui::SUI::type_() -> moverox_sui::sui::sui::SUITypeTag
+pub const fn moverox_sui::sui::sui::SUI::type_tag() -> moverox_sui::sui::sui::SUITypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::sui::SUI
 pub type moverox_sui::sui::sui::SUI::StructTag = moverox_sui::sui::sui::SUITypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::sui::SUI
@@ -1994,7 +1994,7 @@ pub moverox_sui::sui::table::Table::size: u64
 impl<K, V> moverox_sui::sui::table::Table<K, V>
 pub const fn moverox_sui::sui::table::Table<K, V>::new(id: moverox_sui::sui::object::UID, size: u64) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::table::Table<K, V>
-pub fn moverox_sui::sui::table::Table<K, V>::type_(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::table::TableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::table::Table<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::table::TableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::table::Table<K, V>
 pub fn moverox_sui::sui::table::Table<K, V>::address(&self) -> moverox_types::address::Address
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::table::Table<K, V>
@@ -2026,7 +2026,7 @@ pub mod moverox_sui::sui::table_vec
 pub struct moverox_sui::sui::table_vec::TableVec<Element>
 pub moverox_sui::sui::table_vec::TableVec::contents: moverox_sui::sui::table::Table<u64, Element>
 impl<Element: moverox_traits::MoveType> moverox_sui::sui::table_vec::TableVec<Element>
-pub fn moverox_sui::sui::table_vec::TableVec<Element>::type_(type_element: <Element as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::table_vec::TableVecTypeTag<<Element as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::table_vec::TableVec<Element>::type_tag(type_element: <Element as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::table_vec::TableVecTypeTag<<Element as moverox_traits::MoveType>::TypeTag>
 impl<Element> moverox_sui::sui::table_vec::TableVec<Element>
 pub const fn moverox_sui::sui::table_vec::TableVec<Element>::new(contents: moverox_sui::sui::table::Table<u64, Element>) -> Self
 impl<Element: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::table_vec::TableVec<Element>
@@ -2062,7 +2062,7 @@ pub moverox_sui::sui::token::ActionRequest::recipient: core::option::Option<move
 pub moverox_sui::sui::token::ActionRequest::sender: moverox_types::address::Address
 pub moverox_sui::sui::token::ActionRequest::spent_balance: core::option::Option<moverox_sui::sui::balance::Balance<T>>
 impl<T: moverox_traits::MoveType> moverox_sui::sui::token::ActionRequest<T>
-pub fn moverox_sui::sui::token::ActionRequest<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::ActionRequestTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::token::ActionRequest<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::ActionRequestTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::ActionRequest<T>
 pub const fn moverox_sui::sui::token::ActionRequest<T>::new(name: moverox_sui::move_stdlib::string::String, amount: u64, sender: moverox_types::address::Address, recipient: core::option::Option<moverox_types::address::Address>, spent_balance: core::option::Option<moverox_sui::sui::balance::Balance<T>>, approvals: moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::token::ActionRequest<T>
@@ -2092,7 +2092,7 @@ pub fn moverox_sui::sui::token::ActionRequestTypeTag<T>::serialize<S>(&self, ser
 pub struct moverox_sui::sui::token::RuleKey<T>
 pub moverox_sui::sui::token::RuleKey::is_protected: bool
 impl<T: moverox_traits::MoveType> moverox_sui::sui::token::RuleKey<T>
-pub fn moverox_sui::sui::token::RuleKey<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::RuleKeyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::token::RuleKey<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::RuleKeyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::RuleKey<T>
 pub const fn moverox_sui::sui::token::RuleKey<T>::new(is_protected: bool) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::token::RuleKey<T>
@@ -2123,7 +2123,7 @@ pub struct moverox_sui::sui::token::Token<T>
 pub moverox_sui::sui::token::Token::balance: moverox_sui::sui::balance::Balance<T>
 pub moverox_sui::sui::token::Token::id: moverox_sui::sui::object::UID
 impl<T: moverox_traits::MoveType> moverox_sui::sui::token::Token<T>
-pub fn moverox_sui::sui::token::Token<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::token::Token<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::Token<T>
 pub const fn moverox_sui::sui::token::Token<T>::new(id: moverox_sui::sui::object::UID, balance: moverox_sui::sui::balance::Balance<T>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::token::Token<T>
@@ -2137,7 +2137,7 @@ pub moverox_sui::sui::token::TokenPolicy::id: moverox_sui::sui::object::UID
 pub moverox_sui::sui::token::TokenPolicy::rules: moverox_sui::sui::vec_map::VecMap<moverox_sui::move_stdlib::string::String, moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>>
 pub moverox_sui::sui::token::TokenPolicy::spent_balance: moverox_sui::sui::balance::Balance<T>
 impl<T: moverox_traits::MoveType> moverox_sui::sui::token::TokenPolicy<T>
-pub fn moverox_sui::sui::token::TokenPolicy<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::token::TokenPolicy<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::TokenPolicy<T>
 pub const fn moverox_sui::sui::token::TokenPolicy<T>::new(id: moverox_sui::sui::object::UID, spent_balance: moverox_sui::sui::balance::Balance<T>, rules: moverox_sui::sui::vec_map::VecMap<moverox_sui::move_stdlib::string::String, moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>>) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::token::TokenPolicy<T>
@@ -2150,7 +2150,7 @@ pub struct moverox_sui::sui::token::TokenPolicyCap<T>
 pub moverox_sui::sui::token::TokenPolicyCap::for: moverox_sui::sui::object::ID
 pub moverox_sui::sui::token::TokenPolicyCap::id: moverox_sui::sui::object::UID
 impl<T: moverox_traits::MoveType> moverox_sui::sui::token::TokenPolicyCap<T>
-pub fn moverox_sui::sui::token::TokenPolicyCap<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::token::TokenPolicyCap<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::TokenPolicyCap<T>
 pub const fn moverox_sui::sui::token::TokenPolicyCap<T>::new(id: moverox_sui::sui::object::UID, for: moverox_sui::sui::object::ID) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::token::TokenPolicyCap<T>
@@ -2183,7 +2183,7 @@ pub struct moverox_sui::sui::token::TokenPolicyCreated<T>
 pub moverox_sui::sui::token::TokenPolicyCreated::id: moverox_sui::sui::object::ID
 pub moverox_sui::sui::token::TokenPolicyCreated::is_mutable: bool
 impl<T: moverox_traits::MoveType> moverox_sui::sui::token::TokenPolicyCreated<T>
-pub fn moverox_sui::sui::token::TokenPolicyCreated<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenPolicyCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::token::TokenPolicyCreated<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenPolicyCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::TokenPolicyCreated<T>
 pub const fn moverox_sui::sui::token::TokenPolicyCreated<T>::new(id: moverox_sui::sui::object::ID, is_mutable: bool) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::token::TokenPolicyCreated<T>
@@ -2255,7 +2255,7 @@ pub struct moverox_sui::sui::transfer::Receiving<T>
 pub moverox_sui::sui::transfer::Receiving::id: moverox_sui::sui::object::ID
 pub moverox_sui::sui::transfer::Receiving::version: u64
 impl<T: moverox_traits::MoveType> moverox_sui::sui::transfer::Receiving<T>
-pub fn moverox_sui::sui::transfer::Receiving<T>::type_(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::transfer::ReceivingTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::transfer::Receiving<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::transfer::ReceivingTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::transfer::Receiving<T>
 pub const fn moverox_sui::sui::transfer::Receiving<T>::new(id: moverox_sui::sui::object::ID, version: u64) -> Self
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::transfer::Receiving<T>
@@ -2292,7 +2292,7 @@ pub moverox_sui::sui::tx_context::TxContext::tx_hash: alloc::vec::Vec<u8>
 impl moverox_sui::sui::tx_context::TxContext
 pub const fn moverox_sui::sui::tx_context::TxContext::new(sender: moverox_types::address::Address, tx_hash: alloc::vec::Vec<u8>, epoch: u64, epoch_timestamp_ms: u64, ids_created: u64) -> Self
 impl moverox_sui::sui::tx_context::TxContext
-pub fn moverox_sui::sui::tx_context::TxContext::type_() -> moverox_sui::sui::tx_context::TxContextTypeTag
+pub const fn moverox_sui::sui::tx_context::TxContext::type_tag() -> moverox_sui::sui::tx_context::TxContextTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::tx_context::TxContext
 pub type moverox_sui::sui::tx_context::TxContext::StructTag = moverox_sui::sui::tx_context::TxContextTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::tx_context::TxContext
@@ -2322,7 +2322,7 @@ pub moverox_sui::sui::url::Url::url: moverox_sui::move_stdlib::ascii::String
 impl moverox_sui::sui::url::Url
 pub const fn moverox_sui::sui::url::Url::new(url: moverox_sui::move_stdlib::ascii::String) -> Self
 impl moverox_sui::sui::url::Url
-pub fn moverox_sui::sui::url::Url::type_() -> moverox_sui::sui::url::UrlTypeTag
+pub const fn moverox_sui::sui::url::Url::type_tag() -> moverox_sui::sui::url::UrlTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::url::Url
 pub type moverox_sui::sui::url::Url::StructTag = moverox_sui::sui::url::UrlTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::url::Url
@@ -2353,7 +2353,7 @@ pub moverox_sui::sui::vec_map::Entry::value: V
 impl<K, V> moverox_sui::sui::vec_map::Entry<K, V>
 pub const fn moverox_sui::sui::vec_map::Entry<K, V>::new(key: K, value: V) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::vec_map::Entry<K, V>
-pub fn moverox_sui::sui::vec_map::Entry<K, V>::type_(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::vec_map::EntryTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::vec_map::Entry<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::vec_map::EntryTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::vec_map::Entry<K, V>
 pub type moverox_sui::sui::vec_map::Entry<K, V>::StructTag = moverox_sui::sui::vec_map::EntryTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::vec_map::Entry<K, V>
@@ -2384,7 +2384,7 @@ pub moverox_sui::sui::vec_map::VecMap::contents: alloc::vec::Vec<moverox_sui::su
 impl<K, V> moverox_sui::sui::vec_map::VecMap<K, V>
 pub const fn moverox_sui::sui::vec_map::VecMap<K, V>::new(contents: alloc::vec::Vec<moverox_sui::sui::vec_map::Entry<K, V>>) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::vec_map::VecMap<K, V>
-pub fn moverox_sui::sui::vec_map::VecMap<K, V>::type_(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::vec_map::VecMapTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::vec_map::VecMap<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::vec_map::VecMapTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::vec_map::VecMap<K, V>
 pub type moverox_sui::sui::vec_map::VecMap<K, V>::StructTag = moverox_sui::sui::vec_map::VecMapTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::vec_map::VecMap<K, V>
@@ -2414,7 +2414,7 @@ pub mod moverox_sui::sui::vec_set
 pub struct moverox_sui::sui::vec_set::VecSet<K>
 pub moverox_sui::sui::vec_set::VecSet::contents: alloc::vec::Vec<K>
 impl<K: moverox_traits::MoveType> moverox_sui::sui::vec_set::VecSet<K>
-pub fn moverox_sui::sui::vec_set::VecSet<K>::type_(type_k: <K as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::vec_set::VecSetTypeTag<<K as moverox_traits::MoveType>::TypeTag>
+pub const fn moverox_sui::sui::vec_set::VecSet<K>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::vec_set::VecSetTypeTag<<K as moverox_traits::MoveType>::TypeTag>
 impl<K> moverox_sui::sui::vec_set::VecSet<K>
 pub const fn moverox_sui::sui::vec_set::VecSet<K>::new(contents: alloc::vec::Vec<K>) -> Self
 impl<K: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::vec_set::VecSet<K>
@@ -2448,7 +2448,7 @@ pub moverox_sui::sui::versioned::VersionChangeCap::versioned_id: moverox_sui::su
 impl moverox_sui::sui::versioned::VersionChangeCap
 pub const fn moverox_sui::sui::versioned::VersionChangeCap::new(versioned_id: moverox_sui::sui::object::ID, old_version: u64) -> Self
 impl moverox_sui::sui::versioned::VersionChangeCap
-pub fn moverox_sui::sui::versioned::VersionChangeCap::type_() -> moverox_sui::sui::versioned::VersionChangeCapTypeTag
+pub const fn moverox_sui::sui::versioned::VersionChangeCap::type_tag() -> moverox_sui::sui::versioned::VersionChangeCapTypeTag
 impl moverox_traits::MoveDatatype for moverox_sui::sui::versioned::VersionChangeCap
 pub type moverox_sui::sui::versioned::VersionChangeCap::StructTag = moverox_sui::sui::versioned::VersionChangeCapTypeTag
 impl moverox_traits::MoveType for moverox_sui::sui::versioned::VersionChangeCap
@@ -2478,7 +2478,7 @@ pub moverox_sui::sui::versioned::Versioned::version: u64
 impl moverox_sui::sui::versioned::Versioned
 pub const fn moverox_sui::sui::versioned::Versioned::new(id: moverox_sui::sui::object::UID, version: u64) -> Self
 impl moverox_sui::sui::versioned::Versioned
-pub fn moverox_sui::sui::versioned::Versioned::type_() -> moverox_sui::sui::versioned::VersionedTypeTag
+pub const fn moverox_sui::sui::versioned::Versioned::type_tag() -> moverox_sui::sui::versioned::VersionedTypeTag
 impl moverox_traits::HasKey for moverox_sui::sui::versioned::Versioned
 pub fn moverox_sui::sui::versioned::Versioned::address(&self) -> moverox_types::address::Address
 impl moverox_traits::MoveDatatype for moverox_sui::sui::versioned::Versioned

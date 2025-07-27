@@ -46,7 +46,7 @@ pub fn impl_move_datatype(item: TokenStream) -> deluxe::Result<TokenStream> {
     let type_tag_impl_from_str = type_tag.impl_from_str();
     let type_tag_impl_display = type_tag.impl_display();
 
-    let struct_impl_move_type = move_struct_impl_move_type(&ast, type_tag);
+    let struct_impl_move_type = target_type_impl_move_datatype(&ast, type_tag);
 
     Ok(quote! {
         #type_tag_decl
@@ -125,8 +125,9 @@ fn validate_datatype_generics(generics: &Generics) -> deluxe::Result<()> {
     Ok(())
 }
 
-/// Main `impl` block for the struct and `MoveDatatype` impl for it
-fn move_struct_impl_move_type(ast: &DeriveInput, type_tag: TypeTagStruct) -> TokenStream {
+/// `MoveDatatype` implementaion for the input Rust type and additional `impl` block with the
+/// `type_tag` method.
+fn target_type_impl_move_datatype(ast: &DeriveInput, type_tag: TypeTagStruct) -> TokenStream {
     let TypeTagStruct {
         ident: type_tag_ident,
         thecrate,
@@ -173,7 +174,8 @@ fn move_struct_impl_move_type(ast: &DeriveInput, type_tag: TypeTagStruct) -> Tok
         }
 
         impl #impl_generics #ident #type_generics #where_clause {
-            pub fn type_(#(#type_tag_fn_args),*) -> #type_tag_type {
+            /// Create this type's specialized type tag.
+            pub const fn type_tag(#(#type_tag_fn_args),*) -> #type_tag_type {
                 #type_tag_ident {
                     #(#type_tag_field_names),*
                 }
