@@ -99,7 +99,9 @@ pub trait MoveDatatypeTag: MoveTypeTag {
 //  Abilities
 // =============================================================================
 
-pub trait HasKey: MoveDatatype {
+/// An oxidized object, i.e., originally a Move type with the `key` ability.
+pub trait HasKey {
+    /// This object's address on-chain.
     fn address(&self) -> Address;
 }
 

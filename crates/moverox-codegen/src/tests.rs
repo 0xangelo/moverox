@@ -490,7 +490,7 @@ fn struct_with_field_and_phantom() {
             }
         }
     }
-    impl<T: ::moverox::traits::MoveType> ::moverox::traits::HasKey for Admin<T> {
+    impl<T> ::moverox::traits::HasKey for Admin<T> {
         fn address(&self) -> ::moverox::types::Address {
             self.id.id.bytes
         }

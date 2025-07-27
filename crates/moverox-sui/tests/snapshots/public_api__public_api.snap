@@ -720,12 +720,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::Coin<T>
 pub const fn moverox_sui::sui::coin::Coin<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::CoinTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::Coin<T>
 pub const fn moverox_sui::sui::coin::Coin<T>::new(id: moverox_sui::sui::object::UID, balance: moverox_sui::sui::balance::Balance<T>) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::Coin<T>
-pub fn moverox_sui::sui::coin::Coin<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::coin::Coin<T>
 pub type moverox_sui::sui::coin::Coin<T>::StructTag = moverox_sui::sui::coin::CoinTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::coin::Coin<T>
 pub type moverox_sui::sui::coin::Coin<T>::TypeTag = moverox_sui::sui::coin::CoinTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::coin::Coin<T>
+pub fn moverox_sui::sui::coin::Coin<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::coin::CoinMetadata<T>
 pub moverox_sui::sui::coin::CoinMetadata::decimals: u8
 pub moverox_sui::sui::coin::CoinMetadata::description: moverox_sui::move_stdlib::string::String
@@ -737,12 +737,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::CoinMetadata<T>
 pub const fn moverox_sui::sui::coin::CoinMetadata<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::CoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::CoinMetadata<T>
 pub const fn moverox_sui::sui::coin::CoinMetadata<T>::new(id: moverox_sui::sui::object::UID, decimals: u8, name: moverox_sui::move_stdlib::string::String, symbol: moverox_sui::move_stdlib::ascii::String, description: moverox_sui::move_stdlib::string::String, icon_url: core::option::Option<moverox_sui::sui::url::Url>) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::CoinMetadata<T>
-pub fn moverox_sui::sui::coin::CoinMetadata<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::coin::CoinMetadata<T>
 pub type moverox_sui::sui::coin::CoinMetadata<T>::StructTag = moverox_sui::sui::coin::CoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::coin::CoinMetadata<T>
 pub type moverox_sui::sui::coin::CoinMetadata<T>::TypeTag = moverox_sui::sui::coin::CoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::coin::CoinMetadata<T>
+pub fn moverox_sui::sui::coin::CoinMetadata<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::coin::CoinMetadataTypeTag<T: moverox_traits::MoveTypeTag>
 pub moverox_sui::sui::coin::CoinMetadataTypeTag::type_t: T
 impl<'de, T: moverox_traits::MoveTypeTag> serde::de::Deserialize<'de> for moverox_sui::sui::coin::CoinMetadataTypeTag<T>
@@ -819,12 +819,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::DenyCap<T>
 pub const fn moverox_sui::sui::coin::DenyCap<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::DenyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::DenyCap<T>
 pub const fn moverox_sui::sui::coin::DenyCap<T>::new(id: moverox_sui::sui::object::UID) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::DenyCap<T>
-pub fn moverox_sui::sui::coin::DenyCap<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::coin::DenyCap<T>
 pub type moverox_sui::sui::coin::DenyCap<T>::StructTag = moverox_sui::sui::coin::DenyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::coin::DenyCap<T>
 pub type moverox_sui::sui::coin::DenyCap<T>::TypeTag = moverox_sui::sui::coin::DenyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::coin::DenyCap<T>
+pub fn moverox_sui::sui::coin::DenyCap<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::coin::DenyCapTypeTag<T: moverox_traits::MoveTypeTag>
 pub moverox_sui::sui::coin::DenyCapTypeTag::type_t: T
 impl<'de, T: moverox_traits::MoveTypeTag> serde::de::Deserialize<'de> for moverox_sui::sui::coin::DenyCapTypeTag<T>
@@ -852,12 +852,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::DenyCapV2<T>
 pub const fn moverox_sui::sui::coin::DenyCapV2<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::DenyCapV2TypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::DenyCapV2<T>
 pub const fn moverox_sui::sui::coin::DenyCapV2<T>::new(id: moverox_sui::sui::object::UID, allow_global_pause: bool) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::DenyCapV2<T>
-pub fn moverox_sui::sui::coin::DenyCapV2<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::coin::DenyCapV2<T>
 pub type moverox_sui::sui::coin::DenyCapV2<T>::StructTag = moverox_sui::sui::coin::DenyCapV2TypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::coin::DenyCapV2<T>
 pub type moverox_sui::sui::coin::DenyCapV2<T>::TypeTag = moverox_sui::sui::coin::DenyCapV2TypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::coin::DenyCapV2<T>
+pub fn moverox_sui::sui::coin::DenyCapV2<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::coin::DenyCapV2TypeTag<T: moverox_traits::MoveTypeTag>
 pub moverox_sui::sui::coin::DenyCapV2TypeTag::type_t: T
 impl<'de, T: moverox_traits::MoveTypeTag> serde::de::Deserialize<'de> for moverox_sui::sui::coin::DenyCapV2TypeTag<T>
@@ -886,12 +886,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::RegulatedCoinMetadata<
 pub const fn moverox_sui::sui::coin::RegulatedCoinMetadata<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::RegulatedCoinMetadata<T>
 pub const fn moverox_sui::sui::coin::RegulatedCoinMetadata<T>::new(id: moverox_sui::sui::object::UID, coin_metadata_object: moverox_sui::sui::object::ID, deny_cap_object: moverox_sui::sui::object::ID) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::RegulatedCoinMetadata<T>
-pub fn moverox_sui::sui::coin::RegulatedCoinMetadata<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::coin::RegulatedCoinMetadata<T>
 pub type moverox_sui::sui::coin::RegulatedCoinMetadata<T>::StructTag = moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::coin::RegulatedCoinMetadata<T>
 pub type moverox_sui::sui::coin::RegulatedCoinMetadata<T>::TypeTag = moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::coin::RegulatedCoinMetadata<T>
+pub fn moverox_sui::sui::coin::RegulatedCoinMetadata<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T: moverox_traits::MoveTypeTag>
 pub moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag::type_t: T
 impl<'de, T: moverox_traits::MoveTypeTag> serde::de::Deserialize<'de> for moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>
@@ -919,12 +919,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::coin::TreasuryCap<T>
 pub const fn moverox_sui::sui::coin::TreasuryCap<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::coin::TreasuryCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::coin::TreasuryCap<T>
 pub const fn moverox_sui::sui::coin::TreasuryCap<T>::new(id: moverox_sui::sui::object::UID, total_supply: moverox_sui::sui::balance::Supply<T>) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::coin::TreasuryCap<T>
-pub fn moverox_sui::sui::coin::TreasuryCap<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::coin::TreasuryCap<T>
 pub type moverox_sui::sui::coin::TreasuryCap<T>::StructTag = moverox_sui::sui::coin::TreasuryCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::coin::TreasuryCap<T>
 pub type moverox_sui::sui::coin::TreasuryCap<T>::TypeTag = moverox_sui::sui::coin::TreasuryCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::coin::TreasuryCap<T>
+pub fn moverox_sui::sui::coin::TreasuryCap<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::coin::TreasuryCapTypeTag<T: moverox_traits::MoveTypeTag>
 pub moverox_sui::sui::coin::TreasuryCapTypeTag::type_t: T
 impl<'de, T: moverox_traits::MoveTypeTag> serde::de::Deserialize<'de> for moverox_sui::sui::coin::TreasuryCapTypeTag<T>
@@ -952,12 +952,12 @@ impl<WriteCap: moverox_traits::MoveType> moverox_sui::sui::config::Config<WriteC
 pub const fn moverox_sui::sui::config::Config<WriteCap>::type_tag(type_write_cap: <WriteCap as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::config::ConfigTypeTag<<WriteCap as moverox_traits::MoveType>::TypeTag>
 impl<WriteCap> moverox_sui::sui::config::Config<WriteCap>
 pub const fn moverox_sui::sui::config::Config<WriteCap>::new(id: moverox_sui::sui::object::UID) -> Self
-impl<WriteCap: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::config::Config<WriteCap>
-pub fn moverox_sui::sui::config::Config<WriteCap>::address(&self) -> moverox_types::address::Address
 impl<WriteCap: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::config::Config<WriteCap>
 pub type moverox_sui::sui::config::Config<WriteCap>::StructTag = moverox_sui::sui::config::ConfigTypeTag<<WriteCap as moverox_traits::MoveType>::TypeTag>
 impl<WriteCap: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::config::Config<WriteCap>
 pub type moverox_sui::sui::config::Config<WriteCap>::TypeTag = moverox_sui::sui::config::ConfigTypeTag<<WriteCap as moverox_traits::MoveType>::TypeTag>
+impl<WriteCap> moverox_traits::HasKey for moverox_sui::sui::config::Config<WriteCap>
+pub fn moverox_sui::sui::config::Config<WriteCap>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::config::ConfigTypeTag<WriteCap: moverox_traits::MoveTypeTag>
 pub moverox_sui::sui::config::ConfigTypeTag::type_write_cap: WriteCap
 impl<'de, WriteCap: moverox_traits::MoveTypeTag> serde::de::Deserialize<'de> for moverox_sui::sui::config::ConfigTypeTag<WriteCap>
@@ -1259,12 +1259,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::display::Display<T>
 pub const fn moverox_sui::sui::display::Display<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::display::DisplayTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::display::Display<T>
 pub const fn moverox_sui::sui::display::Display<T>::new(id: moverox_sui::sui::object::UID, fields: moverox_sui::sui::vec_map::VecMap<moverox_sui::move_stdlib::string::String, moverox_sui::move_stdlib::string::String>, version: u16) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::display::Display<T>
-pub fn moverox_sui::sui::display::Display<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::display::Display<T>
 pub type moverox_sui::sui::display::Display<T>::StructTag = moverox_sui::sui::display::DisplayTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::display::Display<T>
 pub type moverox_sui::sui::display::Display<T>::TypeTag = moverox_sui::sui::display::DisplayTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::display::Display<T>
+pub fn moverox_sui::sui::display::Display<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::display::DisplayCreated<T>
 pub moverox_sui::sui::display::DisplayCreated::id: moverox_sui::sui::object::ID
 impl<T: moverox_traits::MoveType> moverox_sui::sui::display::DisplayCreated<T>
@@ -1356,7 +1356,7 @@ impl<Name, Value> moverox_sui::sui::dynamic_field::Field<Name, Value>
 pub const fn moverox_sui::sui::dynamic_field::Field<Name, Value>::new(id: moverox_sui::sui::object::UID, name: Name, value: Value) -> Self
 impl<Name: moverox_traits::MoveType, Value: moverox_traits::MoveType> moverox_sui::sui::dynamic_field::Field<Name, Value>
 pub const fn moverox_sui::sui::dynamic_field::Field<Name, Value>::type_tag(type_name: <Name as moverox_traits::MoveType>::TypeTag, type_value: <Value as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::dynamic_field::FieldTypeTag<<Name as moverox_traits::MoveType>::TypeTag, <Value as moverox_traits::MoveType>::TypeTag>
-impl<Name: moverox_traits::MoveType, Value: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::dynamic_field::Field<Name, Value>
+impl<Name, Value> moverox_traits::HasKey for moverox_sui::sui::dynamic_field::Field<Name, Value>
 pub fn moverox_sui::sui::dynamic_field::Field<Name, Value>::address(&self) -> moverox_types::address::Address
 impl<Name: moverox_traits::MoveType, Value: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::dynamic_field::Field<Name, Value>
 pub type moverox_sui::sui::dynamic_field::Field<Name, Value>::StructTag = moverox_sui::sui::dynamic_field::FieldTypeTag<<Name as moverox_traits::MoveType>::TypeTag, <Value as moverox_traits::MoveType>::TypeTag>
@@ -1424,7 +1424,7 @@ impl<K, V> moverox_sui::sui::linked_table::LinkedTable<K, V>
 pub const fn moverox_sui::sui::linked_table::LinkedTable<K, V>::new(id: moverox_sui::sui::object::UID, size: u64, head: core::option::Option<K>, tail: core::option::Option<K>) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::linked_table::LinkedTable<K, V>
 pub const fn moverox_sui::sui::linked_table::LinkedTable<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::linked_table::LinkedTableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
-impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::linked_table::LinkedTable<K, V>
+impl<K, V> moverox_traits::HasKey for moverox_sui::sui::linked_table::LinkedTable<K, V>
 pub fn moverox_sui::sui::linked_table::LinkedTable<K, V>::address(&self) -> moverox_types::address::Address
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::linked_table::LinkedTable<K, V>
 pub type moverox_sui::sui::linked_table::LinkedTable<K, V>::StructTag = moverox_sui::sui::linked_table::LinkedTableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
@@ -1584,7 +1584,7 @@ impl<K, V> moverox_sui::sui::object_table::ObjectTable<K, V>
 pub const fn moverox_sui::sui::object_table::ObjectTable<K, V>::new(id: moverox_sui::sui::object::UID, size: u64) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::object_table::ObjectTable<K, V>
 pub const fn moverox_sui::sui::object_table::ObjectTable<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::object_table::ObjectTableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
-impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::object_table::ObjectTable<K, V>
+impl<K, V> moverox_traits::HasKey for moverox_sui::sui::object_table::ObjectTable<K, V>
 pub fn moverox_sui::sui::object_table::ObjectTable<K, V>::address(&self) -> moverox_types::address::Address
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::object_table::ObjectTable<K, V>
 pub type moverox_sui::sui::object_table::ObjectTable<K, V>::StructTag = moverox_sui::sui::object_table::ObjectTableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
@@ -1995,7 +1995,7 @@ impl<K, V> moverox_sui::sui::table::Table<K, V>
 pub const fn moverox_sui::sui::table::Table<K, V>::new(id: moverox_sui::sui::object::UID, size: u64) -> Self
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_sui::sui::table::Table<K, V>
 pub const fn moverox_sui::sui::table::Table<K, V>::type_tag(type_k: <K as moverox_traits::MoveType>::TypeTag, type_v: <V as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::table::TableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
-impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::table::Table<K, V>
+impl<K, V> moverox_traits::HasKey for moverox_sui::sui::table::Table<K, V>
 pub fn moverox_sui::sui::table::Table<K, V>::address(&self) -> moverox_types::address::Address
 impl<K: moverox_traits::MoveType, V: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::table::Table<K, V>
 pub type moverox_sui::sui::table::Table<K, V>::StructTag = moverox_sui::sui::table::TableTypeTag<<K as moverox_traits::MoveType>::TypeTag, <V as moverox_traits::MoveType>::TypeTag>
@@ -2126,12 +2126,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::token::Token<T>
 pub const fn moverox_sui::sui::token::Token<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::Token<T>
 pub const fn moverox_sui::sui::token::Token<T>::new(id: moverox_sui::sui::object::UID, balance: moverox_sui::sui::balance::Balance<T>) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::token::Token<T>
-pub fn moverox_sui::sui::token::Token<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::token::Token<T>
 pub type moverox_sui::sui::token::Token<T>::StructTag = moverox_sui::sui::token::TokenTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::token::Token<T>
 pub type moverox_sui::sui::token::Token<T>::TypeTag = moverox_sui::sui::token::TokenTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::token::Token<T>
+pub fn moverox_sui::sui::token::Token<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::token::TokenPolicy<T>
 pub moverox_sui::sui::token::TokenPolicy::id: moverox_sui::sui::object::UID
 pub moverox_sui::sui::token::TokenPolicy::rules: moverox_sui::sui::vec_map::VecMap<moverox_sui::move_stdlib::string::String, moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>>
@@ -2140,12 +2140,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::token::TokenPolicy<T>
 pub const fn moverox_sui::sui::token::TokenPolicy<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::TokenPolicy<T>
 pub const fn moverox_sui::sui::token::TokenPolicy<T>::new(id: moverox_sui::sui::object::UID, spent_balance: moverox_sui::sui::balance::Balance<T>, rules: moverox_sui::sui::vec_map::VecMap<moverox_sui::move_stdlib::string::String, moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>>) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::token::TokenPolicy<T>
-pub fn moverox_sui::sui::token::TokenPolicy<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::token::TokenPolicy<T>
 pub type moverox_sui::sui::token::TokenPolicy<T>::StructTag = moverox_sui::sui::token::TokenPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::token::TokenPolicy<T>
 pub type moverox_sui::sui::token::TokenPolicy<T>::TypeTag = moverox_sui::sui::token::TokenPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::token::TokenPolicy<T>
+pub fn moverox_sui::sui::token::TokenPolicy<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::token::TokenPolicyCap<T>
 pub moverox_sui::sui::token::TokenPolicyCap::for: moverox_sui::sui::object::ID
 pub moverox_sui::sui::token::TokenPolicyCap::id: moverox_sui::sui::object::UID
@@ -2153,12 +2153,12 @@ impl<T: moverox_traits::MoveType> moverox_sui::sui::token::TokenPolicyCap<T>
 pub const fn moverox_sui::sui::token::TokenPolicyCap<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::token::TokenPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T> moverox_sui::sui::token::TokenPolicyCap<T>
 pub const fn moverox_sui::sui::token::TokenPolicyCap<T>::new(id: moverox_sui::sui::object::UID, for: moverox_sui::sui::object::ID) -> Self
-impl<T: moverox_traits::MoveType> moverox_traits::HasKey for moverox_sui::sui::token::TokenPolicyCap<T>
-pub fn moverox_sui::sui::token::TokenPolicyCap<T>::address(&self) -> moverox_types::address::Address
 impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::token::TokenPolicyCap<T>
 pub type moverox_sui::sui::token::TokenPolicyCap<T>::StructTag = moverox_sui::sui::token::TokenPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
 impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::token::TokenPolicyCap<T>
 pub type moverox_sui::sui::token::TokenPolicyCap<T>::TypeTag = moverox_sui::sui::token::TokenPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::token::TokenPolicyCap<T>
+pub fn moverox_sui::sui::token::TokenPolicyCap<T>::address(&self) -> moverox_types::address::Address
 pub struct moverox_sui::sui::token::TokenPolicyCapTypeTag<T: moverox_traits::MoveTypeTag>
 pub moverox_sui::sui::token::TokenPolicyCapTypeTag::type_t: T
 impl<'de, T: moverox_traits::MoveTypeTag> serde::de::Deserialize<'de> for moverox_sui::sui::token::TokenPolicyCapTypeTag<T>
