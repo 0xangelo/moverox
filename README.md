@@ -30,7 +30,15 @@ public struct Field<Name: copy + drop + store, Value: store> has key {
 
 ### Synchronizing Rust with Move
 
-We can oxidize this struct (and all datatypes in the [Sui] Move package) by using [`moverox-build`]. As the name suggests, that is done in the `build.rs` script for your crate. See [`moverox-sui/build.rs`] for an example of how it's done in practice. The advantage of using a build script is that it will re-run every time the linked Move sources change, **keeping your oxidized Move datatypes in sync with your Move code**.
+We can oxidize this struct (and all datatypes in the [Sui] Move package) by using [`moverox-build`]. As the name suggests, that is done in the `build.rs` script for your crate. See [`moverox-sui/build.rs`] for an example of how it's done in practice. The advantage of using a build script is that it will re-run every time the linked Move sources change, **keeping your oxidized Move datatypes in sync with your Move code**. 
+
+To include the generated Rust code in your crate, simply use `moverox::include_oxidized!` like so:
+```rust
+/// Oxidized `Sui` @ `0x2`.
+pub mod sui {
+    moverox::include_oxidized!("sui");
+}
+```
 
 ### BCS-compatible oxidized datatypes
 
@@ -75,6 +83,7 @@ pub mod dynamic_field {
 Notice:
 - the type is declared under `mod dynamic_field`, matching the Move module it comes from
 - `serde` traits, since it's BCS-compatible with how the Move type is serialized
+- docs are inherited from the Move code
 - `id: super::object::UID` because `moverox-build` recognizes `UID` is an implicit import, resolves to its full path and sees that the type is defined in the same package (a `mod object` was also generated and contains the oxidized `UID`)
 - `HasKey` trait implementation because the Move type has the `key` ability
 - `MoveDatatype` derivation, more on this below
@@ -105,7 +114,44 @@ All of the above is leveraged when parsing a string into a `FieldTypeTag` (or co
 
 ### Safe deserialization
 
-Finally, combining the above is the `parse_move_instance`
+The `moverox::parse_move_datatype` helper combines the above to safely deserialize raw data returned from RPCs, in `CheckpointData` or in dev-inpect Move call returns. For example, imagine we have the following Move datatypes:
+```move
+// module manager;
+
+struct ManagerCap has key {
+    id: UID,
+    last_used: u64,
+}
+
+// module oracle;
+
+struct OracleCap has key {
+    id: UID,
+    last_used: u64,
+}
+```
+These are completely different types, but they share the same BCS representation. By oxidizing them with `moverox-build` and using the `moverox::parse_move_datatype` function, we short-circuit deserialization if the type tag doesn't confirm to our expected format:
+```rust
+let tag: StructTag = "0xbeef::manager::ManagerCap".parse().unwrap();
+let value = [
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 215, 108, 134, 104, 0, 0, 0, 0,
+];
+
+// Simply deserializing the BCS bytes succeeds for any of the two.
+assert!(bcs::from_bytes::<OracleCap>(&value).is_ok());
+assert!(bcs::from_bytes::<ManagerCap>(&value).is_ok());
+
+// `parse_move_datatype` requires struct tag information and leverages the specialized
+// `MoveDatatype::StructTag` to avoid deserializing if the type tags don't match
+assert!(parse_move_datatype::<OracleCap>(&tag, &value).is_err());
+assert!(parse_move_datatype::<ManagerCap>(&tag, &value).is_ok());
+```
+
+
+### Move syntax parsing
+
+The cornerstone of almost all the crates in this project is the [`move-syn`] crate, which uses [`unsynn`] to parse Move syntax into a structured intermediary representation. This repository leverages it primarily for Rust code generation, but it can be a building block for many other types of applications.
 
 
 [Sui]: https://github.com/MystenLabs/sui/tree/main/crates/sui-framework/packages/sui-framework
@@ -115,6 +161,8 @@ Finally, combining the above is the `parse_move_instance`
 [`ConstAddress`]: https://docs.rs/moverox-traits/latest/moverox_traits/trait.ConstAddress.html
 [`ConstModule`]: https://docs.rs/moverox-traits/latest/moverox_traits/trait.ConstModule.html
 [`ConstName`]: https://docs.rs/moverox-traits/latest/moverox_traits/trait.ConstName.html
+[`move-syn`]: ./crates/move-syn
+[`unsynn`]: https://docs.rs/unsynn
 
 ## License
 
@@ -135,7 +183,7 @@ dual licensed as above, without any additional terms or conditions.
 
 ## Inspirations
 
-This project was mostly inspired by [`tonic-build`] in how it generates Rust code from Protobuf files and the declarative macro [`tonic`]  for including generated files in crates.
+This project was mostly inspired by [`tonic-build`] in how it generates Rust code from Protobuf files and the declarative macro [`tonic`] uses for including generated files in crates.
 
 It incorporates a lot of lessons learned from my previous work developing [`af-sui-pkg-sdk`], which had similar goals but exported a declarative macro with lots of limitations and required manual work to keep the generated types updated as the Move code evolved.
 
