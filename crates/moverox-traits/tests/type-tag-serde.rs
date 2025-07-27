@@ -1,4 +1,11 @@
-use moverox_traits::{MoveDatatype, ParseStructTagError, StructTagError, TypeParamsError};
+use moverox_traits::{
+    ConstTypeTag as _,
+    MoveDatatype,
+    MoveType,
+    ParseStructTagError,
+    StructTagError,
+    TypeParamsError,
+};
 
 #[derive(
     Clone,
@@ -66,4 +73,19 @@ fn field_type_tag_deser() {
     insta::assert_snapshot!(from_str("0x2::dynamic_field::DynamicField<vector<u8>, u64>").unwrap_err(), @"Converting from StructTag: Wrong name: expected Field, got DynamicField");
 
     insta::assert_snapshot!(from_str("0x2::dynamic_field::Field<vector<u8>, u64, u64>").unwrap_err(), @"Converting from StructTag: Wrong type parameters: Wrong number of generics: expected 2, got 3");
+}
+
+#[test]
+fn field_type_tag_display() {
+    type TypeTag1 = <Field<bool, u64> as MoveDatatype>::StructTag;
+    type BytesTypeTag = <Vec<u8> as MoveType>::TypeTag;
+    type TypeTag2 = <Field<Vec<u8>, u64> as MoveDatatype>::StructTag;
+
+    const TYPE_TAG1: TypeTag1 = Field::<bool, u64>::type_tag(bool::TYPE_TAG, u64::TYPE_TAG);
+    const BYTES_TYPE_TAG: BytesTypeTag = Vec::<u8>::TYPE_TAG;
+    const TYPE_TAG2: TypeTag2 = Field::<Vec<u8>, u64>::type_tag(BYTES_TYPE_TAG, u64::TYPE_TAG);
+
+    insta::assert_snapshot!(TYPE_TAG1, @"0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<bool, u64>");
+    insta::assert_snapshot!(BYTES_TYPE_TAG, @"vector<u8>");
+    insta::assert_snapshot!(TYPE_TAG2, @"0x0000000000000000000000000000000000000000000000000000000000000002::dynamic_field::Field<vector<u8>, u64>");
 }

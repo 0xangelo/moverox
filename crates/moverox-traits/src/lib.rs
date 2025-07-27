@@ -122,6 +122,16 @@ pub trait ConstName {
     const NAME: &IdentStr;
 }
 
+/// [`MoveType`] with a constant type tag.
+pub trait ConstTypeTag: MoveType {
+    const TYPE_TAG: Self::TypeTag;
+}
+
+/// [`MoveDatatype`] with a constant struct tag.
+pub trait ConstStructTag: MoveDatatype {
+    const STRUCT_TAG: Self::StructTag;
+}
+
 // =============================================================================
 //  Errors used in traits
 // =============================================================================

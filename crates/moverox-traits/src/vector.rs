@@ -1,6 +1,6 @@
 use moverox_types::TypeTag;
 
-use crate::{MoveType, MoveTypeTag, TypeTagError};
+use crate::{ConstTypeTag, MoveType, MoveTypeTag, ParseTypeTagError, TypeTagError};
 
 impl<T: MoveType> MoveType for Vec<T> {
     type TypeTag = VecTypeTag<T::TypeTag>;
@@ -23,5 +23,25 @@ impl<T: MoveTypeTag> MoveTypeTag for VecTypeTag<T> {
 
     fn to_type_tag(&self) -> TypeTag {
         TypeTag::Vector(Box::new(self.0.to_type_tag()))
+    }
+}
+
+impl<T: ConstTypeTag> ConstTypeTag for Vec<T> {
+    const TYPE_TAG: VecTypeTag<T::TypeTag> = VecTypeTag(T::TYPE_TAG);
+}
+
+impl<T: MoveTypeTag> std::fmt::Display for VecTypeTag<T> {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        let stag = MoveTypeTag::to_type_tag(self);
+        write!(f, "{}", stag)
+    }
+}
+
+impl<T: MoveTypeTag> std::str::FromStr for VecTypeTag<T> {
+    type Err = ParseTypeTagError;
+
+    fn from_str(s: &str) -> Result<Self, Self::Err> {
+        let tag = s.parse().map_err(ParseTypeTagError::from_str)?;
+        Ok(Self::from_type_tag(&tag)?)
     }
 }
