@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.3](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.2...move-syn-v0.0.3)
+
+### 🚜 Refactor
+
+- *(move-syn)* Make `named_address::module as alias::...` unrepresentable - ([a3c945c](https://github.com/0xangelo/moverox/commit/a3c945c36941fa3d0cba9cd5f6709d594e4999e0))
+
+
 ## [0.0.2](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.1...move-syn-v0.0.2)
 
 ### 📚 Documentation
