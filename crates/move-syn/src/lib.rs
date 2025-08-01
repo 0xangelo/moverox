@@ -215,8 +215,20 @@ unsynn! {
 
     #[derive(Clone)]
     struct ModuleOrItems {
-        ident: MaybeAliased,
-        items: Option<Cons<PathSep, ImportItem>>,
+        ident: Ident,
+        next: Option<AliasOrItems>,
+    }
+
+    #[derive(Clone)]
+    enum AliasOrItems {
+        Alias {
+            as_kw: kw::As,
+            alias: Ident,
+        },
+        Items {
+            sep: PathSep,
+            item: ImportItem,
+        }
     }
 
     #[derive(Clone)]
@@ -643,7 +655,9 @@ impl Module {
 }
 
 impl Import {
-    fn flatten(&self) -> impl Iterator<Item = (Ident, FlatImport)> + use<> {
+    /// List of idents (or aliases) brought into scope by this import and their paths
+    /// (`named_address::module(::item)?`).
+    fn flatten(&self) -> impl Iterator<Item = (Ident, FlatImport)> + '_ {
         let named_address = self.named_address.clone();
         match &self.module {
             // use named_address::module...
@@ -652,8 +666,7 @@ impl Import {
             ImportModule::Many(BraceGroupContaining {
                 content: DelimitedVec(ms),
             }) => ms
-                .clone()
-                .into_iter()
+                .iter()
                 .flat_map(move |Delimited { value, .. }| value.flatten(named_address.clone()))
                 .boxed(),
         }
@@ -674,36 +687,55 @@ impl Import {
 }
 
 impl ModuleOrItems {
-    fn flatten(&self, named_address: Ident) -> Box<dyn Iterator<Item = (Ident, FlatImport)>> {
-        let Self { ident, items } = self;
-        let module = ident.clone();
-        let Some(Cons { second: items, .. }) = items else {
-            // module( as alias)?
+    /// Flat canonical imports (`named_address::module(::item)?`).
+    fn flatten(&self, named_address: Ident) -> Box<dyn Iterator<Item = (Ident, FlatImport)> + '_> {
+        let module = self.ident.clone();
+
+        let Some(next) = &self.next else {
+            // module;
             return std::iter::once((
-                module.available_as().clone(),
+                module.clone(),
                 FlatImport::Module {
                     named_address,
-                    module: module.ident,
+                    module,
                 },
             ))
             .boxed();
         };
-        match items {
-            // module::item( as alias)?
-            ImportItem::One(maybe_aliased) => std::iter::once((
+
+        match next {
+            // module as alias;
+            AliasOrItems::Alias { alias, .. } => std::iter::once((
+                alias.clone(),
+                FlatImport::Module {
+                    named_address,
+                    module,
+                },
+            ))
+            .boxed(),
+
+            // module::item( as alias)?;
+            AliasOrItems::Items {
+                item: ImportItem::One(maybe_aliased),
+                ..
+            } => std::iter::once((
                 maybe_aliased.available_as().clone(),
                 FlatImport::Item {
                     named_address,
-                    // FIXME: module can't have alias here
-                    module: module.ident,
+                    module,
                     r#type: maybe_aliased.ident.clone(),
                 },
             ))
             .boxed(),
-            // module::{(item( as alias)?),+}
-            ImportItem::Many(BraceGroupContaining {
-                content: DelimitedVec(items),
-            }) => {
+
+            // module::{(item( as alias)?),+};
+            AliasOrItems::Items {
+                item:
+                    ImportItem::Many(BraceGroupContaining {
+                        content: DelimitedVec(items),
+                    }),
+                ..
+            } => {
                 let delimiteds = items.clone();
                 delimiteds
                     .into_iter()
@@ -712,8 +744,7 @@ impl ModuleOrItems {
                             value.available_as().clone(),
                             FlatImport::Item {
                                 named_address: named_address.clone(),
-                                // FIXME: module can't have alias here
-                                module: module.ident.clone(),
+                                module: module.clone(),
                                 r#type: value.ident,
                             },
                         )
@@ -723,15 +754,27 @@ impl ModuleOrItems {
         }
     }
 
+    /// Identifiers this import makes available in scope.
     fn available_idents(&self) -> Box<dyn Iterator<Item = &Ident> + '_> {
-        let Some(Cons { second: items, .. }) = &self.items else {
-            return std::iter::once(self.ident.available_as()).boxed();
+        let Some(next) = &self.next else {
+            return std::iter::once(&self.ident).boxed();
         };
-        match items {
-            ImportItem::One(item) => std::iter::once(item.available_as()).boxed(),
-            ImportItem::Many(BraceGroupContaining {
-                content: DelimitedVec(items),
-            }) => items
+
+        match next {
+            AliasOrItems::Alias { alias, .. } => std::iter::once(alias).boxed(),
+
+            AliasOrItems::Items {
+                item: ImportItem::One(item),
+                ..
+            } => std::iter::once(item.available_as()).boxed(),
+
+            AliasOrItems::Items {
+                item:
+                    ImportItem::Many(BraceGroupContaining {
+                        content: DelimitedVec(items),
+                    }),
+                ..
+            } => items
                 .iter()
                 .map(|delimited| delimited.value.available_as())
                 .boxed(),
