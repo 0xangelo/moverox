@@ -191,7 +191,7 @@ impl<'a> Builder<'a> {
         // substitute that named address prefix with `super`, since oxidized modules will all
         // be right under the same 'super' module.
         for module in move_modules {
-            address_map.insert(module.named_addres.clone(), "super".to_token_stream());
+            address_map.insert(module.named_address.clone(), "super".to_token_stream());
         }
 
         let package_address = self

@@ -87,7 +87,7 @@ unsynn! {
     pub struct LabeledModule {
         attrs: Vec<Attribute>,
         keyword: kw::Module,
-        named_addres: Ident,
+        named_address: Ident,
         path_sep: PathSep,
         ident: Ident,
         semicolon: Semicolon,
@@ -98,7 +98,7 @@ unsynn! {
     pub struct Module {
         pub attrs: Vec<Attribute>,
         keyword: kw::Module,
-        pub named_addres: Ident,
+        pub named_address: Ident,
         path_sep: PathSep,
         pub ident: Ident,
         contents: BraceGroupContaining<Vec<Item>>,
@@ -524,7 +524,7 @@ impl LabeledModule {
         Module {
             attrs: self.attrs,
             keyword: self.keyword,
-            named_addres: self.named_addres,
+            named_address: self.named_address,
             path_sep: self.path_sep,
             ident: self.ident,
             contents: BraceGroupContaining {
