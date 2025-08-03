@@ -385,7 +385,7 @@ pub fn move_syn::MacroFun::to_tokens(&self, tokens: &mut proc_macro2::TokenStrea
 pub struct move_syn::Module
 pub move_syn::Module::attrs: alloc::vec::Vec<move_syn::Attribute>
 pub move_syn::Module::ident: proc_macro2::Ident
-pub move_syn::Module::named_addres: proc_macro2::Ident
+pub move_syn::Module::named_address: proc_macro2::Ident
 impl move_syn::Module
 pub fn move_syn::Module::fully_qualify_datatype_field_types(&mut self) -> &mut Self
 pub fn move_syn::Module::items(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Item>
