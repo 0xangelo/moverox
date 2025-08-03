@@ -1,0 +1,13 @@
+---
+source: crates/move-syn/src/tests/imports/sui_framework.rs
+expression: flat_imports(ast)
+---
+bag -> sui::bag
+Bag -> sui::bag::Bag
+config -> sui::config
+Config -> sui::config::Config
+ofield -> sui::dynamic_object_field
+table -> sui::table
+Table -> sui::table::Table
+vec_set -> sui::vec_set
+VecSet -> sui::vec_set::VecSet

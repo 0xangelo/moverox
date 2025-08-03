@@ -621,6 +621,11 @@ impl Module {
         self.contents.content.iter()
     }
 
+    #[cfg(test)]
+    pub fn into_items(self) -> impl Iterator<Item = Item> {
+        self.contents.content.into_iter()
+    }
+
     fn datatypes_mut(&mut self) -> impl Iterator<Item = &mut dyn Datatype> {
         self.contents.content.iter_mut().filter_map(|item| {
             Some(match &mut item.kind {
@@ -718,15 +723,7 @@ impl ModuleOrItems {
             AliasOrItems::Items {
                 item: ImportItem::One(maybe_aliased),
                 ..
-            } => std::iter::once((
-                maybe_aliased.available_as().clone(),
-                FlatImport::Item {
-                    named_address,
-                    module,
-                    r#type: maybe_aliased.ident.clone(),
-                },
-            ))
-            .boxed(),
+            } => std::iter::once(maybe_aliased.flat_import(named_address, module)).boxed(),
 
             // module::{(item( as alias)?),+};
             AliasOrItems::Items {
@@ -735,22 +732,12 @@ impl ModuleOrItems {
                         content: DelimitedVec(items),
                     }),
                 ..
-            } => {
-                let delimiteds = items.clone();
-                delimiteds
-                    .into_iter()
-                    .map(move |Delimited { value, .. }| {
-                        (
-                            value.available_as().clone(),
-                            FlatImport::Item {
-                                named_address: named_address.clone(),
-                                module: module.clone(),
-                                r#type: value.ident,
-                            },
-                        )
-                    })
-                    .boxed()
-            }
+            } => items
+                .iter()
+                .map(move |Delimited { value, .. }| {
+                    value.flat_import(named_address.clone(), module.clone())
+                })
+                .boxed(),
         }
     }
 
@@ -766,7 +753,7 @@ impl ModuleOrItems {
             AliasOrItems::Items {
                 item: ImportItem::One(item),
                 ..
-            } => std::iter::once(item.available_as()).boxed(),
+            } => std::iter::once(item.available_ident(&self.ident)).boxed(),
 
             AliasOrItems::Items {
                 item:
@@ -776,20 +763,46 @@ impl ModuleOrItems {
                 ..
             } => items
                 .iter()
-                .map(|delimited| delimited.value.available_as())
+                .map(|delimited| delimited.value.available_ident(&self.ident))
                 .boxed(),
         }
     }
 }
 
 impl MaybeAliased {
-    /// The identifier that's available in scope;
-    const fn available_as(&self) -> &Ident {
-        if let Some(Cons { second: alias, .. }) = &self.alias {
-            alias
+    /// Special handling for `Self` imports.
+    fn flat_import(&self, named_address: Ident, module: Ident) -> (Ident, FlatImport) {
+        if self.ident == "Self" {
+            (
+                self.alias().unwrap_or(&module).clone(),
+                FlatImport::Module {
+                    named_address,
+                    module,
+                },
+            )
         } else {
-            &self.ident
+            (
+                self.alias().unwrap_or(&self.ident).clone(),
+                FlatImport::Item {
+                    named_address,
+                    module,
+                    r#type: self.ident.clone(),
+                },
+            )
         }
+    }
+
+    fn available_ident<'a>(&'a self, module: &'a Ident) -> &'a Ident {
+        if self.ident == "Self" {
+            self.alias().unwrap_or(module)
+        } else {
+            self.alias().unwrap_or(&self.ident)
+        }
+    }
+
+    /// The identifier alias that's available in scope, if any.
+    fn alias(&self) -> Option<&Ident> {
+        self.alias.as_ref().map(|cons| &cons.second)
     }
 }
 
@@ -1004,11 +1017,11 @@ impl Generics {
 
 // === Non-lang items ===
 
+#[cfg_attr(test, derive(derive_more::Display))]
 enum FlatImport {
-    Module {
-        named_address: Ident,
-        module: Ident,
-    },
+    #[cfg_attr(test, display("{named_address}::{module}"))]
+    Module { named_address: Ident, module: Ident },
+    #[cfg_attr(test, display("{named_address}::{module}::{type}"))]
     Item {
         named_address: Ident,
         module: Ident,

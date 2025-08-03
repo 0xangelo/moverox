@@ -1,0 +1,8 @@
+---
+source: crates/move-syn/src/tests/imports/sui_framework.rs
+expression: flat_imports(ast)
+---
+ascii -> std::ascii
+bcs -> std::bcs
+string -> std::string
+hex -> sui::hex

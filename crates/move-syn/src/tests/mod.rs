@@ -1,4 +1,6 @@
-use super::*;
+use crate::*;
+
+mod imports;
 
 #[test]
 fn empty_struct() {
