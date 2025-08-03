@@ -1,0 +1,17 @@
+---
+source: crates/move-syn/src/tests/imports/sui_framework.rs
+expression: flat_imports(ast)
+---
+String -> std::string::String
+type_name -> std::type_name
+TypeName -> std::type_name::TypeName
+balance -> sui::balance
+Balance -> sui::balance::Balance
+Coin -> sui::coin::Coin
+TreasuryCap -> sui::coin::TreasuryCap
+df -> sui::dynamic_field
+event -> sui::event
+vec_map -> sui::vec_map
+VecMap -> sui::vec_map::VecMap
+vec_set -> sui::vec_set
+VecSet -> sui::vec_set::VecSet

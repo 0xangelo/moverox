@@ -1,0 +1,5 @@
+---
+source: crates/move-syn/src/tests/imports/move_stdlib.rs
+expression: flat_imports(ast)
+---
+ascii -> std::ascii

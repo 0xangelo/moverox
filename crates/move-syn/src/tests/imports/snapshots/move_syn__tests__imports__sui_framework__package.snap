@@ -1,0 +1,7 @@
+---
+source: crates/move-syn/src/tests/imports/sui_framework.rs
+expression: flat_imports(ast)
+---
+String -> std::ascii::String
+type_name -> std::type_name
+types -> sui::types

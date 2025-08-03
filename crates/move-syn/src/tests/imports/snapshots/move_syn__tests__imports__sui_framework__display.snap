@@ -1,0 +1,9 @@
+---
+source: crates/move-syn/src/tests/imports/sui_framework.rs
+expression: flat_imports(ast)
+---
+String -> std::string::String
+event -> sui::event
+Publisher -> sui::package::Publisher
+vec_map -> sui::vec_map
+VecMap -> sui::vec_map::VecMap

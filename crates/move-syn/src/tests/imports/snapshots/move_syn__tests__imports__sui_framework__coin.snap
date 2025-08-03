@@ -1,0 +1,13 @@
+---
+source: crates/move-syn/src/tests/imports/sui_framework.rs
+expression: flat_imports(ast)
+---
+ascii -> std::ascii
+string -> std::string
+type_name -> std::type_name
+balance -> sui::balance
+Balance -> sui::balance::Balance
+Supply -> sui::balance::Supply
+DenyList -> sui::deny_list::DenyList
+url -> sui::url
+Url -> sui::url::Url

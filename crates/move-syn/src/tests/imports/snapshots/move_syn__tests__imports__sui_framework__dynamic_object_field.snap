@@ -1,0 +1,9 @@
+---
+source: crates/move-syn/src/tests/imports/sui_framework.rs
+expression: flat_imports(ast)
+---
+field -> sui::dynamic_field
+add_child_object -> sui::dynamic_field::add_child_object
+borrow_child_object -> sui::dynamic_field::borrow_child_object
+borrow_child_object_mut -> sui::dynamic_field::borrow_child_object_mut
+remove_child_object -> sui::dynamic_field::remove_child_object

@@ -1,0 +1,8 @@
+---
+source: crates/move-syn/src/tests/imports/sui_framework.rs
+expression: flat_imports(ast)
+---
+bcs -> std::bcs
+hmac_sha3_256 -> sui::hmac::hmac_sha3_256
+versioned -> sui::versioned
+Versioned -> sui::versioned::Versioned
