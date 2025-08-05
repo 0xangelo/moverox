@@ -38,6 +38,6 @@ moverox-build = { version = "0.0.2", path = "../moverox-build" }
 
 [dev-dependencies]
 insta            = "1"
-public-api       = "0.49"
+public-api       = "0.50"
 rustdoc-json     = "0.9"
 rustup-toolchain = "0.1"
