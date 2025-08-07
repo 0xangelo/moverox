@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.3](https://github.com/0xangelo/moverox/compare/moverox-build-v0.0.2...moverox-build-v0.0.3)
+
+### 🚜 Refactor
+
+- *(move-syn)* [**breaking**] Fix typo in field name ([#14](https://github.com/0xangelo/moverox/pull/14)) - ([404d385](https://github.com/0xangelo/moverox/commit/404d3852031df77601a2ac8a764bfd8e6374d790))
+
+
 ## [0.0.2](https://github.com/0xangelo/moverox/compare/moverox-build-v0.0.1...moverox-build-v0.0.2)
 
 ### 📚 Documentation
