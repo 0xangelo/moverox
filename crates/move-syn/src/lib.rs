@@ -165,6 +165,7 @@ unsynn! {
         NativeFun(NativeFun)
     }
 
+    /// Alias for a receiver method, like `use fun foo as Bar.bar;`
     pub struct UseFun {
         keyword: kw::Use,
         fun_kw: kw::Fun,
