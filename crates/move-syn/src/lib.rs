@@ -807,8 +807,14 @@ impl MaybeAliased {
 }
 
 impl Attribute {
+    /// Whether this is a `#[doc = "..."]`.
     pub const fn is_doc(&self) -> bool {
         matches!(self.contents.content, AttributeContent::Doc(_))
+    }
+
+    /// Everything inside the bracket group, `#[...]`.
+    pub const fn contents(&self) -> &impl ToTokens {
+        &self.contents.content
     }
 }
 
