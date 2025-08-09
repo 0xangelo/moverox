@@ -8,8 +8,11 @@ use std::collections::HashMap;
 pub use unsynn;
 use unsynn::*;
 
+mod functions;
 #[cfg(test)]
 mod tests;
+
+pub use self::functions::Function;
 
 /// Process raw Move code so that it can be used as input to Rust's tokenizer.
 ///
@@ -386,56 +389,6 @@ unsynn! {
         Store(kw::Store),
     }
 
-    // === Types ===
-
-    /// Type of function arguments or returns.
-    struct MaybeRefType {
-        r#ref: Option<Ref>,
-        r#type: Type,
-    }
-
-    /// The reference prefix
-    struct Ref {
-        and: And,
-        r#mut: Option<kw::Mut>,
-    }
-
-    /// Non-reference type, used in datatype fields.
-    #[derive(Clone)]
-    pub struct Type {
-        pub path: TypePath,
-        pub type_args: Option<TypeArgs>
-    }
-
-    /// Path to a type.
-    #[derive(Clone)]
-    pub enum TypePath {
-        /// Fully qualified,
-        Full {
-            named_address: Ident,
-            sep0: PathSep,
-            module: Ident,
-            sep1: PathSep,
-            r#type: Ident,
-        },
-        /// Module prefix only, if it was imported already.
-        Module {
-            module: Ident,
-            sep: PathSep,
-            r#type: Ident,
-        },
-        /// Only the type identifier.
-        Ident(Ident),
-    }
-
-    /// Angle bracket group (`<...>`) containing comma-delimited types.
-    #[derive(Clone)]
-    pub struct TypeArgs {
-        lt: Lt,
-        args: Many<Box<Type>, Comma>,
-        gt: Gt,
-    }
-
     // === Functions ===
 
     pub struct NativeFun {
@@ -446,16 +399,6 @@ unsynn! {
         args: ParenthesisGroup,
         ret: Option<Cons<Colon, Either<MaybeRefType, ParenthesisGroup>>>,
         semicolon: Semicolon
-    }
-
-    pub struct Function {
-        entry: Option<kw::Entry>,
-        fun_kw: kw::Fun,
-        ident: Ident,
-        generics: Option<Generics>,
-        args: ParenthesisGroup,
-        ret: Option<Cons<Colon, Either<MaybeRefType, ParenthesisGroup>>>,
-        body: BraceGroup,
     }
 
     // === Macros ===
@@ -508,6 +451,56 @@ unsynn! {
     struct MacroTypeName {
         dollar: Dollar,
         ident: Ident,
+    }
+
+    // === Types ===
+
+    /// Type of function arguments or returns.
+    struct MaybeRefType {
+        r#ref: Option<Ref>,
+        r#type: Type,
+    }
+
+    /// The reference prefix
+    struct Ref {
+        and: And,
+        r#mut: Option<kw::Mut>,
+    }
+
+    /// Non-reference type, used in datatype fields.
+    #[derive(Clone)]
+    pub struct Type {
+        pub path: TypePath,
+        pub type_args: Option<TypeArgs>
+    }
+
+    /// Path to a type.
+    #[derive(Clone)]
+    pub enum TypePath {
+        /// Fully qualified,
+        Full {
+            named_address: Ident,
+            sep0: PathSep,
+            module: Ident,
+            sep1: PathSep,
+            r#type: Ident,
+        },
+        /// Module prefix only, if it was imported already.
+        Module {
+            module: Ident,
+            sep: PathSep,
+            r#type: Ident,
+        },
+        /// Only the type identifier.
+        Ident(Ident),
+    }
+
+    /// Angle bracket group (`<...>`) containing comma-delimited types.
+    #[derive(Clone)]
+    pub struct TypeArgs {
+        lt: Lt,
+        args: Many<Box<Type>, Comma>,
+        gt: Gt,
     }
 }
 

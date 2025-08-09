@@ -383,6 +383,9 @@ pub fn move_syn::EnumVariant::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsy
 impl unsynn::ToTokens for move_syn::EnumVariant
 pub fn move_syn::EnumVariant::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Function
+impl move_syn::Function
+pub const fn move_syn::Function::ident(&self) -> &proc_macro2::Ident
+pub const fn move_syn::Function::is_entry(&self) -> bool
 impl unsynn::Parser for move_syn::Function
 pub fn move_syn::Function::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Function
