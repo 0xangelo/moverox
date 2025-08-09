@@ -1,7 +1,7 @@
 [package]
 description = "Oxidized Sui Move framework packages and compatibility layer for `sui_sdk_types`"
 name        = "moverox-sui"
-version     = "0.0.3"
+version     = "0.0.4"
 
 authors.workspace      = true
 categories.workspace   = true
@@ -33,7 +33,7 @@ sealed = { version = "0.6", optional = true }
 
 
 [build-dependencies]
-moverox-build = { version = "0.0.3", path = "../moverox-build" }
+moverox-build = { version = "0.0.4", path = "../moverox-build" }
 
 
 [dev-dependencies]
