@@ -23,3 +23,10 @@ jobs:
           # never post a comment.  (In all cases the information is
           # still available in the step's summary.)
           comment: on-error
+
+  lint:
+    name: Conventional Commits
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: webiny/action-conventional-commits@v1.3.0
