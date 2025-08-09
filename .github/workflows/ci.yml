@@ -81,6 +81,7 @@ jobs:
       - name: Run tests
         run: |-
           cargo nextest run --all-features --all-targets -- --skip 'public_api'
+          cargo nextest run --all-features --all-targets --test public-api -j 1
           cargo test --doc
 
   docs:
