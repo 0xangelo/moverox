@@ -1,7 +1,7 @@
 name: pull-request
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, edited, reopened, synchronize]
 jobs:
   check-fast-forward:
     runs-on: ubuntu-latest
@@ -24,9 +24,19 @@ jobs:
           # still available in the step's summary.)
           comment: on-error
 
-  lint:
+  commits:
     name: Conventional Commits
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: webiny/action-conventional-commits@v1.3.0
+
+  title:
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: read
+    steps:
+      - uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
