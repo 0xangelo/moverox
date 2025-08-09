@@ -28,8 +28,8 @@ pub mod enums {
     pub enum Single {
         Only,
     }
-    /// `Segment` enum definition.
-    /// Defines various string segments.
+    #[cfg_attr(not(doctest), doc = " `Segment` enum definition.")]
+    #[cfg_attr(not(doctest), doc = " Defines various string segments.")]
     #[derive(
         Clone,
         Debug,
@@ -100,7 +100,10 @@ pub mod other {
         OtherPositional(T),
         OtherNamed { inner: T },
     }
-    /// Type parameter `Single` should shadow the imported type with the same name.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Type parameter `Single` should shadow the imported type with the same name."
+    )]
     #[derive(
         Clone,
         Debug,

@@ -2,8 +2,14 @@
 source: crates/moverox-build/src/tests.rs
 expression: move_stdlib
 ---
-/// The `ASCII` module defines basic string and char newtypes in Move that verify
-/// that characters are valid ASCII, and that strings consist of only valid ASCII characters.
+#[cfg_attr(
+    not(doctest),
+    doc = " The `ASCII` module defines basic string and char newtypes in Move that verify"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " that characters are valid ASCII, and that strings consist of only valid ASCII characters."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod ascii {
@@ -13,11 +19,23 @@ pub mod ascii {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// The `String` struct holds a vector of bytes that all represent
-    /// valid ASCII characters. Note that these ASCII characters may not all
-    /// be printable. To determine if a `String` contains only "printable"
-    /// characters you should use the `all_characters_printable` predicate
-    /// defined in this module.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The `String` struct holds a vector of bytes that all represent"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " valid ASCII characters. Note that these ASCII characters may not all"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " be printable. To determine if a `String` contains only \"printable\""
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " characters you should use the `all_characters_printable` predicate"
+    )]
+    #[cfg_attr(not(doctest), doc = " defined in this module.")]
     #[derive(
         Clone,
         Debug,
@@ -42,7 +60,7 @@ pub mod ascii {
             Self { bytes }
         }
     }
-    /// An ASCII character.
+    #[cfg_attr(not(doctest), doc = " An ASCII character.")]
     #[derive(
         Clone,
         Debug,
@@ -103,8 +121,11 @@ pub mod bit_vector {
         }
     }
 }
-/// Defines a fixed-point numeric type with a 32-bit integer part and
-/// a 32-bit fractional part.
+#[cfg_attr(
+    not(doctest),
+    doc = " Defines a fixed-point numeric type with a 32-bit integer part and"
+)]
+#[cfg_attr(not(doctest), doc = " a 32-bit fractional part.")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod fixed_point32 {
@@ -114,15 +135,39 @@ pub mod fixed_point32 {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Define a fixed-point numeric type with 32 fractional bits.
-    /// This is just a u64 integer but it is wrapped in a struct to
-    /// make a unique type. This is a binary representation, so decimal
-    /// values may not be exactly representable, but it provides more
-    /// than 9 decimal digits of precision both before and after the
-    /// decimal point (18 digits total). For comparison, double precision
-    /// floating-point has less than 16 decimal digits of precision, so
-    /// be careful about using floating-point to convert these values to
-    /// decimal.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Define a fixed-point numeric type with 32 fractional bits."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " This is just a u64 integer but it is wrapped in a struct to"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " make a unique type. This is a binary representation, so decimal"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " values may not be exactly representable, but it provides more"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " than 9 decimal digits of precision both before and after the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " decimal point (18 digits total). For comparison, double precision"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " floating-point has less than 16 decimal digits of precision, so"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " be careful about using floating-point to convert these values to"
+    )]
+    #[cfg_attr(not(doctest), doc = " decimal.")]
     #[derive(
         Clone,
         Debug,
@@ -148,7 +193,10 @@ pub mod fixed_point32 {
         }
     }
 }
-/// This module defines the Option type and its methods to represent and handle an optional value.
+#[cfg_attr(
+    not(doctest),
+    doc = " This module defines the Option type and its methods to represent and handle an optional value."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod option {
@@ -158,8 +206,14 @@ pub mod option {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Abstraction of a value that may or may not be present. Implemented with a vector of size
-    /// zero or one because Move bytecode does not have ADTs.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Abstraction of a value that may or may not be present. Implemented with a vector of size"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " zero or one because Move bytecode does not have ADTs."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -185,8 +239,11 @@ pub mod option {
         }
     }
 }
-/// The `string` module defines the `String` type which represents UTF8 encoded
-/// strings.
+#[cfg_attr(
+    not(doctest),
+    doc = " The `string` module defines the `String` type which represents UTF8 encoded"
+)]
+#[cfg_attr(not(doctest), doc = " strings.")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod string {
@@ -196,8 +253,11 @@ pub mod string {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A `String` holds a sequence of bytes which is guaranteed to be in utf8
-    /// format.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A `String` holds a sequence of bytes which is guaranteed to be in utf8"
+    )]
+    #[cfg_attr(not(doctest), doc = " format.")]
     #[derive(
         Clone,
         Debug,
@@ -223,7 +283,10 @@ pub mod string {
         }
     }
 }
-/// Functionality for converting Move types into values. Use with care!
+#[cfg_attr(
+    not(doctest),
+    doc = " Functionality for converting Move types into values. Use with care!"
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod type_name {
@@ -265,12 +328,30 @@ pub mod type_name {
         }
     }
 }
-/// Defines an unsigned, fixed-point numeric type with a 32-bit integer part and a 32-bit fractional
-/// part. The notation `uq32_32` and `UQ32_32` is based on
-/// [Q notation](https://en.wikipedia.org/wiki/Q_(number_format)). `q` indicates it a fixed-point
-/// number. The `u` prefix indicates it is unsigned. The `32_32` suffix indicates the number of
-/// bits, where the first number indicates the number of bits in the integer part, and the second
-/// the number of bits in the fractional part--in this case 32 bits for each.
+#[cfg_attr(
+    not(doctest),
+    doc = " Defines an unsigned, fixed-point numeric type with a 32-bit integer part and a 32-bit fractional"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " part. The notation `uq32_32` and `UQ32_32` is based on"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " [Q notation](https://en.wikipedia.org/wiki/Q_(number_format)). `q` indicates it a fixed-point"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " number. The `u` prefix indicates it is unsigned. The `32_32` suffix indicates the number of"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " bits, where the first number indicates the number of bits in the integer part, and the second"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " the number of bits in the fractional part--in this case 32 bits for each."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod uq32_32 {
@@ -280,10 +361,19 @@ pub mod uq32_32 {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A fixed-point numeric type with 32 integer bits and 32 fractional bits, represented by an
-    /// underlying 64 bit value. This is a binary representation, so decimal values may not be exactly
-    /// representable, but it provides more than 9 decimal digits of precision both before and after the
-    /// decimal point (18 digits total).
+    #[cfg_attr(
+        not(doctest),
+        doc = " A fixed-point numeric type with 32 integer bits and 32 fractional bits, represented by an"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " underlying 64 bit value. This is a binary representation, so decimal values may not be exactly"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " representable, but it provides more than 9 decimal digits of precision both before and after the"
+    )]
+    #[cfg_attr(not(doctest), doc = " decimal point (18 digits total).")]
     #[derive(
         Clone,
         Debug,
@@ -307,12 +397,30 @@ pub mod uq32_32 {
         }
     }
 }
-/// Defines an unsigned, fixed-point numeric type with a 64-bit integer part and a 64-bit fractional
-/// part. The notation `uq64_64` and `UQ64_64` is based on
-/// [Q notation](https://en.wikipedia.org/wiki/Q_(number_format)). `q` indicates it a fixed-point
-/// number. The `u` prefix indicates it is unsigned. The `64_64` suffix indicates the number of
-/// bits, where the first number indicates the number of bits in the integer part, and the second
-/// the number of bits in the fractional part--in this case 64 bits for each.
+#[cfg_attr(
+    not(doctest),
+    doc = " Defines an unsigned, fixed-point numeric type with a 64-bit integer part and a 64-bit fractional"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " part. The notation `uq64_64` and `UQ64_64` is based on"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " [Q notation](https://en.wikipedia.org/wiki/Q_(number_format)). `q` indicates it a fixed-point"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " number. The `u` prefix indicates it is unsigned. The `64_64` suffix indicates the number of"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " bits, where the first number indicates the number of bits in the integer part, and the second"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " the number of bits in the fractional part--in this case 64 bits for each."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod uq64_64 {
@@ -322,10 +430,19 @@ pub mod uq64_64 {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A fixed-point numeric type with 64 integer bits and 64 fractional bits, represented by an
-    /// underlying 128 bit value. This is a binary representation, so decimal values may not be exactly
-    /// representable, but it provides more than 19 decimal digits of precision both before and after
-    /// the decimal point (38 digits total).
+    #[cfg_attr(
+        not(doctest),
+        doc = " A fixed-point numeric type with 64 integer bits and 64 fractional bits, represented by an"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " underlying 128 bit value. This is a binary representation, so decimal values may not be exactly"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " representable, but it provides more than 19 decimal digits of precision both before and after"
+    )]
+    #[cfg_attr(not(doctest), doc = " the decimal point (38 digits total).")]
     #[derive(
         Clone,
         Debug,

@@ -2,7 +2,7 @@ use std::fmt::Display;
 
 use indoc::indoc;
 use move_syn::ItemKind;
-use unsynn::IParse as _;
+use unsynn::{IParse as _, ToTokens as _};
 
 use crate::*;
 
@@ -125,8 +125,8 @@ fn enum_with_variants() {
         }
     "};
     insta::assert_snapshot!(from_enum(move_enum), @r#"
-    /// `Segment` enum definition.
-    /// Defines various string segments.
+    #[cfg_attr(not(doctest), doc = " `Segment` enum definition.")]
+    #[cfg_attr(not(doctest), doc = " Defines various string segments.")]
     #[derive(
         Clone,
         Debug,
@@ -551,7 +551,7 @@ fn struct_with_annotated_fields() {
             object: ID
         }
         "), @r#"
-    /// A general 'object admin'.
+    #[cfg_attr(not(doctest), doc = " A general 'object admin'.")]
     #[derive(
         Clone,
         Debug,
@@ -744,7 +744,7 @@ fn module_with_struct() {
         type u256 = ::moverox::types::U256;
         #[allow(non_camel_case_types, unused)]
         type vector<T> = ::std::vec::Vec<T>;
-        /// A general 'object admin'.
+        #[cfg_attr(not(doctest), doc = " A general 'object admin'.")]
         #[derive(
             Clone,
             Debug,

@@ -50,9 +50,15 @@ pub mod authenticator_state {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Singleton shared object which stores the global authenticator state.
-    /// The actual state is stored in a dynamic field of type AuthenticatorStateInner to support
-    /// future versions of the authenticator state.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Singleton shared object which stores the global authenticator state."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " The actual state is stored in a dynamic field of type AuthenticatorStateInner to support"
+    )]
+    #[cfg_attr(not(doctest), doc = " future versions of the authenticator state.")]
     #[derive(
         Clone,
         Debug,
@@ -109,7 +115,7 @@ pub mod authenticator_state {
             Self { version, active_jwks }
         }
     }
-    /// Must match the JWK struct in fastcrypto-zkp
+    #[cfg_attr(not(doctest), doc = " Must match the JWK struct in fastcrypto-zkp")]
     #[derive(
         Clone,
         Debug,
@@ -142,7 +148,7 @@ pub mod authenticator_state {
             Self { kty, e, n, alg }
         }
     }
-    /// Must match the JwkId struct in fastcrypto-zkp
+    #[cfg_attr(not(doctest), doc = " Must match the JwkId struct in fastcrypto-zkp")]
     #[derive(
         Clone,
         Debug,
@@ -198,26 +204,50 @@ pub mod authenticator_state {
         }
     }
 }
-/// A bag is a heterogeneous map-like collection. The collection is similar to `sui::table` in that
-/// its keys and values are not stored within the `Bag` value, but instead are stored using Sui's
-/// object system. The `Bag` struct acts only as a handle into the object system to retrieve those
-/// keys and values.
-/// Note that this means that `Bag` values with exactly the same key-value mapping will not be
-/// equal, with `==`, at runtime. For example
-/// ```
-/// let bag1 = bag::new();
-/// let bag2 = bag::new();
-/// bag::add(&mut bag1, 0, false);
-/// bag::add(&mut bag1, 1, true);
-/// bag::add(&mut bag2, 0, false);
-/// bag::add(&mut bag2, 1, true);
-/// // bag1 does not equal bag2, despite having the same entries
-/// assert!(&bag1 != &bag2);
-/// ```
-/// At it's core, `sui::bag` is a wrapper around `UID` that allows for access to
-/// `sui::dynamic_field` while preventing accidentally stranding field values. A `UID` can be
-/// deleted, even if it has dynamic fields associated with it, but a bag, on the other hand, must be
-/// empty to be destroyed.
+#[cfg_attr(
+    not(doctest),
+    doc = " A bag is a heterogeneous map-like collection. The collection is similar to `sui::table` in that"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " its keys and values are not stored within the `Bag` value, but instead are stored using Sui's"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " object system. The `Bag` struct acts only as a handle into the object system to retrieve those"
+)]
+#[cfg_attr(not(doctest), doc = " keys and values.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " Note that this means that `Bag` values with exactly the same key-value mapping will not be"
+)]
+#[cfg_attr(not(doctest), doc = " equal, with `==`, at runtime. For example")]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(not(doctest), doc = " let bag1 = bag::new();")]
+#[cfg_attr(not(doctest), doc = " let bag2 = bag::new();")]
+#[cfg_attr(not(doctest), doc = " bag::add(&mut bag1, 0, false);")]
+#[cfg_attr(not(doctest), doc = " bag::add(&mut bag1, 1, true);")]
+#[cfg_attr(not(doctest), doc = " bag::add(&mut bag2, 0, false);")]
+#[cfg_attr(not(doctest), doc = " bag::add(&mut bag2, 1, true);")]
+#[cfg_attr(
+    not(doctest),
+    doc = " // bag1 does not equal bag2, despite having the same entries"
+)]
+#[cfg_attr(not(doctest), doc = " assert!(&bag1 != &bag2);")]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(
+    not(doctest),
+    doc = " At it's core, `sui::bag` is a wrapper around `UID` that allows for access to"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `sui::dynamic_field` while preventing accidentally stranding field values. A `UID` can be"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " deleted, even if it has dynamic fields associated with it, but a bag, on the other hand, must be"
+)]
+#[cfg_attr(not(doctest), doc = " empty to be destroyed.")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod bag {
@@ -260,9 +290,15 @@ pub mod bag {
         }
     }
 }
-/// A storable handler for Balances in general. Is used in the `Coin`
-/// module to allow balance operations and can be used to implement
-/// custom coins with `Supply` and `Balance`s.
+#[cfg_attr(
+    not(doctest),
+    doc = " A storable handler for Balances in general. Is used in the `Coin`"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " module to allow balance operations and can be used to implement"
+)]
+#[cfg_attr(not(doctest), doc = " custom coins with `Supply` and `Balance`s.")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod balance {
@@ -272,8 +308,11 @@ pub mod balance {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A Supply of T. Used for minting and burning.
-    /// Wrapped into a `TreasuryCap` in the `Coin` module.
+    #[cfg_attr(not(doctest), doc = " A Supply of T. Used for minting and burning.")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Wrapped into a `TreasuryCap` in the `Coin` module."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -303,8 +342,14 @@ pub mod balance {
             }
         }
     }
-    /// Storable balance - an inner struct of a Coin type.
-    /// Can be used to store coins which don't need the key ability.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Storable balance - an inner struct of a Coin type."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Can be used to store coins which don't need the key ability."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -335,37 +380,49 @@ pub mod balance {
         }
     }
 }
-/// This module implements BCS (de)serialization in Move.
-/// Full specification can be found here: https://github.com/diem/bcs
-///
-/// Short summary (for Move-supported types):
-///
-/// - address - sequence of X bytes
-/// - bool - byte with 0 or 1
-/// - u8 - a single u8 byte
-/// - u16 / u32 / u64 / u128 / u256 - LE bytes
-/// - vector - ULEB128 length + LEN elements
-/// - option - first byte bool: None (0) or Some (1), then value
-///
-/// Usage example:
-/// ```
-/// /// This function reads u8 and u64 value from the input
-/// /// and returns the rest of the bytes.
-/// fun deserialize(bytes: vector<u8>): (u8, u64, vector<u8>) {
-///     use sui::bcs::{Self, BCS};
-///
-///     let prepared: BCS = bcs::new(bytes);
-///     let (u8_value, u64_value) = (
-///         prepared.peel_u8(),
-///         prepared.peel_u64()
-///     );
-///
-///     // unpack bcs struct
-///     let leftovers = prepared.into_remainder_bytes();
-///
-///     (u8_value, u64_value, leftovers)
-/// }
-/// ```
+#[cfg_attr(not(doctest), doc = " This module implements BCS (de)serialization in Move.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " Full specification can be found here: https://github.com/diem/bcs"
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " Short summary (for Move-supported types):")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " - address - sequence of X bytes")]
+#[cfg_attr(not(doctest), doc = " - bool - byte with 0 or 1")]
+#[cfg_attr(not(doctest), doc = " - u8 - a single u8 byte")]
+#[cfg_attr(not(doctest), doc = " - u16 / u32 / u64 / u128 / u256 - LE bytes")]
+#[cfg_attr(not(doctest), doc = " - vector - ULEB128 length + LEN elements")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - option - first byte bool: None (0) or Some (1), then value"
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " Usage example:")]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(
+    not(doctest),
+    doc = " /// This function reads u8 and u64 value from the input"
+)]
+#[cfg_attr(not(doctest), doc = " /// and returns the rest of the bytes.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " fun deserialize(bytes: vector<u8>): (u8, u64, vector<u8>) {"
+)]
+#[cfg_attr(not(doctest), doc = "     use sui::bcs::{Self, BCS};")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = "     let prepared: BCS = bcs::new(bytes);")]
+#[cfg_attr(not(doctest), doc = "     let (u8_value, u64_value) = (")]
+#[cfg_attr(not(doctest), doc = "         prepared.peel_u8(),")]
+#[cfg_attr(not(doctest), doc = "         prepared.peel_u64()")]
+#[cfg_attr(not(doctest), doc = "     );")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = "     // unpack bcs struct")]
+#[cfg_attr(not(doctest), doc = "     let leftovers = prepared.into_remainder_bytes();")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = "     (u8_value, u64_value, leftovers)")]
+#[cfg_attr(not(doctest), doc = " }")]
+#[cfg_attr(not(doctest), doc = " ```")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod bcs {
@@ -375,9 +432,15 @@ pub mod bcs {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A helper struct that saves resources on operations. For better
-    /// vector performance, it stores reversed bytes of the BCS and
-    /// enables use of `vector::pop_back`.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A helper struct that saves resources on operations. For better"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " vector performance, it stores reversed bytes of the BCS and"
+    )]
+    #[cfg_attr(not(doctest), doc = " enables use of `vector::pop_back`.")]
     #[derive(
         Clone,
         Debug,
@@ -403,11 +466,23 @@ pub mod bcs {
         }
     }
 }
-/// A simple library that enables hot-potato-locked borrow mechanics.
-///
-/// With Programmable transactions, it is possible to borrow a value within
-/// a transaction, use it and put back in the end. Hot-potato `Borrow` makes
-/// sure the object is returned and was not swapped for another one.
+#[cfg_attr(
+    not(doctest),
+    doc = " A simple library that enables hot-potato-locked borrow mechanics."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " With Programmable transactions, it is possible to borrow a value within"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " a transaction, use it and put back in the end. Hot-potato `Borrow` makes"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " sure the object is returned and was not swapped for another one."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod borrow {
@@ -417,7 +492,10 @@ pub mod borrow {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// An object wrapping a `T` and providing the borrow API.
+    #[cfg_attr(
+        not(doctest),
+        doc = " An object wrapping a `T` and providing the borrow API."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -443,7 +521,10 @@ pub mod borrow {
             Self { id, value }
         }
     }
-    /// A hot potato making sure the object is put back once borrowed.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A hot potato making sure the object is put back once borrowed."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -499,8 +580,11 @@ pub mod borrow {
         }
     }
 }
-/// APIs for accessing time from move calls, via the `Clock`: a unique
-/// shared object that is created at 0x6 during genesis.
+#[cfg_attr(
+    not(doctest),
+    doc = " APIs for accessing time from move calls, via the `Clock`: a unique"
+)]
+#[cfg_attr(not(doctest), doc = " shared object that is created at 0x6 during genesis.")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod clock {
@@ -510,14 +594,32 @@ pub mod clock {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Singleton shared object that exposes time to Move calls.  This
-    /// object is found at address 0x6, and can only be read (accessed
-    /// via an immutable reference) by entry functions.
-    ///
-    /// Entry Functions that attempt to accept `Clock` by mutable
-    /// reference or value will fail to verify, and honest validators
-    /// will not sign or execute transactions that use `Clock` as an
-    /// input parameter, unless it is passed by immutable reference.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Singleton shared object that exposes time to Move calls.  This"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " object is found at address 0x6, and can only be read (accessed"
+    )]
+    #[cfg_attr(not(doctest), doc = " via an immutable reference) by entry functions.")]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Entry Functions that attempt to accept `Clock` by mutable"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " reference or value will fail to verify, and honest validators"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " will not sign or execute transactions that use `Clock` as an"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " input parameter, unless it is passed by immutable reference."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -553,9 +655,15 @@ pub mod clock {
         }
     }
 }
-/// Defines the `Coin` type - platform wide representation of fungible
-/// tokens and coins. `Coin` can be described as a secure wrapper around
-/// `Balance` type.
+#[cfg_attr(
+    not(doctest),
+    doc = " Defines the `Coin` type - platform wide representation of fungible"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " tokens and coins. `Coin` can be described as a secure wrapper around"
+)]
+#[cfg_attr(not(doctest), doc = " `Balance` type.")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod coin {
@@ -565,7 +673,10 @@ pub mod coin {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A coin of type `T` worth `value`. Transferable and storable
+    #[cfg_attr(
+        not(doctest),
+        doc = " A coin of type `T` worth `value`. Transferable and storable"
+    )]
     #[derive(
         Clone,
         Debug,
@@ -605,8 +716,14 @@ pub mod coin {
             self.id.id.bytes
         }
     }
-    /// Each Coin type T created through `create_currency` function will have a
-    /// unique instance of CoinMetadata<T> that stores the metadata for this coin type.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Each Coin type T created through `create_currency` function will have a"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " unique instance of CoinMetadata<T> that stores the metadata for this coin type."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -666,8 +783,11 @@ pub mod coin {
             self.id.id.bytes
         }
     }
-    /// Similar to CoinMetadata, but created only for regulated coins that use the DenyList.
-    /// This object is always immutable.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Similar to CoinMetadata, but created only for regulated coins that use the DenyList."
+    )]
+    #[cfg_attr(not(doctest), doc = " This object is always immutable.")]
     #[derive(
         Clone,
         Debug,
@@ -712,8 +832,8 @@ pub mod coin {
             self.id.id.bytes
         }
     }
-    /// Capability allowing the bearer to mint and burn
-    /// coins of type `T`. Transferable
+    #[cfg_attr(not(doctest), doc = " Capability allowing the bearer to mint and burn")]
+    #[cfg_attr(not(doctest), doc = " coins of type `T`. Transferable")]
     #[derive(
         Clone,
         Debug,
@@ -753,11 +873,23 @@ pub mod coin {
             self.id.id.bytes
         }
     }
-    /// Capability allowing the bearer to deny addresses from using the currency's coins--
-    /// immediately preventing those addresses from interacting with the coin as an input to a
-    /// transaction and at the start of the next preventing them from receiving the coin.
-    /// If `allow_global_pause` is true, the bearer can enable a global pause that behaves as if
-    /// all addresses were added to the deny list.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Capability allowing the bearer to deny addresses from using the currency's coins--"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " immediately preventing those addresses from interacting with the coin as an input to a"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " transaction and at the start of the next preventing them from receiving the coin."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " If `allow_global_pause` is true, the bearer can enable a global pause that behaves as if"
+    )]
+    #[cfg_attr(not(doctest), doc = " all addresses were added to the deny list.")]
     #[derive(
         Clone,
         Debug,
@@ -823,8 +955,14 @@ pub mod coin {
             }
         }
     }
-    /// Capability allowing the bearer to freeze addresses, preventing those addresses from
-    /// interacting with the coin as an input to a transaction.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Capability allowing the bearer to freeze addresses, preventing those addresses from"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " interacting with the coin as an input to a transaction."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -962,9 +1100,15 @@ pub mod config {
         }
     }
 }
-/// Defines the `DenyList` type. The `DenyList` shared object is used to restrict access to
-/// instances of certain core types from being used as inputs by specified addresses in the deny
-/// list.
+#[cfg_attr(
+    not(doctest),
+    doc = " Defines the `DenyList` type. The `DenyList` shared object is used to restrict access to"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " instances of certain core types from being used as inputs by specified addresses in the deny"
+)]
+#[cfg_attr(not(doctest), doc = " list.")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod deny_list {
@@ -974,7 +1118,10 @@ pub mod deny_list {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A shared object that stores the addresses that are blocked for a given core type.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A shared object that stores the addresses that are blocked for a given core type."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1006,8 +1153,11 @@ pub mod deny_list {
             self.id.id.bytes
         }
     }
-    /// The capability used to write to the deny list config. Ensures that the Configs for the
-    /// DenyList are modified only by this module.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The capability used to write to the deny list config. Ensures that the Configs for the"
+    )]
+    #[cfg_attr(not(doctest), doc = " DenyList are modified only by this module.")]
     #[derive(
         Default,
         Clone,
@@ -1031,8 +1181,11 @@ pub mod deny_list {
             Self(false)
         }
     }
-    /// The dynamic object field key used to store the `Config` for a given type, essentially a
-    /// `(per_type_index, per_type_key)` pair.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The dynamic object field key used to store the `Config` for a given type, essentially a"
+    )]
+    #[cfg_attr(not(doctest), doc = " `(per_type_index, per_type_key)` pair.")]
     #[derive(
         Clone,
         Debug,
@@ -1061,7 +1214,10 @@ pub mod deny_list {
             }
         }
     }
-    /// The setting key used to store the deny list for a given address in the `Config`.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The setting key used to store the deny list for a given address in the `Config`."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1084,7 +1240,10 @@ pub mod deny_list {
             Self(_0)
         }
     }
-    /// The setting key used to store the global pause setting in the `Config`.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The setting key used to store the global pause setting in the `Config`."
+    )]
     #[derive(
         Default,
         Clone,
@@ -1108,8 +1267,11 @@ pub mod deny_list {
             Self(false)
         }
     }
-    /// The event emitted when a new `Config` is created for a given type. This can be useful for
-    /// tracking the `ID` of a type's `Config` object.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The event emitted when a new `Config` is created for a given type. This can be useful for"
+    )]
+    #[cfg_attr(not(doctest), doc = " tracking the `ID` of a type's `Config` object.")]
     #[derive(
         Clone,
         Debug,
@@ -1135,7 +1297,10 @@ pub mod deny_list {
             Self { key, config_id }
         }
     }
-    /// Stores the addresses that are denied for a given core type.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Stores the addresses that are denied for a given core type."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1187,15 +1352,36 @@ pub mod deny_list {
         }
     }
 }
-/// Defines a Display struct which defines the way an Object
-/// should be displayed. The intention is to keep data as independent
-/// from its display as possible, protecting the development process
-/// and keeping it separate from the ecosystem agreements.
-///
-/// Each of the fields of the Display object should allow for pattern
-/// substitution and filling-in the pieces using the data from the object T.
-///
-/// More entry functions might be added in the future depending on the use cases.
+#[cfg_attr(
+    not(doctest),
+    doc = " Defines a Display struct which defines the way an Object"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " should be displayed. The intention is to keep data as independent"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " from its display as possible, protecting the development process"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " and keeping it separate from the ecosystem agreements."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " Each of the fields of the Display object should allow for pattern"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " substitution and filling-in the pieces using the data from the object T."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " More entry functions might be added in the future depending on the use cases."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod display {
@@ -1205,27 +1391,51 @@ pub mod display {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// The Display<T> object. Defines the way a T instance should be
-    /// displayed. Display object can only be created and modified with
-    /// a PublisherCap, making sure that the rules are set by the owner
-    /// of the type.
-    ///
-    /// Each of the display properties should support patterns outside
-    /// of the system, making it simpler to customize Display based
-    /// on the property values of an Object.
-    /// ```
-    /// // Example of a display object
-    /// Display<0x...::capy::Capy> {
-    ///  fields:
-    ///    <name, "Capy { genes }">
-    ///    <link, "https://capy.art/capy/{ id }">
-    ///    <image, "https://api.capy.art/capy/{ id }/svg">
-    ///    <description, "Lovely Capy, one of many">
-    /// }
-    /// ```
-    ///
-    /// Uses only String type due to external-facing nature of the object,
-    /// the property names have a priority over their types.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The Display<T> object. Defines the way a T instance should be"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " displayed. Display object can only be created and modified with"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " a PublisherCap, making sure that the rules are set by the owner"
+    )]
+    #[cfg_attr(not(doctest), doc = " of the type.")]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Each of the display properties should support patterns outside"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " of the system, making it simpler to customize Display based"
+    )]
+    #[cfg_attr(not(doctest), doc = " on the property values of an Object.")]
+    #[cfg_attr(not(doctest), doc = " ```")]
+    #[cfg_attr(not(doctest), doc = " // Example of a display object")]
+    #[cfg_attr(not(doctest), doc = " Display<0x...::capy::Capy> {")]
+    #[cfg_attr(not(doctest), doc = "  fields:")]
+    #[cfg_attr(not(doctest), doc = "    <name, \"Capy { genes }\">")]
+    #[cfg_attr(not(doctest), doc = "    <link, \"https://capy.art/capy/{ id }\">")]
+    #[cfg_attr(
+        not(doctest),
+        doc = "    <image, \"https://api.capy.art/capy/{ id }/svg\">"
+    )]
+    #[cfg_attr(not(doctest), doc = "    <description, \"Lovely Capy, one of many\">")]
+    #[cfg_attr(not(doctest), doc = " }")]
+    #[cfg_attr(not(doctest), doc = " ```")]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Uses only String type due to external-facing nature of the object,"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " the property names have a priority over their types."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1277,12 +1487,24 @@ pub mod display {
             self.id.id.bytes
         }
     }
-    /// Event: emitted when a new Display object has been created for type T.
-    /// Type signature of the event corresponds to the type while id serves for
-    /// the discovery.
-    ///
-    /// Since Sui RPC supports querying events by type, finding a Display for the T
-    /// would be as simple as looking for the first event with `Display<T>`.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Event: emitted when a new Display object has been created for type T."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Type signature of the event corresponds to the type while id serves for"
+    )]
+    #[cfg_attr(not(doctest), doc = " the discovery.")]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Since Sui RPC supports querying events by type, finding a Display for the T"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " would be as simple as looking for the first event with `Display<T>`."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1312,7 +1534,7 @@ pub mod display {
             }
         }
     }
-    /// Version of Display got updated -
+    #[cfg_attr(not(doctest), doc = " Version of Display got updated -")]
     #[derive(
         Clone,
         Debug,
@@ -1357,12 +1579,27 @@ pub mod display {
         }
     }
 }
-/// In addition to the fields declared in its type definition, a Sui object can have dynamic fields
-/// that can be added after the object has been constructed. Unlike ordinary field names
-/// (which are always statically declared identifiers) a dynamic field name can be any value with
-/// the `copy`, `drop`, and `store` abilities, e.g. an integer, a boolean, or a string.
-/// This gives Sui programmers the flexibility to extend objects on-the-fly, and it also serves as a
-/// building block for core collection types
+#[cfg_attr(
+    not(doctest),
+    doc = " In addition to the fields declared in its type definition, a Sui object can have dynamic fields"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " that can be added after the object has been constructed. Unlike ordinary field names"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " (which are always statically declared identifiers) a dynamic field name can be any value with"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " the `copy`, `drop`, and `store` abilities, e.g. an integer, a boolean, or a string."
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " This gives Sui programmers the flexibility to extend objects on-the-fly, and it also serves as a"
+)]
+#[cfg_attr(not(doctest), doc = " building block for core collection types")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod dynamic_field {
@@ -1372,7 +1609,10 @@ pub mod dynamic_field {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Internal object used for storing the field and value
+    #[cfg_attr(
+        not(doctest),
+        doc = " Internal object used for storing the field and value"
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1409,10 +1649,22 @@ pub mod dynamic_field {
         }
     }
 }
-/// Similar to `sui::dynamic_field`, this module allows for the access of dynamic fields. But
-/// unlike, `sui::dynamic_field` the values bound to these dynamic fields _must_ be objects
-/// themselves. This allows for the objects to still exist within in storage, which may be important
-/// for external tools. The difference is otherwise not observable from within Move.
+#[cfg_attr(
+    not(doctest),
+    doc = " Similar to `sui::dynamic_field`, this module allows for the access of dynamic fields. But"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " unlike, `sui::dynamic_field` the values bound to these dynamic fields _must_ be objects"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " themselves. This allows for the objects to still exist within in storage, which may be important"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " for external tools. The difference is otherwise not observable from within Move."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod dynamic_object_field {
@@ -1447,8 +1699,11 @@ pub mod dynamic_object_field {
         }
     }
 }
-/// Similar to `sui::table` but the values are linked together, allowing for ordered insertion and
-/// removal
+#[cfg_attr(
+    not(doctest),
+    doc = " Similar to `sui::table` but the values are linked together, allowing for ordered insertion and"
+)]
+#[cfg_attr(not(doctest), doc = " removal")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod linked_table {
@@ -1537,7 +1792,7 @@ pub mod linked_table {
         }
     }
 }
-/// Sui object identifiers
+#[cfg_attr(not(doctest), doc = " Sui object identifiers")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod object {
@@ -1547,12 +1802,30 @@ pub mod object {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// An object ID. This is used to reference Sui Objects.
-    /// This is *not* guaranteed to be globally unique--anyone can create an `ID` from a `UID` or
-    /// from an object, and ID's can be freely copied and dropped.
-    /// Here, the values are not globally unique because there can be multiple values of type `ID`
-    /// with the same underlying bytes. For example, `object::id(&obj)` can be called as many times
-    /// as you want for a given `obj`, and each `ID` value will be identical.
+    #[cfg_attr(
+        not(doctest),
+        doc = " An object ID. This is used to reference Sui Objects."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " This is *not* guaranteed to be globally unique--anyone can create an `ID` from a `UID` or"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " from an object, and ID's can be freely copied and dropped."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Here, the values are not globally unique because there can be multiple values of type `ID`"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " with the same underlying bytes. For example, `object::id(&obj)` can be called as many times"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " as you want for a given `obj`, and each `ID` value will be identical."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1577,12 +1850,30 @@ pub mod object {
             Self { bytes }
         }
     }
-    /// Globally unique IDs that define an object's ID in storage. Any Sui Object, that is a struct
-    /// with the `key` ability, must have `id: UID` as its first field.
-    /// These are globally unique in the sense that no two values of type `UID` are ever equal, in
-    /// other words for any two values `id1: UID` and `id2: UID`, `id1` != `id2`.
-    /// This is a privileged type that can only be derived from a `TxContext`.
-    /// `UID` doesn't have the `drop` ability, so deleting a `UID` requires a call to `delete`.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Globally unique IDs that define an object's ID in storage. Any Sui Object, that is a struct"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " with the `key` ability, must have `id: UID` as its first field."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " These are globally unique in the sense that no two values of type `UID` are ever equal, in"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " other words for any two values `id1: UID` and `id2: UID`, `id1` != `id2`."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " This is a privileged type that can only be derived from a `TxContext`."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " `UID` doesn't have the `drop` ability, so deleting a `UID` requires a call to `delete`."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1608,10 +1899,22 @@ pub mod object {
         }
     }
 }
-/// Similar to `sui::bag`, an `ObjectBag` is a heterogeneous map-like collection. But unlike
-/// `sui::bag`, the values bound to these dynamic fields _must_ be objects themselves. This allows
-/// for the objects to still exist in storage, which may be important for external tools.
-/// The difference is otherwise not observable from within Move.
+#[cfg_attr(
+    not(doctest),
+    doc = " Similar to `sui::bag`, an `ObjectBag` is a heterogeneous map-like collection. But unlike"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `sui::bag`, the values bound to these dynamic fields _must_ be objects themselves. This allows"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " for the objects to still exist in storage, which may be important for external tools."
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " The difference is otherwise not observable from within Move."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod object_bag {
@@ -1654,10 +1957,22 @@ pub mod object_bag {
         }
     }
 }
-/// Similar to `sui::table`, an `ObjectTable<K, V>` is a map-like collection. But unlike
-/// `sui::table`, the values bound to these dynamic fields _must_ be objects themselves. This allows
-/// for the objects to still exist within in storage, which may be important for external tools.
-/// The difference is otherwise not observable from within Move.
+#[cfg_attr(
+    not(doctest),
+    doc = " Similar to `sui::table`, an `ObjectTable<K, V>` is a map-like collection. But unlike"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `sui::table`, the values bound to these dynamic fields _must_ be objects themselves. This allows"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " for the objects to still exist within in storage, which may be important for external tools."
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " The difference is otherwise not observable from within Move."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod object_table {
@@ -1709,9 +2024,18 @@ pub mod object_table {
         }
     }
 }
-/// Functions for operating on Move packages from within Move:
-/// - Creating proof-of-publish objects from one-time witnesses
-/// - Administering package upgrades through upgrade policies.
+#[cfg_attr(
+    not(doctest),
+    doc = " Functions for operating on Move packages from within Move:"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Creating proof-of-publish objects from one-time witnesses"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Administering package upgrades through upgrade policies."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod package {
@@ -1721,10 +2045,19 @@ pub mod package {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// This type can only be created in the transaction that
-    /// generates a module, by consuming its one-time witness, so it
-    /// can be used to identify the address that published the package
-    /// a type originated from.
+    #[cfg_attr(
+        not(doctest),
+        doc = " This type can only be created in the transaction that"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " generates a module, by consuming its one-time witness, so it"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " can be used to identify the address that published the package"
+    )]
+    #[cfg_attr(not(doctest), doc = " a type originated from.")]
     #[derive(
         Clone,
         Debug,
@@ -1760,7 +2093,10 @@ pub mod package {
             self.id.id.bytes
         }
     }
-    /// Capability controlling the ability to upgrade a package.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Capability controlling the ability to upgrade a package."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1807,14 +2143,29 @@ pub mod package {
             self.id.id.bytes
         }
     }
-    /// Permission to perform a particular upgrade (for a fixed version of
-    /// the package, bytecode to upgrade with and transitive dependencies to
-    /// depend against).
-    ///
-    /// An `UpgradeCap` can only issue one ticket at a time, to prevent races
-    /// between concurrent updates or a change in its upgrade policy after
-    /// issuing a ticket, so the ticket is a "Hot Potato" to preserve forward
-    /// progress.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Permission to perform a particular upgrade (for a fixed version of"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " the package, bytecode to upgrade with and transitive dependencies to"
+    )]
+    #[cfg_attr(not(doctest), doc = " depend against).")]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " An `UpgradeCap` can only issue one ticket at a time, to prevent races"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " between concurrent updates or a change in its upgrade policy after"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " issuing a ticket, so the ticket is a \"Hot Potato\" to preserve forward"
+    )]
+    #[cfg_attr(not(doctest), doc = " progress.")]
     #[derive(
         Clone,
         Debug,
@@ -1858,10 +2209,22 @@ pub mod package {
             }
         }
     }
-    /// Issued as a result of a successful upgrade, containing the
-    /// information to be used to update the `UpgradeCap`.  This is a "Hot
-    /// Potato" to ensure that it is used to update its `UpgradeCap` before
-    /// the end of the transaction that performed the upgrade.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Issued as a result of a successful upgrade, containing the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " information to be used to update the `UpgradeCap`.  This is a \"Hot"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Potato\" to ensure that it is used to update its `UpgradeCap` before"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " the end of the transaction that performed the upgrade."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -1899,13 +2262,28 @@ pub mod party {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// The permissions that apply to a party object. If the transaction sender has an entry in
-    /// the `members` map, the permissions in that entry apply. Otherwise, the `default` permissions
-    /// are used.
-    /// If the party has the `READ` permission, the object can be taken as an immutable input.
-    /// If the party has the `WRITE`, `DELETE`, or `TRANSFER` permissions, the object can be taken as
-    /// a mutable input. Additional restrictions pertaining to each permission are checked at the end
-    /// of transaction execution.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The permissions that apply to a party object. If the transaction sender has an entry in"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " the `members` map, the permissions in that entry apply. Otherwise, the `default` permissions"
+    )]
+    #[cfg_attr(not(doctest), doc = " are used.")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " If the party has the `READ` permission, the object can be taken as an immutable input."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " If the party has the `WRITE`, `DELETE`, or `TRANSFER` permissions, the object can be taken as"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " a mutable input. Additional restrictions pertaining to each permission are checked at the end"
+    )]
+    #[cfg_attr(not(doctest), doc = " of transaction execution.")]
     #[derive(
         Clone,
         Debug,
@@ -1936,8 +2314,11 @@ pub mod party {
             Self { default, members }
         }
     }
-    /// The permissions that a party has. The permissions are a bitset of the `READ`, `WRITE`,
-    /// `DELETE`, and `TRANSFER` constants.
+    #[cfg_attr(
+        not(doctest),
+        doc = " The permissions that a party has. The permissions are a bitset of the `READ`, `WRITE`,"
+    )]
+    #[cfg_attr(not(doctest), doc = " `DELETE`, and `TRANSFER` constants.")]
     #[derive(
         Clone,
         Debug,
@@ -1961,7 +2342,7 @@ pub mod party {
         }
     }
 }
-/// Priority queue implemented using a max heap.
+#[cfg_attr(not(doctest), doc = " Priority queue implemented using a max heap.")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod priority_queue {
@@ -1971,11 +2352,26 @@ pub mod priority_queue {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Struct representing a priority queue. The `entries` vector represents a max
-    /// heap structure, where entries[0] is the root, entries[1] and entries[2] are the
-    /// left child and right child of the root, etc. More generally, the children of
-    /// entries[i] are at i * 2 + 1 and i * 2 + 2. The max heap should have the invariant
-    /// that the parent node's priority is always higher than its child nodes' priorities.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Struct representing a priority queue. The `entries` vector represents a max"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " heap structure, where entries[0] is the root, entries[1] and entries[2] are the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " left child and right child of the root, etc. More generally, the children of"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " entries[i] are at i * 2 + 1 and i * 2 + 2. The max heap should have the invariant"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " that the parent node's priority is always higher than its child nodes' priorities."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2026,7 +2422,10 @@ pub mod priority_queue {
         }
     }
 }
-/// This module provides functionality for generating secure randomness.
+#[cfg_attr(
+    not(doctest),
+    doc = " This module provides functionality for generating secure randomness."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod random {
@@ -2036,8 +2435,14 @@ pub mod random {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Singleton shared object which stores the global randomness state.
-    /// The actual state is stored in a versioned inner field.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Singleton shared object which stores the global randomness state."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " The actual state is stored in a versioned inner field."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2108,7 +2513,10 @@ pub mod random {
             }
         }
     }
-    /// Unique randomness generator, derived from the global randomness.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Unique randomness generator, derived from the global randomness."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2136,8 +2544,11 @@ pub mod random {
         }
     }
 }
-/// Coin<SUI> is the token used to pay for gas in Sui.
-/// It has 9 decimals, and the smallest unit (10^-9) is called "mist".
+#[cfg_attr(not(doctest), doc = " Coin<SUI> is the token used to pay for gas in Sui.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " It has 9 decimals, and the smallest unit (10^-9) is called \"mist\"."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod sui {
@@ -2147,7 +2558,7 @@ pub mod sui {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Name of the coin
+    #[cfg_attr(not(doctest), doc = " Name of the coin")]
     #[derive(
         Default,
         Clone,
@@ -2175,21 +2586,36 @@ pub mod sui {
         }
     }
 }
-/// A table is a map-like collection. But unlike a traditional collection, it's keys and values are
-/// not stored within the `Table` value, but instead are stored using Sui's object system. The
-/// `Table` struct acts only as a handle into the object system to retrieve those keys and values.
-/// Note that this means that `Table` values with exactly the same key-value mapping will not be
-/// equal, with `==`, at runtime. For example
-/// ```
-/// let table1 = table::new<u64, bool>();
-/// let table2 = table::new<u64, bool>();
-/// table::add(&mut table1, 0, false);
-/// table::add(&mut table1, 1, true);
-/// table::add(&mut table2, 0, false);
-/// table::add(&mut table2, 1, true);
-/// // table1 does not equal table2, despite having the same entries
-/// assert!(&table1 != &table2);
-/// ```
+#[cfg_attr(
+    not(doctest),
+    doc = " A table is a map-like collection. But unlike a traditional collection, it's keys and values are"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " not stored within the `Table` value, but instead are stored using Sui's object system. The"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `Table` struct acts only as a handle into the object system to retrieve those keys and values."
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " Note that this means that `Table` values with exactly the same key-value mapping will not be"
+)]
+#[cfg_attr(not(doctest), doc = " equal, with `==`, at runtime. For example")]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(not(doctest), doc = " let table1 = table::new<u64, bool>();")]
+#[cfg_attr(not(doctest), doc = " let table2 = table::new<u64, bool>();")]
+#[cfg_attr(not(doctest), doc = " table::add(&mut table1, 0, false);")]
+#[cfg_attr(not(doctest), doc = " table::add(&mut table1, 1, true);")]
+#[cfg_attr(not(doctest), doc = " table::add(&mut table2, 0, false);")]
+#[cfg_attr(not(doctest), doc = " table::add(&mut table2, 1, true);")]
+#[cfg_attr(
+    not(doctest),
+    doc = " // table1 does not equal table2, despite having the same entries"
+)]
+#[cfg_attr(not(doctest), doc = " assert!(&table1 != &table2);")]
+#[cfg_attr(not(doctest), doc = " ```")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod table {
@@ -2241,7 +2667,10 @@ pub mod table {
         }
     }
 }
-/// A basic scalable vector library implemented using `Table`.
+#[cfg_attr(
+    not(doctest),
+    doc = " A basic scalable vector library implemented using `Table`."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod table_vec {
@@ -2282,24 +2711,57 @@ pub mod table_vec {
         }
     }
 }
-/// The Token module which implements a Closed Loop Token with a configurable
-/// policy. The policy is defined by a set of rules that must be satisfied for
-/// an action to be performed on the token.
-///
-/// The module is designed to be used with a `TreasuryCap` to allow for minting
-/// and burning of the `Token`s. And can act as a replacement / extension or a
-/// companion to existing open-loop (`Coin`) systems.
-///
-/// ```
-/// Module:      sui::balance       sui::coin             sui::token
-/// Main type:   Balance<T>         Coin<T>               Token<T>
-/// Capability:  Supply<T>  <---->  TreasuryCap<T> <----> TreasuryCap<T>
-/// Abilities:   store              key + store           key
-/// ```
-///
-/// The Token system allows for fine-grained control over the actions performed
-/// on the token. And hence it is highly suitable for applications that require
-/// control over the currency which a simple open-loop system can't provide.
+#[cfg_attr(
+    not(doctest),
+    doc = " The Token module which implements a Closed Loop Token with a configurable"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " policy. The policy is defined by a set of rules that must be satisfied for"
+)]
+#[cfg_attr(not(doctest), doc = " an action to be performed on the token.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " The module is designed to be used with a `TreasuryCap` to allow for minting"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " and burning of the `Token`s. And can act as a replacement / extension or a"
+)]
+#[cfg_attr(not(doctest), doc = " companion to existing open-loop (`Coin`) systems.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(
+    not(doctest),
+    doc = " Module:      sui::balance       sui::coin             sui::token"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " Main type:   Balance<T>         Coin<T>               Token<T>"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " Capability:  Supply<T>  <---->  TreasuryCap<T> <----> TreasuryCap<T>"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " Abilities:   store              key + store           key"
+)]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " The Token system allows for fine-grained control over the actions performed"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " on the token. And hence it is highly suitable for applications that require"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " control over the currency which a simple open-loop system can't provide."
+)]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod token {
@@ -2309,8 +2771,14 @@ pub mod token {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A single `Token` with `Balance` inside. Can only be owned by an address,
-    /// and actions performed on it must be confirmed in a matching `TokenPolicy`.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A single `Token` with `Balance` inside. Can only be owned by an address,"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " and actions performed on it must be confirmed in a matching `TokenPolicy`."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2351,8 +2819,14 @@ pub mod token {
             self.id.id.bytes
         }
     }
-    /// A Capability that manages a single `TokenPolicy` specified in the `for`
-    /// field. Created together with `TokenPolicy` in the `new` function.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A Capability that manages a single `TokenPolicy` specified in the `for`"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " field. Created together with `TokenPolicy` in the `new` function."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2389,15 +2863,36 @@ pub mod token {
             self.id.id.bytes
         }
     }
-    /// `TokenPolicy` represents a set of rules that define what actions can be
-    /// performed on a `Token` and which `Rules` must be satisfied for the
-    /// action to succeed.
-    ///
-    /// - For the sake of availability, `TokenPolicy` is a `key`-only object.
-    /// - Each `TokenPolicy` is managed by a matching `TokenPolicyCap`.
-    /// - For an action to become available, there needs to be a record in the
-    /// `rules` VecMap. To allow an action to be performed freely, there's an
-    /// `allow` function that can be called by the `TokenPolicyCap` owner.
+    #[cfg_attr(
+        not(doctest),
+        doc = " `TokenPolicy` represents a set of rules that define what actions can be"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " performed on a `Token` and which `Rules` must be satisfied for the"
+    )]
+    #[cfg_attr(not(doctest), doc = " action to succeed.")]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " - For the sake of availability, `TokenPolicy` is a `key`-only object."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " - Each `TokenPolicy` is managed by a matching `TokenPolicyCap`."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " - For an action to become available, there needs to be a record in the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " `rules` VecMap. To allow an action to be performed freely, there's an"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " `allow` function that can be called by the `TokenPolicyCap` owner."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2455,9 +2950,18 @@ pub mod token {
             self.id.id.bytes
         }
     }
-    /// A request to perform an "Action" on a token. Stores the information
-    /// about the action to be performed and must be consumed by the `confirm_request`
-    /// or `confirm_request_mut` functions when the Rules are satisfied.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A request to perform an \"Action\" on a token. Stores the information"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " about the action to be performed and must be consumed by the `confirm_request`"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " or `confirm_request_mut` functions when the Rules are satisfied."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2515,9 +3019,15 @@ pub mod token {
             }
         }
     }
-    /// Dynamic field key for the `TokenPolicy` to store the `Config` for a
-    /// specific action `Rule`. There can be only one configuration per
-    /// `Rule` per `TokenPolicy`.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Dynamic field key for the `TokenPolicy` to store the `Config` for a"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " specific action `Rule`. There can be only one configuration per"
+    )]
+    #[cfg_attr(not(doctest), doc = " `Rule` per `TokenPolicy`.")]
     #[derive(
         Clone,
         Debug,
@@ -2547,9 +3057,18 @@ pub mod token {
             }
         }
     }
-    /// An event emitted when a `TokenPolicy` is created and shared. Because
-    /// `TokenPolicy` can only be shared (and potentially frozen in the future),
-    /// we emit this event in the `share_policy` function and mark it as mutable.
+    #[cfg_attr(
+        not(doctest),
+        doc = " An event emitted when a `TokenPolicy` is created and shared. Because"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " `TokenPolicy` can only be shared (and potentially frozen in the future),"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " we emit this event in the `share_policy` function and mark it as mutable."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2594,13 +3113,31 @@ pub mod transfer {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// This represents the ability to `receive` an object of type `T`.
-    /// This type is ephemeral per-transaction and cannot be stored on-chain.
-    /// This does not represent the obligation to receive the object that it
-    /// references, but simply the ability to receive the object with object ID
-    /// `id` at version `version` if you can prove mutable access to the parent
-    /// object during the transaction.
-    /// Internals of this struct are opaque outside this module.
+    #[cfg_attr(
+        not(doctest),
+        doc = " This represents the ability to `receive` an object of type `T`."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " This type is ephemeral per-transaction and cannot be stored on-chain."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " This does not represent the obligation to receive the object that it"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " references, but simply the ability to receive the object with object ID"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " `id` at version `version` if you can prove mutable access to the parent"
+    )]
+    #[cfg_attr(not(doctest), doc = " object during the transaction.")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Internals of this struct are opaque outside this module."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2642,9 +3179,18 @@ pub mod tx_context {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Information about the transaction currently being executed.
-    /// This cannot be constructed by a transaction--it is a privileged object created by
-    /// the VM and passed in to the entrypoint of the transaction as `&mut TxContext`.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Information about the transaction currently being executed."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " This cannot be constructed by a transaction--it is a privileged object created by"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " the VM and passed in to the entrypoint of the transaction as `&mut TxContext`."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2692,7 +3238,7 @@ pub mod tx_context {
         }
     }
 }
-/// URL: standard Uniform Resource Locator string
+#[cfg_attr(not(doctest), doc = " URL: standard Uniform Resource Locator string")]
 #[allow(rustdoc::all)]
 #[cfg(not(doctest))]
 pub mod url {
@@ -2702,7 +3248,7 @@ pub mod url {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// Standard Uniform Resource Locator (URL) string.
+    #[cfg_attr(not(doctest), doc = " Standard Uniform Resource Locator (URL) string.")]
     #[derive(
         Clone,
         Debug,
@@ -2737,12 +3283,27 @@ pub mod vec_map {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A map data structure backed by a vector. The map is guaranteed not to contain duplicate keys, but entries
-    /// are *not* sorted by key--entries are included in insertion order.
-    /// All operations are O(N) in the size of the map--the intention of this data structure is only to provide
-    /// the convenience of programming against a map API.
-    /// Large maps should use handwritten parent/child relationships instead.
-    /// Maps that need sorted iteration rather than insertion order iteration should also be handwritten.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A map data structure backed by a vector. The map is guaranteed not to contain duplicate keys, but entries"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " are *not* sorted by key--entries are included in insertion order."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " All operations are O(N) in the size of the map--the intention of this data structure is only to provide"
+    )]
+    #[cfg_attr(not(doctest), doc = " the convenience of programming against a map API.")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Large maps should use handwritten parent/child relationships instead."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Maps that need sorted iteration rather than insertion order iteration should also be handwritten."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2767,7 +3328,7 @@ pub mod vec_map {
             Self { contents }
         }
     }
-    /// An entry in the map
+    #[cfg_attr(not(doctest), doc = " An entry in the map")]
     #[derive(
         Clone,
         Debug,
@@ -2803,11 +3364,26 @@ pub mod vec_set {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A set data structure backed by a vector. The set is guaranteed not to
-    /// contain duplicate keys. All operations are O(N) in the size of the set
-    /// - the intention of this data structure is only to provide the convenience
-    /// of programming against a set API. Sets that need sorted iteration rather
-    /// than insertion order iteration should be handwritten.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A set data structure backed by a vector. The set is guaranteed not to"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " contain duplicate keys. All operations are O(N) in the size of the set"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " - the intention of this data structure is only to provide the convenience"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " of programming against a set API. Sets that need sorted iteration rather"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " than insertion order iteration should be handwritten."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2842,12 +3418,30 @@ pub mod versioned {
     type u256 = ::moverox::types::U256;
     #[allow(non_camel_case_types, unused)]
     type vector<T> = ::std::vec::Vec<T>;
-    /// A wrapper type that supports versioning of the inner type.
-    /// The inner type is a dynamic field of the Versioned object, and is keyed using version.
-    /// User of this type could load the inner object using corresponding type based on the version.
-    /// You can also upgrade the inner object to a new type version.
-    /// If you want to support lazy upgrade of the inner type, one caveat is that all APIs would have
-    /// to use mutable reference even if it's a read-only API.
+    #[cfg_attr(
+        not(doctest),
+        doc = " A wrapper type that supports versioning of the inner type."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " The inner type is a dynamic field of the Versioned object, and is keyed using version."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " User of this type could load the inner object using corresponding type based on the version."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " You can also upgrade the inner object to a new type version."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " If you want to support lazy upgrade of the inner type, one caveat is that all APIs would have"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " to use mutable reference even if it's a read-only API."
+    )]
     #[derive(
         Clone,
         Debug,
@@ -2878,8 +3472,14 @@ pub mod versioned {
             self.id.id.bytes
         }
     }
-    /// Represents a hot potato object generated when we take out the dynamic field.
-    /// This is to make sure that we always put a new value back.
+    #[cfg_attr(
+        not(doctest),
+        doc = " Represents a hot potato object generated when we take out the dynamic field."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " This is to make sure that we always put a new value back."
+    )]
     #[derive(
         Clone,
         Debug,

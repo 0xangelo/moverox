@@ -14,8 +14,9 @@ use std::collections::HashMap;
 use move_syn::{Item, Module};
 use proc_macro2::{Ident, TokenStream};
 use quote::quote;
-use unsynn::{LiteralString, ToTokens as _};
+use unsynn::LiteralString;
 
+mod attributes;
 mod generics;
 mod move_enum;
 mod move_struct;
@@ -45,18 +46,14 @@ impl ModuleGen for Module {
         package: Option<&LiteralString>,
         address_map: &HashMap<Ident, TokenStream>,
     ) -> TokenStream {
-        let attrs = self
-            .attrs
-            .iter()
-            .filter(|attr| attr.is_doc())
-            .map(|attr| attr.to_token_stream());
+        let attrs = crate::attributes::to_rust(&self.attrs);
         let ident = &self.ident;
         let datatypes: TokenStream = self
             .items()
             .map(|item| item.to_rust(thecrate, package, Some(ident), address_map))
             .collect();
         quote! {
-            #(#attrs)*
+            #attrs
             #[allow(rustdoc::all)]
             #[cfg(not(doctest))]
             pub mod #ident {
@@ -100,12 +97,9 @@ impl ItemGen for Item {
             K::Enum(e) => self::move_enum::to_rust(e, thecrate, package, module, address_map),
             _ => return Default::default(),
         };
-        let attrs = attrs
-            .iter()
-            .filter(|attr| attr.is_doc())
-            .map(|attr| attr.to_token_stream());
+        let attrs = crate::attributes::to_rust(attrs);
         quote! {
-            #( #attrs )* // Inject docs
+            #attrs
             #generated
         }
     }
