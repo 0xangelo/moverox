@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.3...move-syn-v0.0.4)
+
+### ⛰️ Features
+
+- *(move-syn)* `Attribute::contents` - ([e3b78e0](https://github.com/0xangelo/moverox/commit/e3b78e03fb95b9396697f7ddeb0767fc74068153))
+
+
 ## [0.0.3](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.2...move-syn-v0.0.3)
 
 ### 🐛 Bug Fixes
