@@ -7,7 +7,7 @@ authors      = ["Angelo <doom444@pm.me>"]
 categories   = ["cryptography::cryptocurrencies"]
 edition      = "2024"
 license      = "MIT OR Apache-2.0"
-repository   = "https://github.com/0xangelo/move-rs"
+repository   = "https://github.com/0xangelo/moverox"
 rust-version = "1.87"
 
 [workspace.lints.clippy]
