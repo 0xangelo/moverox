@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.4...moverox-codegen-v0.0.5)
+
+### 🐛 Bug Fixes
+
+- *(moverox-codegen)* Remove `#[cfg(not(doctest))]` from modules - ([9735dca](https://github.com/0xangelo/moverox/commit/9735dca7ed2d012a0c610ea01cfe20e563596530))
+
+
 ## [0.0.4](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.3...moverox-codegen-v0.0.4)
 
 ### ⛰️ Features
