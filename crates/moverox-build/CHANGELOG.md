@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4](https://github.com/0xangelo/moverox/compare/moverox-build-v0.0.3...moverox-build-v0.0.4)
+
+### ⛰️ Features
+
+- *(moverox-codegen)* Hide generated doc attrs in doctests - ([fc6796c](https://github.com/0xangelo/moverox/commit/fc6796c438ef0e1b9cd350716aa44684fa571f4e))
+
+
 ## [0.0.3](https://github.com/0xangelo/moverox/compare/moverox-build-v0.0.2...moverox-build-v0.0.3)
 
 ### 🚜 Refactor
