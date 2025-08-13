@@ -12,6 +12,9 @@ else
   SCOPE="-p $1"
 fi
 
+# For cleaner logs; we use explicit links for `cargo rdme`
+export RUSTDOCFLAGS="-A rustdoc::redundant-explicit-links"
+
 set -ex
 
 cargo +nightly hack $SCOPE --feature-powerset --exclude-features default clippy --no-deps --lib -- -D warnings
