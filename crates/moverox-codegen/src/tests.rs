@@ -736,7 +736,6 @@ fn module_with_struct() {
         "
         ), @r#"
     #[allow(rustdoc::all)]
-    #[cfg(not(doctest))]
     pub mod admin {
         #[allow(non_camel_case_types, unused)]
         type address = ::moverox::types::Address;

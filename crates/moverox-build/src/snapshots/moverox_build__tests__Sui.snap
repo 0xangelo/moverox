@@ -3,7 +3,6 @@ source: crates/moverox-build/src/tests.rs
 expression: sui_framework
 ---
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod accumulator {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -42,7 +41,6 @@ pub mod accumulator {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod authenticator_state {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -249,7 +247,6 @@ pub mod authenticator_state {
 )]
 #[cfg_attr(not(doctest), doc = " empty to be destroyed.")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod bag {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -300,7 +297,6 @@ pub mod bag {
 )]
 #[cfg_attr(not(doctest), doc = " custom coins with `Supply` and `Balance`s.")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod balance {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -424,7 +420,6 @@ pub mod balance {
 #[cfg_attr(not(doctest), doc = " }")]
 #[cfg_attr(not(doctest), doc = " ```")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod bcs {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -484,7 +479,6 @@ pub mod bcs {
     doc = " sure the object is returned and was not swapped for another one."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod borrow {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -586,7 +580,6 @@ pub mod borrow {
 )]
 #[cfg_attr(not(doctest), doc = " shared object that is created at 0x6 during genesis.")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod clock {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -665,7 +658,6 @@ pub mod clock {
 )]
 #[cfg_attr(not(doctest), doc = " `Balance` type.")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod coin {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -999,7 +991,6 @@ pub mod coin {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod config {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1110,7 +1101,6 @@ pub mod config {
 )]
 #[cfg_attr(not(doctest), doc = " list.")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod deny_list {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1383,7 +1373,6 @@ pub mod deny_list {
     doc = " More entry functions might be added in the future depending on the use cases."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod display {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1601,7 +1590,6 @@ pub mod display {
 )]
 #[cfg_attr(not(doctest), doc = " building block for core collection types")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod dynamic_field {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1666,7 +1654,6 @@ pub mod dynamic_field {
     doc = " for external tools. The difference is otherwise not observable from within Move."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod dynamic_object_field {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1705,7 +1692,6 @@ pub mod dynamic_object_field {
 )]
 #[cfg_attr(not(doctest), doc = " removal")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod linked_table {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1794,7 +1780,6 @@ pub mod linked_table {
 }
 #[cfg_attr(not(doctest), doc = " Sui object identifiers")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod object {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1916,7 +1901,6 @@ pub mod object {
     doc = " The difference is otherwise not observable from within Move."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod object_bag {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1974,7 +1958,6 @@ pub mod object_bag {
     doc = " The difference is otherwise not observable from within Move."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod object_table {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2037,7 +2020,6 @@ pub mod object_table {
     doc = " - Administering package upgrades through upgrade policies."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod package {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2254,7 +2236,6 @@ pub mod package {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod party {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2344,7 +2325,6 @@ pub mod party {
 }
 #[cfg_attr(not(doctest), doc = " Priority queue implemented using a max heap.")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod priority_queue {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2427,7 +2407,6 @@ pub mod priority_queue {
     doc = " This module provides functionality for generating secure randomness."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod random {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2550,7 +2529,6 @@ pub mod random {
     doc = " It has 9 decimals, and the smallest unit (10^-9) is called \"mist\"."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod sui {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2617,7 +2595,6 @@ pub mod sui {
 #[cfg_attr(not(doctest), doc = " assert!(&table1 != &table2);")]
 #[cfg_attr(not(doctest), doc = " ```")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod table {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2672,7 +2649,6 @@ pub mod table {
     doc = " A basic scalable vector library implemented using `Table`."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod table_vec {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2763,7 +2739,6 @@ pub mod table_vec {
     doc = " control over the currency which a simple open-loop system can't provide."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod token {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3105,7 +3080,6 @@ pub mod token {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod transfer {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3171,7 +3145,6 @@ pub mod transfer {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod tx_context {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3240,7 +3213,6 @@ pub mod tx_context {
 }
 #[cfg_attr(not(doctest), doc = " URL: standard Uniform Resource Locator string")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod url {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3275,7 +3247,6 @@ pub mod url {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod vec_map {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3356,7 +3327,6 @@ pub mod vec_map {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod vec_set {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3410,7 +3380,6 @@ pub mod vec_set {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod versioned {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;

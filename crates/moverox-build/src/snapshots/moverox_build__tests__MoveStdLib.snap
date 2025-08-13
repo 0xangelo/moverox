@@ -11,7 +11,6 @@ expression: move_stdlib
     doc = " that characters are valid ASCII, and that strings consist of only valid ASCII characters."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod ascii {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -87,7 +86,6 @@ pub mod ascii {
     }
 }
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod bit_vector {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -127,7 +125,6 @@ pub mod bit_vector {
 )]
 #[cfg_attr(not(doctest), doc = " a 32-bit fractional part.")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod fixed_point32 {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -198,7 +195,6 @@ pub mod fixed_point32 {
     doc = " This module defines the Option type and its methods to represent and handle an optional value."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod option {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -245,7 +241,6 @@ pub mod option {
 )]
 #[cfg_attr(not(doctest), doc = " strings.")]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod string {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -288,7 +283,6 @@ pub mod string {
     doc = " Functionality for converting Move types into values. Use with care!"
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod type_name {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -353,7 +347,6 @@ pub mod type_name {
     doc = " the number of bits in the fractional part--in this case 32 bits for each."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod uq32_32 {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -422,7 +415,6 @@ pub mod uq32_32 {
     doc = " the number of bits in the fractional part--in this case 64 bits for each."
 )]
 #[allow(rustdoc::all)]
-#[cfg(not(doctest))]
 pub mod uq64_64 {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;

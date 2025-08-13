@@ -55,7 +55,6 @@ impl ModuleGen for Module {
         quote! {
             #attrs
             #[allow(rustdoc::all)]
-            #[cfg(not(doctest))]
             pub mod #ident {
                 #[allow(non_camel_case_types, unused)]
                 type address = #thecrate::types::Address;
