@@ -200,7 +200,7 @@ cargo package -p <CRATE> --list | cat
 
 
 The `price-feed` Move package depends on the `fixed18` Move package. Therefore the corresponding Rust crates also have the same dependency structure. What's left to do is tell `moverox_build` that, when oxidizing `price-feed`, it needs to map item paths from the `fixed18` package to the corresponding item paths in the Rust equivalent `fixed18` crate. That is done via the `.map_address` method like so
-```
+```rust
 use std::path::Path;
 
 fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>> {
@@ -216,7 +216,7 @@ fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>> {
 }
 ```
 In this case, the `fixed18` crate has in `lib.rs`:
-```
+```rust
 /// Oxidized `fixed18` Move package.
 pub mod oxidized {
     moverox::include_oxidized!("fixed18");
