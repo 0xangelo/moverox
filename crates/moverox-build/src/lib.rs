@@ -48,11 +48,21 @@ pub struct Builder<'a> {
 }
 
 impl<'a> Builder<'a> {
+    /// Add `iota` implicit imports as explicit `use` statements to the module.
+    ///
+    /// Adapted from the `sui` equivalents.
     pub const fn with_implicit_iota_imports(mut self) -> Self {
         self.with_implicit_iota_imports = true;
         self
     }
 
+    /// Add `sui` implicit imports as explicit `use` statements to the module.
+    ///
+    /// This is done after reading the Move files and before generating the Rust code. Without this,
+    /// datatypes with field types like `UID` which aren't explicitly imported in Move modules will
+    /// fail to compile because they will not have the full path to the Rust equivalent.
+    ///
+    /// [Reference](https://move-book.com/programmability/sui-framework#implicit-imports)
     pub const fn with_implicit_sui_imports(mut self) -> Self {
         self.with_implicit_sui_imports = true;
         self
