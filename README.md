@@ -164,6 +164,68 @@ The cornerstone of almost all the crates in this project is the [`move-syn`] cra
 [`move-syn`]: ./crates/move-syn
 [`unsynn`]: https://docs.rs/unsynn
 
+## Working with multiple Move packages
+
+If you have multiple inter-dependent Move packages you wanna oxidize, the following is recommended.
+
+Have crates set up for each Move package you're oxidizing. For example.
+
+```
+.
+├── fixed18
+│   ├── move
+│   │   └── fixed18 -> ../../../packages/fixed18
+│   ├── src
+│   │   └── lib.rs
+│   ├── build.rs
+│   └── Cargo.toml
+└── price-feed
+    ├── move
+    │   └── price-feed -> ../../../packages/price-feed
+    ├── src
+    │   └── lib.rs
+    ├── build.rs
+    └── Cargo.toml
+```
+Notice each crate has a `move/` directory and inside it are symlinks to the directories of the target Move packages. 
+
+<details><summary>Why</summary>
+
+This is important because in the `build.rs` script we need to use files that are included with the crate when it's packaged, and Cargo has a much easier time including files under the crate's directory. You can check that the Move sources are included in the crate by running
+```
+cargo package -p <CRATE> --list | cat
+```
+
+</details>
+
+
+The `price-feed` Move package depends on the `fixed18` Move package. Therefore the corresponding Rust crates also have the same dependency structure. What's left to do is tell `moverox_build` that, when oxidizing `price-feed`, it needs to map item paths from the `fixed18` package to the corresponding item paths in the Rust equivalent `fixed18` crate. That is done via the `.map_address` method like so
+```
+use std::path::Path;
+
+fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>> {
+    let move_dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("move");
+
+    moverox_build::move_package(move_dir.join("price-feed"), "price-feed")
+        .with_implicit_sui_imports()
+        .map_address("sui", "moverox_sui::sui")
+        .map_address("std", "moverox_sui::move_stdlib")
+        .map_address("fixed18", "fixed18::oxidized")
+        .build()?;
+    Ok(())
+}
+```
+In this case, the `fixed18` crate has in `lib.rs`:
+```
+/// Oxidized `fixed18` Move package.
+pub mod oxidized {
+    moverox::include_oxidized!("fixed18");
+}
+```
+
+Notice we also include `.with_implicit_sui_imports`, since most Move packages don't explicitly import items from the framework packages. For details, see the API documentation for the method.
+
+
 ## License
 
 Licensed under either of
