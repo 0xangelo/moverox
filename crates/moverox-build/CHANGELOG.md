@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6](https://github.com/0xangelo/moverox/compare/moverox-build-v0.0.5...moverox-build-v0.0.6)
+
+### 📚 Documentation
+
+- *(moverox-build)* Implicit imports helpers - ([b949824](https://github.com/0xangelo/moverox/commit/b94982429821053e0e2786a44207a352dbe009a1))
+
+
 ## [0.0.5](https://github.com/0xangelo/moverox/compare/moverox-build-v0.0.4...moverox-build-v0.0.5)
 
 ### 🐛 Bug Fixes
