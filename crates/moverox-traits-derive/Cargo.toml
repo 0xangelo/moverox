@@ -30,9 +30,8 @@ proc-macro2 = { version = "1", public = true }
 syn         = { version = "2", public = true, features = ["clone-impls"] }
 
 convert_case = "0.8"
-deluxe       = "0.5"
+darling      = "0.20"
 quote        = "1"
-rustversion  = "1"
 
 [dev-dependencies]
 moverox-traits = { path = "../moverox-traits", features = ["derive"] }

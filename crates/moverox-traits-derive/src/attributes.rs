@@ -1,13 +1,19 @@
+#![expect(
+    clippy::option_if_let_else,
+    reason = "Generated code by `#[darling(default)]`"
+)]
+
+use darling::FromDeriveInput;
 use syn::{Ident, Path, parse_quote};
 
-#[derive(deluxe::ExtractAttributes)]
-#[deluxe(attributes(move_))]
+#[derive(FromDeriveInput)]
+#[darling(attributes(move_))]
 pub(crate) struct MoveAttributes {
-    #[deluxe(rename = crate)]
+    #[darling(rename = "crate")]
     pub(crate) thecrate: Option<Path>,
     pub(crate) address: Option<String>,
     pub(crate) module: Option<Ident>,
-    #[deluxe(default = false)]
+    #[darling(default)]
     pub(crate) nameless: bool,
 }
 

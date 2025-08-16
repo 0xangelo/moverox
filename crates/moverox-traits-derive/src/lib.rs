@@ -58,7 +58,7 @@ pub fn move_datatype_derive_macro(item: proc_macro::TokenStream) -> proc_macro::
         .into()
 }
 
-fn impl_move_datatype(item: TokenStream) -> deluxe::Result<TokenStream> {
+fn impl_move_datatype(item: TokenStream) -> syn::Result<TokenStream> {
     let datatype = Datatype::parse(item)?;
 
     let type_tag_decl = datatype.type_tag.struct_declaration();

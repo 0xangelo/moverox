@@ -1,3 +1,4 @@
+use darling::FromDeriveInput as _;
 use proc_macro2::TokenStream;
 use quote::quote;
 use syn::punctuated::Punctuated;
@@ -14,9 +15,9 @@ pub(crate) struct Datatype {
 
 impl Datatype {
     pub(crate) fn parse(item: TokenStream) -> syn::Result<Self> {
-        let mut ast: DeriveInput = syn::parse2(item)?;
+        let ast: DeriveInput = syn::parse2(item)?;
         ensure_nonempty_struct(&ast)?;
-        let attrs: MoveAttributes = deluxe::extract_attributes(&mut ast)?;
+        let attrs = MoveAttributes::from_derive_input(&ast)?;
         validate_datatype_generics(&ast.generics)?;
         let type_tag = TypeTagStruct::new(&ast, &attrs);
         Ok(Self {
@@ -210,14 +211,14 @@ fn validate_datatype_generics(generics: &Generics) -> syn::Result<()> {
                 }) {
                     continue;
                 }
-                return Err(deluxe::Error::new_spanned(
+                return Err(syn::Error::new_spanned(
                     type_param,
                     "Move datatypes can at most have the `moverox_traits::MoveType` bound on its \
                         type parameters",
                 ));
             }
             _ => {
-                return Err(deluxe::Error::new_spanned(
+                return Err(syn::Error::new_spanned(
                     param,
                     "Only Type generics are supported",
                 ));
