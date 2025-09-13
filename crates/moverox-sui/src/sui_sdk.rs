@@ -26,7 +26,7 @@ impl Compat for moverox::types::Identifier {
     type To = sui_sdk_types::Identifier;
 
     fn from_sui(value: Self::To) -> Self {
-        Self::new(value.into_inner()).expect("Compatible identifiers")
+        Self::new(value.as_str()).expect("Compatible identifiers")
     }
 
     fn into_sui(self) -> Self::To {
