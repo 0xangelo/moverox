@@ -19,6 +19,9 @@ rustdoc-args = [
   "-Zunstable-options",
 ]
 
+[package.metadata.cargo-machete]
+ignored = ["moverox"]
+
 [lints]
 workspace = true
 
