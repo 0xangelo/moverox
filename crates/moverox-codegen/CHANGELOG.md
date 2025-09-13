@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.5...moverox-codegen-v0.0.6)
+
+### ⚙️ Miscellaneous Tasks
+
+- Updated the following local packages: move-syn - ([0000000](https://github.com/0xangelo/moverox/commit/0000000))
+
+
 ## [0.0.5](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.4...moverox-codegen-v0.0.5)
 
 ### 🐛 Bug Fixes
