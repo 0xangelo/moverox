@@ -28,7 +28,7 @@ proc-macro2 = { version = "1", public = true }
 
 quote  = "1"
 sealed = "0.6"
-unsynn = "0.1"
+unsynn = "0.2"
 
 
 [dev-dependencies]

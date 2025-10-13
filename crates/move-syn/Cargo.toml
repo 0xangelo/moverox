@@ -27,7 +27,7 @@ workspace = true
 
 [dependencies]
 proc-macro2 = { version = "1", public = true }
-unsynn      = { version = "0.1", public = true }
+unsynn      = { version = "0.2", public = true }
 
 regex = "1"
 
