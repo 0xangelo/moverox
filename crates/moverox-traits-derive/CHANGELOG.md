@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4](https://github.com/0xangelo/moverox/compare/moverox-traits-derive-v0.0.3...moverox-traits-derive-v0.0.4)
+
+### 🚜 Refactor
+
+- *(moverox-traits-derive)* Use `darling` instead of `deluxe` - ([cb3e35c](https://github.com/0xangelo/moverox/commit/cb3e35c11b4b1fed65ea399f9a701d03987f4b5d))
+
+
 ## [0.0.2](https://github.com/0xangelo/moverox/compare/moverox-traits-derive-v0.0.1...moverox-traits-derive-v0.0.2)
 
 ### 📚 Documentation
