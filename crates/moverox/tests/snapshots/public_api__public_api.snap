@@ -28,7 +28,7 @@ pub fn moverox::OtwTypeTag::from_str(s: &str) -> core::result::Result<Self, Self
 impl moverox_traits::MoveDatatypeTag for moverox::OtwTypeTag
 pub fn moverox::OtwTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox::OtwTypeTag::to_struct_tag(&self) -> moverox_types::type_tag::StructTag
-impl serde::ser::Serialize for moverox::OtwTypeTag
-pub fn moverox::OtwTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde::ser::Serializer>::Ok, <S as serde::ser::Serializer>::Error> where S: serde::ser::Serializer
-impl<'de> serde::de::Deserialize<'de> for moverox::OtwTypeTag
-pub fn moverox::OtwTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde::de::Deserializer>::Error> where D: serde::de::Deserializer<'de>
+impl serde_core::ser::Serialize for moverox::OtwTypeTag
+pub fn moverox::OtwTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox::OtwTypeTag
+pub fn moverox::OtwTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
