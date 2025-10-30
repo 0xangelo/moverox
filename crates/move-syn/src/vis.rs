@@ -1,6 +1,7 @@
 use crate::Item;
 
 /// Visibility options of a Move [`Item`].
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub enum Visibility {
     /// `public`
     Public,
