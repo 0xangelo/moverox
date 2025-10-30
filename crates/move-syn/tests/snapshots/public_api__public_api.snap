@@ -341,6 +341,10 @@ impl unsynn::Parser for move_syn::TypePath
 pub fn move_syn::TypePath::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::TypePath
 pub fn move_syn::TypePath::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub enum move_syn::Visibility
+pub move_syn::Visibility::Package
+pub move_syn::Visibility::Private
+pub move_syn::Visibility::Public
 pub struct move_syn::Attribute
 impl move_syn::Attribute
 pub const fn move_syn::Attribute::contents(&self) -> &impl unsynn::ToTokens
@@ -412,6 +416,8 @@ pub fn move_syn::Import::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Item
 pub move_syn::Item::attrs: alloc::vec::Vec<move_syn::Attribute>
 pub move_syn::Item::kind: move_syn::ItemKind
+impl move_syn::Item
+pub const fn move_syn::Item::visibility(&self) -> move_syn::Visibility
 impl unsynn::Parser for move_syn::Item
 pub fn move_syn::Item::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Item

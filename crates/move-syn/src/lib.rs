@@ -11,8 +11,10 @@ use unsynn::*;
 mod functions;
 #[cfg(test)]
 mod tests;
+mod vis;
 
 pub use self::functions::Function;
+pub use self::vis::Visibility;
 
 /// Process raw Move code so that it can be used as input to Rust's tokenizer.
 ///
@@ -110,7 +112,7 @@ unsynn! {
     /// A Move language item.
     pub struct Item {
         pub attrs: Vec<Attribute>,
-        vis: Option<Visibility>,
+        vis: Option<Vis>,
         pub kind: ItemKind,
     }
 
@@ -137,7 +139,7 @@ unsynn! {
     ///
     /// `public`, `public(package)`, `public(friend)`
     #[derive(Clone)]
-    struct Visibility {
+    struct Vis {
         public: kw::Public,
         modifier: Option<ParenthesisGroupContaining<VisibilityModifier>>,
     }
