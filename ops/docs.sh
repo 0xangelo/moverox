@@ -13,6 +13,6 @@ fi
 
 set -ex
 
-RUSTDOCFLAGS="-A rustdoc::redundant-explicit-links -D warnings -Zunstable-options --generate-link-to-definition" \
+RUSTDOCFLAGS="-A rustdoc::redundant-explicit-links -D warnings" \
   RUSTC_BOOTSTRAP=1 \
   cargo +nightly doc $SCOPE --all-features ${@:2}

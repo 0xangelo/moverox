@@ -139,7 +139,7 @@ pub moverox_types::TypeTag::U256
 pub moverox_types::TypeTag::U32
 pub moverox_types::TypeTag::U64
 pub moverox_types::TypeTag::U8
-pub moverox_types::TypeTag::Vector(alloc::boxed::Box<moverox_types::TypeTag>)
+pub moverox_types::TypeTag::Vector(alloc::boxed::Box<Self>)
 impl core::convert::From<moverox_types::StructTag> for moverox_types::TypeTag
 pub fn moverox_types::TypeTag::from(value: moverox_types::StructTag) -> Self
 impl core::fmt::Display for moverox_types::TypeTag

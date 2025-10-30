@@ -599,6 +599,7 @@ impl Module {
 
     /// Resolve all datatype field types to their fully-qualified paths.
     pub fn fully_qualify_datatype_field_types(&mut self) -> &mut Self {
+        // Collect all imported types and their paths
         let imports: HashMap<_, _> = self
             .items()
             .filter_map(|item| match &item.kind {
@@ -608,12 +609,21 @@ impl Module {
             .flat_map(|import| import.flatten())
             .collect();
 
-        for datatype in self.datatypes_mut() {
-            let generics = datatype.generics();
-            for type_ in datatype.field_types_mut() {
-                type_.resolve(&imports, &generics);
+        // Resolve datatype fields' types
+        for item in &mut self.contents.content {
+            match &mut item.kind {
+                ItemKind::Enum(e) => {
+                    let generics = &e.generics();
+                    e.map_types(|ty| ty.resolve(&imports, generics));
+                }
+                ItemKind::Struct(s) => {
+                    let generics = &s.generics();
+                    s.map_types(|ty| ty.resolve(&imports, generics));
+                }
+                _ => (),
             }
         }
+
         self
     }
 
@@ -624,16 +634,6 @@ impl Module {
     #[cfg(test)]
     pub fn into_items(self) -> impl Iterator<Item = Item> {
         self.contents.content.into_iter()
-    }
-
-    fn datatypes_mut(&mut self) -> impl Iterator<Item = &mut dyn Datatype> {
-        self.contents.content.iter_mut().filter_map(|item| {
-            Some(match &mut item.kind {
-                ItemKind::Enum(e) => e as _,
-                ItemKind::Struct(s) => s as _,
-                _ => return None,
-            })
-        })
     }
 
     fn add_implicit_imports(&mut self, mut implicit_imports: HashMap<Ident, Import>) -> &mut Self {
@@ -668,9 +668,7 @@ impl Import {
             // use named_address::module...
             ImportModule::One(module_or_items) => module_or_items.flatten(named_address),
             // use named_address::{...}
-            ImportModule::Many(BraceGroupContaining {
-                content: DelimitedVec(ms),
-            }) => ms
+            ImportModule::Many(BraceGroupContaining { content: ms }) => ms
                 .iter()
                 .flat_map(move |Delimited { value, .. }| value.flatten(named_address.clone()))
                 .boxed(),
@@ -681,9 +679,7 @@ impl Import {
     fn imported_idents(&self) -> impl Iterator<Item = &Ident> {
         match &self.module {
             ImportModule::One(module_or_items) => module_or_items.available_idents(),
-            ImportModule::Many(BraceGroupContaining {
-                content: DelimitedVec(ms),
-            }) => ms
+            ImportModule::Many(BraceGroupContaining { content: ms }) => ms
                 .iter()
                 .flat_map(|delimited| delimited.value.available_idents())
                 .boxed(),
@@ -727,10 +723,7 @@ impl ModuleOrItems {
 
             // module::{(item( as alias)?),+};
             AliasOrItems::Items {
-                item:
-                    ImportItem::Many(BraceGroupContaining {
-                        content: DelimitedVec(items),
-                    }),
+                item: ImportItem::Many(BraceGroupContaining { content: items }),
                 ..
             } => items
                 .iter()
@@ -756,10 +749,7 @@ impl ModuleOrItems {
             } => std::iter::once(item.available_ident(&self.ident)).boxed(),
 
             AliasOrItems::Items {
-                item:
-                    ImportItem::Many(BraceGroupContaining {
-                        content: DelimitedVec(items),
-                    }),
+                item: ImportItem::Many(BraceGroupContaining { content: items }),
                 ..
             } => items
                 .iter()
@@ -832,34 +822,15 @@ impl Struct {
             K::Braced(braced) => braced
                 .abilities
                 .iter()
-                .flat_map(|a| a.keywords.0.iter())
+                .flat_map(|a| a.keywords.iter())
                 .map(|d| &d.value)
                 .boxed(),
             K::Tuple(tuple) => tuple
                 .abilities
                 .iter()
-                .flat_map(|a| a.first.keywords.0.iter())
+                .flat_map(|a| a.first.keywords.iter())
                 .map(|d| &d.value)
                 .boxed(),
-        }
-    }
-
-    pub fn field_types_mut(&mut self) -> impl Iterator<Item = &mut Type> {
-        use StructKind as K;
-        match &mut self.kind {
-            K::Tuple(TupleStruct {
-                fields: contents, ..
-            }) => contents.types_mut().boxed(),
-            K::Braced(BracedStruct {
-                fields: contents, ..
-            }) => contents.types_mut().boxed(),
-        }
-    }
-
-    fn fields_group_mut(&mut self) -> &mut dyn FieldsGroup {
-        match &mut self.kind {
-            StructKind::Braced(braced) => &mut braced.fields,
-            StructKind::Tuple(tuple) => &mut tuple.fields,
         }
     }
 }
@@ -870,7 +841,7 @@ impl BracedStruct {
     }
 
     /// Whether this struct has no fields.
-    pub const fn is_empty(&self) -> bool {
+    pub fn is_empty(&self) -> bool {
         self.fields.is_empty()
     }
 }
@@ -881,7 +852,7 @@ impl TupleStruct {
     }
 
     /// Whether this struct has no fields.
-    pub const fn is_empty(&self) -> bool {
+    pub fn is_empty(&self) -> bool {
         self.fields.is_empty()
     }
 }
@@ -890,56 +861,43 @@ impl Enum {
     pub fn abilities(&self) -> impl Iterator<Item = &Ability> {
         self.abilities
             .iter()
-            .flat_map(|a| a.keywords.0.iter())
+            .flat_map(|a| a.keywords.iter())
             .map(|d| &d.value)
     }
 
     pub fn variants(&self) -> impl Iterator<Item = &EnumVariant> {
         self.content
             .content
-            .0
             .iter()
             .map(|Delimited { value, .. }| value)
-    }
-
-    fn field_groups_mut(&mut self) -> impl Iterator<Item = &mut dyn FieldsGroup> {
-        self.content
-            .content
-            .0
-            .iter_mut()
-            .flat_map(|Delimited { value, .. }| value.fields_mut())
-    }
-}
-
-impl EnumVariant {
-    fn fields_mut(&mut self) -> Option<&mut dyn FieldsGroup> {
-        self.fields.as_mut().map(|x| x as _)
     }
 }
 
 impl NamedFields {
     pub fn fields(&self) -> impl Iterator<Item = &NamedField> + Clone + '_ {
-        self.0.content.0.iter().map(|d| &d.value)
+        self.0.content.iter().map(|d| &d.value)
     }
 
-    pub const fn is_empty(&self) -> bool {
-        self.0.content.0.is_empty()
+    pub fn is_empty(&self) -> bool {
+        self.0.content.is_empty()
     }
 }
 
 impl PositionalFields {
-    pub const fn new() -> Self {
+    pub fn new() -> Self {
         Self(ParenthesisGroupContaining {
-            content: DelimitedVec(vec![]),
+            content: std::iter::empty::<UnnamedField>()
+                .collect::<DelimitedVec<_, _, TrailingDelimiter::Mandatory>>()
+                .into(),
         })
     }
 
     pub fn fields(&self) -> impl Iterator<Item = &UnnamedField> + Clone + '_ {
-        self.0.content.0.iter().map(|d| &d.value)
+        self.0.content.iter().map(|d| &d.value)
     }
 
-    pub const fn is_empty(&self) -> bool {
-        self.0.content.0.is_empty()
+    pub fn is_empty(&self) -> bool {
+        self.0.content.is_empty()
     }
 }
 
@@ -954,9 +912,7 @@ impl Type {
     fn resolve(&mut self, imports: &HashMap<Ident, FlatImport>, generics: &[Ident]) {
         use TypePath as P;
         // First, resolve the type arguments
-        for ty in self.type_args_mut() {
-            ty.resolve(imports, generics);
-        }
+        self.map_types(|ty| ty.resolve(imports, generics));
 
         // Then resolve its own path
         // HACK: We trust the Move code is valid, so the expected import should always be found,
@@ -1000,24 +956,18 @@ impl Type {
         };
         self.path = resolved;
     }
-
-    fn type_args_mut(&mut self) -> impl Iterator<Item = &mut Self> {
-        self.type_args
-            .iter_mut()
-            .flat_map(|args| args.args.0.iter_mut().map(|d| &mut *d.value))
-    }
 }
 
 impl TypeArgs {
     /// Guaranteed to be non-empty.
     pub fn types(&self) -> impl Iterator<Item = &Type> {
-        self.args.0.iter().map(|args| &*args.value)
+        self.args.iter().map(|args| &*args.value)
     }
 }
 
 impl Generics {
     pub fn generics(&self) -> impl Iterator<Item = &Generic> + '_ {
-        self.type_args.0.iter().map(|d| &d.value)
+        self.type_args.iter().map(|d| &d.value)
     }
 }
 
@@ -1052,8 +1002,6 @@ impl<'a, T> IteratorBoxed<'a> for T where T: Iterator + 'a {}
 /// An enum or struct.
 trait Datatype {
     fn generics(&self) -> Vec<Ident>;
-
-    fn field_types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_>;
 }
 
 impl Datatype for Enum {
@@ -1063,12 +1011,6 @@ impl Datatype for Enum {
             .flat_map(|generics| generics.generics())
             .map(|generic| generic.ident.clone())
             .collect()
-    }
-
-    fn field_types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
-        self.field_groups_mut()
-            .flat_map(|group| group.types_mut())
-            .boxed()
     }
 }
 
@@ -1080,45 +1022,87 @@ impl Datatype for Struct {
             .map(|generic| generic.ident.clone())
             .collect()
     }
+}
 
-    fn field_types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
-        self.fields_group_mut().types_mut()
+/// Something that has inner types, e.g., fields, type arguments.
+trait Typed {
+    /// Field types. Used to resolve into fully-qualified paths.
+    fn map_types(&mut self, f: impl FnMut(&mut Type));
+}
+
+impl Typed for Enum {
+    fn map_types(&mut self, mut f: impl FnMut(&mut Type)) {
+        mutate_delimited_vec(&mut self.content.content, |variant| {
+            variant.map_types(&mut f)
+        });
     }
 }
 
-/// A group of named or positional datatype fields.
-trait FieldsGroup {
-    /// Field types. Used to resolve into fully-qualified paths.
-    fn types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_>;
+impl Typed for EnumVariant {
+    fn map_types(&mut self, f: impl FnMut(&mut Type)) {
+        let Some(fields) = &mut self.fields else {
+            return;
+        };
+        fields.map_types(f);
+    }
 }
 
-impl FieldsGroup for FieldsKind {
-    fn types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
-        match self {
-            Self::Named(named) => named.types_mut(),
-            Self::Positional(positional) => positional.types_mut(),
+impl Typed for Struct {
+    fn map_types(&mut self, f: impl FnMut(&mut Type)) {
+        match &mut self.kind {
+            StructKind::Braced(braced_struct) => braced_struct.fields.map_types(f),
+            StructKind::Tuple(tuple_struct) => tuple_struct.fields.map_types(f),
         }
     }
 }
 
-impl FieldsGroup for NamedFields {
-    fn types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
-        self.0
-            .content
-            .0
-            .iter_mut()
-            .map(|Delimited { value: field, .. }| &mut field.ty)
-            .boxed()
+impl Typed for FieldsKind {
+    fn map_types(&mut self, f: impl FnMut(&mut Type)) {
+        match self {
+            Self::Named(named) => named.map_types(f),
+            Self::Positional(positional) => positional.map_types(f),
+        }
     }
 }
 
-impl FieldsGroup for PositionalFields {
-    fn types_mut(&mut self) -> Box<dyn Iterator<Item = &mut Type> + '_> {
-        self.0
-            .content
-            .0
-            .iter_mut()
-            .map(|Delimited { value: field, .. }| &mut field.ty)
-            .boxed()
+impl Typed for NamedFields {
+    fn map_types(&mut self, mut f: impl FnMut(&mut Type)) {
+        mutate_delimited_vec(&mut self.0.content, |field| f(&mut field.ty));
     }
+}
+
+impl Typed for PositionalFields {
+    fn map_types(&mut self, mut f: impl FnMut(&mut Type)) {
+        mutate_delimited_vec(&mut self.0.content, |field| f(&mut field.ty));
+    }
+}
+
+impl Typed for Type {
+    fn map_types(&mut self, mut f: impl FnMut(&mut Self)) {
+        if let Some(args) = &mut self.type_args {
+            mutate_delimited_vec(&mut args.args, |t| f(&mut *t))
+        }
+    }
+}
+
+// HACK: circumvent the fact that `DelimitedVec` doesn't have a `DerefMut` implementation.
+// WARN: this changes `P` to be `Forbidden`
+fn mutate_delimited_vec<T, D: Default, const MIN: usize, const MAX: usize>(
+    dvec: &mut DelimitedVec<T, D, TrailingDelimiter::Optional, MIN, MAX>,
+    mut f: impl FnMut(&mut T),
+) {
+    type ForbiddenDelimited<T, D, const MIN: usize, const MAX: usize> =
+        DelimitedVec<T, D, TrailingDelimiter::Forbidden, MIN, MAX>;
+
+    let temp: ForbiddenDelimited<T, D, MIN, MAX> = std::iter::empty::<T>().collect();
+    let mut swapped = std::mem::replace(dvec, temp.into());
+    swapped = swapped
+        .into_iter()
+        .map(|mut d| {
+            f(&mut d.value);
+            d.value
+        })
+        .collect::<ForbiddenDelimited<T, D, MIN, MAX>>()
+        .into();
+    *dvec = swapped;
 }

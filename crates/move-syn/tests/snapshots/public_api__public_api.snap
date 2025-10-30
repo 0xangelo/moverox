@@ -12,6 +12,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::As
 pub fn move_syn::kw::As::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::As
 pub fn move_syn::kw::As::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::As
+pub fn move_syn::kw::As::default() -> Self
 impl unsynn::Parser for move_syn::kw::As
 pub fn move_syn::kw::As::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::As
@@ -23,6 +25,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Const
 pub fn move_syn::kw::Const::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Const
 pub fn move_syn::kw::Const::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Const
+pub fn move_syn::kw::Const::default() -> Self
 impl unsynn::Parser for move_syn::kw::Const
 pub fn move_syn::kw::Const::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Const
@@ -34,6 +38,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Copy
 pub fn move_syn::kw::Copy::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Copy
 pub fn move_syn::kw::Copy::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Copy
+pub fn move_syn::kw::Copy::default() -> Self
 impl unsynn::Parser for move_syn::kw::Copy
 pub fn move_syn::kw::Copy::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Copy
@@ -45,6 +51,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Drop
 pub fn move_syn::kw::Drop::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Drop
 pub fn move_syn::kw::Drop::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Drop
+pub fn move_syn::kw::Drop::default() -> Self
 impl unsynn::Parser for move_syn::kw::Drop
 pub fn move_syn::kw::Drop::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Drop
@@ -56,6 +64,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Entry
 pub fn move_syn::kw::Entry::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Entry
 pub fn move_syn::kw::Entry::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Entry
+pub fn move_syn::kw::Entry::default() -> Self
 impl unsynn::Parser for move_syn::kw::Entry
 pub fn move_syn::kw::Entry::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Entry
@@ -67,6 +77,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Enum
 pub fn move_syn::kw::Enum::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Enum
 pub fn move_syn::kw::Enum::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Enum
+pub fn move_syn::kw::Enum::default() -> Self
 impl unsynn::Parser for move_syn::kw::Enum
 pub fn move_syn::kw::Enum::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Enum
@@ -78,6 +90,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Friend
 pub fn move_syn::kw::Friend::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Friend
 pub fn move_syn::kw::Friend::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Friend
+pub fn move_syn::kw::Friend::default() -> Self
 impl unsynn::Parser for move_syn::kw::Friend
 pub fn move_syn::kw::Friend::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Friend
@@ -89,6 +103,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Fun
 pub fn move_syn::kw::Fun::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Fun
 pub fn move_syn::kw::Fun::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Fun
+pub fn move_syn::kw::Fun::default() -> Self
 impl unsynn::Parser for move_syn::kw::Fun
 pub fn move_syn::kw::Fun::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Fun
@@ -100,6 +116,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Has
 pub fn move_syn::kw::Has::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Has
 pub fn move_syn::kw::Has::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Has
+pub fn move_syn::kw::Has::default() -> Self
 impl unsynn::Parser for move_syn::kw::Has
 pub fn move_syn::kw::Has::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Has
@@ -111,6 +129,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Key
 pub fn move_syn::kw::Key::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Key
 pub fn move_syn::kw::Key::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Key
+pub fn move_syn::kw::Key::default() -> Self
 impl unsynn::Parser for move_syn::kw::Key
 pub fn move_syn::kw::Key::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Key
@@ -122,6 +142,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Macro
 pub fn move_syn::kw::Macro::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Macro
 pub fn move_syn::kw::Macro::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Macro
+pub fn move_syn::kw::Macro::default() -> Self
 impl unsynn::Parser for move_syn::kw::Macro
 pub fn move_syn::kw::Macro::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Macro
@@ -133,6 +155,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Module
 pub fn move_syn::kw::Module::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Module
 pub fn move_syn::kw::Module::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Module
+pub fn move_syn::kw::Module::default() -> Self
 impl unsynn::Parser for move_syn::kw::Module
 pub fn move_syn::kw::Module::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Module
@@ -144,6 +168,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Mut
 pub fn move_syn::kw::Mut::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Mut
 pub fn move_syn::kw::Mut::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Mut
+pub fn move_syn::kw::Mut::default() -> Self
 impl unsynn::Parser for move_syn::kw::Mut
 pub fn move_syn::kw::Mut::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Mut
@@ -155,6 +181,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Native
 pub fn move_syn::kw::Native::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Native
 pub fn move_syn::kw::Native::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Native
+pub fn move_syn::kw::Native::default() -> Self
 impl unsynn::Parser for move_syn::kw::Native
 pub fn move_syn::kw::Native::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Native
@@ -166,6 +194,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Package
 pub fn move_syn::kw::Package::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Package
 pub fn move_syn::kw::Package::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Package
+pub fn move_syn::kw::Package::default() -> Self
 impl unsynn::Parser for move_syn::kw::Package
 pub fn move_syn::kw::Package::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Package
@@ -177,6 +207,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Phantom
 pub fn move_syn::kw::Phantom::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Phantom
 pub fn move_syn::kw::Phantom::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Phantom
+pub fn move_syn::kw::Phantom::default() -> Self
 impl unsynn::Parser for move_syn::kw::Phantom
 pub fn move_syn::kw::Phantom::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Phantom
@@ -188,6 +220,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Public
 pub fn move_syn::kw::Public::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Public
 pub fn move_syn::kw::Public::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Public
+pub fn move_syn::kw::Public::default() -> Self
 impl unsynn::Parser for move_syn::kw::Public
 pub fn move_syn::kw::Public::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Public
@@ -199,6 +233,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Store
 pub fn move_syn::kw::Store::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Store
 pub fn move_syn::kw::Store::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Store
+pub fn move_syn::kw::Store::default() -> Self
 impl unsynn::Parser for move_syn::kw::Store
 pub fn move_syn::kw::Store::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Store
@@ -210,6 +246,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Struct
 pub fn move_syn::kw::Struct::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Struct
 pub fn move_syn::kw::Struct::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Struct
+pub fn move_syn::kw::Struct::default() -> Self
 impl unsynn::Parser for move_syn::kw::Struct
 pub fn move_syn::kw::Struct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Struct
@@ -221,6 +259,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Use
 pub fn move_syn::kw::Use::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Use
 pub fn move_syn::kw::Use::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Use
+pub fn move_syn::kw::Use::default() -> Self
 impl unsynn::Parser for move_syn::kw::Use
 pub fn move_syn::kw::Use::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Use
@@ -232,6 +272,8 @@ impl core::convert::AsRef<proc_macro2::Ident> for move_syn::kw::Vector
 pub fn move_syn::kw::Vector::as_ref(&self) -> &proc_macro2::Ident
 impl core::convert::AsRef<str> for move_syn::kw::Vector
 pub fn move_syn::kw::Vector::as_ref(&self) -> &str
+impl core::default::Default for move_syn::kw::Vector
+pub fn move_syn::kw::Vector::default() -> Self
 impl unsynn::Parser for move_syn::kw::Vector
 pub fn move_syn::kw::Vector::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::kw::Vector
@@ -311,7 +353,7 @@ pub struct move_syn::BracedStruct
 pub move_syn::BracedStruct::fields: move_syn::NamedFields
 impl move_syn::BracedStruct
 pub fn move_syn::BracedStruct::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::NamedField> + core::clone::Clone + '_
-pub const fn move_syn::BracedStruct::is_empty(&self) -> bool
+pub fn move_syn::BracedStruct::is_empty(&self) -> bool
 impl unsynn::Parser for move_syn::BracedStruct
 pub fn move_syn::BracedStruct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::BracedStruct
@@ -407,7 +449,7 @@ pub fn move_syn::NamedField::to_tokens(&self, tokens: &mut proc_macro2::TokenStr
 pub struct move_syn::NamedFields(_)
 impl move_syn::NamedFields
 pub fn move_syn::NamedFields::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::NamedField> + core::clone::Clone + '_
-pub const fn move_syn::NamedFields::is_empty(&self) -> bool
+pub fn move_syn::NamedFields::is_empty(&self) -> bool
 impl unsynn::Parser for move_syn::NamedFields
 pub fn move_syn::NamedFields::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::NamedFields
@@ -420,8 +462,8 @@ pub fn move_syn::NativeFun::to_tokens(&self, tokens: &mut proc_macro2::TokenStre
 pub struct move_syn::PositionalFields(_)
 impl move_syn::PositionalFields
 pub fn move_syn::PositionalFields::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::UnnamedField> + core::clone::Clone + '_
-pub const fn move_syn::PositionalFields::is_empty(&self) -> bool
-pub const fn move_syn::PositionalFields::new() -> Self
+pub fn move_syn::PositionalFields::is_empty(&self) -> bool
+pub fn move_syn::PositionalFields::new() -> Self
 impl core::default::Default for move_syn::PositionalFields
 pub fn move_syn::PositionalFields::default() -> Self
 impl unsynn::Parser for move_syn::PositionalFields
@@ -434,7 +476,6 @@ pub move_syn::Struct::ident: proc_macro2::Ident
 pub move_syn::Struct::kind: move_syn::StructKind
 impl move_syn::Struct
 pub fn move_syn::Struct::abilities(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Ability>
-pub fn move_syn::Struct::field_types_mut(&mut self) -> impl core::iter::traits::iterator::Iterator<Item = &mut move_syn::Type>
 impl unsynn::Parser for move_syn::Struct
 pub fn move_syn::Struct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Struct
@@ -443,7 +484,7 @@ pub struct move_syn::TupleStruct
 pub move_syn::TupleStruct::fields: move_syn::PositionalFields
 impl move_syn::TupleStruct
 pub fn move_syn::TupleStruct::fields(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::UnnamedField> + core::clone::Clone + '_
-pub const fn move_syn::TupleStruct::is_empty(&self) -> bool
+pub fn move_syn::TupleStruct::is_empty(&self) -> bool
 impl unsynn::Parser for move_syn::TupleStruct
 pub fn move_syn::TupleStruct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::TupleStruct

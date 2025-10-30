@@ -53,7 +53,7 @@ pub enum TypeTag {
     Address,
     Signer,
     #[cfg_attr(feature = "proptest", weight(0))]
-    Vector(Box<TypeTag>),
+    Vector(Box<Self>),
     Struct(Box<StructTag>),
 }
 
