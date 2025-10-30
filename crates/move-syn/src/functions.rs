@@ -77,4 +77,51 @@ impl Function {
             })
             .unwrap_or_default()
     }
+
+    pub fn signature_string(&self, named_args: bool) -> String {
+        let Self {
+            entry,
+            fun_kw,
+            ident,
+            generics,
+            args: FunctionArgs(ParenthesisGroupContaining { content: args }),
+            ret,
+            body: _,
+        } = self;
+
+        fn to_string(t: &impl ToTokens) -> String {
+            t.tokens_to_string()
+        }
+
+        let fun = to_string(fun_kw);
+        let maybe_entry = entry
+            .as_ref()
+            .map(|e| to_string(e) + " ")
+            .unwrap_or_default();
+        let generics = generics.as_ref().map(to_string).unwrap_or_default();
+
+        let args = args
+            .iter()
+            .map(|d| {
+                let type_ = to_string(&d.value.type_);
+                if named_args {
+                    format!("{}: {type_}", d.value.ident)
+                } else {
+                    type_
+                }
+            })
+            .reduce(|a, b| a + ", " + &b)
+            .unwrap_or_default();
+
+        let ret = ret.as_ref().map(to_string).unwrap_or_default();
+        format!("{maybe_entry}{fun} {ident}{generics}({args}){ret}")
+            .replace(" ,", ",")
+            .replace(",)", ")")
+            .replace(" <", "<")
+            .replace("< ", "<")
+            .replace(" >", ">")
+            .replace(" :", ":")
+            .replace(":: ", "::")
+            .replace("& ", "&")
+    }
 }
