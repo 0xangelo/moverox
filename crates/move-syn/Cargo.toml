@@ -1,7 +1,7 @@
 [package]
 description = "Move syntax parsing"
 name        = "move-syn"
-version     = "0.0.4"
+version     = "0.0.5-alpha.2"
 
 authors.workspace      = true
 categories.workspace   = true
@@ -25,11 +25,15 @@ ignored = ["proc-macro2"]
 [lints]
 workspace = true
 
+[features]
+fun-args = []
+
 [dependencies]
 proc-macro2 = { version = "1", public = true }
 unsynn      = { version = "0.2", public = true }
 
-regex = "1"
+cfg-if = "1"
+regex  = "1"
 
 [dev-dependencies]
 derive_more = { version = "2", features = ["display"] }
