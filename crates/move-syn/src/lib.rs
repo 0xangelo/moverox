@@ -289,7 +289,7 @@ unsynn! {
         keyword: kw::Enum,
         pub ident: Ident,
         pub generics: Option<Generics>,
-        pub abilities: Option<Abilities>,
+        abilities: Option<Abilities>,
         content: BraceGroupContaining<CommaDelimitedVec<EnumVariant>>,
     }
 

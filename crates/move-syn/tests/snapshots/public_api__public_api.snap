@@ -368,7 +368,6 @@ pub fn move_syn::Const::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::er
 impl unsynn::ToTokens for move_syn::Const
 pub fn move_syn::Const::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Enum
-pub move_syn::Enum::abilities: core::option::Option<Abilities>
 pub move_syn::Enum::generics: core::option::Option<move_syn::Generics>
 pub move_syn::Enum::ident: proc_macro2::Ident
 impl move_syn::Enum
