@@ -46,7 +46,6 @@ fn missing_ability() {
 }
 
 #[test]
-#[should_panic] // FIXME: we may want to disallow this
 fn trailing_comma_after_ability() {
     let _ = "struct OTW has drop, {}"
         .to_token_iter()
