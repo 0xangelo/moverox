@@ -361,14 +361,13 @@ unsynn! {
         bounds: Option<GenericBounds>
     }
 
-    /// Slightly convoluted, but captures the fact that:
+    /// Captures the fact that:
     /// * `:` must be followed by an ability
     /// * additional abilities are preceeded by `+`
     #[derive(Clone)]
     struct GenericBounds {
         colon: Colon,
-        first_ability: Ability,
-        extra_abilities: Vec<Cons<Plus, Ability>>
+        abilities: Many<Ability, Plus, TrailingDelimiter::Forbidden>,
     }
 
     // === Abilities ===
@@ -379,7 +378,7 @@ unsynn! {
     #[derive(Clone)]
     struct Abilities {
         has: kw::Has,
-        keywords: Many<Ability, Comma>,
+        keywords: Many<Ability, Comma, TrailingDelimiter::Forbidden>,
     }
 
     /// Ability keywords.
