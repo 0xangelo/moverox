@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.0.5...moverox-sui-v0.0.6)
+
+### 🚜 Refactor
+
+- *(moverox-traits)* Remove unused deps with `cargo-machete` ([#26](https://github.com/0xangelo/moverox/pull/26)) - ([f4828b8](https://github.com/0xangelo/moverox/commit/f4828b847ea627600adbdce94bc932527610ec43))
+
+
 ## [0.0.5](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.0.4...moverox-sui-v0.0.5)
 
 ### ⚙️ Miscellaneous Tasks
