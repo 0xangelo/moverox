@@ -23,7 +23,7 @@ rustdoc-args = [
 workspace = true
 
 [dependencies]
-move-syn    = { version = "0.0.5-alpha.3", path = "../move-syn", public = true }
+move-syn    = { version = "0.0.5", path = "../move-syn", public = true }
 proc-macro2 = { version = "1", public = true }
 
 quote  = "1"
