@@ -1,7 +1,7 @@
 [package]
 description = "Traits for rusty Move types and their type tags."
 name        = "moverox-traits"
-version     = "0.0.3"
+version     = "0.0.4"
 
 authors.workspace      = true
 categories.workspace   = true
@@ -30,8 +30,8 @@ serde  = ["serde/derive"]
 # Public dependencies; a SemVer-breaking bump in one of these must come with a SemVer-breaking bump
 # to this crate
 # https://rust-lang.github.io/rfcs/3516-public-private-dependencies.html
-moverox-traits-derive = { version = "0.0.3", optional = true, path = "../moverox-traits-derive", public = true }
-moverox-types         = { version = "0.0.3", path = "../moverox-types", public = true }
+moverox-traits-derive = { version = "0.0.4", optional = true, path = "../moverox-traits-derive", public = true }
+moverox-types         = { version = "0.0.4", path = "../moverox-types", public = true }
 serde                 = { version = "1", public = true, optional = true }
 thiserror    = "2"
 

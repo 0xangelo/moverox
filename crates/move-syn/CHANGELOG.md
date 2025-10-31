@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5-alpha.3](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-alpha.2...move-syn-v0.0.5-alpha.3)
+
+### 🐛 Bug Fixes
+
+- *(move-syn)* [**breaking**] Forbid some trailing delimiters ([#34](https://github.com/0xangelo/moverox/pull/34)) - ([f0f9f1d](https://github.com/0xangelo/moverox/commit/f0f9f1da3d4120a516258489225850c0e953b817))
+
+
 ## [0.0.4](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.3...move-syn-v0.0.4)
 
 ### ⛰️ Features
