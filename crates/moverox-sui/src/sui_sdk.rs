@@ -39,17 +39,16 @@ impl Compat for moverox::types::StructTag {
     type To = sui_sdk_types::StructTag;
 
     fn from_sui(value: Self::To) -> Self {
-        let sui_sdk_types::StructTag {
-            address,
-            module,
-            name,
-            type_params,
-        } = value;
         Self {
-            address: Compat::from_sui(address),
-            module: Compat::from_sui(module),
-            name: Compat::from_sui(name),
-            type_params: type_params.into_iter().map(Compat::from_sui).collect(),
+            address: Compat::from_sui(*value.address()),
+            module: Compat::from_sui(value.module().clone()),
+            name: Compat::from_sui(value.name().clone()),
+            type_params: value
+                .type_params()
+                .iter()
+                .cloned()
+                .map(Compat::from_sui)
+                .collect(),
         }
     }
 
@@ -60,12 +59,12 @@ impl Compat for moverox::types::StructTag {
             name,
             type_params,
         } = self;
-        sui_sdk_types::StructTag {
-            address: address.into_sui(),
-            module: module.into_sui(),
-            name: name.into_sui(),
-            type_params: type_params.into_iter().map(Compat::into_sui).collect(),
-        }
+        sui_sdk_types::StructTag::new(
+            address.into_sui(),
+            module.into_sui(),
+            name.into_sui(),
+            type_params.into_iter().map(Compat::into_sui).collect(),
+        )
     }
 }
 
