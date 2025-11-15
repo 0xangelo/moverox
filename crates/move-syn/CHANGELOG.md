@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5-beta](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-alpha.2...move-syn-v0.0.5-beta)
+
+### ⛰️ Features
+
+- *(move-syn)* `Attribute::external_attributes` - ([498f58e](https://github.com/0xangelo/moverox/commit/498f58e2e22d1a0d6cce998bfc2ddb6c41294da1))
+
+### 🐛 Bug Fixes
+
+- *(move-syn)* [**breaking**] Forbid some trailing delimiters ([#34](https://github.com/0xangelo/moverox/pull/34)) - ([f0f9f1d](https://github.com/0xangelo/moverox/commit/f0f9f1da3d4120a516258489225850c0e953b817))
+
+### 🚜 Refactor
+
+- *(move-syn)* Remove unnecessary `pub` - ([9efa704](https://github.com/0xangelo/moverox/commit/9efa704c15a77f3accf12d50b658e887dfe778d8))
+- Enable `feature(doc_cfg)` only on nightly - ([bef4127](https://github.com/0xangelo/moverox/commit/bef4127d13442f4ad1d709a40d6bb91764976468))
+
+### 🧪 Testing
+
+- *(move-syn)* Function with compound attribute - ([5b84b62](https://github.com/0xangelo/moverox/commit/5b84b624674173a9dc47f1deab5d9fd948032029))
+
+### ⚙️ Miscellaneous Tasks
+
+- *(move-syn)* [**breaking**] Update attribute parsing - ([25f5b6a](https://github.com/0xangelo/moverox/commit/25f5b6a60282c968ae0dbd5af51a996b9ed10ded))
+
+
 ## [0.0.4](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.3...move-syn-v0.0.4)
 
 ### ⛰️ Features
