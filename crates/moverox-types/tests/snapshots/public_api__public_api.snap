@@ -217,11 +217,6 @@ pub moverox_types::StructTag::address: moverox_types::Address
 pub moverox_types::StructTag::module: moverox_types::Identifier
 pub moverox_types::StructTag::name: moverox_types::Identifier
 pub moverox_types::StructTag::type_params: alloc::vec::Vec<moverox_types::TypeTag>
-impl moverox_types::StructTag
-pub fn moverox_types::StructTag::coin(type_tag: moverox_types::TypeTag) -> Self
-pub fn moverox_types::StructTag::gas_coin() -> Self
-pub fn moverox_types::StructTag::is_coin(&self) -> core::option::Option<&moverox_types::TypeTag>
-pub fn moverox_types::StructTag::staked_sui() -> Self
 impl core::convert::From<moverox_types::StructTag> for moverox_types::TypeTag
 pub fn moverox_types::TypeTag::from(value: moverox_types::StructTag) -> Self
 impl core::fmt::Display for moverox_types::StructTag

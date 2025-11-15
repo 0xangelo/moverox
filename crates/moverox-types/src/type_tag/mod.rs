@@ -7,7 +7,6 @@ mod parse;
 mod serialization;
 
 use super::Address;
-use crate::IdentStr;
 
 /// Type of a move value
 ///
@@ -190,54 +189,6 @@ pub struct StructTag {
     pub name: Identifier,
     #[cfg_attr(feature = "proptest", strategy(proptest::strategy::Just(Vec::new())))]
     pub type_params: Vec<TypeTag>,
-}
-
-impl StructTag {
-    pub fn gas_coin() -> Self {
-        let sui = Self {
-            address: Address::TWO,
-            module: IdentStr::cast("sui").to_owned(),
-            name: IdentStr::cast("SUI").to_owned(),
-            type_params: vec![],
-        };
-
-        Self::coin(TypeTag::Struct(Box::new(sui)))
-    }
-
-    pub fn coin(type_tag: TypeTag) -> Self {
-        Self {
-            address: Address::TWO,
-            module: IdentStr::cast("coin").to_owned(),
-            name: IdentStr::cast("Coin").to_owned(),
-            type_params: vec![type_tag],
-        }
-    }
-
-    pub fn staked_sui() -> Self {
-        Self {
-            address: Address::THREE,
-            module: IdentStr::cast("staking_pool").to_owned(),
-            name: IdentStr::cast("StakedSui").to_owned(),
-            type_params: vec![],
-        }
-    }
-
-    /// Checks if this is a Coin type
-    pub fn is_coin(&self) -> Option<&TypeTag> {
-        let Self {
-            address,
-            module,
-            name,
-            type_params,
-        } = self;
-
-        if address == &Address::TWO && module == "coin" && name == "Coin" && type_params.len() == 1
-        {
-            type_params.first()
-        } else {
-            None
-        }
-    }
 }
 
 impl std::fmt::Display for StructTag {
