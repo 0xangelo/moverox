@@ -124,6 +124,22 @@ fn tuple_struct_with_generic_field_type_and_ability() {
     ensure_roundtrip_move_struct("public struct Wut<T>(T) has drop;");
 }
 
+#[test]
+fn function_with_compound_attribute() {
+    let code = indoc::indoc! {"
+    #[allow(unused_function), ext(dev_inspect)]
+    fun my_function() {}
+    "};
+    let ast: Item = code.to_token_iter().parse_all().unwrap();
+    assert!(matches!(
+        ast,
+        Item {
+            kind: ItemKind::Function(_),
+            ..
+        }
+    ));
+}
+
 pub fn ensure_roundtrip_move_struct(decl: &str) {
     let ast: Item = decl.to_token_iter().parse_all().unwrap();
     assert!(matches!(

@@ -37,6 +37,7 @@ regex  = "1"
 
 [dev-dependencies]
 derive_more = { version = "2", features = ["display"] }
+indoc       = "2"
 insta       = "1"
 itertools   = "0.14"
 testresult  = "0.4"
