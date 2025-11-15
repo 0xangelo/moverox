@@ -235,7 +235,7 @@ impl TypeTagStruct {
             ..
         } = self;
 
-        let to_struct_tag_impl = self.impl_to_struct_tag();
+        let required_getters_impl = self.impl_required_getters();
         let from_struct_tag_impl = self.impl_from_struct_tag();
 
         let (impl_generics, type_generics, where_clause) = generics.split_for_impl();
@@ -244,56 +244,58 @@ impl TypeTagStruct {
             impl #impl_generics #thecrate::MoveDatatypeTag for #ident #type_generics
             #where_clause
             {
-                #to_struct_tag_impl
+                #required_getters_impl
                 #from_struct_tag_impl
             }
         }
     }
 
-    pub(crate) fn impl_to_struct_tag(&self) -> TokenStream {
+    pub(crate) fn impl_required_getters(&self) -> TokenStream {
         let Self { thecrate, .. } = self;
 
         let external = self.external();
-        let struct_tag_type = quote!(#external::StructTag);
-
-        let field_idents: Vec<_> = self.fields().into_iter().filter_map(|f| f.ident).collect();
-
-        let struct_tag_var_attrs = std::iter::empty()
-            .chain(self.address.is_none().then_some(quote!(address)))
-            .chain(self.module.is_none().then_some(quote!(module)))
-            .chain(self.name.is_none().then_some(quote!(name)));
 
         let type_param_idents = self.type_fields().into_iter().filter_map(|f| f.ident);
 
-        let struct_tag_const_declarations = std::iter::empty()
-            .chain(self.address.is_some().then(|| {
-                quote! {
-                    address: <Self as #thecrate::ConstAddress>::ADDRESS
-                }
-            }))
-            .chain(self.module.is_some().then(|| {
-                quote! {
-                    module: <Self as #thecrate::ConstModule>::MODULE.to_owned()
-                }
-            }))
-            .chain(self.name.is_some().then(|| {
-                quote! {
-                    name: <Self as #thecrate::ConstName>::NAME.to_owned()
-                }
-            }))
-            .chain(std::iter::once(
-                quote!(type_params: vec![#(#type_param_idents.to_type_tag()),*]),
-            ));
+        let address_value = if self.address.is_some() {
+            quote!(<Self as #thecrate::ConstAddress>::ADDRESS)
+        } else {
+            quote!(self.address)
+        };
+
+        let module_value = if self.module.is_some() {
+            quote!(<Self as #thecrate::ConstModule>::MODULE)
+        } else {
+            quote! {
+                use ::std::borrow::Borrow as _;
+                self.module.borrow()
+            }
+        };
+
+        let name_value = if self.name.is_some() {
+            quote!(<Self as #thecrate::ConstName>::NAME)
+        } else {
+            quote! {
+                use ::std::borrow::Borrow as _;
+                self.name.borrow()
+            }
+        };
 
         quote! {
-            fn to_struct_tag(&self) -> #struct_tag_type {
-                let Self {
-                    #(#field_idents),*
-                } = self;
-                #struct_tag_type {
-                    #(#struct_tag_var_attrs: #struct_tag_var_attrs.clone(),)*
-                    #(#struct_tag_const_declarations),*
-                }
+            fn address(&self) -> #external::Address {
+                #address_value
+            }
+
+            fn module(&self) -> &#external::IdentStr {
+                #module_value
+            }
+
+            fn name(&self) -> &#external::IdentStr {
+                #name_value
+            }
+
+            fn type_params(&self) -> Box<dyn ::std::iter::ExactSizeIterator <Item = &dyn #thecrate::MoveTypeTag > + '_ > {
+                Box::new([#(&self.#type_param_idents as _),*].into_iter())
             }
         }
     }

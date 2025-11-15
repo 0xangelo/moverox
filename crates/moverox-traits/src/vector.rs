@@ -11,6 +11,10 @@ impl<T: MoveType> MoveType for Vec<T> {
 pub struct VecTypeTag<T: MoveTypeTag>(pub T);
 
 impl<T: MoveTypeTag> MoveTypeTag for VecTypeTag<T> {
+    fn as_datatype_tag(&self) -> Option<&dyn crate::MoveDatatypeTag> {
+        None
+    }
+
     fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError> {
         match value {
             TypeTag::Vector(type_) => Ok(Self(MoveTypeTag::from_type_tag(type_)?)),

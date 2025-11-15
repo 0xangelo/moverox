@@ -47,6 +47,8 @@ pub trait MoveType {
 
 /// A specialized Move type tag, convertible from/to a generic [`TypeTag`] by reference.
 pub trait MoveTypeTag {
+    fn as_datatype_tag(&self) -> Option<&dyn MoveDatatypeTag>;
+
     fn to_type_tag(&self) -> TypeTag;
 
     fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError>
@@ -58,6 +60,10 @@ impl<T> MoveTypeTag for T
 where
     T: MoveDatatypeTag,
 {
+    fn as_datatype_tag(&self) -> Option<&dyn MoveDatatypeTag> {
+        Some(self as _)
+    }
+
     fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError>
     where
         Self: Sized,
@@ -88,7 +94,22 @@ pub trait MoveDatatype: MoveType<TypeTag = Self::StructTag> {
 /// A specialized Move type tag for datatypes, convertible from/to a generic [`StructTag`] by
 /// reference.
 pub trait MoveDatatypeTag: MoveTypeTag {
-    fn to_struct_tag(&self) -> StructTag;
+    fn address(&self) -> Address;
+
+    fn module(&self) -> &IdentStr;
+
+    fn name(&self) -> &IdentStr;
+
+    fn type_params(&self) -> Box<dyn ExactSizeIterator<Item = &dyn MoveTypeTag> + '_>;
+
+    fn to_struct_tag(&self) -> StructTag {
+        StructTag {
+            address: self.address(),
+            module: self.module().to_owned(),
+            name: self.name().to_owned(),
+            type_params: self.type_params().map(|t| t.to_type_tag()).collect(),
+        }
+    }
 
     fn from_struct_tag(value: &StructTag) -> Result<Self, StructTagError>
     where
