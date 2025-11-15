@@ -140,7 +140,7 @@ fn function_with_compound_attribute() {
     ));
 }
 
-pub fn ensure_roundtrip_move_struct(decl: &str) {
+fn ensure_roundtrip_move_struct(decl: &str) {
     let ast: Item = decl.to_token_iter().parse_all().unwrap();
     assert!(matches!(
         ast,
