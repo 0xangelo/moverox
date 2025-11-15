@@ -2,7 +2,14 @@ use std::str::FromStr;
 
 use moverox_types::{Address, TypeTag, U256};
 
-use crate::{ConstTypeTag, MoveType, MoveTypeTag, ParseTypeTagError, TypeTagError};
+use crate::{
+    ConstTypeTag,
+    MoveDatatypeTag,
+    MoveType,
+    MoveTypeTag,
+    ParseTypeTagError,
+    TypeTagError,
+};
 
 macro_rules! impl_primitive_type_tags {
     ($($typ:ty: ($type_tag:ident, $variant:ident)),*) => {
@@ -20,6 +27,10 @@ macro_rules! impl_primitive_type_tags {
             pub struct $type_tag;
 
             impl MoveTypeTag for $type_tag {
+                fn as_datatype_tag(&self) -> Option<&dyn MoveDatatypeTag> {
+                    None
+                }
+
                 fn from_type_tag(value: &TypeTag) -> Result<Self, TypeTagError> {
                     match value {
                         TypeTag::$variant => Ok(Self),
