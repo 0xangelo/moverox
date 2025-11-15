@@ -1,6 +1,11 @@
 use std::path::Path;
 
 fn main() -> Result<(), Box<dyn std::error::Error + Send + Sync + 'static>> {
+    println!("cargo::rustc-check-cfg=cfg(nightly)");
+    if rustversion::cfg!(nightly) {
+        println!("cargo:rustc-cfg=nightly");
+    }
+
     let move_dir = Path::new(env!("CARGO_MANIFEST_DIR")).join("move");
 
     moverox_build::move_package(move_dir.join("move-stdlib"), "std")

@@ -1,4 +1,4 @@
-#![cfg_attr(all(doc, not(doctest)), feature(doc_cfg))]
+#![cfg_attr(nightly, feature(doc_cfg))]
 
 //! Move, oxidized.
 

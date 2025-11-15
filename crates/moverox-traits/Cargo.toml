@@ -43,3 +43,6 @@ rustdoc-json     = "0.9"
 rustup-toolchain = "0.1"
 
 moverox-types = { path = "../moverox-types", features = ["serde"] }
+
+[build-dependencies]
+rustversion = "1.0.22"

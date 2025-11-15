@@ -32,6 +32,10 @@ moverox-codegen = { version = "0.0.5", path = "../moverox-codegen" }
 anyhow = "1"
 
 
+[build-dependencies]
+rustversion = "1"
+
+
 [dev-dependencies]
 indoc        = "2"
 insta        = "1"

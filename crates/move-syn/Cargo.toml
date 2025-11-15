@@ -35,6 +35,9 @@ unsynn      = { version = "0.2", public = true }
 cfg-if = "1"
 regex  = "1"
 
+[build-dependencies]
+rustversion = "1"
+
 [dev-dependencies]
 derive_more = { version = "2", features = ["display"] }
 indoc       = "2"

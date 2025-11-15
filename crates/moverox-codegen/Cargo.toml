@@ -40,3 +40,6 @@ syn          = { version = "2", default-features = false, features = ["parsing"]
 public-api       = "0.50"
 rustdoc-json     = "0.9"
 rustup-toolchain = "0.1"
+
+[build-dependencies]
+rustversion = "1.0.22"
