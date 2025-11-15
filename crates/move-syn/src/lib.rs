@@ -122,16 +122,58 @@ unsynn! {
     #[derive(Clone)]
     pub struct Attribute {
         pound: Pound,
-        contents: BracketGroupContaining<AttributeContent>,
+        contents: BracketGroupContaining<DelimitedVec<Meta, Comma, TrailingDelimiter::Optional>>,
     }
 
+    /// Meta =
+    ///     "for"
+    ///     | <Identifier>
+    ///     | <Identifier> "=" <AttributeValue>
+    ///     | <Identifier> "(" Comma<Meta> ")"
+    ///
+    /// Based on
+    /// https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L1154-L1158
     #[derive(Clone)]
-    enum AttributeContent {
+    enum Meta {
+        // NOTE: special case for doc strings
         Doc(Cons<DocKw, Assign, LiteralString>),
-        Other(Vec<TokenTree>),
+        For(ForKw),
+        Other {
+            ident: Ident,
+            sub: Option<Box<SubMeta>>,
+        }
     }
 
     keyword DocKw = "doc";
+    keyword ForKw = "for";
+
+    #[derive(Clone)]
+    enum SubMeta {
+        Eq(Cons<Assign, AttributeValue>),
+        List(ParenthesisGroupContaining<DelimitedVec<Meta, Comma, TrailingDelimiter::Optional>>),
+    }
+
+    /// AttributeValue =
+    ///     <Value>
+    ///     | <NameAccessChain>
+    ///
+    /// Based on
+    /// https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L1135-L1138
+    #[derive(Clone)]
+    enum AttributeValue {
+        Lit(Literal),
+        //      NameAccessChain =
+        //          <LeadingNameAccess> <OptionalTypeArgs>
+        //              ( "::" <Identifier> <OptionalTypeArgs> )^n
+        NameAccessChain {
+            // TODO: support NumericalAddress
+            // LeadingNameAccess = <NumericalAddress> | <Identifier> | <SyntaxIdentifier>
+            leading_name_access: Either<SyntaxIdent, Ident>,
+            // NOTE: ignoring <OptionalTypeArgs> for now
+            // https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L3168
+            path: DelimitedVec<PathSep, Ident, TrailingDelimiter::Forbidden>,
+        },
+    }
 
     // === Visibility modifiers ===
 
@@ -422,7 +464,7 @@ unsynn! {
 
     /// `$T: drop + store`
     struct MacroTypeArg{
-        name: MacroTypeName,
+        name: SyntaxIdent,
         bounds: Option<GenericBounds>,
     }
 
@@ -439,17 +481,21 @@ unsynn! {
     /// - `&String`
     /// - `Option<$T>`
     enum MacroReturnType {
-        MacroTypeName(MacroTypeName),
+        MacroTypeName(SyntaxIdent),
         Hybrid(HybridMacroType)
     }
 
     struct HybridMacroType {
         ident: Ident,
-        type_args: Option<Cons<Lt, Many<Either<Type, MacroTypeName, Box<HybridMacroType>>, Comma>, Gt>>
+        type_args: Option<Cons<Lt, Many<Either<Type, SyntaxIdent, Box<HybridMacroType>>, Comma>, Gt>>
     }
 
     /// `$T`
-    struct MacroTypeName {
+    ///
+    /// Name based on
+    /// https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L675-L678
+    #[derive(Clone)]
+    struct SyntaxIdent {
         dollar: Dollar,
         ident: Ident,
     }
@@ -793,8 +839,14 @@ impl MaybeAliased {
 
 impl Attribute {
     /// Whether this is a `#[doc = "..."]`.
-    pub const fn is_doc(&self) -> bool {
-        matches!(self.contents.content, AttributeContent::Doc(_))
+    pub fn is_doc(&self) -> bool {
+        matches!(
+            &self.contents.content[..],
+            [Delimited {
+                value: Meta::Doc(_),
+                ..
+            }]
+        )
     }
 
     /// Everything inside the bracket group, `#[...]`.

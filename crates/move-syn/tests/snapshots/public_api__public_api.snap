@@ -348,7 +348,7 @@ pub move_syn::Visibility::Public
 pub struct move_syn::Attribute
 impl move_syn::Attribute
 pub const fn move_syn::Attribute::contents(&self) -> &impl unsynn::ToTokens
-pub const fn move_syn::Attribute::is_doc(&self) -> bool
+pub fn move_syn::Attribute::is_doc(&self) -> bool
 impl unsynn::Parser for move_syn::Attribute
 pub fn move_syn::Attribute::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Attribute
