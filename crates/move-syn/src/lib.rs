@@ -140,7 +140,7 @@ unsynn! {
         For(ForKw),
         Other {
             ident: Ident,
-            sub: Option<Box<SubMeta>>,
+            sub: Option<SubMeta>,
         }
     }
 
@@ -150,7 +150,7 @@ unsynn! {
     #[derive(Clone)]
     enum SubMeta {
         Eq(Cons<Assign, AttributeValue>),
-        List(ParenthesisGroupContaining<DelimitedVec<Meta, Comma, TrailingDelimiter::Optional>>),
+        List(ParenthesisGroupContaining<DelimitedVec<Box<Meta>, Comma, TrailingDelimiter::Optional>>),
     }
 
     /// AttributeValue =
@@ -852,6 +852,17 @@ impl Attribute {
     /// Everything inside the bracket group, `#[...]`.
     pub const fn contents(&self) -> &impl ToTokens {
         &self.contents.content
+    }
+
+    /// Contents of parameterized attributes as `#[ext(<external_attribute>)]`
+    pub fn external_attributes(&self) -> impl Iterator<Item = &dyn ToTokens> + '_ {
+        self.contents.content.iter().filter_map(|d| match &d.value {
+            Meta::Other {
+                ident,
+                sub: Some(SubMeta::List(inner)),
+            } if ident == "ext" => Some(inner as _),
+            _ => None,
+        })
     }
 }
 
