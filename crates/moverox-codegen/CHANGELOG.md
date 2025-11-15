@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.5...moverox-codegen-v0.0.6)
+
+### ⛰️ Features
+
+- *(move-syn)* [**breaking**] Granular function argument parsing ([#33](https://github.com/0xangelo/moverox/pull/33)) - ([3dd2ad6](https://github.com/0xangelo/moverox/commit/3dd2ad6f29b03b62f80e0b496afe63c5e9389959))
+
+### 🚜 Refactor
+
+- Enable `feature(doc_cfg)` only on nightly - ([bef4127](https://github.com/0xangelo/moverox/commit/bef4127d13442f4ad1d709a40d6bb91764976468))
+
+
 ## [0.0.5](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.4...moverox-codegen-v0.0.5)
 
 ### 🐛 Bug Fixes
