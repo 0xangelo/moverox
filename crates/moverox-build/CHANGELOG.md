@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0](https://github.com/0xangelo/moverox/compare/moverox-build-v0.0.5...moverox-build-v0.1.0)
+
+### ⛰️ Features
+
+- *(move-syn)* [**breaking**] Granular function argument parsing ([#33](https://github.com/0xangelo/moverox/pull/33)) - ([3dd2ad6](https://github.com/0xangelo/moverox/commit/3dd2ad6f29b03b62f80e0b496afe63c5e9389959))
+
+### 🚜 Refactor
+
+- *(moverox-traits)* Remove unused deps with `cargo-machete` ([#26](https://github.com/0xangelo/moverox/pull/26)) - ([f4828b8](https://github.com/0xangelo/moverox/commit/f4828b847ea627600adbdce94bc932527610ec43))
+- Enable `feature(doc_cfg)` only on nightly - ([bef4127](https://github.com/0xangelo/moverox/commit/bef4127d13442f4ad1d709a40d6bb91764976468))
+
+### 📚 Documentation
+
+- *(moverox-build)* Implicit imports helpers - ([b949824](https://github.com/0xangelo/moverox/commit/b94982429821053e0e2786a44207a352dbe009a1))
+
+### ⚙️ Miscellaneous Tasks
+
+- *(move-syn)* Release v0.0.5-beta - ([7de04ab](https://github.com/0xangelo/moverox/commit/7de04abcd9875105130023e1cb0c6d60122dd02d))
+
+
 ## [0.0.5](https://github.com/0xangelo/moverox/compare/moverox-build-v0.0.4...moverox-build-v0.0.5)
 
 ### 🐛 Bug Fixes

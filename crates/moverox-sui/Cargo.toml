@@ -36,7 +36,7 @@ sealed = { version = "0.6", optional = true }
 
 
 [build-dependencies]
-moverox-build = { version = "0.0.5", path = "../moverox-build" }
+moverox-build = { version = "0.1.0", path = "../moverox-build" }
 rustversion = "1.0.22"
 
 
