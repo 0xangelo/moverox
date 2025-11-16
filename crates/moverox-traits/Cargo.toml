@@ -31,7 +31,7 @@ serde  = ["serde/derive"]
 # to this crate
 # https://rust-lang.github.io/rfcs/3516-public-private-dependencies.html
 moverox-traits-derive = { version = "0.0.3", optional = true, path = "../moverox-traits-derive", public = true }
-moverox-types         = { version = "0.0.3", path = "../moverox-types", public = true }
+moverox-types         = { version = "0.1.0", path = "../moverox-types", public = true }
 serde                 = { version = "1", public = true, optional = true }
 thiserror    = "2"
 

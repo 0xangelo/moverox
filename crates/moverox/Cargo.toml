@@ -35,7 +35,7 @@ version  = "0.0.3"
 features = ["serde"]
 path     = "../moverox-types"
 public   = true
-version  = "0.0.3"
+version = "0.1.0"
 
 [dependencies.serde]
 features = ["derive"]

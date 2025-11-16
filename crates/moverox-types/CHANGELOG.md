@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0](https://github.com/0xangelo/moverox/compare/moverox-types-v0.0.3...moverox-types-v0.1.0)
+
+### 🚜 Refactor
+
+- *(moverox-types)* [**breaking**] Remove Sui-specific `StructTag` functions - ([6345685](https://github.com/0xangelo/moverox/commit/634568565288d8b2ad812b6461b47a9e076f9873))
+- Enable `feature(doc_cfg)` only on nightly - ([bef4127](https://github.com/0xangelo/moverox/commit/bef4127d13442f4ad1d709a40d6bb91764976468))
+
+
 ## [0.0.2](https://github.com/0xangelo/moverox/compare/moverox-types-v0.0.1...moverox-types-v0.0.2)
 
 ### 📚 Documentation
