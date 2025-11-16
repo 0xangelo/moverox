@@ -29,7 +29,7 @@ bcs = ["dep:bcs", "dep:thiserror"]
 features = ["derive", "serde"]
 path     = "../moverox-traits"
 public   = true
-version  = "0.0.3"
+version = "0.1.0"
 
 [dependencies.moverox-types]
 features = ["serde"]
