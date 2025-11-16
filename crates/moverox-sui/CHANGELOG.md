@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.0](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.0.5...moverox-sui-v0.1.0)
+
+### ⛰️ Features
+
+- *(moverox-traits)* [**breaking**] New methods for `MoveTypeTag` and `MoveDatatypeTag` - ([473030f](https://github.com/0xangelo/moverox/commit/473030f260288eab8d37ee880eabc0b01f87cd30))
+
+### 🚜 Refactor
+
+- *(moverox-traits)* [**breaking**] Update `MoveDatatypeTag::type_params` - ([8c5bbcf](https://github.com/0xangelo/moverox/commit/8c5bbcf56dec88754e68fa85b5df5d8066a02cd1))
+- *(moverox-traits)* Remove unused deps with `cargo-machete` ([#26](https://github.com/0xangelo/moverox/pull/26)) - ([f4828b8](https://github.com/0xangelo/moverox/commit/f4828b847ea627600adbdce94bc932527610ec43))
+- Enable `feature(doc_cfg)` only on nightly - ([bef4127](https://github.com/0xangelo/moverox/commit/bef4127d13442f4ad1d709a40d6bb91764976468))
+
+
 ## [0.0.5](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.0.4...moverox-sui-v0.0.5)
 
 ### ⚙️ Miscellaneous Tasks
