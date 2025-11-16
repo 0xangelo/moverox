@@ -100,14 +100,14 @@ pub trait MoveDatatypeTag: MoveTypeTag {
 
     fn name(&self) -> &IdentStr;
 
-    fn type_params(&self) -> Box<dyn ExactSizeIterator<Item = &dyn MoveTypeTag> + '_>;
+    fn type_params(&self) -> Box<[&dyn MoveTypeTag]>;
 
     fn to_struct_tag(&self) -> StructTag {
         StructTag {
             address: self.address(),
             module: self.module().to_owned(),
             name: self.name().to_owned(),
-            type_params: self.type_params().map(|t| t.to_type_tag()).collect(),
+            type_params: self.type_params().iter().map(|t| t.to_type_tag()).collect(),
         }
     }
 

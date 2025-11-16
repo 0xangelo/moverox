@@ -34,7 +34,7 @@ pub fn moverox_sui::move_stdlib::ascii::CharTypeTag::address(&self) -> moverox_t
 pub fn moverox_sui::move_stdlib::ascii::CharTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::ascii::CharTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::ascii::CharTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::ascii::CharTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::ascii::CharTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::move_stdlib::ascii::CharTypeTag
 pub fn moverox_sui::move_stdlib::ascii::CharTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::move_stdlib::ascii::CharTypeTag
@@ -68,7 +68,7 @@ pub fn moverox_sui::move_stdlib::ascii::StringTypeTag::address(&self) -> moverox
 pub fn moverox_sui::move_stdlib::ascii::StringTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::ascii::StringTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::ascii::StringTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::ascii::StringTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::ascii::StringTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::move_stdlib::ascii::StringTypeTag
 pub fn moverox_sui::move_stdlib::ascii::StringTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::move_stdlib::ascii::StringTypeTag
@@ -104,7 +104,7 @@ pub fn moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag::address(&self) ->
 pub fn moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag
 pub fn moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::move_stdlib::bit_vector::BitVectorTypeTag
@@ -139,7 +139,7 @@ pub fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag::address(&se
 pub fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag
 pub fn moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::move_stdlib::fixed_point32::FixedPoint32TypeTag
@@ -177,7 +177,7 @@ pub fn moverox_sui::move_stdlib::option::OptionTypeTag<Element>::address(&self) 
 pub fn moverox_sui::move_stdlib::option::OptionTypeTag<Element>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::option::OptionTypeTag<Element>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::option::OptionTypeTag<Element>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::option::OptionTypeTag<Element>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::option::OptionTypeTag<Element>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<Element: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::move_stdlib::option::OptionTypeTag<Element>
 pub fn moverox_sui::move_stdlib::option::OptionTypeTag<Element>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::move_stdlib::string
@@ -210,7 +210,7 @@ pub fn moverox_sui::move_stdlib::string::StringTypeTag::address(&self) -> movero
 pub fn moverox_sui::move_stdlib::string::StringTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::string::StringTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::string::StringTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::string::StringTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::string::StringTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::move_stdlib::string::StringTypeTag
 pub fn moverox_sui::move_stdlib::string::StringTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::move_stdlib::string::StringTypeTag
@@ -245,7 +245,7 @@ pub fn moverox_sui::move_stdlib::type_name::TypeNameTypeTag::address(&self) -> m
 pub fn moverox_sui::move_stdlib::type_name::TypeNameTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::type_name::TypeNameTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::type_name::TypeNameTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::type_name::TypeNameTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::type_name::TypeNameTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::move_stdlib::type_name::TypeNameTypeTag
 pub fn moverox_sui::move_stdlib::type_name::TypeNameTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::move_stdlib::type_name::TypeNameTypeTag
@@ -279,7 +279,7 @@ pub fn moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag::address(&self) -> move
 pub fn moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag
 pub fn moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::move_stdlib::uq32_32::UQ32_32TypeTag
@@ -313,7 +313,7 @@ pub fn moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag::address(&self) -> move
 pub fn moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag
 pub fn moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::move_stdlib::uq64_64::UQ64_64TypeTag
@@ -351,7 +351,7 @@ pub fn moverox_sui::sui::accumulator::AccumulatorRootTypeTag::address(&self) -> 
 pub fn moverox_sui::sui::accumulator::AccumulatorRootTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::accumulator::AccumulatorRootTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::accumulator::AccumulatorRootTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::accumulator::AccumulatorRootTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::accumulator::AccumulatorRootTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::accumulator::AccumulatorRootTypeTag
 pub fn moverox_sui::sui::accumulator::AccumulatorRootTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::accumulator::AccumulatorRootTypeTag
@@ -388,7 +388,7 @@ pub fn moverox_sui::sui::authenticator_state::ActiveJwkTypeTag::address(&self) -
 pub fn moverox_sui::sui::authenticator_state::ActiveJwkTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::authenticator_state::ActiveJwkTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::authenticator_state::ActiveJwkTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::authenticator_state::ActiveJwkTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::authenticator_state::ActiveJwkTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::authenticator_state::ActiveJwkTypeTag
 pub fn moverox_sui::sui::authenticator_state::ActiveJwkTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::authenticator_state::ActiveJwkTypeTag
@@ -438,7 +438,7 @@ pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag::ad
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::authenticator_state::AuthenticatorStateInnerTypeTag
@@ -460,7 +460,7 @@ pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag::address
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag
 pub fn moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::authenticator_state::AuthenticatorStateTypeTag
@@ -497,7 +497,7 @@ pub fn moverox_sui::sui::authenticator_state::JWKTypeTag::address(&self) -> move
 pub fn moverox_sui::sui::authenticator_state::JWKTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::authenticator_state::JWKTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::authenticator_state::JWKTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::authenticator_state::JWKTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::authenticator_state::JWKTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::authenticator_state::JWKTypeTag
 pub fn moverox_sui::sui::authenticator_state::JWKTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::authenticator_state::JWKTypeTag
@@ -532,7 +532,7 @@ pub fn moverox_sui::sui::authenticator_state::JwkIdTypeTag::address(&self) -> mo
 pub fn moverox_sui::sui::authenticator_state::JwkIdTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::authenticator_state::JwkIdTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::authenticator_state::JwkIdTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::authenticator_state::JwkIdTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::authenticator_state::JwkIdTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::authenticator_state::JwkIdTypeTag
 pub fn moverox_sui::sui::authenticator_state::JwkIdTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::authenticator_state::JwkIdTypeTag
@@ -570,7 +570,7 @@ pub fn moverox_sui::sui::bag::BagTypeTag::address(&self) -> moverox_types::addre
 pub fn moverox_sui::sui::bag::BagTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::bag::BagTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::bag::BagTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::bag::BagTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::bag::BagTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::bag::BagTypeTag
 pub fn moverox_sui::sui::bag::BagTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::bag::BagTypeTag
@@ -608,7 +608,7 @@ pub fn moverox_sui::sui::balance::BalanceTypeTag<T>::address(&self) -> moverox_t
 pub fn moverox_sui::sui::balance::BalanceTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::balance::BalanceTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::balance::BalanceTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::balance::BalanceTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::balance::BalanceTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::balance::BalanceTypeTag<T>
 pub fn moverox_sui::sui::balance::BalanceTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::balance::Supply<T>
@@ -643,7 +643,7 @@ pub fn moverox_sui::sui::balance::SupplyTypeTag<T>::address(&self) -> moverox_ty
 pub fn moverox_sui::sui::balance::SupplyTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::balance::SupplyTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::balance::SupplyTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::balance::SupplyTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::balance::SupplyTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::balance::SupplyTypeTag<T>
 pub fn moverox_sui::sui::balance::SupplyTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::bcs
@@ -676,7 +676,7 @@ pub fn moverox_sui::sui::bcs::BCSTypeTag::address(&self) -> moverox_types::addre
 pub fn moverox_sui::sui::bcs::BCSTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::bcs::BCSTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::bcs::BCSTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::bcs::BCSTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::bcs::BCSTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::bcs::BCSTypeTag
 pub fn moverox_sui::sui::bcs::BCSTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::bcs::BCSTypeTag
@@ -712,7 +712,7 @@ pub fn moverox_sui::sui::borrow::BorrowTypeTag::address(&self) -> moverox_types:
 pub fn moverox_sui::sui::borrow::BorrowTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::borrow::BorrowTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::borrow::BorrowTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::borrow::BorrowTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::borrow::BorrowTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::borrow::BorrowTypeTag
 pub fn moverox_sui::sui::borrow::BorrowTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::borrow::BorrowTypeTag
@@ -750,7 +750,7 @@ pub fn moverox_sui::sui::borrow::ReferentTypeTag<T>::address(&self) -> moverox_t
 pub fn moverox_sui::sui::borrow::ReferentTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::borrow::ReferentTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::borrow::ReferentTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::borrow::ReferentTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::borrow::ReferentTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::borrow::ReferentTypeTag<T>
 pub fn moverox_sui::sui::borrow::ReferentTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::borrow::Test
@@ -784,7 +784,7 @@ pub fn moverox_sui::sui::borrow::TestTypeTag::address(&self) -> moverox_types::a
 pub fn moverox_sui::sui::borrow::TestTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::borrow::TestTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::borrow::TestTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::borrow::TestTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::borrow::TestTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::borrow::TestTypeTag
 pub fn moverox_sui::sui::borrow::TestTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::borrow::TestTypeTag
@@ -822,7 +822,7 @@ pub fn moverox_sui::sui::clock::ClockTypeTag::address(&self) -> moverox_types::a
 pub fn moverox_sui::sui::clock::ClockTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::clock::ClockTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::clock::ClockTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::clock::ClockTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::clock::ClockTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::clock::ClockTypeTag
 pub fn moverox_sui::sui::clock::ClockTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::clock::ClockTypeTag
@@ -882,7 +882,7 @@ pub fn moverox_sui::sui::coin::CoinMetadataTypeTag<T>::address(&self) -> moverox
 pub fn moverox_sui::sui::coin::CoinMetadataTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::coin::CoinMetadataTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::coin::CoinMetadataTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::coin::CoinMetadataTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::coin::CoinMetadataTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::coin::CoinMetadataTypeTag<T>
 pub fn moverox_sui::sui::coin::CoinMetadataTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::coin::CoinTypeTag<T: moverox_traits::MoveTypeTag>
@@ -905,7 +905,7 @@ pub fn moverox_sui::sui::coin::CoinTypeTag<T>::address(&self) -> moverox_types::
 pub fn moverox_sui::sui::coin::CoinTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::coin::CoinTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::coin::CoinTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::coin::CoinTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::coin::CoinTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::coin::CoinTypeTag<T>
 pub fn moverox_sui::sui::coin::CoinTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::coin::CurrencyCreated<T>
@@ -940,7 +940,7 @@ pub fn moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>::address(&self) -> move
 pub fn moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>
 pub fn moverox_sui::sui::coin::CurrencyCreatedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::coin::DenyCap<T>
@@ -977,7 +977,7 @@ pub fn moverox_sui::sui::coin::DenyCapTypeTag<T>::address(&self) -> moverox_type
 pub fn moverox_sui::sui::coin::DenyCapTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::coin::DenyCapTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::coin::DenyCapTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::coin::DenyCapTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::coin::DenyCapTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::coin::DenyCapTypeTag<T>
 pub fn moverox_sui::sui::coin::DenyCapTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::coin::DenyCapV2<T>
@@ -1015,7 +1015,7 @@ pub fn moverox_sui::sui::coin::DenyCapV2TypeTag<T>::address(&self) -> moverox_ty
 pub fn moverox_sui::sui::coin::DenyCapV2TypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::coin::DenyCapV2TypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::coin::DenyCapV2TypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::coin::DenyCapV2TypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::coin::DenyCapV2TypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::coin::DenyCapV2TypeTag<T>
 pub fn moverox_sui::sui::coin::DenyCapV2TypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::coin::RegulatedCoinMetadata<T>
@@ -1054,7 +1054,7 @@ pub fn moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>::address(&self) -
 pub fn moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>
 pub fn moverox_sui::sui::coin::RegulatedCoinMetadataTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::coin::TreasuryCap<T>
@@ -1092,7 +1092,7 @@ pub fn moverox_sui::sui::coin::TreasuryCapTypeTag<T>::address(&self) -> moverox_
 pub fn moverox_sui::sui::coin::TreasuryCapTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::coin::TreasuryCapTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::coin::TreasuryCapTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::coin::TreasuryCapTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::coin::TreasuryCapTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::coin::TreasuryCapTypeTag<T>
 pub fn moverox_sui::sui::coin::TreasuryCapTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::config
@@ -1130,7 +1130,7 @@ pub fn moverox_sui::sui::config::ConfigTypeTag<WriteCap>::address(&self) -> move
 pub fn moverox_sui::sui::config::ConfigTypeTag<WriteCap>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::config::ConfigTypeTag<WriteCap>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::config::ConfigTypeTag<WriteCap>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::config::ConfigTypeTag<WriteCap>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::config::ConfigTypeTag<WriteCap>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<WriteCap: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::config::ConfigTypeTag<WriteCap>
 pub fn moverox_sui::sui::config::ConfigTypeTag<WriteCap>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::config::Setting<Value>
@@ -1179,7 +1179,7 @@ pub fn moverox_sui::sui::config::SettingDataTypeTag<Value>::address(&self) -> mo
 pub fn moverox_sui::sui::config::SettingDataTypeTag<Value>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::config::SettingDataTypeTag<Value>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::config::SettingDataTypeTag<Value>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::config::SettingDataTypeTag<Value>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::config::SettingDataTypeTag<Value>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<Value: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::config::SettingDataTypeTag<Value>
 pub fn moverox_sui::sui::config::SettingDataTypeTag<Value>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::config::SettingTypeTag<Value: moverox_traits::MoveTypeTag>
@@ -1202,7 +1202,7 @@ pub fn moverox_sui::sui::config::SettingTypeTag<Value>::address(&self) -> movero
 pub fn moverox_sui::sui::config::SettingTypeTag<Value>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::config::SettingTypeTag<Value>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::config::SettingTypeTag<Value>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::config::SettingTypeTag<Value>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::config::SettingTypeTag<Value>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<Value: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::config::SettingTypeTag<Value>
 pub fn moverox_sui::sui::config::SettingTypeTag<Value>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::deny_list
@@ -1234,7 +1234,7 @@ pub fn moverox_sui::sui::deny_list::AddressKeyTypeTag::address(&self) -> moverox
 pub fn moverox_sui::sui::deny_list::AddressKeyTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::deny_list::AddressKeyTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::deny_list::AddressKeyTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::deny_list::AddressKeyTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::deny_list::AddressKeyTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::deny_list::AddressKeyTypeTag
 pub fn moverox_sui::sui::deny_list::AddressKeyTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::deny_list::AddressKeyTypeTag
@@ -1269,7 +1269,7 @@ pub fn moverox_sui::sui::deny_list::ConfigKeyTypeTag::address(&self) -> moverox_
 pub fn moverox_sui::sui::deny_list::ConfigKeyTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::deny_list::ConfigKeyTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::deny_list::ConfigKeyTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::deny_list::ConfigKeyTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::deny_list::ConfigKeyTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::deny_list::ConfigKeyTypeTag
 pub fn moverox_sui::sui::deny_list::ConfigKeyTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::deny_list::ConfigKeyTypeTag
@@ -1302,7 +1302,7 @@ pub fn moverox_sui::sui::deny_list::ConfigWriteCapTypeTag::address(&self) -> mov
 pub fn moverox_sui::sui::deny_list::ConfigWriteCapTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::deny_list::ConfigWriteCapTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::deny_list::ConfigWriteCapTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::deny_list::ConfigWriteCapTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::deny_list::ConfigWriteCapTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::deny_list::ConfigWriteCapTypeTag
 pub fn moverox_sui::sui::deny_list::ConfigWriteCapTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::deny_list::ConfigWriteCapTypeTag
@@ -1339,7 +1339,7 @@ pub fn moverox_sui::sui::deny_list::DenyListTypeTag::address(&self) -> moverox_t
 pub fn moverox_sui::sui::deny_list::DenyListTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::deny_list::DenyListTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::deny_list::DenyListTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::deny_list::DenyListTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::deny_list::DenyListTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::deny_list::DenyListTypeTag
 pub fn moverox_sui::sui::deny_list::DenyListTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::deny_list::DenyListTypeTag
@@ -1372,7 +1372,7 @@ pub fn moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag::address(&self) -> mov
 pub fn moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag
 pub fn moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::deny_list::GlobalPauseKeyTypeTag
@@ -1407,7 +1407,7 @@ pub fn moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag::address(&self) 
 pub fn moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag
 pub fn moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::deny_list::PerTypeConfigCreatedTypeTag
@@ -1445,7 +1445,7 @@ pub fn moverox_sui::sui::deny_list::PerTypeListTypeTag::address(&self) -> movero
 pub fn moverox_sui::sui::deny_list::PerTypeListTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::deny_list::PerTypeListTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::deny_list::PerTypeListTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::deny_list::PerTypeListTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::deny_list::PerTypeListTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::deny_list::PerTypeListTypeTag
 pub fn moverox_sui::sui::deny_list::PerTypeListTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::deny_list::PerTypeListTypeTag
@@ -1499,7 +1499,7 @@ pub fn moverox_sui::sui::display::DisplayCreatedTypeTag<T>::address(&self) -> mo
 pub fn moverox_sui::sui::display::DisplayCreatedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::display::DisplayCreatedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::display::DisplayCreatedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::display::DisplayCreatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::display::DisplayCreatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::display::DisplayCreatedTypeTag<T>
 pub fn moverox_sui::sui::display::DisplayCreatedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::display::DisplayTypeTag<T: moverox_traits::MoveTypeTag>
@@ -1522,7 +1522,7 @@ pub fn moverox_sui::sui::display::DisplayTypeTag<T>::address(&self) -> moverox_t
 pub fn moverox_sui::sui::display::DisplayTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::display::DisplayTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::display::DisplayTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::display::DisplayTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::display::DisplayTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::display::DisplayTypeTag<T>
 pub fn moverox_sui::sui::display::DisplayTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::display::VersionUpdated<T>
@@ -1559,7 +1559,7 @@ pub fn moverox_sui::sui::display::VersionUpdatedTypeTag<T>::address(&self) -> mo
 pub fn moverox_sui::sui::display::VersionUpdatedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::display::VersionUpdatedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::display::VersionUpdatedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::display::VersionUpdatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::display::VersionUpdatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::display::VersionUpdatedTypeTag<T>
 pub fn moverox_sui::sui::display::VersionUpdatedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::dynamic_field
@@ -1600,7 +1600,7 @@ pub fn moverox_sui::sui::dynamic_field::FieldTypeTag<Name, Value>::address(&self
 pub fn moverox_sui::sui::dynamic_field::FieldTypeTag<Name, Value>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::dynamic_field::FieldTypeTag<Name, Value>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::dynamic_field::FieldTypeTag<Name, Value>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::dynamic_field::FieldTypeTag<Name, Value>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::dynamic_field::FieldTypeTag<Name, Value>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<Name: moverox_traits::MoveTypeTag, Value: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::dynamic_field::FieldTypeTag<Name, Value>
 pub fn moverox_sui::sui::dynamic_field::FieldTypeTag<Name, Value>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::dynamic_object_field
@@ -1636,7 +1636,7 @@ pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::address(&se
 pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<Name: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>
 pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::linked_table
@@ -1678,7 +1678,7 @@ pub fn moverox_sui::sui::linked_table::LinkedTableTypeTag<K, V>::address(&self) 
 pub fn moverox_sui::sui::linked_table::LinkedTableTypeTag<K, V>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::linked_table::LinkedTableTypeTag<K, V>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::linked_table::LinkedTableTypeTag<K, V>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::linked_table::LinkedTableTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::linked_table::LinkedTableTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<K: moverox_traits::MoveTypeTag, V: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::linked_table::LinkedTableTypeTag<K, V>
 pub fn moverox_sui::sui::linked_table::LinkedTableTypeTag<K, V>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::linked_table::Node<K, V>
@@ -1716,7 +1716,7 @@ pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::address(&self) -> move
 pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<K: moverox_traits::MoveTypeTag, V: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::linked_table::NodeTypeTag<K, V>
 pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::object
@@ -1749,7 +1749,7 @@ pub fn moverox_sui::sui::object::IDTypeTag::address(&self) -> moverox_types::add
 pub fn moverox_sui::sui::object::IDTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::object::IDTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::object::IDTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::object::IDTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::object::IDTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::object::IDTypeTag
 pub fn moverox_sui::sui::object::IDTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::object::IDTypeTag
@@ -1783,7 +1783,7 @@ pub fn moverox_sui::sui::object::UIDTypeTag::address(&self) -> moverox_types::ad
 pub fn moverox_sui::sui::object::UIDTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::object::UIDTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::object::UIDTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::object::UIDTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::object::UIDTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::object::UIDTypeTag
 pub fn moverox_sui::sui::object::UIDTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::object::UIDTypeTag
@@ -1821,7 +1821,7 @@ pub fn moverox_sui::sui::object_bag::ObjectBagTypeTag::address(&self) -> moverox
 pub fn moverox_sui::sui::object_bag::ObjectBagTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::object_bag::ObjectBagTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::object_bag::ObjectBagTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::object_bag::ObjectBagTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::object_bag::ObjectBagTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::object_bag::ObjectBagTypeTag
 pub fn moverox_sui::sui::object_bag::ObjectBagTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::object_bag::ObjectBagTypeTag
@@ -1863,7 +1863,7 @@ pub fn moverox_sui::sui::object_table::ObjectTableTypeTag<K, V>::address(&self) 
 pub fn moverox_sui::sui::object_table::ObjectTableTypeTag<K, V>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::object_table::ObjectTableTypeTag<K, V>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::object_table::ObjectTableTypeTag<K, V>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::object_table::ObjectTableTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::object_table::ObjectTableTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<K: moverox_traits::MoveTypeTag, V: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::object_table::ObjectTableTypeTag<K, V>
 pub fn moverox_sui::sui::object_table::ObjectTableTypeTag<K, V>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::package
@@ -1900,7 +1900,7 @@ pub fn moverox_sui::sui::package::PublisherTypeTag::address(&self) -> moverox_ty
 pub fn moverox_sui::sui::package::PublisherTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::package::PublisherTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::package::PublisherTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::package::PublisherTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::package::PublisherTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::package::PublisherTypeTag
 pub fn moverox_sui::sui::package::PublisherTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::package::PublisherTypeTag
@@ -1939,7 +1939,7 @@ pub fn moverox_sui::sui::package::UpgradeCapTypeTag::address(&self) -> moverox_t
 pub fn moverox_sui::sui::package::UpgradeCapTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::package::UpgradeCapTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::package::UpgradeCapTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::package::UpgradeCapTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::package::UpgradeCapTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::package::UpgradeCapTypeTag
 pub fn moverox_sui::sui::package::UpgradeCapTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::package::UpgradeCapTypeTag
@@ -1974,7 +1974,7 @@ pub fn moverox_sui::sui::package::UpgradeReceiptTypeTag::address(&self) -> mover
 pub fn moverox_sui::sui::package::UpgradeReceiptTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::package::UpgradeReceiptTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::package::UpgradeReceiptTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::package::UpgradeReceiptTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::package::UpgradeReceiptTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::package::UpgradeReceiptTypeTag
 pub fn moverox_sui::sui::package::UpgradeReceiptTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::package::UpgradeReceiptTypeTag
@@ -2011,7 +2011,7 @@ pub fn moverox_sui::sui::package::UpgradeTicketTypeTag::address(&self) -> movero
 pub fn moverox_sui::sui::package::UpgradeTicketTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::package::UpgradeTicketTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::package::UpgradeTicketTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::package::UpgradeTicketTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::package::UpgradeTicketTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::package::UpgradeTicketTypeTag
 pub fn moverox_sui::sui::package::UpgradeTicketTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::package::UpgradeTicketTypeTag
@@ -2047,7 +2047,7 @@ pub fn moverox_sui::sui::party::PartyTypeTag::address(&self) -> moverox_types::a
 pub fn moverox_sui::sui::party::PartyTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::party::PartyTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::party::PartyTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::party::PartyTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::party::PartyTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::party::PartyTypeTag
 pub fn moverox_sui::sui::party::PartyTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::party::PartyTypeTag
@@ -2080,7 +2080,7 @@ pub fn moverox_sui::sui::party::PermissionsTypeTag::address(&self) -> moverox_ty
 pub fn moverox_sui::sui::party::PermissionsTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::party::PermissionsTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::party::PermissionsTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::party::PermissionsTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::party::PermissionsTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::party::PermissionsTypeTag
 pub fn moverox_sui::sui::party::PermissionsTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::party::PermissionsTypeTag
@@ -2119,7 +2119,7 @@ pub fn moverox_sui::sui::priority_queue::EntryTypeTag<T>::address(&self) -> move
 pub fn moverox_sui::sui::priority_queue::EntryTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::priority_queue::EntryTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::priority_queue::EntryTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::priority_queue::EntryTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::priority_queue::EntryTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::priority_queue::EntryTypeTag<T>
 pub fn moverox_sui::sui::priority_queue::EntryTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::priority_queue::PriorityQueue<T>
@@ -2154,7 +2154,7 @@ pub fn moverox_sui::sui::priority_queue::PriorityQueueTypeTag<T>::address(&self)
 pub fn moverox_sui::sui::priority_queue::PriorityQueueTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::priority_queue::PriorityQueueTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::priority_queue::PriorityQueueTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::priority_queue::PriorityQueueTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::priority_queue::PriorityQueueTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::priority_queue::PriorityQueueTypeTag<T>
 pub fn moverox_sui::sui::priority_queue::PriorityQueueTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::random
@@ -2204,7 +2204,7 @@ pub fn moverox_sui::sui::random::RandomGeneratorTypeTag::address(&self) -> mover
 pub fn moverox_sui::sui::random::RandomGeneratorTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::random::RandomGeneratorTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::random::RandomGeneratorTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::random::RandomGeneratorTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::random::RandomGeneratorTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::random::RandomGeneratorTypeTag
 pub fn moverox_sui::sui::random::RandomGeneratorTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::random::RandomGeneratorTypeTag
@@ -2241,7 +2241,7 @@ pub fn moverox_sui::sui::random::RandomInnerTypeTag::address(&self) -> moverox_t
 pub fn moverox_sui::sui::random::RandomInnerTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::random::RandomInnerTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::random::RandomInnerTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::random::RandomInnerTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::random::RandomInnerTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::random::RandomInnerTypeTag
 pub fn moverox_sui::sui::random::RandomInnerTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::random::RandomInnerTypeTag
@@ -2263,7 +2263,7 @@ pub fn moverox_sui::sui::random::RandomTypeTag::address(&self) -> moverox_types:
 pub fn moverox_sui::sui::random::RandomTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::random::RandomTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::random::RandomTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::random::RandomTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::random::RandomTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::random::RandomTypeTag
 pub fn moverox_sui::sui::random::RandomTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::random::RandomTypeTag
@@ -2297,7 +2297,7 @@ pub fn moverox_sui::sui::sui::SUITypeTag::address(&self) -> moverox_types::addre
 pub fn moverox_sui::sui::sui::SUITypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::sui::SUITypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::sui::SUITypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::sui::SUITypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::sui::SUITypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::sui::SUITypeTag
 pub fn moverox_sui::sui::sui::SUITypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::sui::SUITypeTag
@@ -2339,7 +2339,7 @@ pub fn moverox_sui::sui::table::TableTypeTag<K, V>::address(&self) -> moverox_ty
 pub fn moverox_sui::sui::table::TableTypeTag<K, V>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::table::TableTypeTag<K, V>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::table::TableTypeTag<K, V>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::table::TableTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::table::TableTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<K: moverox_traits::MoveTypeTag, V: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::table::TableTypeTag<K, V>
 pub fn moverox_sui::sui::table::TableTypeTag<K, V>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::table_vec
@@ -2375,7 +2375,7 @@ pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::address(&self) -> 
 pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<Element: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::table_vec::TableVecTypeTag<Element>
 pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::token
@@ -2416,7 +2416,7 @@ pub fn moverox_sui::sui::token::ActionRequestTypeTag<T>::address(&self) -> mover
 pub fn moverox_sui::sui::token::ActionRequestTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::token::ActionRequestTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::token::ActionRequestTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::token::ActionRequestTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::token::ActionRequestTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::token::ActionRequestTypeTag<T>
 pub fn moverox_sui::sui::token::ActionRequestTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::token::RuleKey<T>
@@ -2451,7 +2451,7 @@ pub fn moverox_sui::sui::token::RuleKeyTypeTag<T>::address(&self) -> moverox_typ
 pub fn moverox_sui::sui::token::RuleKeyTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::token::RuleKeyTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::token::RuleKeyTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::token::RuleKeyTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::token::RuleKeyTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::token::RuleKeyTypeTag<T>
 pub fn moverox_sui::sui::token::RuleKeyTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::token::Token<T>
@@ -2520,7 +2520,7 @@ pub fn moverox_sui::sui::token::TokenPolicyCapTypeTag<T>::address(&self) -> move
 pub fn moverox_sui::sui::token::TokenPolicyCapTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::token::TokenPolicyCapTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::token::TokenPolicyCapTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::token::TokenPolicyCapTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::token::TokenPolicyCapTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::token::TokenPolicyCapTypeTag<T>
 pub fn moverox_sui::sui::token::TokenPolicyCapTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::token::TokenPolicyCreated<T>
@@ -2556,7 +2556,7 @@ pub fn moverox_sui::sui::token::TokenPolicyCreatedTypeTag<T>::address(&self) -> 
 pub fn moverox_sui::sui::token::TokenPolicyCreatedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::token::TokenPolicyCreatedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::token::TokenPolicyCreatedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::token::TokenPolicyCreatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::token::TokenPolicyCreatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::token::TokenPolicyCreatedTypeTag<T>
 pub fn moverox_sui::sui::token::TokenPolicyCreatedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::token::TokenPolicyTypeTag<T: moverox_traits::MoveTypeTag>
@@ -2579,7 +2579,7 @@ pub fn moverox_sui::sui::token::TokenPolicyTypeTag<T>::address(&self) -> moverox
 pub fn moverox_sui::sui::token::TokenPolicyTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::token::TokenPolicyTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::token::TokenPolicyTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::token::TokenPolicyTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::token::TokenPolicyTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::token::TokenPolicyTypeTag<T>
 pub fn moverox_sui::sui::token::TokenPolicyTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::token::TokenTypeTag<T: moverox_traits::MoveTypeTag>
@@ -2602,7 +2602,7 @@ pub fn moverox_sui::sui::token::TokenTypeTag<T>::address(&self) -> moverox_types
 pub fn moverox_sui::sui::token::TokenTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::token::TokenTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::token::TokenTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::token::TokenTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::token::TokenTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::token::TokenTypeTag<T>
 pub fn moverox_sui::sui::token::TokenTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::transfer
@@ -2639,7 +2639,7 @@ pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::address(&self) -> movero
 pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::transfer::ReceivingTypeTag<T>
 pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::tx_context
@@ -2676,7 +2676,7 @@ pub fn moverox_sui::sui::tx_context::TxContextTypeTag::address(&self) -> moverox
 pub fn moverox_sui::sui::tx_context::TxContextTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::tx_context::TxContextTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::tx_context::TxContextTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::tx_context::TxContextTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::tx_context::TxContextTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::tx_context::TxContextTypeTag
 pub fn moverox_sui::sui::tx_context::TxContextTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::tx_context::TxContextTypeTag
@@ -2711,7 +2711,7 @@ pub fn moverox_sui::sui::url::UrlTypeTag::address(&self) -> moverox_types::addre
 pub fn moverox_sui::sui::url::UrlTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::url::UrlTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::url::UrlTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::url::UrlTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::url::UrlTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::url::UrlTypeTag
 pub fn moverox_sui::sui::url::UrlTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::url::UrlTypeTag
@@ -2751,7 +2751,7 @@ pub fn moverox_sui::sui::vec_map::EntryTypeTag<K, V>::address(&self) -> moverox_
 pub fn moverox_sui::sui::vec_map::EntryTypeTag<K, V>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::vec_map::EntryTypeTag<K, V>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::vec_map::EntryTypeTag<K, V>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::vec_map::EntryTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::vec_map::EntryTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<K: moverox_traits::MoveTypeTag, V: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::vec_map::EntryTypeTag<K, V>
 pub fn moverox_sui::sui::vec_map::EntryTypeTag<K, V>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub struct moverox_sui::sui::vec_map::VecMap<K, V>
@@ -2787,7 +2787,7 @@ pub fn moverox_sui::sui::vec_map::VecMapTypeTag<K, V>::address(&self) -> moverox
 pub fn moverox_sui::sui::vec_map::VecMapTypeTag<K, V>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::vec_map::VecMapTypeTag<K, V>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::vec_map::VecMapTypeTag<K, V>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::vec_map::VecMapTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::vec_map::VecMapTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<K: moverox_traits::MoveTypeTag, V: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::vec_map::VecMapTypeTag<K, V>
 pub fn moverox_sui::sui::vec_map::VecMapTypeTag<K, V>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::vec_set
@@ -2823,7 +2823,7 @@ pub fn moverox_sui::sui::vec_set::VecSetTypeTag<K>::address(&self) -> moverox_ty
 pub fn moverox_sui::sui::vec_set::VecSetTypeTag<K>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::vec_set::VecSetTypeTag<K>::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::vec_set::VecSetTypeTag<K>::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::vec_set::VecSetTypeTag<K>::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::vec_set::VecSetTypeTag<K>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<K: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::vec_set::VecSetTypeTag<K>
 pub fn moverox_sui::sui::vec_set::VecSetTypeTag<K>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::versioned
@@ -2857,7 +2857,7 @@ pub fn moverox_sui::sui::versioned::VersionChangeCapTypeTag::address(&self) -> m
 pub fn moverox_sui::sui::versioned::VersionChangeCapTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::versioned::VersionChangeCapTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::versioned::VersionChangeCapTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::versioned::VersionChangeCapTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::versioned::VersionChangeCapTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::versioned::VersionChangeCapTypeTag
 pub fn moverox_sui::sui::versioned::VersionChangeCapTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::versioned::VersionChangeCapTypeTag
@@ -2894,7 +2894,7 @@ pub fn moverox_sui::sui::versioned::VersionedTypeTag::address(&self) -> moverox_
 pub fn moverox_sui::sui::versioned::VersionedTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox_sui::sui::versioned::VersionedTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_sui::sui::versioned::VersionedTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox_sui::sui::versioned::VersionedTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_sui::sui::versioned::VersionedTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox_sui::sui::versioned::VersionedTypeTag
 pub fn moverox_sui::sui::versioned::VersionedTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::versioned::VersionedTypeTag

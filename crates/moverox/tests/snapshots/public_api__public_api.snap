@@ -30,7 +30,7 @@ pub fn moverox::OtwTypeTag::address(&self) -> moverox_types::address::Address
 pub fn moverox::OtwTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
 pub fn moverox::OtwTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox::OtwTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
-pub fn moverox::OtwTypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox::OtwTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl serde_core::ser::Serialize for moverox::OtwTypeTag
 pub fn moverox::OtwTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox::OtwTypeTag

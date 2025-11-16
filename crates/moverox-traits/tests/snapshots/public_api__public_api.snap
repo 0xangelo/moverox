@@ -164,7 +164,7 @@ pub fn moverox_traits::MoveDatatypeTag::from_struct_tag(value: &moverox_types::t
 pub fn moverox_traits::MoveDatatypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_traits::MoveDatatypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
 pub fn moverox_traits::MoveDatatypeTag::to_struct_tag(&self) -> moverox_types::type_tag::StructTag
-pub fn moverox_traits::MoveDatatypeTag::type_params(&self) -> alloc::boxed::Box<(dyn core::iter::traits::exact_size::ExactSizeIterator<Item = &dyn moverox_traits::MoveTypeTag> + '_)>
+pub fn moverox_traits::MoveDatatypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 pub trait moverox_traits::MoveType
 pub type moverox_traits::MoveType::TypeTag: moverox_traits::MoveTypeTag
 impl moverox_traits::MoveType for bool

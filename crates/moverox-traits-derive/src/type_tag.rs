@@ -294,8 +294,8 @@ impl TypeTagStruct {
                 #name_value
             }
 
-            fn type_params(&self) -> Box<dyn ::std::iter::ExactSizeIterator <Item = &dyn #thecrate::MoveTypeTag > + '_ > {
-                Box::new([#(&self.#type_param_idents as _),*].into_iter())
+            fn type_params(&self) -> Box<[&dyn #thecrate::MoveTypeTag]> {
+                Box::new([#(&self.#type_param_idents as _),*])
             }
         }
     }
