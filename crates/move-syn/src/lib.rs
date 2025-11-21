@@ -854,6 +854,13 @@ impl Attribute {
         &self.contents.content
     }
 
+    pub fn metas(&self) -> impl Iterator<Item = &dyn ToTokens> + '_ {
+        self.contents
+            .content
+            .iter()
+            .map(|delimited| &delimited.value as _)
+    }
+
     /// Contents of parameterized attributes as `#[ext(<external_attribute>)]`
     pub fn external_attributes(&self) -> impl Iterator<Item = &dyn ToTokens> + '_ {
         self.contents.content.iter().filter_map(|d| match &d.value {
