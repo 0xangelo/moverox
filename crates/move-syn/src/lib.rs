@@ -860,7 +860,7 @@ impl Attribute {
             Meta::Other {
                 ident,
                 sub: Some(SubMeta::List(inner)),
-            } if ident == "ext" => Some(inner as _),
+            } if ident == "ext" => Some(&inner.content as _),
             _ => None,
         })
     }
