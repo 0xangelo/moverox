@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5-beta.1](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta...move-syn-v0.0.5-beta.1)
+
+### ⛰️ Features
+
+- *(move-syn)* `Attribute::metas` - ([3afec25](https://github.com/0xangelo/moverox/commit/3afec25575cdb15127d210928d0536ab1661fd7b))
+
+### 🐛 Bug Fixes
+
+- *(move-syn)* `Attribute::external_attributes` - ([2be5954](https://github.com/0xangelo/moverox/commit/2be5954df32fd662001fe89e8cecd256a85da8ea))
+
+
 ## [0.0.5-beta](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-alpha.2...move-syn-v0.0.5-beta)
 
 ### ⛰️ Features

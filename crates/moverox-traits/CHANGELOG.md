@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1](https://github.com/0xangelo/moverox/compare/moverox-traits-v0.1.0...moverox-traits-v0.1.1)
+
+### ⛰️ Features
+
+- *(moverox-traits)* `prelude` module - ([37d1edb](https://github.com/0xangelo/moverox/commit/37d1edbe60088d83fa5cb5a545a4b2950b3fcf60))
+
+
 ## [0.1.0](https://github.com/0xangelo/moverox/compare/moverox-traits-v0.0.3...moverox-traits-v0.1.0)
 
 ### ⛰️ Features
