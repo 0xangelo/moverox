@@ -36,6 +36,23 @@ pub use self::primitives::{
 };
 pub use self::vector::VecTypeTag;
 
+/// Re-exports all traits in one place, for easy import.
+pub mod prelude {
+    #[doc(inline)]
+    pub use crate::{
+        ConstAddress,
+        ConstModule,
+        ConstName,
+        ConstStructTag,
+        ConstTypeTag,
+        HasKey,
+        MoveDatatype,
+        MoveDatatypeTag,
+        MoveType,
+        MoveTypeTag,
+    };
+}
+
 // =============================================================================
 //  MoveType
 // =============================================================================
