@@ -11,7 +11,10 @@ macro_rules! test_file {
             $path,
             ".move"
         ));
-        let ast: File = content.to_token_iter().parse_all()?;
+        let ast: File = content
+            .to_token_iter()
+            .parse_all()
+            .map_err(|err| format!("In Move file '{}': {err}", $path))?;
         insta::assert_snapshot!($path, ast.tokens_to_string());
     )*};
 }
