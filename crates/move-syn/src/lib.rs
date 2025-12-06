@@ -216,8 +216,8 @@ unsynn! {
     pub struct UseFun {
         keyword: kw::Use,
         fun_kw: kw::Fun,
-        path_prefix: Option<Cons<Ident, PathSep, Ident, PathSep>>,
-        fun: Ident,
+        // HACK: using `TypePath` since they overlap; should generalize it to `ItemPath` instead
+        fun_path: TypePath,
         as_kw: kw::As,
         ty: Ident,
         dot: Dot,

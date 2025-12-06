@@ -3,6 +3,13 @@ use crate::*;
 mod imports;
 
 #[test]
+fn use_fun() {
+    let decl = "use fun df::add as UID.add;";
+    let ast: UseFun = decl.to_token_iter().parse_all().unwrap();
+    assert_eq!(ast.tokens_to_string(), decl.tokens_to_string());
+}
+
+#[test]
 fn const_val() {
     let decl = "const MAX_SLICE_SIZE: u64 = 256 * 1024;";
     let ast: Const = decl.to_token_iter().parse_all().unwrap();
