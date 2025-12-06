@@ -702,7 +702,7 @@ impl Module {
 impl Import {
     /// List of idents (or aliases) brought into scope by this import and their paths
     /// (`named_address::module(::item)?`).
-    fn flatten(&self) -> impl Iterator<Item = (Ident, FlatImport)> + '_ {
+    pub fn flatten(&self) -> impl Iterator<Item = (Ident, FlatImport)> + '_ {
         let named_address = self.named_address.clone();
         match &self.module {
             // use named_address::module...
@@ -1038,7 +1038,7 @@ impl Generics {
 // === Non-lang items ===
 
 #[cfg_attr(test, derive(derive_more::Display))]
-enum FlatImport {
+pub enum FlatImport {
     #[cfg_attr(test, display("{named_address}::{module}"))]
     Module { named_address: Ident, module: Ident },
     #[cfg_attr(test, display("{named_address}::{module}::{type}"))]
