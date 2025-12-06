@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2](https://github.com/0xangelo/moverox/compare/moverox-v0.1.1...moverox-v0.1.2)
+
+### ⚙️ Miscellaneous Tasks
+
+- Updated the following local packages: moverox-traits - ([0000000](https://github.com/0xangelo/moverox/commit/0000000))
+
+
 ## [0.1.1](https://github.com/0xangelo/moverox/compare/moverox-v0.1.0...moverox-v0.1.1)
 
 ### ⚙️ Miscellaneous Tasks

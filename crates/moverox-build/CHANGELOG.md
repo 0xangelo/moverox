@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2](https://github.com/0xangelo/moverox/compare/moverox-build-v0.1.1...moverox-build-v0.1.2)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(move-syn)* Release v0.0.5-beta.2 ([#59](https://github.com/0xangelo/moverox/pull/59)) - ([b43747f](https://github.com/0xangelo/moverox/commit/b43747fec43a6fd6fd4703f18619a6623e872435))
+
+
 ## [0.1.1](https://github.com/0xangelo/moverox/compare/moverox-build-v0.1.0...moverox-build-v0.1.1)
 
 ### ⚙️ Miscellaneous Tasks
