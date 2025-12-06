@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5-beta.4](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.3...move-syn-v0.0.5-beta.4)
+
+### 🐛 Bug Fixes
+
+- *(move-syn)* Parse all possible paths to functions in `use fun` - ([ee630d6](https://github.com/0xangelo/moverox/commit/ee630d60dc51d397d22c580654de902a7a6050d8))
+
+### 🚜 Refactor
+
+- Simplify `move-syn` parsing tests ([#65](https://github.com/0xangelo/moverox/pull/65)) - ([9b808f7](https://github.com/0xangelo/moverox/commit/9b808f7fcb1f539f9e905a840a71bf9bf3f20763))
+- [**breaking**] R `move_syn::TypePath` -> `move_syn::ItemPath` - ([dc3056f](https://github.com/0xangelo/moverox/commit/dc3056f8f174ee3c8ed3d5c2444d7ce8c9e783fd))
+
+### ⚙️ Miscellaneous Tasks
+
+- *(move)* Include DeepBookV3 @ `testnet-v12.0.0` - ([9c40ae4](https://github.com/0xangelo/moverox/commit/9c40ae4a5f7b1be263367cd20ce4466ef7ec2246))
+
+
 ## [0.0.5-beta.3](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.2...move-syn-v0.0.5-beta.3)
 
 ### ⛰️ Features

@@ -26,7 +26,7 @@ ignored = ["moverox"]
 workspace = true
 
 [dependencies]
-move-syn        = { version = "0.0.5-beta.3", path = "../move-syn" }
+move-syn        = { version = "0.0.5-beta.4", path = "../move-syn" }
 moverox-codegen = { version = "0.0.7", path = "../moverox-codegen" }
 
 anyhow = "1"
