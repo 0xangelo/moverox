@@ -1,5 +1,0 @@
----
-source: crates/move-syn/tests/sui-framework.rs
-expression: ast.tokens_to_string()
----
-# [doc = " Sui types helpers and utilities"] module sui :: types ; # [doc = " Tests if the argument type is a one-time witness, that is a type with only one instantiation"] # [doc = " across the entire code base."] public native fun is_one_time_witness < T : drop > (_ : & T) : bool ;

@@ -1,5 +1,0 @@
----
-source: crates/move-syn/tests/legacy.rs
-expression: ast.tokens_to_string()
----
-module my_address :: main { } # [test_only] module my_address :: tests { }

@@ -1,5 +1,0 @@
----
-source: crates/move-syn/tests/sui-framework.rs
-expression: ast.tokens_to_string()
----
-# [doc = " URL: standard Uniform Resource Locator string"] module sui :: url ; use std :: ascii :: String ; # [doc = " Standard Uniform Resource Locator (URL) string."] public struct Url has copy , drop , store { url : String , } # [doc = " Create a `Url`, with no validation"] public fun new_unsafe (url : String) : Url { Url { url } } # [doc = " Create a `Url` with no validation from bytes"] # [doc = " Note: this will abort if `bytes` is not valid ASCII"] public fun new_unsafe_from_bytes (bytes : vector < u8 >) : Url { let url = bytes . to_ascii_string () ; Url { url } } # [doc = " Get inner URL"] public fun inner_url (self : & Url) : String { self . url } # [doc = " Update the inner URL"] public fun update (self : & mut Url , url : String) { self . url = url ; }
