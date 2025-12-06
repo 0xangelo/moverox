@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5-beta.3](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.2...move-syn-v0.0.5-beta.3)
+
+### ⛰️ Features
+
+- *(move-syn)* Make `Import::flatten`, `FlatImport` public ([#61](https://github.com/0xangelo/moverox/pull/61)) - ([2ca1ae7](https://github.com/0xangelo/moverox/commit/2ca1ae759fc7c05c2a0859981116d115149b2df0))
+
+
 ## [0.0.5-beta.2](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.1...move-syn-v0.0.5-beta.2)
 
 ### 🐛 Bug Fixes
