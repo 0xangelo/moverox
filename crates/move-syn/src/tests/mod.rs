@@ -3,6 +3,13 @@ use crate::*;
 mod imports;
 
 #[test]
+fn const_val() {
+    let decl = "const MAX_SLICE_SIZE: u64 = 256 * 1024;";
+    let ast: Const = decl.to_token_iter().parse_all().unwrap();
+    assert_eq!(ast.tokens_to_string(), decl.tokens_to_string());
+}
+
+#[test]
 fn empty_struct() {
     ensure_roundtrip_move_struct("struct OTW {}");
     ensure_roundtrip_move_struct("struct OTW()");

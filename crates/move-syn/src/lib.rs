@@ -228,21 +228,20 @@ unsynn! {
     // === Constants ===
 
     pub struct Const {
+        /// `const`
         const_kw: kw::Const,
+        /// `NAME`
         ident: Ident,
+        /// `:`
         colon: Colon,
+        /// Type
         ty: Type,
+        /// `=`
         assign: Assign,
-        expr: ConstVal,
+        /// Hack to parse anything until (but excluding) a `;`
+        expr: Vec<Cons<Except<Semicolon>, TokenTree>>,
+        /// `;`
         semicolon: Semicolon,
-    }
-
-    enum ConstVal {
-        Literal(Literal),
-        Vector(Cons<kw::Vector, BracketGroup>),
-        NamedAddress(Cons<At, Literal>),
-        // Hack to parse anything until (but excluding) a `;`
-        Expr(Vec<Cons<Except<Semicolon>, TokenTree>>),
     }
 
     // === Imports ===
