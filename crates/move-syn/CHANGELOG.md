@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5-beta.2](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.1...move-syn-v0.0.5-beta.2)
+
+### 🐛 Bug Fixes
+
+- *(move-syn)* Parsing of `const` values - ([d46acc7](https://github.com/0xangelo/moverox/commit/d46acc7f2d8d355eccab2929752352e9cf9f3d03))
+
+### 🧪 Testing
+
+- *(move-syn)* Ensure we can parse DeepBookV3's code - ([1b943fe](https://github.com/0xangelo/moverox/commit/1b943fe514afd7ebab8e2ee663e27d1fbdb5b007))
+
+
 ## [0.0.5-beta.1](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta...move-syn-v0.0.5-beta.1)
 
 ### ⛰️ Features
