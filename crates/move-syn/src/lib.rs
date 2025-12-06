@@ -217,7 +217,7 @@ unsynn! {
         keyword: kw::Use,
         fun_kw: kw::Fun,
         // HACK: using `TypePath` since they overlap; should generalize it to `ItemPath` instead
-        fun_path: TypePath,
+        fun_path: ItemPath,
         as_kw: kw::As,
         ty: Ident,
         dot: Dot,
@@ -516,26 +516,26 @@ unsynn! {
     /// Non-reference type, used in datatype fields.
     #[derive(Clone)]
     pub struct Type {
-        pub path: TypePath,
+        pub path: ItemPath,
         pub type_args: Option<TypeArgs>
     }
 
     /// Path to a type.
     #[derive(Clone)]
-    pub enum TypePath {
+    pub enum ItemPath {
         /// Fully qualified,
         Full {
             named_address: Ident,
             sep0: PathSep,
             module: Ident,
             sep1: PathSep,
-            r#type: Ident,
+            item: Ident,
         },
         /// Module prefix only, if it was imported already.
         Module {
             module: Ident,
             sep: PathSep,
-            r#type: Ident,
+            item: Ident,
         },
         /// Only the type identifier.
         Ident(Ident),
@@ -974,7 +974,7 @@ impl Default for PositionalFields {
 impl Type {
     /// Resolve the types' path to a fully-qualified declaration, recursively.
     fn resolve(&mut self, imports: &HashMap<Ident, FlatImport>, generics: &[Ident]) {
-        use TypePath as P;
+        use ItemPath as P;
         // First, resolve the type arguments
         self.map_types(|ty| ty.resolve(imports, generics));
 
@@ -982,7 +982,11 @@ impl Type {
         // HACK: We trust the Move code is valid, so the expected import should always be found,
         // hence we don't error/panic if it isn't
         let resolved = match &self.path {
-            P::Module { module, r#type, .. } => {
+            P::Module {
+                module,
+                item: r#type,
+                ..
+            } => {
                 let Some(FlatImport::Module {
                     named_address,
                     module,
@@ -995,7 +999,7 @@ impl Type {
                     sep0: PathSep::default(),
                     module: module.clone(),
                     sep1: PathSep::default(),
-                    r#type: r#type.clone(),
+                    item: r#type.clone(),
                 }
             }
             P::Ident(ident) if !generics.contains(ident) => {
@@ -1012,7 +1016,7 @@ impl Type {
                     sep0: PathSep::default(),
                     module: module.clone(),
                     sep1: PathSep::default(),
-                    r#type: r#type.clone(),
+                    item: r#type.clone(),
                 }
             }
             // Already fully-qualified types or idents shadowed by generics should be left alone

@@ -326,6 +326,22 @@ impl unsynn::Parser for move_syn::ItemKind
 pub fn move_syn::ItemKind::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::ItemKind
 pub fn move_syn::ItemKind::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub enum move_syn::ItemPath
+pub move_syn::ItemPath::Full
+pub move_syn::ItemPath::Full::item: proc_macro2::Ident
+pub move_syn::ItemPath::Full::module: proc_macro2::Ident
+pub move_syn::ItemPath::Full::named_address: proc_macro2::Ident
+pub move_syn::ItemPath::Full::sep0: unsynn::operator::names::PathSep
+pub move_syn::ItemPath::Full::sep1: unsynn::operator::names::PathSep
+pub move_syn::ItemPath::Ident(proc_macro2::Ident)
+pub move_syn::ItemPath::Module
+pub move_syn::ItemPath::Module::item: proc_macro2::Ident
+pub move_syn::ItemPath::Module::module: proc_macro2::Ident
+pub move_syn::ItemPath::Module::sep: unsynn::operator::names::PathSep
+impl unsynn::Parser for move_syn::ItemPath
+pub fn move_syn::ItemPath::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::ItemPath
+pub fn move_syn::ItemPath::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub enum move_syn::StructKind
 pub move_syn::StructKind::Braced(move_syn::BracedStruct)
 pub move_syn::StructKind::Tuple(move_syn::TupleStruct)
@@ -333,22 +349,6 @@ impl unsynn::Parser for move_syn::StructKind
 pub fn move_syn::StructKind::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::StructKind
 pub fn move_syn::StructKind::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
-pub enum move_syn::TypePath
-pub move_syn::TypePath::Full
-pub move_syn::TypePath::Full::module: proc_macro2::Ident
-pub move_syn::TypePath::Full::named_address: proc_macro2::Ident
-pub move_syn::TypePath::Full::sep0: unsynn::operator::names::PathSep
-pub move_syn::TypePath::Full::sep1: unsynn::operator::names::PathSep
-pub move_syn::TypePath::Full::type: proc_macro2::Ident
-pub move_syn::TypePath::Ident(proc_macro2::Ident)
-pub move_syn::TypePath::Module
-pub move_syn::TypePath::Module::module: proc_macro2::Ident
-pub move_syn::TypePath::Module::sep: unsynn::operator::names::PathSep
-pub move_syn::TypePath::Module::type: proc_macro2::Ident
-impl unsynn::Parser for move_syn::TypePath
-pub fn move_syn::TypePath::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
-impl unsynn::ToTokens for move_syn::TypePath
-pub fn move_syn::TypePath::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub enum move_syn::Visibility
 pub move_syn::Visibility::Package
 pub move_syn::Visibility::Private
@@ -510,7 +510,7 @@ pub fn move_syn::TupleStruct::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsy
 impl unsynn::ToTokens for move_syn::TupleStruct
 pub fn move_syn::TupleStruct::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Type
-pub move_syn::Type::path: move_syn::TypePath
+pub move_syn::Type::path: move_syn::ItemPath
 pub move_syn::Type::type_args: core::option::Option<move_syn::TypeArgs>
 impl unsynn::Parser for move_syn::Type
 pub fn move_syn::Type::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>

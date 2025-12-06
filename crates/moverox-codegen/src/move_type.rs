@@ -1,6 +1,6 @@
 use std::collections::HashMap;
 
-use move_syn::{Type, TypePath};
+use move_syn::{ItemPath, Type};
 use proc_macro2::{Ident, TokenStream};
 use quote::{ToTokens, quote};
 use unsynn::ToTokens as _;
@@ -21,10 +21,10 @@ pub(super) fn to_rust_with_substitutions(
             quote!(<#(#types),*>)
         });
 
-    let path = if let TypePath::Full {
+    let path = if let ItemPath::Full {
         named_address,
         module,
-        r#type: type_,
+        item: type_,
         ..
     } = &this.path
     {
