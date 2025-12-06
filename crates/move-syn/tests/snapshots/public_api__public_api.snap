@@ -303,6 +303,14 @@ impl unsynn::Parser for move_syn::File
 pub fn move_syn::File::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::File
 pub fn move_syn::File::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub enum move_syn::FlatImport
+pub move_syn::FlatImport::Item
+pub move_syn::FlatImport::Item::module: proc_macro2::Ident
+pub move_syn::FlatImport::Item::named_address: proc_macro2::Ident
+pub move_syn::FlatImport::Item::type: proc_macro2::Ident
+pub move_syn::FlatImport::Module
+pub move_syn::FlatImport::Module::module: proc_macro2::Ident
+pub move_syn::FlatImport::Module::named_address: proc_macro2::Ident
 #[non_exhaustive] pub enum move_syn::ItemKind
 pub move_syn::ItemKind::Const(move_syn::Const)
 pub move_syn::ItemKind::Enum(move_syn::Enum)
@@ -410,6 +418,8 @@ pub fn move_syn::Generics::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn:
 impl unsynn::ToTokens for move_syn::Generics
 pub fn move_syn::Generics::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Import
+impl move_syn::Import
+pub fn move_syn::Import::flatten(&self) -> impl core::iter::traits::iterator::Iterator<Item = (proc_macro2::Ident, move_syn::FlatImport)> + '_
 impl unsynn::Parser for move_syn::Import
 pub fn move_syn::Import::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Import
