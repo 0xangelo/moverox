@@ -44,4 +44,6 @@ copy_sources $SUI_REPO $SUI_TAG \
 # === Deepbook repo ===
 
 copy_sources $DEEP_REPO $DEEP_TAG \
-  packages/deepbook
+  packages/deepbook \
+  packages/deepbook_margin \
+  packages/margin_liquidation

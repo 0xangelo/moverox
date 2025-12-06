@@ -1,5 +1,0 @@
----
-source: crates/move-syn/tests/move-stdlib.rs
-expression: ast.tokens_to_string()
----
-# [defines_primitive (bool)] module std :: bool ;
