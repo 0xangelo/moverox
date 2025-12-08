@@ -30,7 +30,7 @@ proc-macro2 = { version = "1", public = true }
 syn         = { version = "2", public = true, features = ["clone-impls"] }
 
 convert_case = "0.10"
-darling      = "0.20"
+darling      = "0.23"
 quote        = "1"
 
 [dev-dependencies]
