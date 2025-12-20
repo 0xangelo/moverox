@@ -11,6 +11,8 @@ pub fn moverox_build::Builder<'a>::map_address(self, named_address: &str, rust_p
 pub fn moverox_build::Builder<'a>::moverox_path(self, rust_path: &str) -> Self
 pub fn moverox_build::Builder<'a>::out_dir(self, path: impl core::convert::Into<std::path::PathBuf>) -> Self
 pub const fn moverox_build::Builder<'a>::published_at(self, hex_address: &'a str) -> Self
+pub fn moverox_build::Builder<'a>::read_modules(&self) -> core::result::Result<alloc::vec::Vec<move_syn::Module>, alloc::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>>
 pub const fn moverox_build::Builder<'a>::with_implicit_iota_imports(self) -> Self
 pub const fn moverox_build::Builder<'a>::with_implicit_sui_imports(self) -> Self
+pub fn moverox_build::Builder<'a>::write_oxidized_datatypes(&self, modules: &[move_syn::Module]) -> core::result::Result<(), alloc::boxed::Box<(dyn core::error::Error + core::marker::Send + core::marker::Sync + 'static)>>
 pub fn moverox_build::move_package(pkg_path: impl core::convert::AsRef<std::path::Path>, name: &str) -> moverox_build::Builder<'_>
