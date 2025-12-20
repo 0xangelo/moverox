@@ -3,7 +3,9 @@ source: crates/moverox-traits/tests/public-api.rs
 expression: public_api
 ---
 pub mod moverox_traits
+pub use moverox_traits::MoveDatatype
 pub mod moverox_traits::prelude
+pub use moverox_traits::prelude::MoveDatatype
 pub trait moverox_traits::prelude::ConstAddress
 pub const moverox_traits::prelude::ConstAddress::ADDRESS: moverox_types::address::Address
 pub trait moverox_traits::prelude::ConstModule

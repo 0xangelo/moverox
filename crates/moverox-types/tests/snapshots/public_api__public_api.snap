@@ -116,6 +116,14 @@ pub fn moverox_types::u256::U256::shr(self, rhs: u8) -> Self::Output
 impl core::str::traits::FromStr for moverox_types::u256::U256
 pub type moverox_types::u256::U256::Err = moverox_types::u256::U256FromStrError
 pub fn moverox_types::u256::U256::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl proptest::arbitrary::traits::Arbitrary for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Parameters = ()
+pub type moverox_types::u256::U256::Strategy = proptest::strategy::traits::BoxedStrategy<moverox_types::u256::U256>
+pub fn moverox_types::u256::U256::arbitrary_with(_params: Self::Parameters) -> Self::Strategy
+impl serde_core::ser::Serialize for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub struct moverox_types::u256::U256CastError
 impl moverox_types::u256::U256CastError
 pub fn moverox_types::u256::U256CastError::new<T: core::convert::Into<moverox_types::u256::U256>>(val: T, kind: moverox_types::u256::U256CastErrorKind) -> Self
@@ -147,6 +155,10 @@ pub fn moverox_types::TypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> c
 impl core::str::traits::FromStr for moverox_types::TypeTag
 pub type moverox_types::TypeTag::Err = moverox_types::TypeParseError
 pub fn moverox_types::TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl serde_core::ser::Serialize for moverox_types::TypeTag
+pub fn moverox_types::TypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_types::TypeTag
+pub fn moverox_types::TypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub struct moverox_types::Address(_)
 impl moverox_types::Address
 pub const moverox_types::Address::LENGTH: usize
@@ -211,6 +223,10 @@ pub fn moverox_types::Identifier::fmt(&self, f: &mut core::fmt::Formatter<'_>) -
 impl core::str::traits::FromStr for moverox_types::Identifier
 pub type moverox_types::Identifier::Err = moverox_types::TypeParseError
 pub fn moverox_types::Identifier::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl serde_core::ser::Serialize for moverox_types::Identifier
+pub fn moverox_types::Identifier::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_types::Identifier
+pub fn moverox_types::Identifier::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub struct moverox_types::InvalidIdentifierError(pub alloc::string::String)
 pub struct moverox_types::StructTag
 pub moverox_types::StructTag::address: moverox_types::Address
@@ -224,6 +240,10 @@ pub fn moverox_types::StructTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) ->
 impl core::str::traits::FromStr for moverox_types::StructTag
 pub type moverox_types::StructTag::Err = moverox_types::TypeParseError
 pub fn moverox_types::StructTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl serde_core::ser::Serialize for moverox_types::StructTag
+pub fn moverox_types::StructTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_types::StructTag
+pub fn moverox_types::StructTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub struct moverox_types::TypeParseError
 impl core::error::Error for moverox_types::TypeParseError
 impl core::fmt::Display for moverox_types::TypeParseError
@@ -334,4 +354,12 @@ pub fn moverox_types::u256::U256::shr(self, rhs: u8) -> Self::Output
 impl core::str::traits::FromStr for moverox_types::u256::U256
 pub type moverox_types::u256::U256::Err = moverox_types::u256::U256FromStrError
 pub fn moverox_types::u256::U256::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl proptest::arbitrary::traits::Arbitrary for moverox_types::u256::U256
+pub type moverox_types::u256::U256::Parameters = ()
+pub type moverox_types::u256::U256::Strategy = proptest::strategy::traits::BoxedStrategy<moverox_types::u256::U256>
+pub fn moverox_types::u256::U256::arbitrary_with(_params: Self::Parameters) -> Self::Strategy
+impl serde_core::ser::Serialize for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_types::u256::U256
+pub fn moverox_types::u256::U256::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub const fn moverox_types::const_address(bytes: &[u8]) -> moverox_types::Address

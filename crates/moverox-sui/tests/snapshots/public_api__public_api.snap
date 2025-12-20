@@ -2899,3 +2899,23 @@ impl serde_core::ser::Serialize for moverox_sui::sui::versioned::VersionedTypeTa
 pub fn moverox_sui::sui::versioned::VersionedTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::versioned::VersionedTypeTag
 pub fn moverox_sui::sui::versioned::VersionedTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub trait moverox_sui::Compat: moverox_sui::sui_sdk::__seal_compat::Sealed
+pub type moverox_sui::Compat::To
+pub fn moverox_sui::Compat::from_sui(value: Self::To) -> Self
+pub fn moverox_sui::Compat::into_sui(self) -> Self::To
+impl moverox_sui::Compat for moverox_types::address::Address
+pub type moverox_types::address::Address::To = sui_sdk_types::address::Address
+pub fn moverox_types::address::Address::from_sui(value: Self::To) -> Self
+pub fn moverox_types::address::Address::into_sui(self) -> Self::To
+impl moverox_sui::Compat for moverox_types::type_tag::Identifier
+pub type moverox_types::type_tag::Identifier::To = sui_sdk_types::type_tag::Identifier
+pub fn moverox_types::type_tag::Identifier::from_sui(value: Self::To) -> Self
+pub fn moverox_types::type_tag::Identifier::into_sui(self) -> Self::To
+impl moverox_sui::Compat for moverox_types::type_tag::StructTag
+pub type moverox_types::type_tag::StructTag::To = sui_sdk_types::type_tag::StructTag
+pub fn moverox_types::type_tag::StructTag::from_sui(value: Self::To) -> Self
+pub fn moverox_types::type_tag::StructTag::into_sui(self) -> Self::To
+impl moverox_sui::Compat for moverox_types::type_tag::TypeTag
+pub type moverox_types::type_tag::TypeTag::To = sui_sdk_types::type_tag::TypeTag
+pub fn moverox_types::type_tag::TypeTag::from_sui(value: Self::To) -> Self
+pub fn moverox_types::type_tag::TypeTag::into_sui(self) -> Self::To

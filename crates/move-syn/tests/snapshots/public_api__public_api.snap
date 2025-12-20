@@ -399,6 +399,9 @@ pub struct move_syn::Function
 impl move_syn::Function
 pub const fn move_syn::Function::ident(&self) -> &proc_macro2::Ident
 pub const fn move_syn::Function::is_entry(&self) -> bool
+impl move_syn::Function
+pub fn move_syn::Function::n_returns(&self) -> usize
+pub fn move_syn::Function::signature_string(&self, named_args: bool) -> alloc::string::String
 impl unsynn::Parser for move_syn::Function
 pub fn move_syn::Function::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Function
