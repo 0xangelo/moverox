@@ -41,19 +41,25 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+
       - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@nightly
+        uses: dtolnay/rust-toolchain@master
         with:
           components: clippy,rustfmt
+          toolchain: nightly-2025-10-29
+
       - name: Cache
         uses: Swatinem/rust-cache@v2
+
       - name: Check formatting
         run: cargo fmt --all --check
+
       - name: Install cargo-hack
         uses: taiki-e/install-action@cargo-hack
+
       - name: Check libraries
         run: >-
-          cargo +nightly
+          cargo
           hack
           --feature-powerset
           --exclude-features default
@@ -92,22 +98,30 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
+
       - name: Install Rust toolchain
-        uses: dtolnay/rust-toolchain@nightly
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: nightly-2025-10-29
+
       - name: Cache
         uses: Swatinem/rust-cache@v2
         with:
           shared-key: "nightly"
+
       - name: Check documentation
         env:
           RUSTDOCFLAGS: -A rustdoc::redundant-explicit-links -D warnings
         run: cargo doc --no-deps --all-features --workspace --examples
+
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
+
       - name: Install Cargo tools
         uses: taiki-e/install-action@v2
         with:
           tool: cargo-workspaces,cargo-rdme@1.4.8
+
       - name: Check if READMEs are up to date.
         run: |
           cargo ws exec cargo rdme --check --intralinks-strip-links

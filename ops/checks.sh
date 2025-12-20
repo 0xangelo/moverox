@@ -17,7 +17,7 @@ export RUSTDOCFLAGS="-A rustdoc::redundant-explicit-links"
 
 set -ex
 
-cargo +nightly hack $SCOPE --feature-powerset --exclude-features default clippy --no-deps --lib -- -D warnings
+cargo +nightly-2025-10-29 hack $SCOPE --feature-powerset --exclude-features default clippy --no-deps --lib -- -D warnings
 cargo nextest run $SCOPE --all-features -j 8 --no-tests=warn
 cargo test $SCOPE --all-features --doc
 
