@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5-beta.5](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.4...move-syn-v0.0.5-beta.5)
+
+### ⛰️ Features
+
+- *(move-syn)* [**breaking**] Advanced function signature parsing and manipulation - ([69199c0](https://github.com/0xangelo/moverox/commit/69199c04e30d82a9eebf4c7b3bb1c323b26d1801))
+
+### 🧪 Testing
+
+- Include all features in `public-api.rs` - ([729a874](https://github.com/0xangelo/moverox/commit/729a87438b8efb5ec3f58e2b77f8a81e71e40e75))
+
+
 ## [0.0.5-beta.4](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.3...move-syn-v0.0.5-beta.4)
 
 ### 🐛 Bug Fixes
