@@ -1,0 +1,6 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun encode(bytes: vector<u8>): vector<u8>
+fun decode(hex: vector<u8>): vector<u8>

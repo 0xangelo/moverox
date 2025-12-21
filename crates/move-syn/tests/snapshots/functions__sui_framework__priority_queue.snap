@@ -1,0 +1,10 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun new<T: drop>(entries: vector<Entry<T>>): PriorityQueue<T>
+fun pop_max<T: drop>(pq: &mut PriorityQueue<T>): (u64, T)
+fun insert<T: drop>(pq: &mut PriorityQueue<T>, priority: u64, value: T)
+fun new_entry<T: drop>(priority: u64, value: T): Entry<T>
+fun create_entries<T: drop>(p: vector<u64>, v: vector<T>): vector<Entry<T>>
+fun priorities<T: drop>(pq: &PriorityQueue<T>): vector<u64>

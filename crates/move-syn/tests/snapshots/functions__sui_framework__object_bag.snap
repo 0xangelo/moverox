@@ -1,0 +1,15 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun new(ctx: &mut sui::tx_context::TxContext): ObjectBag
+fun add<K: copy + drop + store, V: key + store>(bag: &mut ObjectBag, k: K, v: V)
+fun borrow<K: copy + drop + store, V: key + store>(bag: &ObjectBag, k: K): &V
+fun borrow_mut<K: copy + drop + store, V: key + store>(bag: &mut ObjectBag, k: K): &mut V
+fun remove<K: copy + drop + store, V: key + store>(bag: &mut ObjectBag, k: K): V
+fun contains<K: copy + drop + store>(bag: &ObjectBag, k: K): bool
+fun contains_with_type<K: copy + drop + store, V: key + store>(bag: &ObjectBag, k: K): bool
+fun length(bag: &ObjectBag): u64
+fun is_empty(bag: &ObjectBag): bool
+fun destroy_empty(bag: ObjectBag)
+fun value_id<K: copy + drop + store>(bag: &ObjectBag, k: K): Option<sui::object::ID>

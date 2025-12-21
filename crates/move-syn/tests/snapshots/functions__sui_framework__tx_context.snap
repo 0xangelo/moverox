@@ -1,0 +1,17 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun sender(_self: &sui::tx_context::TxContext): address
+fun digest(self: &sui::tx_context::TxContext): &vector<u8>
+fun epoch(_self: &sui::tx_context::TxContext): u64
+fun epoch_timestamp_ms(_self: &sui::tx_context::TxContext): u64
+fun sponsor(_self: &sui::tx_context::TxContext): Option<address>
+fun fresh_object_address(_ctx: &mut sui::tx_context::TxContext): address
+fun new(sender: address, tx_hash: vector<u8>, epoch: u64, epoch_timestamp_ms: u64, ids_created: u64): sui::tx_context::TxContext
+fun new_from_hint(addr: address, hint: u64, epoch: u64, epoch_timestamp_ms: u64, ids_created: u64): sui::tx_context::TxContext
+fun dummy(): sui::tx_context::TxContext
+fun get_ids_created(self: &sui::tx_context::TxContext): u64
+fun last_created_object_id(_self: &sui::tx_context::TxContext): address
+fun increment_epoch_number(self: &mut sui::tx_context::TxContext)
+fun increment_epoch_timestamp(self: &mut sui::tx_context::TxContext, delta_ms: u64)

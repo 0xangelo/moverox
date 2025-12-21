@@ -1,0 +1,11 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun create<T: store>(init_version: u64, init_value: T, ctx: &mut sui::tx_context::TxContext): Versioned
+fun version(self: &Versioned): u64
+fun load_value<T: store>(self: &Versioned): &T
+fun load_value_mut<T: store>(self: &mut Versioned): &mut T
+fun remove_value_for_upgrade<T: store>(self: &mut Versioned): (T, VersionChangeCap)
+fun upgrade<T: store>(self: &mut Versioned, new_version: u64, new_value: T, cap: VersionChangeCap)
+fun destroy<T: store>(self: Versioned): T

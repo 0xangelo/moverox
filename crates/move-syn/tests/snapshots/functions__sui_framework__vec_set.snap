@@ -1,0 +1,14 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun empty<K: copy + drop>(): VecSet<K>
+fun singleton<K: copy + drop>(key: K): VecSet<K>
+fun insert<K: copy + drop>(self: &mut VecSet<K>, key: K)
+fun remove<K: copy + drop>(self: &mut VecSet<K>, key: &K)
+fun contains<K: copy + drop>(self: &VecSet<K>, key: &K): bool
+fun size<K: copy + drop>(self: &VecSet<K>): u64
+fun is_empty<K: copy + drop>(self: &VecSet<K>): bool
+fun into_keys<K: copy + drop>(self: VecSet<K>): vector<K>
+fun from_keys<K: copy + drop>(keys: vector<K>): VecSet<K>
+fun keys<K: copy + drop>(self: &VecSet<K>): &vector<K>

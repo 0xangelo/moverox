@@ -397,11 +397,12 @@ impl unsynn::ToTokens for move_syn::EnumVariant
 pub fn move_syn::EnumVariant::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Function
 impl move_syn::Function
+pub fn move_syn::Function::arguments(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::functions::signature::FunctionArg>
+pub fn move_syn::Function::returns(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::MaybeRefType>
+impl move_syn::Function
+pub const fn move_syn::Function::generics(&self) -> core::option::Option<&move_syn::Generics>
 pub const fn move_syn::Function::ident(&self) -> &proc_macro2::Ident
 pub const fn move_syn::Function::is_entry(&self) -> bool
-impl move_syn::Function
-pub fn move_syn::Function::n_returns(&self) -> usize
-pub fn move_syn::Function::signature_string(&self, named_args: bool) -> alloc::string::String
 impl unsynn::Parser for move_syn::Function
 pub fn move_syn::Function::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Function
@@ -448,6 +449,14 @@ impl unsynn::Parser for move_syn::MacroFun
 pub fn move_syn::MacroFun::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::MacroFun
 pub fn move_syn::MacroFun::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::MaybeRefType
+impl move_syn::MaybeRefType
+pub fn move_syn::MaybeRefType::is_ref(&self) -> bool
+pub const fn move_syn::MaybeRefType::type_(&self) -> &move_syn::Type
+impl unsynn::Parser for move_syn::MaybeRefType
+pub fn move_syn::MaybeRefType::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::MaybeRefType
+pub fn move_syn::MaybeRefType::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Module
 pub move_syn::Module::attrs: alloc::vec::Vec<move_syn::Attribute>
 pub move_syn::Module::ident: proc_macro2::Ident
@@ -457,6 +466,8 @@ pub fn move_syn::Module::fully_qualify_datatype_field_types(&mut self) -> &mut S
 pub fn move_syn::Module::items(&self) -> impl core::iter::traits::iterator::Iterator<Item = &move_syn::Item>
 pub fn move_syn::Module::with_implicit_iota_imports(&mut self) -> &mut Self
 pub fn move_syn::Module::with_implicit_sui_imports(&mut self) -> &mut Self
+impl move_syn::Module
+pub fn move_syn::Module::fully_qualify_fun_signature_types(&mut self) -> &mut Self
 impl unsynn::Parser for move_syn::Module
 pub fn move_syn::Module::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Module
@@ -478,6 +489,12 @@ pub fn move_syn::NamedFields::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsy
 impl unsynn::ToTokens for move_syn::NamedFields
 pub fn move_syn::NamedFields::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::NativeFun
+impl move_syn::NativeFun
+pub fn move_syn::NativeFun::arguments(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::functions::signature::FunctionArg>
+pub fn move_syn::NativeFun::returns(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::MaybeRefType>
+impl move_syn::NativeFun
+pub const fn move_syn::NativeFun::generics(&self) -> core::option::Option<&move_syn::Generics>
+pub const fn move_syn::NativeFun::ident(&self) -> &proc_macro2::Ident
 impl unsynn::Parser for move_syn::NativeFun
 pub fn move_syn::NativeFun::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::NativeFun

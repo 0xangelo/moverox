@@ -1,0 +1,19 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun id_to_bytes(id: &sui::object::ID): vector<u8>
+fun id_to_address(id: &sui::object::ID): address
+fun id_from_bytes(bytes: vector<u8>): sui::object::ID
+fun id_from_address(bytes: address): sui::object::ID
+fun uid_as_inner(uid: &sui::object::UID): &sui::object::ID
+fun uid_to_inner(uid: &sui::object::UID): sui::object::ID
+fun uid_to_bytes(uid: &sui::object::UID): vector<u8>
+fun uid_to_address(uid: &sui::object::UID): address
+fun new(ctx: &mut sui::tx_context::TxContext): sui::object::UID
+fun delete(id: sui::object::UID)
+fun id<T: key>(obj: &T): sui::object::ID
+fun borrow_id<T: key>(obj: &T): &sui::object::ID
+fun id_bytes<T: key>(obj: &T): vector<u8>
+fun id_address<T: key>(obj: &T): address
+fun last_created(ctx: &sui::tx_context::TxContext): sui::object::ID

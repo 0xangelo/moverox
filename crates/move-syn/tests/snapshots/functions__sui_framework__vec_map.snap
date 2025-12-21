@@ -1,0 +1,23 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun empty<K: copy, V>(): VecMap<K, V>
+fun insert<K: copy, V>(self: &mut VecMap<K, V>, key: K, value: V)
+fun remove<K: copy, V>(self: &mut VecMap<K, V>, key: &K): (K, V)
+fun pop<K: copy, V>(self: &mut VecMap<K, V>): (K, V)
+fun get_mut<K: copy, V>(self: &mut VecMap<K, V>, key: &K): &mut V
+fun get<K: copy, V>(self: &VecMap<K, V>, key: &K): &V
+fun try_get<K: copy, V: copy>(self: &VecMap<K, V>, key: &K): Option<V>
+fun contains<K: copy, V>(self: &VecMap<K, V>, key: &K): bool
+fun size<K: copy, V>(self: &VecMap<K, V>): u64
+fun is_empty<K: copy, V>(self: &VecMap<K, V>): bool
+fun destroy_empty<K: copy, V>(self: VecMap<K, V>)
+fun into_keys_values<K: copy, V>(self: VecMap<K, V>): (vector<K>, vector<V>)
+fun from_keys_values<K: copy, V>(keys: vector<K>, values: vector<V>): VecMap<K, V>
+fun keys<K: copy, V>(self: &VecMap<K, V>): vector<K>
+fun get_idx_opt<K: copy, V>(self: &VecMap<K, V>, key: &K): Option<u64>
+fun get_idx<K: copy, V>(self: &VecMap<K, V>, key: &K): u64
+fun get_entry_by_idx<K: copy, V>(self: &VecMap<K, V>, idx: u64): (&K, &V)
+fun get_entry_by_idx_mut<K: copy, V>(self: &mut VecMap<K, V>, idx: u64): (&K, &mut V)
+fun remove_entry_by_idx<K: copy, V>(self: &mut VecMap<K, V>, idx: u64): (K, V)

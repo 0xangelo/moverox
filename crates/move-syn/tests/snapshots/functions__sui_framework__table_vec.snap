@@ -1,0 +1,16 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun empty<Element: store>(ctx: &mut sui::tx_context::TxContext): TableVec<Element>
+fun singleton<Element: store>(e: Element, ctx: &mut sui::tx_context::TxContext): TableVec<Element>
+fun length<Element: store>(t: &TableVec<Element>): u64
+fun is_empty<Element: store>(t: &TableVec<Element>): bool
+fun borrow<Element: store>(t: &TableVec<Element>, i: u64): &Element
+fun push_back<Element: store>(t: &mut TableVec<Element>, e: Element)
+fun borrow_mut<Element: store>(t: &mut TableVec<Element>, i: u64): &mut Element
+fun pop_back<Element: store>(t: &mut TableVec<Element>): Element
+fun destroy_empty<Element: store>(t: TableVec<Element>)
+fun drop<Element: drop + store>(t: TableVec<Element>)
+fun swap<Element: store>(t: &mut TableVec<Element>, i: u64, j: u64)
+fun swap_remove<Element: store>(t: &mut TableVec<Element>, i: u64): Element

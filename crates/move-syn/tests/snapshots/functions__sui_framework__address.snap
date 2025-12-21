@@ -1,0 +1,10 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun to_bytes(a: address): vector<u8>
+fun to_ascii_string(a: address): std::ascii::String
+fun to_string(a: address): std::string::String
+fun from_ascii_bytes(bytes: &vector<u8>): address
+fun length(): u64
+fun max(): u256

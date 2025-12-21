@@ -1,0 +1,34 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun to_bytes<T>(value: &T): vector<u8>
+fun new(bytes: vector<u8>): BCS
+fun into_remainder_bytes(bcs: BCS): vector<u8>
+fun peel_address(bcs: &mut BCS): address
+fun peel_bool(bcs: &mut BCS): bool
+fun peel_u8(bcs: &mut BCS): u8
+fun peel_u16(bcs: &mut BCS): u16
+fun peel_u32(bcs: &mut BCS): u32
+fun peel_u64(bcs: &mut BCS): u64
+fun peel_u128(bcs: &mut BCS): u128
+fun peel_u256(bcs: &mut BCS): u256
+fun peel_vec_length(bcs: &mut BCS): u64
+fun peel_vec_address(bcs: &mut BCS): vector<address>
+fun peel_vec_bool(bcs: &mut BCS): vector<bool>
+fun peel_vec_u8(bcs: &mut BCS): vector<u8>
+fun peel_vec_vec_u8(bcs: &mut BCS): vector<vector<u8>>
+fun peel_vec_u16(bcs: &mut BCS): vector<u16>
+fun peel_vec_u32(bcs: &mut BCS): vector<u32>
+fun peel_vec_u64(bcs: &mut BCS): vector<u64>
+fun peel_vec_u128(bcs: &mut BCS): vector<u128>
+fun peel_vec_u256(bcs: &mut BCS): vector<u256>
+fun peel_enum_tag(bcs: &mut BCS): u32
+fun peel_option_address(bcs: &mut BCS): Option<address>
+fun peel_option_bool(bcs: &mut BCS): Option<bool>
+fun peel_option_u8(bcs: &mut BCS): Option<u8>
+fun peel_option_u16(bcs: &mut BCS): Option<u16>
+fun peel_option_u32(bcs: &mut BCS): Option<u32>
+fun peel_option_u64(bcs: &mut BCS): Option<u64>
+fun peel_option_u128(bcs: &mut BCS): Option<u128>
+fun peel_option_u256(bcs: &mut BCS): Option<u256>

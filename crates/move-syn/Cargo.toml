@@ -26,7 +26,7 @@ ignored = ["proc-macro2"]
 workspace = true
 
 [features]
-fun-args = []
+fun-sig = []
 
 [dependencies]
 proc-macro2 = { version = "1", public = true }
@@ -48,3 +48,9 @@ testresult  = "0.4"
 public-api       = "0.50"
 rustdoc-json     = "0.9"
 rustup-toolchain = "0.1"
+
+
+[[test]]
+name              = "functions"
+path              = "./tests/functions.rs"
+required-features = ["fun-sig"]

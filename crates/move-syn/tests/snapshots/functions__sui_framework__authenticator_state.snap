@@ -1,0 +1,9 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun create_active_jwk(iss: std::string::String, kid: std::string::String, kty: std::string::String, epoch: u64): ActiveJwk
+fun create_for_testing(ctx: &sui::tx_context::TxContext)
+fun update_authenticator_state_for_testing(self: &mut AuthenticatorState, new_active_jwks: vector<ActiveJwk>, ctx: &sui::tx_context::TxContext)
+fun expire_jwks_for_testing(self: &mut AuthenticatorState, min_epoch: u64, ctx: &sui::tx_context::TxContext)
+fun get_active_jwks_for_testing(self: &AuthenticatorState, ctx: &sui::tx_context::TxContext): vector<ActiveJwk>

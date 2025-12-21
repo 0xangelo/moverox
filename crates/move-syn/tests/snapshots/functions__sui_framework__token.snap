@@ -1,0 +1,52 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun new_policy<T>(_treasury_cap: &sui::coin::TreasuryCap<T>, ctx: &mut sui::tx_context::TxContext): (TokenPolicy<T>, TokenPolicyCap<T>)
+fun share_policy<T>(policy: TokenPolicy<T>)
+fun transfer<T>(t: Token<T>, recipient: address, ctx: &mut sui::tx_context::TxContext): ActionRequest<T>
+fun spend<T>(t: Token<T>, ctx: &mut sui::tx_context::TxContext): ActionRequest<T>
+fun to_coin<T>(t: Token<T>, ctx: &mut sui::tx_context::TxContext): (sui::coin::Coin<T>, ActionRequest<T>)
+fun from_coin<T>(coin: sui::coin::Coin<T>, ctx: &mut sui::tx_context::TxContext): (Token<T>, ActionRequest<T>)
+fun join<T>(token: &mut Token<T>, another: Token<T>)
+fun split<T>(token: &mut Token<T>, amount: u64, ctx: &mut sui::tx_context::TxContext): Token<T>
+fun zero<T>(ctx: &mut sui::tx_context::TxContext): Token<T>
+fun destroy_zero<T>(token: Token<T>)
+fun keep<T>(token: Token<T>, ctx: &mut sui::tx_context::TxContext)
+fun new_request<T>(name: std::string::String, amount: u64, recipient: Option<address>, spent_balance: Option<sui::balance::Balance<T>>, ctx: &sui::tx_context::TxContext): ActionRequest<T>
+fun confirm_request<T>(policy: &TokenPolicy<T>, request: ActionRequest<T>, _ctx: &mut sui::tx_context::TxContext): (std::string::String, u64, address, Option<address>)
+fun confirm_request_mut<T>(policy: &mut TokenPolicy<T>, request: ActionRequest<T>, ctx: &mut sui::tx_context::TxContext): (std::string::String, u64, address, Option<address>)
+fun confirm_with_policy_cap<T>(_policy_cap: &TokenPolicyCap<T>, request: ActionRequest<T>, _ctx: &mut sui::tx_context::TxContext): (std::string::String, u64, address, Option<address>)
+fun confirm_with_treasury_cap<T>(treasury_cap: &mut sui::coin::TreasuryCap<T>, request: ActionRequest<T>, _ctx: &mut sui::tx_context::TxContext): (std::string::String, u64, address, Option<address>)
+fun add_approval<T, W: drop>(_t: W, request: &mut ActionRequest<T>, _ctx: &mut sui::tx_context::TxContext)
+fun add_rule_config<T, Rule: drop, Config: store>(_rule: Rule, self: &mut TokenPolicy<T>, cap: &TokenPolicyCap<T>, config: Config, _ctx: &mut sui::tx_context::TxContext)
+fun rule_config<T, Rule: drop, Config: store>(_rule: Rule, self: &TokenPolicy<T>): &Config
+fun rule_config_mut<T, Rule: drop, Config: store>(_rule: Rule, self: &mut TokenPolicy<T>, cap: &TokenPolicyCap<T>): &mut Config
+fun remove_rule_config<T, Rule, Config: store>(self: &mut TokenPolicy<T>, cap: &TokenPolicyCap<T>, _ctx: &mut sui::tx_context::TxContext): Config
+fun has_rule_config<T, Rule>(self: &TokenPolicy<T>): bool
+fun has_rule_config_with_type<T, Rule, Config: store>(self: &TokenPolicy<T>): bool
+fun allow<T>(self: &mut TokenPolicy<T>, cap: &TokenPolicyCap<T>, action: std::string::String, _ctx: &mut sui::tx_context::TxContext)
+fun disallow<T>(self: &mut TokenPolicy<T>, cap: &TokenPolicyCap<T>, action: std::string::String, _ctx: &mut sui::tx_context::TxContext)
+fun add_rule_for_action<T, Rule: drop>(self: &mut TokenPolicy<T>, cap: &TokenPolicyCap<T>, action: std::string::String, ctx: &mut sui::tx_context::TxContext)
+fun remove_rule_for_action<T, Rule: drop>(self: &mut TokenPolicy<T>, cap: &TokenPolicyCap<T>, action: std::string::String, _ctx: &mut sui::tx_context::TxContext)
+fun mint<T>(cap: &mut sui::coin::TreasuryCap<T>, amount: u64, ctx: &mut sui::tx_context::TxContext): Token<T>
+fun burn<T>(cap: &mut sui::coin::TreasuryCap<T>, token: Token<T>)
+fun flush<T>(self: &mut TokenPolicy<T>, cap: &mut sui::coin::TreasuryCap<T>, _ctx: &mut sui::tx_context::TxContext): u64
+fun is_allowed<T>(self: &TokenPolicy<T>, action: &std::string::String): bool
+fun rules<T>(self: &TokenPolicy<T>, action: &std::string::String): sui::vec_set::VecSet<std::type_name::TypeName>
+fun spent_balance<T>(self: &TokenPolicy<T>): u64
+fun value<T>(t: &Token<T>): u64
+fun transfer_action(): std::string::String
+fun spend_action(): std::string::String
+fun to_coin_action(): std::string::String
+fun from_coin_action(): std::string::String
+fun action<T>(self: &ActionRequest<T>): std::string::String
+fun amount<T>(self: &ActionRequest<T>): u64
+fun sender<T>(self: &ActionRequest<T>): address
+fun recipient<T>(self: &ActionRequest<T>): Option<address>
+fun approvals<T>(self: &ActionRequest<T>): sui::vec_set::VecSet<std::type_name::TypeName>
+fun spent<T>(self: &ActionRequest<T>): Option<u64>
+fun new_policy_for_testing<T>(ctx: &mut sui::tx_context::TxContext): (TokenPolicy<T>, TokenPolicyCap<T>)
+fun burn_policy_for_testing<T>(policy: TokenPolicy<T>, cap: TokenPolicyCap<T>)
+fun mint_for_testing<T>(amount: u64, ctx: &mut sui::tx_context::TxContext): Token<T>
+fun burn_for_testing<T>(token: Token<T>)

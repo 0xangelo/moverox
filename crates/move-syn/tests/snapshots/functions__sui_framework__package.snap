@@ -1,0 +1,30 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun claim<OTW: drop>(otw: OTW, ctx: &mut sui::tx_context::TxContext): Publisher
+fun claim_and_keep<OTW: drop>(otw: OTW, ctx: &mut sui::tx_context::TxContext)
+fun burn_publisher(self: Publisher)
+fun from_package<T>(self: &Publisher): bool
+fun from_module<T>(self: &Publisher): bool
+fun published_module(self: &Publisher): &std::ascii::String
+fun published_package(self: &Publisher): &std::ascii::String
+fun upgrade_package(cap: &UpgradeCap): sui::object::ID
+fun version(cap: &UpgradeCap): u64
+fun upgrade_policy(cap: &UpgradeCap): u8
+fun ticket_package(ticket: &UpgradeTicket): sui::object::ID
+fun ticket_policy(ticket: &UpgradeTicket): u8
+fun receipt_cap(receipt: &UpgradeReceipt): sui::object::ID
+fun receipt_package(receipt: &UpgradeReceipt): sui::object::ID
+fun ticket_digest(ticket: &UpgradeTicket): &vector<u8>
+fun compatible_policy(): u8
+fun additive_policy(): u8
+fun dep_only_policy(): u8
+entry fun only_additive_upgrades(cap: &mut UpgradeCap)
+entry fun only_dep_upgrades(cap: &mut UpgradeCap)
+entry fun make_immutable(cap: UpgradeCap)
+fun authorize_upgrade(cap: &mut UpgradeCap, policy: u8, digest: vector<u8>): UpgradeTicket
+fun commit_upgrade(cap: &mut UpgradeCap, receipt: UpgradeReceipt)
+fun test_claim<OTW: drop>(_: OTW, ctx: &mut sui::tx_context::TxContext): Publisher
+fun test_publish(package: sui::object::ID, ctx: &mut sui::tx_context::TxContext): UpgradeCap
+fun test_upgrade(ticket: UpgradeTicket): UpgradeReceipt

@@ -1,0 +1,8 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun new<T: key + store>(value: T, ctx: &mut sui::tx_context::TxContext): Referent<T>
+fun borrow<T: key + store>(self: &mut Referent<T>): (T, Borrow)
+fun put_back<T: key + store>(self: &mut Referent<T>, value: T, borrow: Borrow)
+fun destroy<T: key + store>(self: Referent<T>): T

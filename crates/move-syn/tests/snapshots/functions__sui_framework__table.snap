@@ -1,0 +1,14 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun new<K: copy + drop + store, V: store>(ctx: &mut sui::tx_context::TxContext): Table<K, V>
+fun add<K: copy + drop + store, V: store>(table: &mut Table<K, V>, k: K, v: V)
+fun borrow<K: copy + drop + store, V: store>(table: &Table<K, V>, k: K): &V
+fun borrow_mut<K: copy + drop + store, V: store>(table: &mut Table<K, V>, k: K): &mut V
+fun remove<K: copy + drop + store, V: store>(table: &mut Table<K, V>, k: K): V
+fun contains<K: copy + drop + store, V: store>(table: &Table<K, V>, k: K): bool
+fun length<K: copy + drop + store, V: store>(table: &Table<K, V>): u64
+fun is_empty<K: copy + drop + store, V: store>(table: &Table<K, V>): bool
+fun destroy_empty<K: copy + drop + store, V: store>(table: Table<K, V>)
+fun drop<K: copy + drop + store, V: drop + store>(table: Table<K, V>)

@@ -1,0 +1,5 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+entry fun transfer(c: sui::coin::Coin<SUI>, recipient: address)

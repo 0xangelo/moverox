@@ -1,0 +1,17 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun value<T>(self: &Balance<T>): u64
+fun supply_value<T>(supply: &Supply<T>): u64
+fun create_supply<T: drop>(_: T): Supply<T>
+fun increase_supply<T>(self: &mut Supply<T>, value: u64): Balance<T>
+fun decrease_supply<T>(self: &mut Supply<T>, balance: Balance<T>): u64
+fun zero<T>(): Balance<T>
+fun join<T>(self: &mut Balance<T>, balance: Balance<T>): u64
+fun split<T>(self: &mut Balance<T>, value: u64): Balance<T>
+fun withdraw_all<T>(self: &mut Balance<T>): Balance<T>
+fun destroy_zero<T>(balance: Balance<T>)
+fun create_for_testing<T>(value: u64): Balance<T>
+fun destroy_for_testing<T>(self: Balance<T>): u64
+fun create_supply_for_testing<T>(): Supply<T>

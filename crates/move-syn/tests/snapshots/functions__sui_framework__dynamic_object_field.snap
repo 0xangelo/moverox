@@ -1,0 +1,11 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun add<Name: copy + drop + store, Value: key + store>(object: &mut sui::object::UID, name: Name, value: Value)
+fun borrow<Name: copy + drop + store, Value: key + store>(object: &sui::object::UID, name: Name): &Value
+fun borrow_mut<Name: copy + drop + store, Value: key + store>(object: &mut sui::object::UID, name: Name): &mut Value
+fun remove<Name: copy + drop + store, Value: key + store>(object: &mut sui::object::UID, name: Name): Value
+fun exists_<Name: copy + drop + store>(object: &sui::object::UID, name: Name): bool
+fun exists_with_type<Name: copy + drop + store, Value: key + store>(object: &sui::object::UID, name: Name): bool
+fun id<Name: copy + drop + store>(object: &sui::object::UID, name: Name): Option<sui::object::ID>

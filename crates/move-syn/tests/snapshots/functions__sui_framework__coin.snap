@@ -1,0 +1,52 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun total_supply<T>(cap: &TreasuryCap<T>): u64
+fun treasury_into_supply<T>(treasury: TreasuryCap<T>): sui::balance::Supply<T>
+fun supply_immut<T>(treasury: &TreasuryCap<T>): &sui::balance::Supply<T>
+fun supply_mut<T>(treasury: &mut TreasuryCap<T>): &mut sui::balance::Supply<T>
+fun value<T>(self: &Coin<T>): u64
+fun balance<T>(coin: &Coin<T>): &sui::balance::Balance<T>
+fun balance_mut<T>(coin: &mut Coin<T>): &mut sui::balance::Balance<T>
+fun from_balance<T>(balance: sui::balance::Balance<T>, ctx: &mut sui::tx_context::TxContext): Coin<T>
+fun into_balance<T>(coin: Coin<T>): sui::balance::Balance<T>
+fun take<T>(balance: &mut sui::balance::Balance<T>, value: u64, ctx: &mut sui::tx_context::TxContext): Coin<T>
+fun put<T>(balance: &mut sui::balance::Balance<T>, coin: Coin<T>)
+entry fun join<T>(self: &mut Coin<T>, c: Coin<T>)
+fun split<T>(self: &mut Coin<T>, split_amount: u64, ctx: &mut sui::tx_context::TxContext): Coin<T>
+fun divide_into_n<T>(self: &mut Coin<T>, n: u64, ctx: &mut sui::tx_context::TxContext): vector<Coin<T>>
+fun zero<T>(ctx: &mut sui::tx_context::TxContext): Coin<T>
+fun destroy_zero<T>(c: Coin<T>)
+fun create_currency<T: drop>(witness: T, decimals: u8, symbol: vector<u8>, name: vector<u8>, description: vector<u8>, icon_url: Option<sui::url::Url>, ctx: &mut sui::tx_context::TxContext): (TreasuryCap<T>, CoinMetadata<T>)
+fun create_regulated_currency_v2<T: drop>(witness: T, decimals: u8, symbol: vector<u8>, name: vector<u8>, description: vector<u8>, icon_url: Option<sui::url::Url>, allow_global_pause: bool, ctx: &mut sui::tx_context::TxContext): (TreasuryCap<T>, DenyCapV2<T>, CoinMetadata<T>)
+fun migrate_regulated_currency_to_v2<T>(deny_list: &mut sui::deny_list::DenyList, cap: DenyCap<T>, allow_global_pause: bool, ctx: &mut sui::tx_context::TxContext): DenyCapV2<T>
+fun mint<T>(cap: &mut TreasuryCap<T>, value: u64, ctx: &mut sui::tx_context::TxContext): Coin<T>
+fun mint_balance<T>(cap: &mut TreasuryCap<T>, value: u64): sui::balance::Balance<T>
+entry fun burn<T>(cap: &mut TreasuryCap<T>, c: Coin<T>): u64
+fun deny_list_v2_add<T>(deny_list: &mut sui::deny_list::DenyList, _deny_cap: &mut DenyCapV2<T>, addr: address, ctx: &mut sui::tx_context::TxContext)
+fun deny_list_v2_remove<T>(deny_list: &mut sui::deny_list::DenyList, _deny_cap: &mut DenyCapV2<T>, addr: address, ctx: &mut sui::tx_context::TxContext)
+fun deny_list_v2_contains_current_epoch<T>(deny_list: &sui::deny_list::DenyList, addr: address, ctx: &sui::tx_context::TxContext): bool
+fun deny_list_v2_contains_next_epoch<T>(deny_list: &sui::deny_list::DenyList, addr: address): bool
+fun deny_list_v2_enable_global_pause<T>(deny_list: &mut sui::deny_list::DenyList, deny_cap: &mut DenyCapV2<T>, ctx: &mut sui::tx_context::TxContext)
+fun deny_list_v2_disable_global_pause<T>(deny_list: &mut sui::deny_list::DenyList, deny_cap: &mut DenyCapV2<T>, ctx: &mut sui::tx_context::TxContext)
+fun deny_list_v2_is_global_pause_enabled_current_epoch<T>(deny_list: &sui::deny_list::DenyList, ctx: &sui::tx_context::TxContext): bool
+fun deny_list_v2_is_global_pause_enabled_next_epoch<T>(deny_list: &sui::deny_list::DenyList): bool
+entry fun mint_and_transfer<T>(c: &mut TreasuryCap<T>, amount: u64, recipient: address, ctx: &mut sui::tx_context::TxContext)
+entry fun update_name<T>(_treasury: &TreasuryCap<T>, metadata: &mut CoinMetadata<T>, name: std::string::String)
+entry fun update_symbol<T>(_treasury: &TreasuryCap<T>, metadata: &mut CoinMetadata<T>, symbol: std::ascii::String)
+entry fun update_description<T>(_treasury: &TreasuryCap<T>, metadata: &mut CoinMetadata<T>, description: std::string::String)
+entry fun update_icon_url<T>(_treasury: &TreasuryCap<T>, metadata: &mut CoinMetadata<T>, url: std::ascii::String)
+fun get_decimals<T>(metadata: &CoinMetadata<T>): u8
+fun get_name<T>(metadata: &CoinMetadata<T>): std::string::String
+fun get_symbol<T>(metadata: &CoinMetadata<T>): std::ascii::String
+fun get_description<T>(metadata: &CoinMetadata<T>): std::string::String
+fun get_icon_url<T>(metadata: &CoinMetadata<T>): Option<sui::url::Url>
+fun mint_for_testing<T>(value: u64, ctx: &mut sui::tx_context::TxContext): Coin<T>
+fun burn_for_testing<T>(coin: Coin<T>): u64
+fun create_treasury_cap_for_testing<T>(ctx: &mut sui::tx_context::TxContext): TreasuryCap<T>
+fun supply<T>(treasury: &mut TreasuryCap<T>): &sui::balance::Supply<T>
+fun create_regulated_currency<T: drop>(witness: T, decimals: u8, symbol: vector<u8>, name: vector<u8>, description: vector<u8>, icon_url: Option<sui::url::Url>, ctx: &mut sui::tx_context::TxContext): (TreasuryCap<T>, DenyCap<T>, CoinMetadata<T>)
+fun deny_list_add<T>(deny_list: &mut sui::deny_list::DenyList, _deny_cap: &mut DenyCap<T>, addr: address, _ctx: &mut sui::tx_context::TxContext)
+fun deny_list_remove<T>(deny_list: &mut sui::deny_list::DenyList, _deny_cap: &mut DenyCap<T>, addr: address, _ctx: &mut sui::tx_context::TxContext)
+fun deny_list_contains<T>(deny_list: &sui::deny_list::DenyList, addr: address): bool

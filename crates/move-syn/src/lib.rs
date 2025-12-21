@@ -13,7 +13,7 @@ mod functions;
 mod tests;
 mod vis;
 
-pub use self::functions::Function;
+pub use self::functions::{Function, NativeFun};
 pub use self::vis::Visibility;
 
 /// Process raw Move code so that it can be used as input to Rust's tokenizer.
@@ -431,18 +431,6 @@ unsynn! {
         Store(kw::Store),
     }
 
-    // === Functions ===
-
-    pub struct NativeFun {
-        native_kw: kw::Native,
-        fun_kw: kw::Fun,
-        ident: Ident,
-        generics: Option<Generics>,
-        args: ParenthesisGroup,
-        ret: Option<Cons<Colon, Either<MaybeRefType, ParenthesisGroup>>>,
-        semicolon: Semicolon
-    }
-
     // === Macros ===
 
     pub struct MacroFun {
@@ -502,7 +490,7 @@ unsynn! {
     // === Types ===
 
     /// Type of function arguments or returns.
-    struct MaybeRefType {
+    pub struct MaybeRefType {
         r#ref: Option<Ref>,
         r#type: Type,
     }
@@ -653,11 +641,11 @@ impl Module {
         for item in &mut self.contents.content {
             match &mut item.kind {
                 ItemKind::Enum(e) => {
-                    let generics = &e.generics();
+                    let generics = &e.type_param_idents();
                     e.map_types(|ty| ty.resolve(&imports, generics));
                 }
                 ItemKind::Struct(s) => {
-                    let generics = &s.generics();
+                    let generics = &s.type_param_idents();
                     s.map_types(|ty| ty.resolve(&imports, generics));
                 }
                 _ => (),
@@ -1039,6 +1027,18 @@ impl Generics {
     }
 }
 
+impl MaybeRefType {
+    /// Whether this is an immutable reference to a type.
+    pub fn is_ref(&self) -> bool {
+        self.r#ref.as_ref().is_some_and(|r| r.r#mut.is_none())
+    }
+
+    /// Reference to the Move type
+    pub const fn type_(&self) -> &Type {
+        &self.r#type
+    }
+}
+
 // === Non-lang items ===
 
 #[cfg_attr(test, derive(derive_more::Display))]
@@ -1067,14 +1067,13 @@ trait IteratorBoxed<'a>: Iterator + 'a {
 
 impl<'a, T> IteratorBoxed<'a> for T where T: Iterator + 'a {}
 
-/// An enum or struct.
-trait Datatype {
-    fn generics(&self) -> Vec<Ident>;
-}
+/// Something that can be generic over type parameters.
+trait HasGenerics {
+    fn generics(&self) -> Option<&Generics>;
 
-impl Datatype for Enum {
-    fn generics(&self) -> Vec<Ident> {
-        self.generics
+    /// Identifiers of the generic type parameters.
+    fn type_param_idents(&self) -> Vec<Ident> {
+        self.generics()
             .iter()
             .flat_map(|generics| generics.generics())
             .map(|generic| generic.ident.clone())
@@ -1082,17 +1081,19 @@ impl Datatype for Enum {
     }
 }
 
-impl Datatype for Struct {
-    fn generics(&self) -> Vec<Ident> {
-        self.generics
-            .iter()
-            .flat_map(|generics| generics.generics())
-            .map(|generic| generic.ident.clone())
-            .collect()
+impl HasGenerics for Enum {
+    fn generics(&self) -> Option<&Generics> {
+        self.generics.as_ref()
     }
 }
 
-/// Something that has inner types, e.g., fields, type arguments.
+impl HasGenerics for Struct {
+    fn generics(&self) -> Option<&Generics> {
+        self.generics.as_ref()
+    }
+}
+
+/// Something that has inner types, e.g., datatype fields, function arguments and returns.
 trait Typed {
     /// Field types. Used to resolve into fully-qualified paths.
     fn map_types(&mut self, f: impl FnMut(&mut Type));

@@ -1,0 +1,26 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun create_for_testing(ctx: &mut sui::tx_context::TxContext)
+fun update_randomness_state_for_testing(self: &mut Random, new_round: u64, new_bytes: vector<u8>, ctx: &sui::tx_context::TxContext)
+fun new_generator(r: &Random, ctx: &mut sui::tx_context::TxContext): RandomGenerator
+fun generate_bytes(g: &mut RandomGenerator, num_of_bytes: u16): vector<u8>
+fun generate_u256(g: &mut RandomGenerator): u256
+fun generate_u128(g: &mut RandomGenerator): u128
+fun generate_u64(g: &mut RandomGenerator): u64
+fun generate_u32(g: &mut RandomGenerator): u32
+fun generate_u16(g: &mut RandomGenerator): u16
+fun generate_u8(g: &mut RandomGenerator): u8
+fun generate_bool(g: &mut RandomGenerator): bool
+fun generate_u128_in_range(g: &mut RandomGenerator, min: u128, max: u128): u128
+fun generate_u64_in_range(g: &mut RandomGenerator, min: u64, max: u64): u64
+fun generate_u32_in_range(g: &mut RandomGenerator, min: u32, max: u32): u32
+fun generate_u16_in_range(g: &mut RandomGenerator, min: u16, max: u16): u16
+fun generate_u8_in_range(g: &mut RandomGenerator, min: u8, max: u8): u8
+fun shuffle<T>(g: &mut RandomGenerator, v: &mut vector<T>)
+fun generator_seed(r: &RandomGenerator): &vector<u8>
+fun generator_counter(r: &RandomGenerator): u16
+fun generator_buffer(r: &RandomGenerator): &vector<u8>
+fun new_generator_for_testing(): RandomGenerator
+fun new_generator_from_seed_for_testing(seed: vector<u8>): RandomGenerator

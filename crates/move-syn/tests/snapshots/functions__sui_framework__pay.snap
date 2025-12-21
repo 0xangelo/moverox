@@ -1,0 +1,12 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun keep<T>(c: sui::coin::Coin<T>, ctx: &sui::tx_context::TxContext)
+entry fun split<T>(coin: &mut sui::coin::Coin<T>, split_amount: u64, ctx: &mut sui::tx_context::TxContext)
+entry fun split_vec<T>(self: &mut sui::coin::Coin<T>, split_amounts: vector<u64>, ctx: &mut sui::tx_context::TxContext)
+entry fun split_and_transfer<T>(c: &mut sui::coin::Coin<T>, amount: u64, recipient: address, ctx: &mut sui::tx_context::TxContext)
+entry fun divide_and_keep<T>(self: &mut sui::coin::Coin<T>, n: u64, ctx: &mut sui::tx_context::TxContext)
+entry fun join<T>(self: &mut sui::coin::Coin<T>, coin: sui::coin::Coin<T>)
+entry fun join_vec<T>(self: &mut sui::coin::Coin<T>, coins: vector<sui::coin::Coin<T>>)
+entry fun join_vec_and_transfer<T>(coins: vector<sui::coin::Coin<T>>, receiver: address)

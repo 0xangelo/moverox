@@ -1,0 +1,15 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun transfer<T: key>(obj: T, recipient: address)
+fun public_transfer<T: key + store>(obj: T, recipient: address)
+fun party_transfer<T: key>(obj: T, party: sui::party::Party)
+fun public_party_transfer<T: key + store>(obj: T, party: sui::party::Party)
+fun freeze_object<T: key>(obj: T)
+fun public_freeze_object<T: key + store>(obj: T)
+fun share_object<T: key>(obj: T)
+fun public_share_object<T: key + store>(obj: T)
+fun receive<T: key>(parent: &mut sui::object::UID, to_receive: Receiving<T>): T
+fun public_receive<T: key + store>(parent: &mut sui::object::UID, to_receive: Receiving<T>): T
+fun receiving_object_id<T: key>(receiving: &Receiving<T>): sui::object::ID

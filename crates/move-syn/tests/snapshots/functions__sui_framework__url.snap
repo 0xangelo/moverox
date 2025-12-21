@@ -1,0 +1,8 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun new_unsafe(url: std::ascii::String): Url
+fun new_unsafe_from_bytes(bytes: vector<u8>): Url
+fun inner_url(self: &Url): std::ascii::String
+fun update(self: &mut Url, url: std::ascii::String)

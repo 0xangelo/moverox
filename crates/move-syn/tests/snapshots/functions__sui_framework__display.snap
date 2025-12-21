@@ -1,0 +1,15 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun new<T: key>(pub: &sui::package::Publisher, ctx: &mut sui::tx_context::TxContext): Display<T>
+fun new_with_fields<T: key>(pub: &sui::package::Publisher, fields: vector<std::string::String>, values: vector<std::string::String>, ctx: &mut sui::tx_context::TxContext): Display<T>
+entry fun create_and_keep<T: key>(pub: &sui::package::Publisher, ctx: &mut sui::tx_context::TxContext)
+entry fun update_version<T: key>(display: &mut Display<T>)
+entry fun add<T: key>(self: &mut Display<T>, name: std::string::String, value: std::string::String)
+entry fun add_multiple<T: key>(self: &mut Display<T>, fields: vector<std::string::String>, values: vector<std::string::String>)
+entry fun edit<T: key>(self: &mut Display<T>, name: std::string::String, value: std::string::String)
+entry fun remove<T: key>(self: &mut Display<T>, name: std::string::String)
+fun is_authorized<T: key>(pub: &sui::package::Publisher): bool
+fun version<T: key>(d: &Display<T>): u16
+fun fields<T: key>(d: &Display<T>): &sui::vec_map::VecMap<std::string::String, std::string::String>

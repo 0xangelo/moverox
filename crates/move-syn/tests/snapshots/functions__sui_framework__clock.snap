@@ -1,0 +1,10 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun timestamp_ms(clock: &Clock): u64
+fun create_for_testing(ctx: &mut sui::tx_context::TxContext): Clock
+fun share_for_testing(clock: Clock)
+fun increment_for_testing(clock: &mut Clock, tick: u64)
+fun set_for_testing(clock: &mut Clock, timestamp_ms: u64)
+fun destroy_for_testing(clock: Clock)
