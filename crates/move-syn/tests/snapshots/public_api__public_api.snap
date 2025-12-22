@@ -397,7 +397,7 @@ impl unsynn::ToTokens for move_syn::EnumVariant
 pub fn move_syn::EnumVariant::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Function
 impl move_syn::Function
-pub fn move_syn::Function::arguments(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::functions::signature::FunctionArg>
+pub fn move_syn::Function::arguments(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::FunctionArg>
 pub fn move_syn::Function::returns(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::MaybeRefType>
 impl move_syn::Function
 pub const fn move_syn::Function::generics(&self) -> core::option::Option<&move_syn::Generics>
@@ -407,6 +407,14 @@ impl unsynn::Parser for move_syn::Function
 pub fn move_syn::Function::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
 impl unsynn::ToTokens for move_syn::Function
 pub fn move_syn::Function::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::FunctionArg
+impl move_syn::FunctionArg
+pub const fn move_syn::FunctionArg::ident(&self) -> &proc_macro2::Ident
+pub const fn move_syn::FunctionArg::type_(&self) -> &move_syn::MaybeRefType
+impl unsynn::Parser for move_syn::FunctionArg
+pub fn move_syn::FunctionArg::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::FunctionArg
+pub fn move_syn::FunctionArg::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Generic
 pub move_syn::Generic::ident: proc_macro2::Ident
 pub move_syn::Generic::phantom: core::option::Option<move_syn::kw::Phantom>
@@ -490,7 +498,7 @@ impl unsynn::ToTokens for move_syn::NamedFields
 pub fn move_syn::NamedFields::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::NativeFun
 impl move_syn::NativeFun
-pub fn move_syn::NativeFun::arguments(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::functions::signature::FunctionArg>
+pub fn move_syn::NativeFun::arguments(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::FunctionArg>
 pub fn move_syn::NativeFun::returns(&self) -> impl core::iter::traits::exact_size::ExactSizeIterator<Item = &move_syn::MaybeRefType>
 impl move_syn::NativeFun
 pub const fn move_syn::NativeFun::generics(&self) -> core::option::Option<&move_syn::Generics>

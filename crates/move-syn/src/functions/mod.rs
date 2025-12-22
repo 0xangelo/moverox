@@ -6,6 +6,9 @@ use crate::{Generics, kw};
 #[cfg(feature = "fun-sig")]
 mod signature;
 
+#[cfg(feature = "fun-sig")]
+pub use self::signature::FunctionArg;
+
 unsynn! {
     pub struct Function {
         entry: Option<kw::Entry>,

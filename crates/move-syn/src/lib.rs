@@ -13,6 +13,8 @@ mod functions;
 mod tests;
 mod vis;
 
+#[cfg(feature = "fun-sig")]
+pub use self::functions::FunctionArg;
 pub use self::functions::{Function, NativeFun};
 pub use self::vis::Visibility;
 
