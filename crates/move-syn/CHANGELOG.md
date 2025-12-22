@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5-beta.6](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.5...move-syn-v0.0.5-beta.6)
+
+### ⛰️ Features
+
+- *(move-syn)* `Visibility` helpers - ([ac2e118](https://github.com/0xangelo/moverox/commit/ac2e11874a32ff331ff19898c357b59ba9033057))
+
+### 🐛 Bug Fixes
+
+- *(move-syn)* Export `FunctionArg` if `fun-sig` is enabled - ([9c9da1e](https://github.com/0xangelo/moverox/commit/9c9da1ed8a28615fd2fe2b7f2d2ef0e626a7c8a8))
+
+
 ## [0.0.5-beta.5](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.4...move-syn-v0.0.5-beta.5)
 
 ### ⛰️ Features
