@@ -20,4 +20,6 @@ build/
 .move/
 Move.lock
 
+# Environment variables
 .env
+.envrc
