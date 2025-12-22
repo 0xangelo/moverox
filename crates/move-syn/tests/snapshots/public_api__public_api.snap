@@ -353,6 +353,10 @@ pub enum move_syn::Visibility
 pub move_syn::Visibility::Package
 pub move_syn::Visibility::Private
 pub move_syn::Visibility::Public
+impl move_syn::Visibility
+pub const fn move_syn::Visibility::is_package(&self) -> bool
+pub const fn move_syn::Visibility::is_private(&self) -> bool
+pub const fn move_syn::Visibility::is_public(&self) -> bool
 pub struct move_syn::Attribute
 impl move_syn::Attribute
 pub const fn move_syn::Attribute::contents(&self) -> &impl unsynn::ToTokens
