@@ -1,7 +1,7 @@
 [package]
 description = "Move, oxidized"
 name        = "moverox"
-version     = "0.1.1"
+version     = "0.1.2"
 
 authors.workspace      = true
 categories.workspace   = true
@@ -29,13 +29,13 @@ bcs = ["dep:bcs", "dep:thiserror"]
 features = ["derive", "serde"]
 path     = "../moverox-traits"
 public   = true
-version = "0.1.1"
+version = "0.1.2"
 
 [dependencies.moverox-types]
 features = ["serde"]
 path     = "../moverox-types"
 public   = true
-version = "0.1.0"
+version = "0.1.1"
 
 [dependencies.serde]
 features = ["derive"]
