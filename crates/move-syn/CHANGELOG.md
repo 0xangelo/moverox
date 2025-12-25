@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.5](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.6...move-syn-v0.0.5)
+
+### 🚜 Refactor
+
+- *(move-syn)* [**breaking**] Align attribute grammar with original impl - ([e4b190a](https://github.com/0xangelo/moverox/commit/e4b190a834450bdd70672610591c16fbeb3e1295))
+
+### 📚 Documentation
+
+- *(move-syn)* Update `ItemPath` - ([41c6451](https://github.com/0xangelo/moverox/commit/41c64515f083c7d86928d7dba0f44723de55d248))
+
+
 ## [0.0.5-beta.6](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.5...move-syn-v0.0.5-beta.6)
 
 ### ⛰️ Features
