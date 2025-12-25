@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.8](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.7...moverox-codegen-v0.0.8)
+
+### 🚜 Refactor
+
+- *(move-syn)* [**breaking**] Align attribute grammar with original impl - ([e4b190a](https://github.com/0xangelo/moverox/commit/e4b190a834450bdd70672610591c16fbeb3e1295))
+- [**breaking**] R `move_syn::TypePath` -> `move_syn::ItemPath` - ([dc3056f](https://github.com/0xangelo/moverox/commit/dc3056f8f174ee3c8ed3d5c2444d7ce8c9e783fd))
+
+### 🧪 Testing
+
+- Include all features in `public-api.rs` - ([729a874](https://github.com/0xangelo/moverox/commit/729a87438b8efb5ec3f58e2b77f8a81e71e40e75))
+
+### ⚙️ Miscellaneous Tasks
+
+- *(move-syn)* Release v0.0.5-beta.6 ([#71](https://github.com/0xangelo/moverox/pull/71)) - ([3bbd99f](https://github.com/0xangelo/moverox/commit/3bbd99fa1587acbf37ecbff32c7d94d355069db2))
+- *(move-syn)* Release v0.0.5-beta.5 ([#66](https://github.com/0xangelo/moverox/pull/66)) - ([03b3993](https://github.com/0xangelo/moverox/commit/03b399356b0f41c7813fadb1626fa8ea76f48a3d))
+- *(move-syn)* Release v0.0.5-beta.4 ([#63](https://github.com/0xangelo/moverox/pull/63)) - ([f4a48bc](https://github.com/0xangelo/moverox/commit/f4a48bc6575e06d26f13020df6d375375840fae2))
+- *(move-syn)* Release v0.0.5-beta.3 ([#62](https://github.com/0xangelo/moverox/pull/62)) - ([d6bd6f0](https://github.com/0xangelo/moverox/commit/d6bd6f0dd57e440c5aa76d795fb9049be6928628))
+- *(move-syn)* Release v0.0.5-beta.2 ([#59](https://github.com/0xangelo/moverox/pull/59)) - ([b43747f](https://github.com/0xangelo/moverox/commit/b43747fec43a6fd6fd4703f18619a6623e872435))
+
+
 ## [0.0.7](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.6...moverox-codegen-v0.0.7)
 
 ### ⚙️ Miscellaneous Tasks

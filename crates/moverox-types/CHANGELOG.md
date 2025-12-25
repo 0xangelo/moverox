@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.1](https://github.com/0xangelo/moverox/compare/moverox-types-v0.1.0...moverox-types-v0.1.1)
+
+### 🧪 Testing
+
+- Include all features in `public-api.rs` - ([729a874](https://github.com/0xangelo/moverox/commit/729a87438b8efb5ec3f58e2b77f8a81e71e40e75))
+
+
 ## [0.1.0](https://github.com/0xangelo/moverox/compare/moverox-types-v0.0.3...moverox-types-v0.1.0)
 
 ### 🚜 Refactor
