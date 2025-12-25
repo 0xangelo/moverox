@@ -1,11 +1,11 @@
-use move_syn::Attribute;
+use move_syn::Attributes;
 use quote::quote;
 use unsynn::{ToTokens as _, TokenStream};
 
 /// Filter Move attributes and convert them to Rust.
 ///
 /// For now, we process only doc attributes.
-pub(super) fn to_rust(attrs: &[Attribute]) -> TokenStream {
+pub(super) fn to_rust(attrs: &[Attributes]) -> TokenStream {
     attrs
         .iter()
         .filter(|attr| attr.is_doc())

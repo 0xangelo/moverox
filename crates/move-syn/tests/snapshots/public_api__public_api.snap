@@ -357,16 +357,16 @@ impl move_syn::Visibility
 pub const fn move_syn::Visibility::is_package(&self) -> bool
 pub const fn move_syn::Visibility::is_private(&self) -> bool
 pub const fn move_syn::Visibility::is_public(&self) -> bool
-pub struct move_syn::Attribute
-impl move_syn::Attribute
-pub const fn move_syn::Attribute::contents(&self) -> &impl unsynn::ToTokens
-pub fn move_syn::Attribute::external_attributes(&self) -> impl core::iter::traits::iterator::Iterator<Item = &dyn unsynn::ToTokens> + '_
-pub fn move_syn::Attribute::is_doc(&self) -> bool
-pub fn move_syn::Attribute::metas(&self) -> impl core::iter::traits::iterator::Iterator<Item = &dyn unsynn::ToTokens> + '_
-impl unsynn::Parser for move_syn::Attribute
-pub fn move_syn::Attribute::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
-impl unsynn::ToTokens for move_syn::Attribute
-pub fn move_syn::Attribute::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
+pub struct move_syn::Attributes
+impl move_syn::Attributes
+pub const fn move_syn::Attributes::contents(&self) -> &impl unsynn::ToTokens
+pub fn move_syn::Attributes::erased_attributes(&self) -> impl core::iter::traits::iterator::Iterator<Item = &dyn unsynn::ToTokens> + '_
+pub fn move_syn::Attributes::external_attributes(&self) -> impl core::iter::traits::iterator::Iterator<Item = &dyn unsynn::ToTokens> + '_
+pub fn move_syn::Attributes::is_doc(&self) -> bool
+impl unsynn::Parser for move_syn::Attributes
+pub fn move_syn::Attributes::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>
+impl unsynn::ToTokens for move_syn::Attributes
+pub fn move_syn::Attributes::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::BracedStruct
 pub move_syn::BracedStruct::fields: move_syn::NamedFields
 impl move_syn::BracedStruct
@@ -392,7 +392,7 @@ pub fn move_syn::Enum::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::err
 impl unsynn::ToTokens for move_syn::Enum
 pub fn move_syn::Enum::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::EnumVariant
-pub move_syn::EnumVariant::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::EnumVariant::attrs: alloc::vec::Vec<move_syn::Attributes>
 pub move_syn::EnumVariant::fields: core::option::Option<move_syn::FieldsKind>
 pub move_syn::EnumVariant::ident: proc_macro2::Ident
 impl unsynn::Parser for move_syn::EnumVariant
@@ -441,7 +441,7 @@ pub fn move_syn::Import::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::e
 impl unsynn::ToTokens for move_syn::Import
 pub fn move_syn::Import::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Item
-pub move_syn::Item::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::Item::attrs: alloc::vec::Vec<move_syn::Attributes>
 pub move_syn::Item::kind: move_syn::ItemKind
 impl move_syn::Item
 pub const fn move_syn::Item::visibility(&self) -> move_syn::Visibility
@@ -470,7 +470,7 @@ pub fn move_syn::MaybeRefType::parser(tokens: &mut unsynn::TokenIter<'_>) -> uns
 impl unsynn::ToTokens for move_syn::MaybeRefType
 pub fn move_syn::MaybeRefType::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::Module
-pub move_syn::Module::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::Module::attrs: alloc::vec::Vec<move_syn::Attributes>
 pub move_syn::Module::ident: proc_macro2::Ident
 pub move_syn::Module::named_address: proc_macro2::Ident
 impl move_syn::Module
@@ -485,7 +485,7 @@ pub fn move_syn::Module::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::e
 impl unsynn::ToTokens for move_syn::Module
 pub fn move_syn::Module::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::NamedField
-pub move_syn::NamedField::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::NamedField::attrs: alloc::vec::Vec<move_syn::Attributes>
 pub move_syn::NamedField::ident: proc_macro2::Ident
 pub move_syn::NamedField::ty: move_syn::Type
 impl unsynn::Parser for move_syn::NamedField
@@ -556,7 +556,7 @@ pub fn move_syn::TypeArgs::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn:
 impl unsynn::ToTokens for move_syn::TypeArgs
 pub fn move_syn::TypeArgs::to_tokens(&self, tokens: &mut proc_macro2::TokenStream)
 pub struct move_syn::UnnamedField
-pub move_syn::UnnamedField::attrs: alloc::vec::Vec<move_syn::Attribute>
+pub move_syn::UnnamedField::attrs: alloc::vec::Vec<move_syn::Attributes>
 pub move_syn::UnnamedField::ty: move_syn::Type
 impl unsynn::Parser for move_syn::UnnamedField
 pub fn move_syn::UnnamedField::parser(tokens: &mut unsynn::TokenIter<'_>) -> unsynn::error::Result<Self>

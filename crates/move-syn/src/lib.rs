@@ -92,7 +92,7 @@ unsynn! {
     ///
     /// [label]: https://move-book.com/guides/code-quality-checklist#using-module-label
     pub struct LabeledModule {
-        attrs: Vec<Attribute>,
+        attrs: Vec<Attributes>,
         keyword: kw::Module,
         named_address: Ident,
         path_sep: PathSep,
@@ -103,7 +103,7 @@ unsynn! {
 
     /// A Move module declaration.
     pub struct Module {
-        pub attrs: Vec<Attribute>,
+        pub attrs: Vec<Attributes>,
         keyword: kw::Module,
         pub named_address: Ident,
         path_sep: PathSep,
@@ -113,36 +113,41 @@ unsynn! {
 
     /// A Move language item.
     pub struct Item {
-        pub attrs: Vec<Attribute>,
+        pub attrs: Vec<Attributes>,
         vis: Option<Vis>,
         pub kind: ItemKind,
     }
 
     // === Attributes ===
 
-    /// An attribute like `#[test_only]`, `#[allow(...)]`, doc comment (`/// ...`), etc.
+    /// A Move [attributes] anottation.
+    ///
+    /// Examples: `#[test_only]`, `#[allow(...)]`, doc comment (`/// ...`).
+    ///
+    /// [attributes]: https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L1202-L1204
     #[derive(Clone)]
-    pub struct Attribute {
+    pub struct Attributes {
         pound: Pound,
-        contents: BracketGroupContaining<DelimitedVec<Meta, Comma, TrailingDelimiter::Optional>>,
+        contents: BracketGroupContaining<DelimitedVec<Attribute, Comma, TrailingDelimiter::Optional>>,
     }
 
-    /// Meta =
+    /// A single [attribute].
+    ///
+    /// Attribute =
     ///     "for"
     ///     | <Identifier>
     ///     | <Identifier> "=" <AttributeValue>
-    ///     | <Identifier> "(" Comma<Meta> ")"
+    ///     | <Identifier> "(" Comma<Attribute> ")"
     ///
-    /// Based on
-    /// https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L1154-L1158
+    /// [attribute]: https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L1154-L1158
     #[derive(Clone)]
-    enum Meta {
+    enum Attribute {
         // NOTE: special case for doc strings
         Doc(Cons<DocKw, Assign, LiteralString>),
         For(ForKw),
         Other {
             ident: Ident,
-            sub: Option<SubMeta>,
+            sub: Option<SubAttribute>,
         }
     }
 
@@ -150,9 +155,9 @@ unsynn! {
     keyword ForKw = "for";
 
     #[derive(Clone)]
-    enum SubMeta {
+    enum SubAttribute {
         Eq(Cons<Assign, AttributeValue>),
-        List(ParenthesisGroupContaining<DelimitedVec<Box<Meta>, Comma, TrailingDelimiter::Optional>>),
+        List(ParenthesisGroupContaining<DelimitedVec<Box<Attribute>, Comma, TrailingDelimiter::Optional>>),
     }
 
     /// AttributeValue =
@@ -160,7 +165,7 @@ unsynn! {
     ///     | <NameAccessChain>
     ///
     /// Based on
-    /// https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L1135-L1138
+    /// <https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L1135-L1138>
     #[derive(Clone)]
     enum AttributeValue {
         Lit(Literal),
@@ -337,7 +342,7 @@ unsynn! {
 
     #[derive(Clone)]
     pub struct EnumVariant {
-        pub attrs: Vec<Attribute>,
+        pub attrs: Vec<Attributes>,
         pub ident: Ident,
         /// The fields of the enum variants. If none, it's a "unit" or "empty" variant.
         pub fields: Option<FieldsKind>
@@ -363,7 +368,7 @@ unsynn! {
     /// Named datatype field.
     #[derive(Clone)]
     pub struct NamedField {
-        pub attrs: Vec<Attribute>,
+        pub attrs: Vec<Attributes>,
         pub ident: Ident,
         colon: Colon,
         pub ty: Type,
@@ -372,7 +377,7 @@ unsynn! {
     /// Unnamed datatype field.
     #[derive(Clone)]
     pub struct UnnamedField {
-        pub attrs: Vec<Attribute>,
+        pub attrs: Vec<Attributes>,
         pub ty: Type,
     }
 
@@ -825,13 +830,13 @@ impl MaybeAliased {
     }
 }
 
-impl Attribute {
+impl Attributes {
     /// Whether this is a `#[doc = "..."]`.
     pub fn is_doc(&self) -> bool {
         matches!(
             &self.contents.content[..],
             [Delimited {
-                value: Meta::Doc(_),
+                value: Attribute::Doc(_),
                 ..
             }]
         )
@@ -842,7 +847,10 @@ impl Attribute {
         &self.contents.content
     }
 
-    pub fn metas(&self) -> impl Iterator<Item = &dyn ToTokens> + '_ {
+    /// Contents of each [attribute].
+    ///
+    /// [attribute]: https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L1154-L1158
+    pub fn erased_attributes(&self) -> impl Iterator<Item = &dyn ToTokens> + '_ {
         self.contents
             .content
             .iter()
@@ -852,9 +860,9 @@ impl Attribute {
     /// Contents of parameterized attributes as `#[ext(<external_attribute>)]`
     pub fn external_attributes(&self) -> impl Iterator<Item = &dyn ToTokens> + '_ {
         self.contents.content.iter().filter_map(|d| match &d.value {
-            Meta::Other {
+            Attribute::Other {
                 ident,
-                sub: Some(SubMeta::List(inner)),
+                sub: Some(SubAttribute::List(inner)),
             } if ident == "ext" => Some(&inner.content as _),
             _ => None,
         })
