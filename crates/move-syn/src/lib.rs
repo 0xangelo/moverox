@@ -218,7 +218,6 @@ unsynn! {
     pub struct UseFun {
         keyword: kw::Use,
         fun_kw: kw::Fun,
-        // HACK: using `TypePath` since they overlap; should generalize it to `ItemPath` instead
         fun_path: ItemPath,
         as_kw: kw::As,
         ty: Ident,
@@ -510,7 +509,7 @@ unsynn! {
         pub type_args: Option<TypeArgs>
     }
 
-    /// Path to a type.
+    /// Path to an item.
     #[derive(Clone)]
     pub enum ItemPath {
         /// Fully qualified,
@@ -527,7 +526,7 @@ unsynn! {
             sep: PathSep,
             item: Ident,
         },
-        /// Only the type identifier.
+        /// Only the item identifier.
         Ident(Ident),
     }
 
