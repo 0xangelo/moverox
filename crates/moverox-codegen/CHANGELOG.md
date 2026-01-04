@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.9](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.8...moverox-codegen-v0.0.9)
+
+### ⛰️ Features
+
+- *(moverox-codegen)* [**breaking**] Avoid phantom field if phantom type is used - ([d47ce9e](https://github.com/0xangelo/moverox/commit/d47ce9e4965dc965ee625526c6816833a32378c5))
+
+### 🚜 Refactor
+
+- *(moverox-codegen)* Better check for enum phantoms - ([db6e305](https://github.com/0xangelo/moverox/commit/db6e305251cca8a924fcd5d4c86fa1b8461ce24d))
+
+### ⚙️ Miscellaneous Tasks
+
+- *(moverox-codegen)* Rename test case - ([2e02720](https://github.com/0xangelo/moverox/commit/2e0272071ed2f79d9826233b885e1f3b6094e0f0))
+
+
 ## [0.0.8](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.7...moverox-codegen-v0.0.8)
 
 ### 🚜 Refactor
