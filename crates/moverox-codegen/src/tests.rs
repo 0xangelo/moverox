@@ -81,7 +81,7 @@ fn empty_enum() {
 }
 
 #[test]
-fn empty_enum_with_phantoms() {
+fn empty_enum_with_unused_phantom() {
     let move_enum = indoc! {"
         public enum Single<phantom T> {
             Only,
