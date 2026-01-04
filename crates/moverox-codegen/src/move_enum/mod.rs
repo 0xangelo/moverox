@@ -32,11 +32,11 @@ pub(super) fn to_rust(
 
     // HACK: pipe potential phantom parameters into the first variant to become phantom data fields
     let mut phantoms: Option<Vec<_>> = generics.as_ref().and_then(|generics| {
-        generics
-            .phantoms()
-            .next()
+        let mut phantoms = generics.phantoms().peekable();
+        phantoms
+            .peek()
             .is_some()
-            .then(|| generics.phantoms().cloned().collect())
+            .then(|| phantoms.cloned().collect())
     });
     let variants = this
         .variants()
