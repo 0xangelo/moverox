@@ -27,7 +27,7 @@ workspace = true
 
 [dependencies]
 move-syn        = { version = "0.0.5", path = "../move-syn" }
-moverox-codegen = { version = "0.0.8", path = "../moverox-codegen" }
+moverox-codegen = { version = "0.0.9", path = "../moverox-codegen" }
 
 anyhow = "1"
 
