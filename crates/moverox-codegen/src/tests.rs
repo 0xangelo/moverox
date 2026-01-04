@@ -185,6 +185,60 @@ fn enum_with_generics_and_variants() {
 }
 
 #[test]
+fn enum_with_used_phantom_type() {
+    let move_enum = indoc! {"
+        public enum Collateral<phantom T> {
+            None,
+            Some(Balance<T>),
+        }
+    "};
+    insta::assert_snapshot!(from_enum(move_enum), @r#"
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub enum Collateral<T> {
+        None,
+        Some(Balance<T>),
+    }
+    "#);
+    let move_enum = indoc! {"
+        public enum Collateral<phantom T> {
+            Some(Balance<T>),
+            None,
+        }
+    "};
+    insta::assert_snapshot!(from_enum(move_enum), @r#"
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub enum Collateral<T> {
+        Some(Balance<T>),
+        None,
+    }
+    "#);
+}
+
+#[test]
 fn struct_with_keyword_in_field_name() {
     insta::assert_snapshot!(from_struct("public struct Borrow { ref: address, obj: ID }"), @r#"
     #[derive(
