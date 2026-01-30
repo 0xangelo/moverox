@@ -150,21 +150,15 @@ impl<'a> Builder<'a> {
     }
 
     fn collect_move_files(&self) -> Result<Vec<PathBuf>> {
-        let move_sources = self.pkg_path.join("sources");
-
+        let move_sources = self.pkg_path.join("sources").canonicalize()?;
         let mut move_files = vec![];
-        for entry in fs::read_dir(move_sources)? {
-            let entry = entry?;
-            let path = entry.path();
-            if path.extension().is_none_or(|ext| ext != MOVE_FILE_EXT) {
-                continue;
-            }
+        visit_move_files(&move_sources, &mut |path| {
             if self.emit_rerun_if_changed {
                 // Tell Cargo to rerun the build script if .move files change
                 println!("cargo:rerun-if-changed={}", path.display());
             }
-            move_files.push(path);
-        }
+            move_files.push(path.to_owned());
+        })?;
         Ok(move_files)
     }
 
@@ -223,6 +217,22 @@ impl<'a> Builder<'a> {
         }
         Ok(generated_code)
     }
+}
+
+fn visit_move_files(path: &Path, f: &mut impl FnMut(&Path)) -> std::io::Result<()> {
+    if path.is_file() && path.extension().is_some_and(|ext| ext == MOVE_FILE_EXT) {
+        f(path);
+        return Ok(());
+    }
+
+    if !path.is_dir() {
+        return Ok(());
+    }
+
+    for entry in fs::read_dir(path)? {
+        visit_move_files(&entry?.path(), f)?;
+    }
+    Ok(())
 }
 
 fn default_out_dir() -> Result<PathBuf> {

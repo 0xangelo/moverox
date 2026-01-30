@@ -82,12 +82,29 @@ fn generate_rust_for_sui_framework() -> TestResult {
     clock.move
     coin.move
     config.move
+    bls12381.move
+    ecdsa_k1.move
+    ecdsa_r1.move
+    ecvrf.move
+    ed25519.move
+    groth16.move
+    group_ops.move
+    hash.move
+    hmac.move
+    nitro_attestation.move
+    poseidon.move
+    vdf.move
+    zklogin_verified_id.move
+    zklogin_verified_issuer.move
     deny_list.move
     display.move
     dynamic_field.move
     dynamic_object_field.move
     event.move
     hex.move
+    kiosk.move
+    kiosk_extension.move
+    transfer_policy.move
     linked_table.move
     math.move
     object.move
@@ -102,6 +119,8 @@ fn generate_rust_for_sui_framework() -> TestResult {
     sui.move
     table.move
     table_vec.move
+    test_scenario.move
+    test_utils.move
     token.move
     transfer.move
     tx_context.move

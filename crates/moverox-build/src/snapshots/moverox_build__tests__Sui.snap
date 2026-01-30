@@ -1091,6 +1091,570 @@ pub mod config {
         }
     }
 }
+#[cfg_attr(not(doctest), doc = " Group operations of BLS12-381.")]
+#[allow(rustdoc::all)]
+pub mod bls12381 {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = bls12381)]
+    #[allow(non_snake_case)]
+    pub struct Scalar {
+        /// BCS for empty structs actually encodes a single boolean hidden field
+        dummy_field: bool,
+    }
+    impl Scalar {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self { dummy_field: false }
+        }
+    }
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = bls12381)]
+    #[allow(non_snake_case)]
+    pub struct G1 {
+        /// BCS for empty structs actually encodes a single boolean hidden field
+        dummy_field: bool,
+    }
+    impl G1 {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self { dummy_field: false }
+        }
+    }
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = bls12381)]
+    #[allow(non_snake_case)]
+    pub struct G2 {
+        /// BCS for empty structs actually encodes a single boolean hidden field
+        dummy_field: bool,
+    }
+    impl G2 {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self { dummy_field: false }
+        }
+    }
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = bls12381)]
+    #[allow(non_snake_case)]
+    pub struct GT {
+        /// BCS for empty structs actually encodes a single boolean hidden field
+        dummy_field: bool,
+    }
+    impl GT {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self { dummy_field: false }
+        }
+    }
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = bls12381)]
+    #[allow(non_snake_case)]
+    pub struct UncompressedG1 {
+        /// BCS for empty structs actually encodes a single boolean hidden field
+        dummy_field: bool,
+    }
+    impl UncompressedG1 {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self { dummy_field: false }
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod ecdsa_k1 {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = ecdsa_k1)]
+    #[allow(non_snake_case)]
+    pub struct KeyPair {
+        pub private_key: vector<u8>,
+        pub public_key: vector<u8>,
+    }
+    impl KeyPair {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(private_key: vector<u8>, public_key: vector<u8>) -> Self {
+            Self { private_key, public_key }
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod groth16 {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " Represents an elliptic curve construction to be used in the verifier. Currently we support BLS12-381 and BN254."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " This should be given as the first parameter to `prepare_verifying_key` or `verify_groth16_proof`."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = groth16)]
+    #[allow(non_snake_case)]
+    pub struct Curve {
+        pub id: u8,
+    }
+    impl Curve {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: u8) -> Self {
+            Self { id }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " A `PreparedVerifyingKey` consisting of four components in serialized form."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = groth16)]
+    #[allow(non_snake_case)]
+    pub struct PreparedVerifyingKey {
+        pub vk_gamma_abc_g1_bytes: vector<u8>,
+        pub alpha_g1_beta_g2_bytes: vector<u8>,
+        pub gamma_g2_neg_pc_bytes: vector<u8>,
+        pub delta_g2_neg_pc_bytes: vector<u8>,
+    }
+    impl PreparedVerifyingKey {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            vk_gamma_abc_g1_bytes: vector<u8>,
+            alpha_g1_beta_g2_bytes: vector<u8>,
+            gamma_g2_neg_pc_bytes: vector<u8>,
+            delta_g2_neg_pc_bytes: vector<u8>,
+        ) -> Self {
+            Self {
+                vk_gamma_abc_g1_bytes,
+                alpha_g1_beta_g2_bytes,
+                gamma_g2_neg_pc_bytes,
+                delta_g2_neg_pc_bytes,
+            }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " A `PublicProofInputs` wrapper around its serialized bytes."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = groth16)]
+    #[allow(non_snake_case)]
+    pub struct PublicProofInputs {
+        pub bytes: vector<u8>,
+    }
+    impl PublicProofInputs {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(bytes: vector<u8>) -> Self {
+            Self { bytes }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " A `ProofPoints` wrapper around the serialized form of three proof points."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = groth16)]
+    #[allow(non_snake_case)]
+    pub struct ProofPoints {
+        pub bytes: vector<u8>,
+    }
+    impl ProofPoints {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(bytes: vector<u8>) -> Self {
+            Self { bytes }
+        }
+    }
+}
+#[cfg_attr(
+    not(doctest),
+    doc = " Generic Move and native functions for group operations."
+)]
+#[allow(rustdoc::all)]
+pub mod group_ops {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = group_ops)]
+    #[allow(non_snake_case)]
+    pub struct Element<T> {
+        pub bytes: vector<u8>,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> Element<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(bytes: vector<u8>) -> Self {
+            Self {
+                bytes,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod nitro_attestation {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(not(doctest), doc = " Represents a PCR entry with an index and value.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = nitro_attestation)]
+    #[allow(non_snake_case)]
+    pub struct PCREntry {
+        pub index: u8,
+        pub value: vector<u8>,
+    }
+    impl PCREntry {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(index: u8, value: vector<u8>) -> Self {
+            Self { index, value }
+        }
+    }
+    #[cfg_attr(not(doctest), doc = " Nitro Attestation Document defined for AWS.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = nitro_attestation)]
+    #[allow(non_snake_case)]
+    pub struct NitroAttestationDocument {
+        /// Issuing Nitro hypervisor module ID.
+        pub module_id: vector<u8>,
+        /// UTC time when document was created, in milliseconds since UNIX epoch.
+        pub timestamp: u64,
+        /// The digest function used for calculating the register values.
+        pub digest: vector<u8>,
+        /// A list of PCREntry containing the index and the PCR bytes.
+        /// <https://docs.aws.amazon.com/enclaves/latest/user/set-up-attestation.html#where>.
+        pub pcrs: vector<PCREntry>,
+        /// An optional DER-encoded key the attestation, consumer can use to encrypt data with.
+        pub public_key: Option<vector<u8>>,
+        /// Additional signed user data, defined by protocol.
+        pub user_data: Option<vector<u8>>,
+        /// An optional cryptographic nonce provided by the attestation consumer as a proof of
+        /// authenticity.
+        pub nonce: Option<vector<u8>>,
+    }
+    impl NitroAttestationDocument {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            module_id: vector<u8>,
+            timestamp: u64,
+            digest: vector<u8>,
+            pcrs: vector<PCREntry>,
+            public_key: Option<vector<u8>>,
+            user_data: Option<vector<u8>>,
+            nonce: Option<vector<u8>>,
+        ) -> Self {
+            Self {
+                module_id,
+                timestamp,
+                digest,
+                pcrs,
+                public_key,
+                user_data,
+                nonce,
+            }
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod zklogin_verified_id {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " Possession of a VerifiedID proves that the user's address was created using zklogin and the given parameters."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = zklogin_verified_id)]
+    #[allow(non_snake_case)]
+    pub struct VerifiedID {
+        /// The ID of this VerifiedID
+        pub id: super::object::UID,
+        /// The address this VerifiedID is associated with
+        pub owner: address,
+        /// The name of the key claim
+        pub key_claim_name: ::moverox_sui::std::string::String,
+        /// The value of the key claim
+        pub key_claim_value: ::moverox_sui::std::string::String,
+        /// The issuer
+        pub issuer: ::moverox_sui::std::string::String,
+        /// The audience (wallet)
+        pub audience: ::moverox_sui::std::string::String,
+    }
+    impl VerifiedID {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            id: super::object::UID,
+            owner: address,
+            key_claim_name: ::moverox_sui::std::string::String,
+            key_claim_value: ::moverox_sui::std::string::String,
+            issuer: ::moverox_sui::std::string::String,
+            audience: ::moverox_sui::std::string::String,
+        ) -> Self {
+            Self {
+                id,
+                owner,
+                key_claim_name,
+                key_claim_value,
+                issuer,
+                audience,
+            }
+        }
+    }
+    impl ::moverox::traits::HasKey for VerifiedID {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod zklogin_verified_issuer {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " Possession of a VerifiedIssuer proves that the user's address was created using zklogin and with the given issuer"
+    )]
+    #[cfg_attr(not(doctest), doc = " (identity provider).")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = zklogin_verified_issuer)]
+    #[allow(non_snake_case)]
+    pub struct VerifiedIssuer {
+        /// The ID of this VerifiedIssuer
+        pub id: super::object::UID,
+        /// The address this VerifiedID is associated with
+        pub owner: address,
+        /// The issuer
+        pub issuer: ::moverox_sui::std::string::String,
+    }
+    impl VerifiedIssuer {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            id: super::object::UID,
+            owner: address,
+            issuer: ::moverox_sui::std::string::String,
+        ) -> Self {
+            Self { id, owner, issuer }
+        }
+    }
+    impl ::moverox::traits::HasKey for VerifiedIssuer {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+}
 #[cfg_attr(
     not(doctest),
     doc = " Defines the `DenyList` type. The `DenyList` shared object is used to restrict access to"
@@ -1683,6 +2247,1256 @@ pub mod dynamic_object_field {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
         pub const fn new(name: Name) -> Self {
             Self { name }
+        }
+    }
+}
+#[cfg_attr(
+    not(doctest),
+    doc = " Kiosk is a primitive for building safe, decentralized and trustless trading"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " experiences. It allows storing and trading any types of assets as long as"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " the creator of these assets implements a `TransferPolicy` for them."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ### Principles and philosophy:")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Kiosk provides guarantees of \"true ownership\"; - just like single owner"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " objects, assets stored in the Kiosk can only be managed by the Kiosk owner."
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " Only the owner can `place`, `take`, `list`, perform any other actions on"
+)]
+#[cfg_attr(not(doctest), doc = " assets in the Kiosk.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Kiosk aims to be generic - allowing for a small set of default behaviors"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " and not imposing any restrictions on how the assets can be traded. The only"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " default scenario is a `list` + `purchase` flow; any other trading logic can"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " be implemented on top using the `list_with_purchase_cap` (and a matching"
+)]
+#[cfg_attr(not(doctest), doc = " `purchase_with_cap`) flow.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - For every transaction happening with a third party a `TransferRequest` is"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " created - this way creators are fully in control of the trading experience."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ### Asset states in the Kiosk:")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - `placed` -  An asset is `place`d into the Kiosk and can be `take`n out by"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " the Kiosk owner; it's freely tradable and modifiable via the `borrow_mut`"
+)]
+#[cfg_attr(not(doctest), doc = " and `borrow_val` functions.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - `locked` - Similar to `placed` except that `take` is disabled and the only"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " way to move the asset out of the Kiosk is to `list` it or"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `list_with_purchase_cap` therefore performing a trade (issuing a"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `TransferRequest`). The check on the `lock` function makes sure that the"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `TransferPolicy` exists to not lock the item in a `Kiosk` forever."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - `listed` - A `place`d or a `lock`ed item can be `list`ed for a fixed price"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " allowing anyone to `purchase` it from the Kiosk. While listed, an item can"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " not be taken or modified. However, an immutable borrow via `borrow` call is"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " still available. The `delist` function returns the asset to the previous"
+)]
+#[cfg_attr(not(doctest), doc = " state.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - `listed_exclusively` - An item is listed via the `list_with_purchase_cap`"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " function (and a `PurchaseCap` is created). While listed this way, an item"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " can not be `delist`-ed unless a `PurchaseCap` is returned. All actions"
+)]
+#[cfg_attr(not(doctest), doc = " available at this item state require a `PurchaseCap`:")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " 1. `purchase_with_cap` - to purchase the item for a price equal or higher"
+)]
+#[cfg_attr(not(doctest), doc = " than the `min_price` set in the `PurchaseCap`.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " 2. `return_purchase_cap` - to return the `PurchaseCap` and return the asset"
+)]
+#[cfg_attr(not(doctest), doc = " into the previous state.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " When an item is listed exclusively it cannot be modified nor taken and"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " losing a `PurchaseCap` would lock the item in the Kiosk forever. Therefore,"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " it is recommended to only use `PurchaseCap` functionality in trusted"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " applications and not use it for direct trading (eg sending to another"
+)]
+#[cfg_attr(not(doctest), doc = " account).")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " ### Using multiple Transfer Policies for different \"tracks\":"
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " Every `purchase` or `purchase_with_purchase_cap` creates a `TransferRequest`"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " hot potato which must be resolved in a matching `TransferPolicy` for the"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " transaction to pass. While the default scenario implies that there should be"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " a single `TransferPolicy<T>` for `T`; it is possible to have multiple, each"
+)]
+#[cfg_attr(not(doctest), doc = " one having its own set of rules.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ### Examples:")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - I create one `TransferPolicy` with \"Royalty Rule\" for everyone"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " - I create a special `TransferPolicy` for bearers of a \"Club Membership\""
+)]
+#[cfg_attr(not(doctest), doc = " object so they don't have to pay anything")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - I create and wrap a `TransferPolicy` so that players of my game can"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " transfer items between `Kiosk`s in game without any charge (and maybe not"
+)]
+#[cfg_attr(not(doctest), doc = " even paying the price with a 0 SUI PurchaseCap)")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(not(doctest), doc = " Kiosk -> (Item, TransferRequest)")]
+#[cfg_attr(not(doctest), doc = " ... TransferRequest ------> Common Transfer Policy")]
+#[cfg_attr(
+    not(doctest),
+    doc = " ... TransferRequest ------> In-game Wrapped Transfer Policy"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " ... TransferRequest ------> Club Membership Transfer Policy"
+)]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " See `transfer_policy` module for more details on how they function."
+)]
+#[allow(rustdoc::all)]
+pub mod kiosk {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " An object which allows selling collectibles within \"kiosk\" ecosystem."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " By default gives the functionality to list an item openly - for anyone"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " to purchase providing the guarantees for creators that every transfer"
+    )]
+    #[cfg_attr(not(doctest), doc = " needs to be approved via the `TransferPolicy`.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct Kiosk {
+        pub id: super::object::UID,
+        /// Balance of the Kiosk - all profits from sales go here.
+        pub profits: super::balance::Balance<super::sui::SUI>,
+        /// Always point to `sender` of the transaction.
+        /// Can be changed by calling `set_owner` with Cap.
+        pub owner: address,
+        /// Number of items stored in a Kiosk. Used to allow unpacking
+        /// an empty Kiosk if it was wrapped or has a single owner.
+        pub item_count: u32,
+        /// [DEPRECATED] Please, don't use the `allow_extensions` and the matching
+        /// `set_allow_extensions` function - it is a legacy feature that is being
+        /// replaced by the `kiosk_extension` module and its Extensions API.
+        ///
+        /// Exposes `uid_mut` publicly when set to `true`, set to `false` by default.
+        pub allow_extensions: bool,
+    }
+    impl Kiosk {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            id: super::object::UID,
+            profits: super::balance::Balance<super::sui::SUI>,
+            owner: address,
+            item_count: u32,
+            allow_extensions: bool,
+        ) -> Self {
+            Self {
+                id,
+                profits,
+                owner,
+                item_count,
+                allow_extensions,
+            }
+        }
+    }
+    impl ::moverox::traits::HasKey for Kiosk {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " A Capability granting the bearer a right to `place` and `take` items"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " from the `Kiosk` as well as to `list` them and `list_with_purchase_cap`."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct KioskOwnerCap {
+        pub id: super::object::UID,
+        pub r#for: super::object::ID,
+    }
+    impl KioskOwnerCap {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::UID, r#for: super::object::ID) -> Self {
+            Self { id, r#for }
+        }
+    }
+    impl ::moverox::traits::HasKey for KioskOwnerCap {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " A capability which locks an item and gives a permission to"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " purchase it from a `Kiosk` for any price no less than `min_price`."
+    )]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Allows exclusive listing: only bearer of the `PurchaseCap` can"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " purchase the asset. However, the capability should be used"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " carefully as losing it would lock the asset in the `Kiosk`."
+    )]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " The main application for the `PurchaseCap` is building extensions"
+    )]
+    #[cfg_attr(not(doctest), doc = " on top of the `Kiosk`.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct PurchaseCap<T> {
+        pub id: super::object::UID,
+        /// ID of the `Kiosk` the cap belongs to.
+        pub kiosk_id: super::object::ID,
+        /// ID of the listed item.
+        pub item_id: super::object::ID,
+        /// Minimum price for which the item can be purchased.
+        pub min_price: u64,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> PurchaseCap<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            id: super::object::UID,
+            kiosk_id: super::object::ID,
+            item_id: super::object::ID,
+            min_price: u64,
+        ) -> Self {
+            Self {
+                id,
+                kiosk_id,
+                item_id,
+                min_price,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    impl<T> ::moverox::traits::HasKey for PurchaseCap<T> {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Hot potato to ensure an item was returned after being taken using"
+    )]
+    #[cfg_attr(not(doctest), doc = " the `borrow_val` call.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct Borrow {
+        pub kiosk_id: super::object::ID,
+        pub item_id: super::object::ID,
+    }
+    impl Borrow {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            kiosk_id: super::object::ID,
+            item_id: super::object::ID,
+        ) -> Self {
+            Self { kiosk_id, item_id }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Dynamic field key for an item placed into the kiosk."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct Item {
+        pub id: super::object::ID,
+    }
+    impl Item {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::ID) -> Self {
+            Self { id }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Dynamic field key for an active offer to purchase the T. If an"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " item is listed without a `PurchaseCap`, exclusive is set to `false`."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct Listing {
+        pub id: super::object::ID,
+        pub is_exclusive: bool,
+    }
+    impl Listing {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::ID, is_exclusive: bool) -> Self {
+            Self { id, is_exclusive }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Dynamic field key which marks that an item is locked in the `Kiosk` and"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " can't be `take`n. The item then can only be listed / sold via the PurchaseCap."
+    )]
+    #[cfg_attr(not(doctest), doc = " Lock is released on `purchase`.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct Lock {
+        pub id: super::object::ID,
+    }
+    impl Lock {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::ID) -> Self {
+            Self { id }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Emitted when an item was listed by the safe owner. Can be used"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " to track available offers anywhere on the network; the event is"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " type-indexed which allows for searching for offers of a specific `T`"
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct ItemListed<T> {
+        pub kiosk: super::object::ID,
+        pub id: super::object::ID,
+        pub price: u64,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> ItemListed<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            kiosk: super::object::ID,
+            id: super::object::ID,
+            price: u64,
+        ) -> Self {
+            Self {
+                kiosk,
+                id,
+                price,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Emitted when an item was purchased from the `Kiosk`. Can be used"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " to track finalized sales across the network. The event is emitted"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " in both cases: when an item is purchased via the `PurchaseCap` or"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " when it's purchased directly (via `list` + `purchase`)."
+    )]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " The `price` is also emitted and might differ from the `price` set"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " in the `ItemListed` event. This is because the `PurchaseCap` only"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " sets a minimum price for the item, and the actual price is defined"
+    )]
+    #[cfg_attr(not(doctest), doc = " by the trading module / extension.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct ItemPurchased<T> {
+        pub kiosk: super::object::ID,
+        pub id: super::object::ID,
+        pub price: u64,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> ItemPurchased<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            kiosk: super::object::ID,
+            id: super::object::ID,
+            price: u64,
+        ) -> Self {
+            Self {
+                kiosk,
+                id,
+                price,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Emitted when an item was delisted by the safe owner. Can be used"
+    )]
+    #[cfg_attr(not(doctest), doc = " to close tracked offers.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk)]
+    #[allow(non_snake_case)]
+    pub struct ItemDelisted<T> {
+        pub kiosk: super::object::ID,
+        pub id: super::object::ID,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> ItemDelisted<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(kiosk: super::object::ID, id: super::object::ID) -> Self {
+            Self {
+                kiosk,
+                id,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+}
+#[cfg_attr(
+    not(doctest),
+    doc = " This module implements the Kiosk Extensions functionality. It allows"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " exposing previously protected (only-owner) methods to third-party apps."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " A Kiosk Extension is a module that implements any functionality on top of"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " the `Kiosk` without discarding nor blocking the base. Given that `Kiosk`"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " itself is a trading primitive, most of the extensions are expected to be"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " related to trading. However, there's no limit to what can be built using the"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `kiosk_extension` module, as it gives certain benefits such as using `Kiosk`"
+)]
+#[cfg_attr(not(doctest), doc = " as the storage for any type of data / assets.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ### Flow:")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - An extension can only be installed by the Kiosk Owner and requires an"
+)]
+#[cfg_attr(not(doctest), doc = " authorization via the `KioskOwnerCap`.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - When installed, the extension is given a permission bitmap that allows it"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " to perform certain protected actions (eg `place`, `lock`). However, it is"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " possible to install an extension that does not have any permissions."
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Kiosk Owner can `disable` the extension at any time, which prevents it"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " from performing any protected actions. The storage is still available to the"
+)]
+#[cfg_attr(not(doctest), doc = " extension until it is completely removed.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - A disabled extension can be `enable`d at any time giving the permissions"
+)]
+#[cfg_attr(not(doctest), doc = " back to the extension.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - An extension permissions follow the all-or-nothing policy. Either all of"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " the requested permissions are granted or none of them (can't install)."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ### Examples:")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - An Auction extension can utilize the storage to store Auction-related data"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " while utilizing the same `Kiosk` object that the items are stored in."
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " - A Marketplace extension that implements custom events and fees for the"
+)]
+#[cfg_attr(not(doctest), doc = " default trading functionality.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ### Notes:")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Trading functionality can utilize the `PurchaseCap` to build a custom"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " logic around the purchase flow. However, it should be carefully managed to"
+)]
+#[cfg_attr(not(doctest), doc = " prevent asset locking.")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - `kiosk_extension` is a friend module to `kiosk` and has access to its"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " internal functions (such as `place_internal` and `lock_internal` to"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " implement custom authorization scheme for `place` and `lock` respectively)."
+)]
+#[allow(rustdoc::all)]
+pub mod kiosk_extension {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " The Extension struct contains the data used by the extension and the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " configuration for this extension. Stored under the `ExtensionKey`"
+    )]
+    #[cfg_attr(not(doctest), doc = " dynamic field.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk_extension)]
+    #[allow(non_snake_case)]
+    pub struct Extension {
+        /// Storage for the extension, an isolated Bag. By putting the extension
+        /// into a single dynamic field, we reduce the amount of fields on the
+        /// top level (eg items / listings) while giving extension developers
+        /// the ability to store any data they want.
+        pub storage: super::bag::Bag,
+        /// Bitmap of permissions that the extension has (can be revoked any
+        /// moment). It's all or nothing policy - either the extension has the
+        /// required permissions or no permissions at all.
+        ///
+        /// 1st bit - `place` - allows to place items for sale
+        /// 2nd bit - `lock` and `place` - allows to lock items (and place)
+        ///
+        /// For example:
+        /// - `10` - allows to place items and lock them.
+        /// - `11` - allows to place items and lock them (`lock` includes `place`).
+        /// - `01` - allows to place items, but not lock them.
+        /// - `00` - no permissions.
+        pub permissions: u128,
+        /// Whether the extension can call protected actions. By default, all
+        /// extensions are enabled (on `add` call), however the Kiosk
+        /// owner can disable them at any time.
+        ///
+        /// Disabling the extension does not limit its access to the storage.
+        pub is_enabled: bool,
+    }
+    impl Extension {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            storage: super::bag::Bag,
+            permissions: u128,
+            is_enabled: bool,
+        ) -> Self {
+            Self {
+                storage,
+                permissions,
+                is_enabled,
+            }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " The `ExtensionKey` is a typed dynamic field key used to store the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " extension configuration and data. `Ext` is a phantom type that is used"
+    )]
+    #[cfg_attr(not(doctest), doc = " to identify the extension witness.")]
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = kiosk_extension)]
+    #[allow(non_snake_case)]
+    pub struct ExtensionKey<Ext> {
+        /// BCS for empty structs actually encodes a single boolean hidden field
+        dummy_field: bool,
+        #[serde(skip)]
+        _Ext: ::std::marker::PhantomData<Ext>,
+    }
+    impl<Ext> ExtensionKey<Ext> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self {
+                dummy_field: false,
+                _Ext: ::std::marker::PhantomData,
+            }
+        }
+    }
+}
+#[cfg_attr(
+    not(doctest),
+    doc = " Defines the `TransferPolicy` type and the logic to approve `TransferRequest`s."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - TransferPolicy - is a highly customizable primitive, which provides an"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " interface for the type owner to set custom transfer rules for every"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " deal performed in the `Kiosk` or a similar system that integrates with TP."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Once a `TransferPolicy<T>` is created for and shared (or frozen), the"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " type `T` becomes tradable in `Kiosk`s. On every purchase operation, a"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " `TransferRequest` is created and needs to be confirmed by the `TransferPolicy`"
+)]
+#[cfg_attr(not(doctest), doc = " hot potato or transaction will fail.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Type owner (creator) can set any Rules as long as the ecosystem supports"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " them. All of the Rules need to be resolved within a single transaction (eg"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " pay royalty and pay fixed commission). Once required actions are performed,"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " the `TransferRequest` can be \"confirmed\" via `confirm_request` call."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - `TransferPolicy` aims to be the main interface for creators to control trades"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " of their types and collect profits if a fee is required on sales. Custom"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " policies can be removed at any moment, and the change will affect all instances"
+)]
+#[cfg_attr(not(doctest), doc = " of the type at once.")]
+#[allow(rustdoc::all)]
+pub mod transfer_policy {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " A \"Hot Potato\" forcing the buyer to get a transfer permission"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " from the item type (`T`) owner on purchase attempt."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = transfer_policy)]
+    #[allow(non_snake_case)]
+    pub struct TransferRequest<T> {
+        /// The ID of the transferred item. Although the `T` has no
+        /// constraints, the main use case for this module is to work
+        /// with Objects.
+        pub item: super::object::ID,
+        /// Amount of SUI paid for the item. Can be used to
+        /// calculate the fee / transfer policy enforcement.
+        pub paid: u64,
+        /// The ID of the Kiosk / Safe the object is being sold from.
+        /// Can be used by the TransferPolicy implementors.
+        pub from: super::object::ID,
+        /// Collected Receipts. Used to verify that all of the rules
+        /// were followed and `TransferRequest` can be confirmed.
+        pub receipts: super::vec_set::VecSet<::moverox_sui::std::type_name::TypeName>,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> TransferRequest<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            item: super::object::ID,
+            paid: u64,
+            from: super::object::ID,
+            receipts: super::vec_set::VecSet<::moverox_sui::std::type_name::TypeName>,
+        ) -> Self {
+            Self {
+                item,
+                paid,
+                from,
+                receipts,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " A unique capability that allows the owner of the `T` to authorize"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " transfers. Can only be created with the `Publisher` object. Although"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " there's no limitation to how many policies can be created, for most"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " of the cases there's no need to create more than one since any of the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " policies can be used to confirm the `TransferRequest`."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = transfer_policy)]
+    #[allow(non_snake_case)]
+    pub struct TransferPolicy<T> {
+        pub id: super::object::UID,
+        /// The Balance of the `TransferPolicy` which collects `SUI`.
+        /// By default, transfer policy does not collect anything , and it's
+        /// a matter of an implementation of a specific rule - whether to add
+        /// to balance and how much.
+        pub balance: super::balance::Balance<super::sui::SUI>,
+        /// Set of types of attached rules - used to verify `receipts` when
+        /// a `TransferRequest` is received in `confirm_request` function.
+        ///
+        /// Additionally provides a way to look up currently attached Rules.
+        pub rules: super::vec_set::VecSet<::moverox_sui::std::type_name::TypeName>,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> TransferPolicy<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            id: super::object::UID,
+            balance: super::balance::Balance<super::sui::SUI>,
+            rules: super::vec_set::VecSet<::moverox_sui::std::type_name::TypeName>,
+        ) -> Self {
+            Self {
+                id,
+                balance,
+                rules,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    impl<T> ::moverox::traits::HasKey for TransferPolicy<T> {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " A Capability granting the owner permission to add/remove rules as well"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " as to `withdraw` and `destroy_and_withdraw` the `TransferPolicy`."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = transfer_policy)]
+    #[allow(non_snake_case)]
+    pub struct TransferPolicyCap<T> {
+        pub id: super::object::UID,
+        pub policy_id: super::object::ID,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> TransferPolicyCap<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::UID, policy_id: super::object::ID) -> Self {
+            Self {
+                id,
+                policy_id,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    impl<T> ::moverox::traits::HasKey for TransferPolicyCap<T> {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Event that is emitted when a publisher creates a new `TransferPolicyCap`"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " making the discoverability and tracking the supported types easier."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = transfer_policy)]
+    #[allow(non_snake_case)]
+    pub struct TransferPolicyCreated<T> {
+        pub id: super::object::ID,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> TransferPolicyCreated<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::ID) -> Self {
+            Self {
+                id,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Event that is emitted when a publisher destroys a `TransferPolicyCap`."
+    )]
+    #[cfg_attr(not(doctest), doc = " Allows for tracking supported policies.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = transfer_policy)]
+    #[allow(non_snake_case)]
+    pub struct TransferPolicyDestroyed<T> {
+        pub id: super::object::ID,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> TransferPolicyDestroyed<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::ID) -> Self {
+            Self {
+                id,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Key to store \"Rule\" configuration for a specific `TransferPolicy`."
+    )]
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = transfer_policy)]
+    #[allow(non_snake_case)]
+    pub struct RuleKey<T> {
+        /// BCS for empty structs actually encodes a single boolean hidden field
+        dummy_field: bool,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> RuleKey<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self {
+                dummy_field: false,
+                _T: ::std::marker::PhantomData,
+            }
         }
     }
 }
@@ -2683,6 +4497,172 @@ pub mod table_vec {
             Self {
                 contents,
                 _Element: ::std::marker::PhantomData,
+            }
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod test_scenario {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " Utility for mocking a multi-transaction Sui execution in a single Move procedure."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " A `Scenario` maintains a view of the global object pool built up by the execution."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " These objects can be accessed via functions like `take_from_sender`, which gives the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " transaction sender access to objects in (only) their inventory."
+    )]
+    #[cfg_attr(not(doctest), doc = " Example usage:")]
+    #[cfg_attr(not(doctest), doc = " ```")]
+    #[cfg_attr(not(doctest), doc = " let addr1: address = 0;")]
+    #[cfg_attr(not(doctest), doc = " let addr2: address = 1;")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " // begin a test scenario in a context where addr1 is the sender"
+    )]
+    #[cfg_attr(not(doctest), doc = " let scenario = &mut test_scenario::begin(addr1);")]
+    #[cfg_attr(not(doctest), doc = " // addr1 sends an object to addr2")]
+    #[cfg_attr(not(doctest), doc = " {")]
+    #[cfg_attr(
+        not(doctest),
+        doc = "     let some_object: SomeObject = ... // construct an object"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = "     transfer::public_transfer(some_object, copy addr2)"
+    )]
+    #[cfg_attr(not(doctest), doc = " };")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " // end the first transaction and begin a new one where addr2 is the sender"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " // Starting a new transaction moves any objects transferred into their respective"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " // inventories. In other words, if you call `take_from_sender` before `next_tx`, `addr2`"
+    )]
+    #[cfg_attr(not(doctest), doc = " // will not yet have `some_object`")]
+    #[cfg_attr(not(doctest), doc = " test_scenario::next_tx(scenario, addr2);")]
+    #[cfg_attr(not(doctest), doc = " {")]
+    #[cfg_attr(
+        not(doctest),
+        doc = "     // remove the SomeObject value from addr2's inventory"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = "     let obj = test_scenario::take_from_sender<SomeObject>(scenario);"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = "     // use it to test some function that needs this value"
+    )]
+    #[cfg_attr(not(doctest), doc = "     SomeObject::some_function(obj)")]
+    #[cfg_attr(not(doctest), doc = " };")]
+    #[cfg_attr(not(doctest), doc = " ... // more txes")]
+    #[cfg_attr(not(doctest), doc = " test_scenario::end(scenario);")]
+    #[cfg_attr(not(doctest), doc = " ```")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = test_scenario)]
+    #[allow(non_snake_case)]
+    pub struct Scenario {
+        pub txn_number: u64,
+        pub ctx: super::tx_context::TxContext,
+    }
+    impl Scenario {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(txn_number: u64, ctx: super::tx_context::TxContext) -> Self {
+            Self { txn_number, ctx }
+        }
+    }
+    #[cfg_attr(not(doctest), doc = " The effects of a transaction")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = test_scenario)]
+    #[allow(non_snake_case)]
+    pub struct TransactionEffects {
+        /// The objects created this transaction
+        pub created: vector<super::object::ID>,
+        /// The objects written/modified this transaction
+        pub written: vector<super::object::ID>,
+        /// The objects deleted this transaction
+        pub deleted: vector<super::object::ID>,
+        /// The objects transferred to an account this transaction
+        pub transferred_to_account: super::vec_map::VecMap<super::object::ID, address>,
+        /// The objects transferred to an object this transaction
+        pub transferred_to_object: super::vec_map::VecMap<
+            super::object::ID,
+            super::object::ID,
+        >,
+        /// The objects shared this transaction
+        pub shared: vector<super::object::ID>,
+        /// The objects frozen this transaction
+        pub frozen: vector<super::object::ID>,
+        /// The number of user events emitted this transaction
+        pub num_user_events: u64,
+    }
+    impl TransactionEffects {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            created: vector<super::object::ID>,
+            written: vector<super::object::ID>,
+            deleted: vector<super::object::ID>,
+            transferred_to_account: super::vec_map::VecMap<super::object::ID, address>,
+            transferred_to_object: super::vec_map::VecMap<
+                super::object::ID,
+                super::object::ID,
+            >,
+            shared: vector<super::object::ID>,
+            frozen: vector<super::object::ID>,
+            num_user_events: u64,
+        ) -> Self {
+            Self {
+                created,
+                written,
+                deleted,
+                transferred_to_account,
+                transferred_to_object,
+                shared,
+                frozen,
+                num_user_events,
             }
         }
     }

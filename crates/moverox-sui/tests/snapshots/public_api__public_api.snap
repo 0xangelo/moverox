@@ -681,6 +681,172 @@ impl serde_core::ser::Serialize for moverox_sui::sui::bcs::BCSTypeTag
 pub fn moverox_sui::sui::bcs::BCSTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::bcs::BCSTypeTag
 pub fn moverox_sui::sui::bcs::BCSTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub mod moverox_sui::sui::bls12381
+pub struct moverox_sui::sui::bls12381::G1
+impl moverox_sui::sui::bls12381::G1
+pub const fn moverox_sui::sui::bls12381::G1::new() -> Self
+impl moverox_sui::sui::bls12381::G1
+pub const fn moverox_sui::sui::bls12381::G1::type_tag() -> moverox_sui::sui::bls12381::G1TypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::bls12381::G1
+pub const moverox_sui::sui::bls12381::G1::STRUCT_TAG: moverox_sui::sui::bls12381::G1TypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::bls12381::G1
+pub type moverox_sui::sui::bls12381::G1::StructTag = moverox_sui::sui::bls12381::G1TypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::bls12381::G1
+pub type moverox_sui::sui::bls12381::G1::TypeTag = moverox_sui::sui::bls12381::G1TypeTag
+pub struct moverox_sui::sui::bls12381::G1TypeTag
+impl core::fmt::Display for moverox_sui::sui::bls12381::G1TypeTag
+pub fn moverox_sui::sui::bls12381::G1TypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::bls12381::G1TypeTag
+pub type moverox_sui::sui::bls12381::G1TypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::bls12381::G1TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::bls12381::G1TypeTag
+pub const moverox_sui::sui::bls12381::G1TypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::bls12381::G1TypeTag
+pub const moverox_sui::sui::bls12381::G1TypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::bls12381::G1TypeTag
+pub const moverox_sui::sui::bls12381::G1TypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::bls12381::G1TypeTag
+pub fn moverox_sui::sui::bls12381::G1TypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::bls12381::G1TypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::bls12381::G1TypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::G1TypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::G1TypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::bls12381::G1TypeTag
+pub fn moverox_sui::sui::bls12381::G1TypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::bls12381::G1TypeTag
+pub fn moverox_sui::sui::bls12381::G1TypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::bls12381::G2
+impl moverox_sui::sui::bls12381::G2
+pub const fn moverox_sui::sui::bls12381::G2::new() -> Self
+impl moverox_sui::sui::bls12381::G2
+pub const fn moverox_sui::sui::bls12381::G2::type_tag() -> moverox_sui::sui::bls12381::G2TypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::bls12381::G2
+pub const moverox_sui::sui::bls12381::G2::STRUCT_TAG: moverox_sui::sui::bls12381::G2TypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::bls12381::G2
+pub type moverox_sui::sui::bls12381::G2::StructTag = moverox_sui::sui::bls12381::G2TypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::bls12381::G2
+pub type moverox_sui::sui::bls12381::G2::TypeTag = moverox_sui::sui::bls12381::G2TypeTag
+pub struct moverox_sui::sui::bls12381::G2TypeTag
+impl core::fmt::Display for moverox_sui::sui::bls12381::G2TypeTag
+pub fn moverox_sui::sui::bls12381::G2TypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::bls12381::G2TypeTag
+pub type moverox_sui::sui::bls12381::G2TypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::bls12381::G2TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::bls12381::G2TypeTag
+pub const moverox_sui::sui::bls12381::G2TypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::bls12381::G2TypeTag
+pub const moverox_sui::sui::bls12381::G2TypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::bls12381::G2TypeTag
+pub const moverox_sui::sui::bls12381::G2TypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::bls12381::G2TypeTag
+pub fn moverox_sui::sui::bls12381::G2TypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::bls12381::G2TypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::bls12381::G2TypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::G2TypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::G2TypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::bls12381::G2TypeTag
+pub fn moverox_sui::sui::bls12381::G2TypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::bls12381::G2TypeTag
+pub fn moverox_sui::sui::bls12381::G2TypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::bls12381::GT
+impl moverox_sui::sui::bls12381::GT
+pub const fn moverox_sui::sui::bls12381::GT::new() -> Self
+impl moverox_sui::sui::bls12381::GT
+pub const fn moverox_sui::sui::bls12381::GT::type_tag() -> moverox_sui::sui::bls12381::GTTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::bls12381::GT
+pub const moverox_sui::sui::bls12381::GT::STRUCT_TAG: moverox_sui::sui::bls12381::GTTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::bls12381::GT
+pub type moverox_sui::sui::bls12381::GT::StructTag = moverox_sui::sui::bls12381::GTTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::bls12381::GT
+pub type moverox_sui::sui::bls12381::GT::TypeTag = moverox_sui::sui::bls12381::GTTypeTag
+pub struct moverox_sui::sui::bls12381::GTTypeTag
+impl core::fmt::Display for moverox_sui::sui::bls12381::GTTypeTag
+pub fn moverox_sui::sui::bls12381::GTTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::bls12381::GTTypeTag
+pub type moverox_sui::sui::bls12381::GTTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::bls12381::GTTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::bls12381::GTTypeTag
+pub const moverox_sui::sui::bls12381::GTTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::bls12381::GTTypeTag
+pub const moverox_sui::sui::bls12381::GTTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::bls12381::GTTypeTag
+pub const moverox_sui::sui::bls12381::GTTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::bls12381::GTTypeTag
+pub fn moverox_sui::sui::bls12381::GTTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::bls12381::GTTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::bls12381::GTTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::GTTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::GTTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::bls12381::GTTypeTag
+pub fn moverox_sui::sui::bls12381::GTTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::bls12381::GTTypeTag
+pub fn moverox_sui::sui::bls12381::GTTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::bls12381::Scalar
+impl moverox_sui::sui::bls12381::Scalar
+pub const fn moverox_sui::sui::bls12381::Scalar::new() -> Self
+impl moverox_sui::sui::bls12381::Scalar
+pub const fn moverox_sui::sui::bls12381::Scalar::type_tag() -> moverox_sui::sui::bls12381::ScalarTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::bls12381::Scalar
+pub const moverox_sui::sui::bls12381::Scalar::STRUCT_TAG: moverox_sui::sui::bls12381::ScalarTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::bls12381::Scalar
+pub type moverox_sui::sui::bls12381::Scalar::StructTag = moverox_sui::sui::bls12381::ScalarTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::bls12381::Scalar
+pub type moverox_sui::sui::bls12381::Scalar::TypeTag = moverox_sui::sui::bls12381::ScalarTypeTag
+pub struct moverox_sui::sui::bls12381::ScalarTypeTag
+impl core::fmt::Display for moverox_sui::sui::bls12381::ScalarTypeTag
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::bls12381::ScalarTypeTag
+pub type moverox_sui::sui::bls12381::ScalarTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::bls12381::ScalarTypeTag
+pub const moverox_sui::sui::bls12381::ScalarTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::bls12381::ScalarTypeTag
+pub const moverox_sui::sui::bls12381::ScalarTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::bls12381::ScalarTypeTag
+pub const moverox_sui::sui::bls12381::ScalarTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::bls12381::ScalarTypeTag
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::bls12381::ScalarTypeTag
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::bls12381::ScalarTypeTag
+pub fn moverox_sui::sui::bls12381::ScalarTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::bls12381::UncompressedG1
+impl moverox_sui::sui::bls12381::UncompressedG1
+pub const fn moverox_sui::sui::bls12381::UncompressedG1::new() -> Self
+impl moverox_sui::sui::bls12381::UncompressedG1
+pub const fn moverox_sui::sui::bls12381::UncompressedG1::type_tag() -> moverox_sui::sui::bls12381::UncompressedG1TypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::bls12381::UncompressedG1
+pub const moverox_sui::sui::bls12381::UncompressedG1::STRUCT_TAG: moverox_sui::sui::bls12381::UncompressedG1TypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::bls12381::UncompressedG1
+pub type moverox_sui::sui::bls12381::UncompressedG1::StructTag = moverox_sui::sui::bls12381::UncompressedG1TypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::bls12381::UncompressedG1
+pub type moverox_sui::sui::bls12381::UncompressedG1::TypeTag = moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub struct moverox_sui::sui::bls12381::UncompressedG1TypeTag
+impl core::fmt::Display for moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub type moverox_sui::sui::bls12381::UncompressedG1TypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub const moverox_sui::sui::bls12381::UncompressedG1TypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub const moverox_sui::sui::bls12381::UncompressedG1TypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub const moverox_sui::sui::bls12381::UncompressedG1TypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::bls12381::UncompressedG1TypeTag
+pub fn moverox_sui::sui::bls12381::UncompressedG1TypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub mod moverox_sui::sui::borrow
 pub struct moverox_sui::sui::borrow::Borrow
 pub moverox_sui::sui::borrow::Borrow::obj: moverox_sui::sui::object::ID
@@ -1639,6 +1805,655 @@ pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::name(&self)
 pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<Name: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>
 pub fn moverox_sui::sui::dynamic_object_field::WrapperTypeTag<Name>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub mod moverox_sui::sui::ecdsa_k1
+pub struct moverox_sui::sui::ecdsa_k1::KeyPair
+pub moverox_sui::sui::ecdsa_k1::KeyPair::private_key: alloc::vec::Vec<u8>
+pub moverox_sui::sui::ecdsa_k1::KeyPair::public_key: alloc::vec::Vec<u8>
+impl moverox_sui::sui::ecdsa_k1::KeyPair
+pub const fn moverox_sui::sui::ecdsa_k1::KeyPair::new(private_key: alloc::vec::Vec<u8>, public_key: alloc::vec::Vec<u8>) -> Self
+impl moverox_sui::sui::ecdsa_k1::KeyPair
+pub const fn moverox_sui::sui::ecdsa_k1::KeyPair::type_tag() -> moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::ecdsa_k1::KeyPair
+pub const moverox_sui::sui::ecdsa_k1::KeyPair::STRUCT_TAG: moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::ecdsa_k1::KeyPair
+pub type moverox_sui::sui::ecdsa_k1::KeyPair::StructTag = moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::ecdsa_k1::KeyPair
+pub type moverox_sui::sui::ecdsa_k1::KeyPair::TypeTag = moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub struct moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+impl core::fmt::Display for moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub type moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub const moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub const moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub const moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::ecdsa_k1::KeyPairTypeTag
+pub fn moverox_sui::sui::ecdsa_k1::KeyPairTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub mod moverox_sui::sui::groth16
+pub struct moverox_sui::sui::groth16::Curve
+pub moverox_sui::sui::groth16::Curve::id: u8
+impl moverox_sui::sui::groth16::Curve
+pub const fn moverox_sui::sui::groth16::Curve::new(id: u8) -> Self
+impl moverox_sui::sui::groth16::Curve
+pub const fn moverox_sui::sui::groth16::Curve::type_tag() -> moverox_sui::sui::groth16::CurveTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::groth16::Curve
+pub const moverox_sui::sui::groth16::Curve::STRUCT_TAG: moverox_sui::sui::groth16::CurveTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::groth16::Curve
+pub type moverox_sui::sui::groth16::Curve::StructTag = moverox_sui::sui::groth16::CurveTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::groth16::Curve
+pub type moverox_sui::sui::groth16::Curve::TypeTag = moverox_sui::sui::groth16::CurveTypeTag
+pub struct moverox_sui::sui::groth16::CurveTypeTag
+impl core::fmt::Display for moverox_sui::sui::groth16::CurveTypeTag
+pub fn moverox_sui::sui::groth16::CurveTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::groth16::CurveTypeTag
+pub type moverox_sui::sui::groth16::CurveTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::groth16::CurveTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::groth16::CurveTypeTag
+pub const moverox_sui::sui::groth16::CurveTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::groth16::CurveTypeTag
+pub const moverox_sui::sui::groth16::CurveTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::groth16::CurveTypeTag
+pub const moverox_sui::sui::groth16::CurveTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::groth16::CurveTypeTag
+pub fn moverox_sui::sui::groth16::CurveTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::groth16::CurveTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::groth16::CurveTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::groth16::CurveTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::groth16::CurveTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::groth16::CurveTypeTag
+pub fn moverox_sui::sui::groth16::CurveTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::groth16::CurveTypeTag
+pub fn moverox_sui::sui::groth16::CurveTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::groth16::PreparedVerifyingKey
+pub moverox_sui::sui::groth16::PreparedVerifyingKey::alpha_g1_beta_g2_bytes: alloc::vec::Vec<u8>
+pub moverox_sui::sui::groth16::PreparedVerifyingKey::delta_g2_neg_pc_bytes: alloc::vec::Vec<u8>
+pub moverox_sui::sui::groth16::PreparedVerifyingKey::gamma_g2_neg_pc_bytes: alloc::vec::Vec<u8>
+pub moverox_sui::sui::groth16::PreparedVerifyingKey::vk_gamma_abc_g1_bytes: alloc::vec::Vec<u8>
+impl moverox_sui::sui::groth16::PreparedVerifyingKey
+pub const fn moverox_sui::sui::groth16::PreparedVerifyingKey::new(vk_gamma_abc_g1_bytes: alloc::vec::Vec<u8>, alpha_g1_beta_g2_bytes: alloc::vec::Vec<u8>, gamma_g2_neg_pc_bytes: alloc::vec::Vec<u8>, delta_g2_neg_pc_bytes: alloc::vec::Vec<u8>) -> Self
+impl moverox_sui::sui::groth16::PreparedVerifyingKey
+pub const fn moverox_sui::sui::groth16::PreparedVerifyingKey::type_tag() -> moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::groth16::PreparedVerifyingKey
+pub const moverox_sui::sui::groth16::PreparedVerifyingKey::STRUCT_TAG: moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::groth16::PreparedVerifyingKey
+pub type moverox_sui::sui::groth16::PreparedVerifyingKey::StructTag = moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::groth16::PreparedVerifyingKey
+pub type moverox_sui::sui::groth16::PreparedVerifyingKey::TypeTag = moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub struct moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+impl core::fmt::Display for moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub type moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub const moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub const moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub const moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag
+pub fn moverox_sui::sui::groth16::PreparedVerifyingKeyTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::groth16::ProofPoints
+pub moverox_sui::sui::groth16::ProofPoints::bytes: alloc::vec::Vec<u8>
+impl moverox_sui::sui::groth16::ProofPoints
+pub const fn moverox_sui::sui::groth16::ProofPoints::new(bytes: alloc::vec::Vec<u8>) -> Self
+impl moverox_sui::sui::groth16::ProofPoints
+pub const fn moverox_sui::sui::groth16::ProofPoints::type_tag() -> moverox_sui::sui::groth16::ProofPointsTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::groth16::ProofPoints
+pub const moverox_sui::sui::groth16::ProofPoints::STRUCT_TAG: moverox_sui::sui::groth16::ProofPointsTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::groth16::ProofPoints
+pub type moverox_sui::sui::groth16::ProofPoints::StructTag = moverox_sui::sui::groth16::ProofPointsTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::groth16::ProofPoints
+pub type moverox_sui::sui::groth16::ProofPoints::TypeTag = moverox_sui::sui::groth16::ProofPointsTypeTag
+pub struct moverox_sui::sui::groth16::ProofPointsTypeTag
+impl core::fmt::Display for moverox_sui::sui::groth16::ProofPointsTypeTag
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::groth16::ProofPointsTypeTag
+pub type moverox_sui::sui::groth16::ProofPointsTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::groth16::ProofPointsTypeTag
+pub const moverox_sui::sui::groth16::ProofPointsTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::groth16::ProofPointsTypeTag
+pub const moverox_sui::sui::groth16::ProofPointsTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::groth16::ProofPointsTypeTag
+pub const moverox_sui::sui::groth16::ProofPointsTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::groth16::ProofPointsTypeTag
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::groth16::ProofPointsTypeTag
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::groth16::ProofPointsTypeTag
+pub fn moverox_sui::sui::groth16::ProofPointsTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::groth16::PublicProofInputs
+pub moverox_sui::sui::groth16::PublicProofInputs::bytes: alloc::vec::Vec<u8>
+impl moverox_sui::sui::groth16::PublicProofInputs
+pub const fn moverox_sui::sui::groth16::PublicProofInputs::new(bytes: alloc::vec::Vec<u8>) -> Self
+impl moverox_sui::sui::groth16::PublicProofInputs
+pub const fn moverox_sui::sui::groth16::PublicProofInputs::type_tag() -> moverox_sui::sui::groth16::PublicProofInputsTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::groth16::PublicProofInputs
+pub const moverox_sui::sui::groth16::PublicProofInputs::STRUCT_TAG: moverox_sui::sui::groth16::PublicProofInputsTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::groth16::PublicProofInputs
+pub type moverox_sui::sui::groth16::PublicProofInputs::StructTag = moverox_sui::sui::groth16::PublicProofInputsTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::groth16::PublicProofInputs
+pub type moverox_sui::sui::groth16::PublicProofInputs::TypeTag = moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub struct moverox_sui::sui::groth16::PublicProofInputsTypeTag
+impl core::fmt::Display for moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub type moverox_sui::sui::groth16::PublicProofInputsTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub const moverox_sui::sui::groth16::PublicProofInputsTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub const moverox_sui::sui::groth16::PublicProofInputsTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub const moverox_sui::sui::groth16::PublicProofInputsTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::groth16::PublicProofInputsTypeTag
+pub fn moverox_sui::sui::groth16::PublicProofInputsTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub mod moverox_sui::sui::group_ops
+pub struct moverox_sui::sui::group_ops::Element<T>
+pub moverox_sui::sui::group_ops::Element::bytes: alloc::vec::Vec<u8>
+impl<T: moverox_traits::MoveType> moverox_sui::sui::group_ops::Element<T>
+pub const fn moverox_sui::sui::group_ops::Element<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::group_ops::ElementTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::group_ops::Element<T>
+pub const fn moverox_sui::sui::group_ops::Element<T>::new(bytes: alloc::vec::Vec<u8>) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::group_ops::Element<T>
+pub const moverox_sui::sui::group_ops::Element<T>::STRUCT_TAG: moverox_sui::sui::group_ops::ElementTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::group_ops::Element<T>
+pub type moverox_sui::sui::group_ops::Element<T>::StructTag = moverox_sui::sui::group_ops::ElementTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::group_ops::Element<T>
+pub type moverox_sui::sui::group_ops::Element<T>::TypeTag = moverox_sui::sui::group_ops::ElementTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::group_ops::ElementTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::group_ops::ElementTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::group_ops::ElementTypeTag<T>
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::group_ops::ElementTypeTag<T>
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::group_ops::ElementTypeTag<T>
+pub type moverox_sui::sui::group_ops::ElementTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::group_ops::ElementTypeTag<T>
+pub const moverox_sui::sui::group_ops::ElementTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::group_ops::ElementTypeTag<T>
+pub const moverox_sui::sui::group_ops::ElementTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::group_ops::ElementTypeTag<T>
+pub const moverox_sui::sui::group_ops::ElementTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::group_ops::ElementTypeTag<T>
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::group_ops::ElementTypeTag<T>
+pub fn moverox_sui::sui::group_ops::ElementTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub mod moverox_sui::sui::kiosk
+pub struct moverox_sui::sui::kiosk::Borrow
+pub moverox_sui::sui::kiosk::Borrow::item_id: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::Borrow::kiosk_id: moverox_sui::sui::object::ID
+impl moverox_sui::sui::kiosk::Borrow
+pub const fn moverox_sui::sui::kiosk::Borrow::new(kiosk_id: moverox_sui::sui::object::ID, item_id: moverox_sui::sui::object::ID) -> Self
+impl moverox_sui::sui::kiosk::Borrow
+pub const fn moverox_sui::sui::kiosk::Borrow::type_tag() -> moverox_sui::sui::kiosk::BorrowTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::Borrow
+pub const moverox_sui::sui::kiosk::Borrow::STRUCT_TAG: moverox_sui::sui::kiosk::BorrowTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::Borrow
+pub type moverox_sui::sui::kiosk::Borrow::StructTag = moverox_sui::sui::kiosk::BorrowTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::kiosk::Borrow
+pub type moverox_sui::sui::kiosk::Borrow::TypeTag = moverox_sui::sui::kiosk::BorrowTypeTag
+pub struct moverox_sui::sui::kiosk::BorrowTypeTag
+impl core::fmt::Display for moverox_sui::sui::kiosk::BorrowTypeTag
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::kiosk::BorrowTypeTag
+pub type moverox_sui::sui::kiosk::BorrowTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::kiosk::BorrowTypeTag
+pub const moverox_sui::sui::kiosk::BorrowTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::kiosk::BorrowTypeTag
+pub const moverox_sui::sui::kiosk::BorrowTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::kiosk::BorrowTypeTag
+pub const moverox_sui::sui::kiosk::BorrowTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::BorrowTypeTag
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::kiosk::BorrowTypeTag
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::BorrowTypeTag
+pub fn moverox_sui::sui::kiosk::BorrowTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::kiosk::Item
+pub moverox_sui::sui::kiosk::Item::id: moverox_sui::sui::object::ID
+impl moverox_sui::sui::kiosk::Item
+pub const fn moverox_sui::sui::kiosk::Item::new(id: moverox_sui::sui::object::ID) -> Self
+impl moverox_sui::sui::kiosk::Item
+pub const fn moverox_sui::sui::kiosk::Item::type_tag() -> moverox_sui::sui::kiosk::ItemTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::Item
+pub const moverox_sui::sui::kiosk::Item::STRUCT_TAG: moverox_sui::sui::kiosk::ItemTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::Item
+pub type moverox_sui::sui::kiosk::Item::StructTag = moverox_sui::sui::kiosk::ItemTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::kiosk::Item
+pub type moverox_sui::sui::kiosk::Item::TypeTag = moverox_sui::sui::kiosk::ItemTypeTag
+pub struct moverox_sui::sui::kiosk::ItemDelisted<T>
+pub moverox_sui::sui::kiosk::ItemDelisted::id: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::ItemDelisted::kiosk: moverox_sui::sui::object::ID
+impl<T: moverox_traits::MoveType> moverox_sui::sui::kiosk::ItemDelisted<T>
+pub const fn moverox_sui::sui::kiosk::ItemDelisted<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::kiosk::ItemDelistedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::kiosk::ItemDelisted<T>
+pub const fn moverox_sui::sui::kiosk::ItemDelisted<T>::new(kiosk: moverox_sui::sui::object::ID, id: moverox_sui::sui::object::ID) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::ItemDelisted<T>
+pub const moverox_sui::sui::kiosk::ItemDelisted<T>::STRUCT_TAG: moverox_sui::sui::kiosk::ItemDelistedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::ItemDelisted<T>
+pub type moverox_sui::sui::kiosk::ItemDelisted<T>::StructTag = moverox_sui::sui::kiosk::ItemDelistedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::kiosk::ItemDelisted<T>
+pub type moverox_sui::sui::kiosk::ItemDelisted<T>::TypeTag = moverox_sui::sui::kiosk::ItemDelistedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::kiosk::ItemDelistedTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::kiosk::ItemDelistedTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>
+pub type moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemDelistedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::kiosk::ItemListed<T>
+pub moverox_sui::sui::kiosk::ItemListed::id: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::ItemListed::kiosk: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::ItemListed::price: u64
+impl<T: moverox_traits::MoveType> moverox_sui::sui::kiosk::ItemListed<T>
+pub const fn moverox_sui::sui::kiosk::ItemListed<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::kiosk::ItemListedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::kiosk::ItemListed<T>
+pub const fn moverox_sui::sui::kiosk::ItemListed<T>::new(kiosk: moverox_sui::sui::object::ID, id: moverox_sui::sui::object::ID, price: u64) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::ItemListed<T>
+pub const moverox_sui::sui::kiosk::ItemListed<T>::STRUCT_TAG: moverox_sui::sui::kiosk::ItemListedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::ItemListed<T>
+pub type moverox_sui::sui::kiosk::ItemListed<T>::StructTag = moverox_sui::sui::kiosk::ItemListedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::kiosk::ItemListed<T>
+pub type moverox_sui::sui::kiosk::ItemListed<T>::TypeTag = moverox_sui::sui::kiosk::ItemListedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::kiosk::ItemListedTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::kiosk::ItemListedTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::ItemListedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::kiosk::ItemListedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::kiosk::ItemListedTypeTag<T>
+pub type moverox_sui::sui::kiosk::ItemListedTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::kiosk::ItemListedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemListedTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::kiosk::ItemListedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemListedTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::kiosk::ItemListedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemListedTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::ItemListedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::kiosk::ItemListedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemListedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::kiosk::ItemPurchased<T>
+pub moverox_sui::sui::kiosk::ItemPurchased::id: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::ItemPurchased::kiosk: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::ItemPurchased::price: u64
+impl<T: moverox_traits::MoveType> moverox_sui::sui::kiosk::ItemPurchased<T>
+pub const fn moverox_sui::sui::kiosk::ItemPurchased<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::kiosk::ItemPurchasedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::kiosk::ItemPurchased<T>
+pub const fn moverox_sui::sui::kiosk::ItemPurchased<T>::new(kiosk: moverox_sui::sui::object::ID, id: moverox_sui::sui::object::ID, price: u64) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::ItemPurchased<T>
+pub const moverox_sui::sui::kiosk::ItemPurchased<T>::STRUCT_TAG: moverox_sui::sui::kiosk::ItemPurchasedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::ItemPurchased<T>
+pub type moverox_sui::sui::kiosk::ItemPurchased<T>::StructTag = moverox_sui::sui::kiosk::ItemPurchasedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::kiosk::ItemPurchased<T>
+pub type moverox_sui::sui::kiosk::ItemPurchased<T>::TypeTag = moverox_sui::sui::kiosk::ItemPurchasedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::kiosk::ItemPurchasedTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>
+pub type moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>
+pub const moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>
+pub fn moverox_sui::sui::kiosk::ItemPurchasedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::kiosk::ItemTypeTag
+impl core::fmt::Display for moverox_sui::sui::kiosk::ItemTypeTag
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::kiosk::ItemTypeTag
+pub type moverox_sui::sui::kiosk::ItemTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::kiosk::ItemTypeTag
+pub const moverox_sui::sui::kiosk::ItemTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::kiosk::ItemTypeTag
+pub const moverox_sui::sui::kiosk::ItemTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::kiosk::ItemTypeTag
+pub const moverox_sui::sui::kiosk::ItemTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::ItemTypeTag
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::kiosk::ItemTypeTag
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::ItemTypeTag
+pub fn moverox_sui::sui::kiosk::ItemTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::kiosk::Kiosk
+pub moverox_sui::sui::kiosk::Kiosk::allow_extensions: bool
+pub moverox_sui::sui::kiosk::Kiosk::id: moverox_sui::sui::object::UID
+pub moverox_sui::sui::kiosk::Kiosk::item_count: u32
+pub moverox_sui::sui::kiosk::Kiosk::owner: moverox_types::address::Address
+pub moverox_sui::sui::kiosk::Kiosk::profits: moverox_sui::sui::balance::Balance<moverox_sui::sui::sui::SUI>
+impl moverox_sui::sui::kiosk::Kiosk
+pub const fn moverox_sui::sui::kiosk::Kiosk::new(id: moverox_sui::sui::object::UID, profits: moverox_sui::sui::balance::Balance<moverox_sui::sui::sui::SUI>, owner: moverox_types::address::Address, item_count: u32, allow_extensions: bool) -> Self
+impl moverox_sui::sui::kiosk::Kiosk
+pub const fn moverox_sui::sui::kiosk::Kiosk::type_tag() -> moverox_sui::sui::kiosk::KioskTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::Kiosk
+pub const moverox_sui::sui::kiosk::Kiosk::STRUCT_TAG: moverox_sui::sui::kiosk::KioskTypeTag
+impl moverox_traits::HasKey for moverox_sui::sui::kiosk::Kiosk
+pub fn moverox_sui::sui::kiosk::Kiosk::address(&self) -> moverox_types::address::Address
+impl moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::Kiosk
+pub type moverox_sui::sui::kiosk::Kiosk::StructTag = moverox_sui::sui::kiosk::KioskTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::kiosk::Kiosk
+pub type moverox_sui::sui::kiosk::Kiosk::TypeTag = moverox_sui::sui::kiosk::KioskTypeTag
+pub struct moverox_sui::sui::kiosk::KioskOwnerCap
+pub moverox_sui::sui::kiosk::KioskOwnerCap::for: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::KioskOwnerCap::id: moverox_sui::sui::object::UID
+impl moverox_sui::sui::kiosk::KioskOwnerCap
+pub const fn moverox_sui::sui::kiosk::KioskOwnerCap::new(id: moverox_sui::sui::object::UID, for: moverox_sui::sui::object::ID) -> Self
+impl moverox_sui::sui::kiosk::KioskOwnerCap
+pub const fn moverox_sui::sui::kiosk::KioskOwnerCap::type_tag() -> moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::KioskOwnerCap
+pub const moverox_sui::sui::kiosk::KioskOwnerCap::STRUCT_TAG: moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+impl moverox_traits::HasKey for moverox_sui::sui::kiosk::KioskOwnerCap
+pub fn moverox_sui::sui::kiosk::KioskOwnerCap::address(&self) -> moverox_types::address::Address
+impl moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::KioskOwnerCap
+pub type moverox_sui::sui::kiosk::KioskOwnerCap::StructTag = moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::kiosk::KioskOwnerCap
+pub type moverox_sui::sui::kiosk::KioskOwnerCap::TypeTag = moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub struct moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+impl core::fmt::Display for moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub type moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub const moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub const moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub const moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::KioskOwnerCapTypeTag
+pub fn moverox_sui::sui::kiosk::KioskOwnerCapTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::kiosk::KioskTypeTag
+impl core::fmt::Display for moverox_sui::sui::kiosk::KioskTypeTag
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::kiosk::KioskTypeTag
+pub type moverox_sui::sui::kiosk::KioskTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::kiosk::KioskTypeTag
+pub const moverox_sui::sui::kiosk::KioskTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::kiosk::KioskTypeTag
+pub const moverox_sui::sui::kiosk::KioskTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::kiosk::KioskTypeTag
+pub const moverox_sui::sui::kiosk::KioskTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::KioskTypeTag
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::kiosk::KioskTypeTag
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::KioskTypeTag
+pub fn moverox_sui::sui::kiosk::KioskTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::kiosk::Listing
+pub moverox_sui::sui::kiosk::Listing::id: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::Listing::is_exclusive: bool
+impl moverox_sui::sui::kiosk::Listing
+pub const fn moverox_sui::sui::kiosk::Listing::new(id: moverox_sui::sui::object::ID, is_exclusive: bool) -> Self
+impl moverox_sui::sui::kiosk::Listing
+pub const fn moverox_sui::sui::kiosk::Listing::type_tag() -> moverox_sui::sui::kiosk::ListingTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::Listing
+pub const moverox_sui::sui::kiosk::Listing::STRUCT_TAG: moverox_sui::sui::kiosk::ListingTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::Listing
+pub type moverox_sui::sui::kiosk::Listing::StructTag = moverox_sui::sui::kiosk::ListingTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::kiosk::Listing
+pub type moverox_sui::sui::kiosk::Listing::TypeTag = moverox_sui::sui::kiosk::ListingTypeTag
+pub struct moverox_sui::sui::kiosk::ListingTypeTag
+impl core::fmt::Display for moverox_sui::sui::kiosk::ListingTypeTag
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::kiosk::ListingTypeTag
+pub type moverox_sui::sui::kiosk::ListingTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::kiosk::ListingTypeTag
+pub const moverox_sui::sui::kiosk::ListingTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::kiosk::ListingTypeTag
+pub const moverox_sui::sui::kiosk::ListingTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::kiosk::ListingTypeTag
+pub const moverox_sui::sui::kiosk::ListingTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::ListingTypeTag
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::kiosk::ListingTypeTag
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::ListingTypeTag
+pub fn moverox_sui::sui::kiosk::ListingTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::kiosk::Lock
+pub moverox_sui::sui::kiosk::Lock::id: moverox_sui::sui::object::ID
+impl moverox_sui::sui::kiosk::Lock
+pub const fn moverox_sui::sui::kiosk::Lock::new(id: moverox_sui::sui::object::ID) -> Self
+impl moverox_sui::sui::kiosk::Lock
+pub const fn moverox_sui::sui::kiosk::Lock::type_tag() -> moverox_sui::sui::kiosk::LockTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::Lock
+pub const moverox_sui::sui::kiosk::Lock::STRUCT_TAG: moverox_sui::sui::kiosk::LockTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::Lock
+pub type moverox_sui::sui::kiosk::Lock::StructTag = moverox_sui::sui::kiosk::LockTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::kiosk::Lock
+pub type moverox_sui::sui::kiosk::Lock::TypeTag = moverox_sui::sui::kiosk::LockTypeTag
+pub struct moverox_sui::sui::kiosk::LockTypeTag
+impl core::fmt::Display for moverox_sui::sui::kiosk::LockTypeTag
+pub fn moverox_sui::sui::kiosk::LockTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::kiosk::LockTypeTag
+pub type moverox_sui::sui::kiosk::LockTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::LockTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::kiosk::LockTypeTag
+pub const moverox_sui::sui::kiosk::LockTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::kiosk::LockTypeTag
+pub const moverox_sui::sui::kiosk::LockTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::kiosk::LockTypeTag
+pub const moverox_sui::sui::kiosk::LockTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::LockTypeTag
+pub fn moverox_sui::sui::kiosk::LockTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::LockTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::LockTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::LockTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::LockTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::kiosk::LockTypeTag
+pub fn moverox_sui::sui::kiosk::LockTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::LockTypeTag
+pub fn moverox_sui::sui::kiosk::LockTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::kiosk::PurchaseCap<T>
+pub moverox_sui::sui::kiosk::PurchaseCap::id: moverox_sui::sui::object::UID
+pub moverox_sui::sui::kiosk::PurchaseCap::item_id: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::PurchaseCap::kiosk_id: moverox_sui::sui::object::ID
+pub moverox_sui::sui::kiosk::PurchaseCap::min_price: u64
+impl<T: moverox_traits::MoveType> moverox_sui::sui::kiosk::PurchaseCap<T>
+pub const fn moverox_sui::sui::kiosk::PurchaseCap<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::kiosk::PurchaseCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::kiosk::PurchaseCap<T>
+pub const fn moverox_sui::sui::kiosk::PurchaseCap<T>::new(id: moverox_sui::sui::object::UID, kiosk_id: moverox_sui::sui::object::ID, item_id: moverox_sui::sui::object::ID, min_price: u64) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::kiosk::PurchaseCap<T>
+pub const moverox_sui::sui::kiosk::PurchaseCap<T>::STRUCT_TAG: moverox_sui::sui::kiosk::PurchaseCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::kiosk::PurchaseCap<T>
+pub type moverox_sui::sui::kiosk::PurchaseCap<T>::StructTag = moverox_sui::sui::kiosk::PurchaseCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::kiosk::PurchaseCap<T>
+pub type moverox_sui::sui::kiosk::PurchaseCap<T>::TypeTag = moverox_sui::sui::kiosk::PurchaseCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::kiosk::PurchaseCap<T>
+pub fn moverox_sui::sui::kiosk::PurchaseCap<T>::address(&self) -> moverox_types::address::Address
+pub struct moverox_sui::sui::kiosk::PurchaseCapTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::kiosk::PurchaseCapTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>
+pub type moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>
+pub const moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>
+pub const moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>
+pub const moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>
+pub fn moverox_sui::sui::kiosk::PurchaseCapTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub mod moverox_sui::sui::kiosk_extension
+pub struct moverox_sui::sui::kiosk_extension::Extension
+pub moverox_sui::sui::kiosk_extension::Extension::is_enabled: bool
+pub moverox_sui::sui::kiosk_extension::Extension::permissions: u128
+pub moverox_sui::sui::kiosk_extension::Extension::storage: moverox_sui::sui::bag::Bag
+impl moverox_sui::sui::kiosk_extension::Extension
+pub const fn moverox_sui::sui::kiosk_extension::Extension::new(storage: moverox_sui::sui::bag::Bag, permissions: u128, is_enabled: bool) -> Self
+impl moverox_sui::sui::kiosk_extension::Extension
+pub const fn moverox_sui::sui::kiosk_extension::Extension::type_tag() -> moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::kiosk_extension::Extension
+pub const moverox_sui::sui::kiosk_extension::Extension::STRUCT_TAG: moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::kiosk_extension::Extension
+pub type moverox_sui::sui::kiosk_extension::Extension::StructTag = moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::kiosk_extension::Extension
+pub type moverox_sui::sui::kiosk_extension::Extension::TypeTag = moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub struct moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>
+impl<Ext: moverox_traits::MoveType> moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>
+pub const fn moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>::type_tag(type_ext: <Ext as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<<Ext as moverox_traits::MoveType>::TypeTag>
+impl<Ext> moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>
+pub const fn moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>::new() -> Self
+impl<Ext: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>
+pub const moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>::STRUCT_TAG: moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<<Ext as moverox_traits::MoveType>::TypeTag>
+impl<Ext: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>
+pub type moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>::StructTag = moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<<Ext as moverox_traits::MoveType>::TypeTag>
+impl<Ext: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>
+pub type moverox_sui::sui::kiosk_extension::ExtensionKey<Ext>::TypeTag = moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<<Ext as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag::type_ext: Ext
+impl<'de, Ext: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<Ext: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<Ext: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>
+pub type moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<Ext: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>
+pub const moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::ADDRESS: moverox_types::address::Address
+impl<Ext: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>
+pub const moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::MODULE: &moverox_types::ident_str::IdentStr
+impl<Ext: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>
+pub const moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::NAME: &moverox_types::ident_str::IdentStr
+impl<Ext: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<Ext: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>
+pub fn moverox_sui::sui::kiosk_extension::ExtensionKeyTypeTag<Ext>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+impl core::fmt::Display for moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub type moverox_sui::sui::kiosk_extension::ExtensionTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub const moverox_sui::sui::kiosk_extension::ExtensionTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub const moverox_sui::sui::kiosk_extension::ExtensionTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub const moverox_sui::sui::kiosk_extension::ExtensionTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::kiosk_extension::ExtensionTypeTag
+pub fn moverox_sui::sui::kiosk_extension::ExtensionTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub mod moverox_sui::sui::linked_table
 pub struct moverox_sui::sui::linked_table::LinkedTable<K, V>
 pub moverox_sui::sui::linked_table::LinkedTable::head: core::option::Option<K>
@@ -1719,6 +2534,82 @@ pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::name(&self) -> &movero
 pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<K: moverox_traits::MoveTypeTag, V: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::linked_table::NodeTypeTag<K, V>
 pub fn moverox_sui::sui::linked_table::NodeTypeTag<K, V>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub mod moverox_sui::sui::nitro_attestation
+pub struct moverox_sui::sui::nitro_attestation::NitroAttestationDocument
+pub moverox_sui::sui::nitro_attestation::NitroAttestationDocument::digest: alloc::vec::Vec<u8>
+pub moverox_sui::sui::nitro_attestation::NitroAttestationDocument::module_id: alloc::vec::Vec<u8>
+pub moverox_sui::sui::nitro_attestation::NitroAttestationDocument::nonce: core::option::Option<alloc::vec::Vec<u8>>
+pub moverox_sui::sui::nitro_attestation::NitroAttestationDocument::pcrs: alloc::vec::Vec<moverox_sui::sui::nitro_attestation::PCREntry>
+pub moverox_sui::sui::nitro_attestation::NitroAttestationDocument::public_key: core::option::Option<alloc::vec::Vec<u8>>
+pub moverox_sui::sui::nitro_attestation::NitroAttestationDocument::timestamp: u64
+pub moverox_sui::sui::nitro_attestation::NitroAttestationDocument::user_data: core::option::Option<alloc::vec::Vec<u8>>
+impl moverox_sui::sui::nitro_attestation::NitroAttestationDocument
+pub const fn moverox_sui::sui::nitro_attestation::NitroAttestationDocument::new(module_id: alloc::vec::Vec<u8>, timestamp: u64, digest: alloc::vec::Vec<u8>, pcrs: alloc::vec::Vec<moverox_sui::sui::nitro_attestation::PCREntry>, public_key: core::option::Option<alloc::vec::Vec<u8>>, user_data: core::option::Option<alloc::vec::Vec<u8>>, nonce: core::option::Option<alloc::vec::Vec<u8>>) -> Self
+impl moverox_sui::sui::nitro_attestation::NitroAttestationDocument
+pub const fn moverox_sui::sui::nitro_attestation::NitroAttestationDocument::type_tag() -> moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::nitro_attestation::NitroAttestationDocument
+pub const moverox_sui::sui::nitro_attestation::NitroAttestationDocument::STRUCT_TAG: moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::nitro_attestation::NitroAttestationDocument
+pub type moverox_sui::sui::nitro_attestation::NitroAttestationDocument::StructTag = moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::nitro_attestation::NitroAttestationDocument
+pub type moverox_sui::sui::nitro_attestation::NitroAttestationDocument::TypeTag = moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub struct moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+impl core::fmt::Display for moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub type moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub const moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub const moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub const moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag
+pub fn moverox_sui::sui::nitro_attestation::NitroAttestationDocumentTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::nitro_attestation::PCREntry
+pub moverox_sui::sui::nitro_attestation::PCREntry::index: u8
+pub moverox_sui::sui::nitro_attestation::PCREntry::value: alloc::vec::Vec<u8>
+impl moverox_sui::sui::nitro_attestation::PCREntry
+pub const fn moverox_sui::sui::nitro_attestation::PCREntry::new(index: u8, value: alloc::vec::Vec<u8>) -> Self
+impl moverox_sui::sui::nitro_attestation::PCREntry
+pub const fn moverox_sui::sui::nitro_attestation::PCREntry::type_tag() -> moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::nitro_attestation::PCREntry
+pub const moverox_sui::sui::nitro_attestation::PCREntry::STRUCT_TAG: moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::nitro_attestation::PCREntry
+pub type moverox_sui::sui::nitro_attestation::PCREntry::StructTag = moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::nitro_attestation::PCREntry
+pub type moverox_sui::sui::nitro_attestation::PCREntry::TypeTag = moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub struct moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+impl core::fmt::Display for moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub type moverox_sui::sui::nitro_attestation::PCREntryTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub const moverox_sui::sui::nitro_attestation::PCREntryTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub const moverox_sui::sui::nitro_attestation::PCREntryTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub const moverox_sui::sui::nitro_attestation::PCREntryTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::nitro_attestation::PCREntryTypeTag
+pub fn moverox_sui::sui::nitro_attestation::PCREntryTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub mod moverox_sui::sui::object
 pub struct moverox_sui::sui::object::ID
 pub moverox_sui::sui::object::ID::bytes: moverox_types::address::Address
@@ -2378,6 +3269,83 @@ pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::name(&self) -> &mo
 pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<Element: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::table_vec::TableVecTypeTag<Element>
 pub fn moverox_sui::sui::table_vec::TableVecTypeTag<Element>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub mod moverox_sui::sui::test_scenario
+pub struct moverox_sui::sui::test_scenario::Scenario
+pub moverox_sui::sui::test_scenario::Scenario::ctx: moverox_sui::sui::tx_context::TxContext
+pub moverox_sui::sui::test_scenario::Scenario::txn_number: u64
+impl moverox_sui::sui::test_scenario::Scenario
+pub const fn moverox_sui::sui::test_scenario::Scenario::new(txn_number: u64, ctx: moverox_sui::sui::tx_context::TxContext) -> Self
+impl moverox_sui::sui::test_scenario::Scenario
+pub const fn moverox_sui::sui::test_scenario::Scenario::type_tag() -> moverox_sui::sui::test_scenario::ScenarioTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::test_scenario::Scenario
+pub const moverox_sui::sui::test_scenario::Scenario::STRUCT_TAG: moverox_sui::sui::test_scenario::ScenarioTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::test_scenario::Scenario
+pub type moverox_sui::sui::test_scenario::Scenario::StructTag = moverox_sui::sui::test_scenario::ScenarioTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::test_scenario::Scenario
+pub type moverox_sui::sui::test_scenario::Scenario::TypeTag = moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub struct moverox_sui::sui::test_scenario::ScenarioTypeTag
+impl core::fmt::Display for moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub type moverox_sui::sui::test_scenario::ScenarioTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub const moverox_sui::sui::test_scenario::ScenarioTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub const moverox_sui::sui::test_scenario::ScenarioTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub const moverox_sui::sui::test_scenario::ScenarioTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::test_scenario::ScenarioTypeTag
+pub fn moverox_sui::sui::test_scenario::ScenarioTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub struct moverox_sui::sui::test_scenario::TransactionEffects
+pub moverox_sui::sui::test_scenario::TransactionEffects::created: alloc::vec::Vec<moverox_sui::sui::object::ID>
+pub moverox_sui::sui::test_scenario::TransactionEffects::deleted: alloc::vec::Vec<moverox_sui::sui::object::ID>
+pub moverox_sui::sui::test_scenario::TransactionEffects::frozen: alloc::vec::Vec<moverox_sui::sui::object::ID>
+pub moverox_sui::sui::test_scenario::TransactionEffects::num_user_events: u64
+pub moverox_sui::sui::test_scenario::TransactionEffects::shared: alloc::vec::Vec<moverox_sui::sui::object::ID>
+pub moverox_sui::sui::test_scenario::TransactionEffects::transferred_to_account: moverox_sui::sui::vec_map::VecMap<moverox_sui::sui::object::ID, moverox_types::address::Address>
+pub moverox_sui::sui::test_scenario::TransactionEffects::transferred_to_object: moverox_sui::sui::vec_map::VecMap<moverox_sui::sui::object::ID, moverox_sui::sui::object::ID>
+pub moverox_sui::sui::test_scenario::TransactionEffects::written: alloc::vec::Vec<moverox_sui::sui::object::ID>
+impl moverox_sui::sui::test_scenario::TransactionEffects
+pub const fn moverox_sui::sui::test_scenario::TransactionEffects::new(created: alloc::vec::Vec<moverox_sui::sui::object::ID>, written: alloc::vec::Vec<moverox_sui::sui::object::ID>, deleted: alloc::vec::Vec<moverox_sui::sui::object::ID>, transferred_to_account: moverox_sui::sui::vec_map::VecMap<moverox_sui::sui::object::ID, moverox_types::address::Address>, transferred_to_object: moverox_sui::sui::vec_map::VecMap<moverox_sui::sui::object::ID, moverox_sui::sui::object::ID>, shared: alloc::vec::Vec<moverox_sui::sui::object::ID>, frozen: alloc::vec::Vec<moverox_sui::sui::object::ID>, num_user_events: u64) -> Self
+impl moverox_sui::sui::test_scenario::TransactionEffects
+pub const fn moverox_sui::sui::test_scenario::TransactionEffects::type_tag() -> moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::test_scenario::TransactionEffects
+pub const moverox_sui::sui::test_scenario::TransactionEffects::STRUCT_TAG: moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+impl moverox_traits::MoveDatatype for moverox_sui::sui::test_scenario::TransactionEffects
+pub type moverox_sui::sui::test_scenario::TransactionEffects::StructTag = moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::test_scenario::TransactionEffects
+pub type moverox_sui::sui::test_scenario::TransactionEffects::TypeTag = moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub struct moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+impl core::fmt::Display for moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub type moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub const moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub const moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub const moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::test_scenario::TransactionEffectsTypeTag
+pub fn moverox_sui::sui::test_scenario::TransactionEffectsTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub mod moverox_sui::sui::token
 pub struct moverox_sui::sui::token::ActionRequest<T>
 pub moverox_sui::sui::token::ActionRequest::amount: u64
@@ -2642,6 +3610,226 @@ pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::name(&self) -> &moverox_
 pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
 impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::transfer::ReceivingTypeTag<T>
 pub fn moverox_sui::sui::transfer::ReceivingTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub mod moverox_sui::sui::transfer_policy
+pub struct moverox_sui::sui::transfer_policy::RuleKey<T>
+impl<T: moverox_traits::MoveType> moverox_sui::sui::transfer_policy::RuleKey<T>
+pub const fn moverox_sui::sui::transfer_policy::RuleKey<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::transfer_policy::RuleKeyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::transfer_policy::RuleKey<T>
+pub const fn moverox_sui::sui::transfer_policy::RuleKey<T>::new() -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::transfer_policy::RuleKey<T>
+pub const moverox_sui::sui::transfer_policy::RuleKey<T>::STRUCT_TAG: moverox_sui::sui::transfer_policy::RuleKeyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::transfer_policy::RuleKey<T>
+pub type moverox_sui::sui::transfer_policy::RuleKey<T>::StructTag = moverox_sui::sui::transfer_policy::RuleKeyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::transfer_policy::RuleKey<T>
+pub type moverox_sui::sui::transfer_policy::RuleKey<T>::TypeTag = moverox_sui::sui::transfer_policy::RuleKeyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::transfer_policy::RuleKeyTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>
+pub type moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::RuleKeyTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::transfer_policy::TransferPolicy<T>
+pub moverox_sui::sui::transfer_policy::TransferPolicy::balance: moverox_sui::sui::balance::Balance<moverox_sui::sui::sui::SUI>
+pub moverox_sui::sui::transfer_policy::TransferPolicy::id: moverox_sui::sui::object::UID
+pub moverox_sui::sui::transfer_policy::TransferPolicy::rules: moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>
+impl<T: moverox_traits::MoveType> moverox_sui::sui::transfer_policy::TransferPolicy<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferPolicy<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::transfer_policy::TransferPolicy<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferPolicy<T>::new(id: moverox_sui::sui::object::UID, balance: moverox_sui::sui::balance::Balance<moverox_sui::sui::sui::SUI>, rules: moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::transfer_policy::TransferPolicy<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicy<T>::STRUCT_TAG: moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::transfer_policy::TransferPolicy<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicy<T>::StructTag = moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::transfer_policy::TransferPolicy<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicy<T>::TypeTag = moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::transfer_policy::TransferPolicy<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicy<T>::address(&self) -> moverox_types::address::Address
+pub struct moverox_sui::sui::transfer_policy::TransferPolicyCap<T>
+pub moverox_sui::sui::transfer_policy::TransferPolicyCap::id: moverox_sui::sui::object::UID
+pub moverox_sui::sui::transfer_policy::TransferPolicyCap::policy_id: moverox_sui::sui::object::ID
+impl<T: moverox_traits::MoveType> moverox_sui::sui::transfer_policy::TransferPolicyCap<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferPolicyCap<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::transfer_policy::TransferPolicyCap<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferPolicyCap<T>::new(id: moverox_sui::sui::object::UID, policy_id: moverox_sui::sui::object::ID) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::transfer_policy::TransferPolicyCap<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyCap<T>::STRUCT_TAG: moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::transfer_policy::TransferPolicyCap<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyCap<T>::StructTag = moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::transfer_policy::TransferPolicyCap<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyCap<T>::TypeTag = moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_traits::HasKey for moverox_sui::sui::transfer_policy::TransferPolicyCap<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCap<T>::address(&self) -> moverox_types::address::Address
+pub struct moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCapTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>
+pub moverox_sui::sui::transfer_policy::TransferPolicyCreated::id: moverox_sui::sui::object::ID
+impl<T: moverox_traits::MoveType> moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>::new(id: moverox_sui::sui::object::ID) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>::STRUCT_TAG: moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>::StructTag = moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyCreated<T>::TypeTag = moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyCreatedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>
+pub moverox_sui::sui::transfer_policy::TransferPolicyDestroyed::id: moverox_sui::sui::object::ID
+impl<T: moverox_traits::MoveType> moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>::new(id: moverox_sui::sui::object::ID) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>::STRUCT_TAG: moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>::StructTag = moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyDestroyed<T>::TypeTag = moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyDestroyedTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::transfer_policy::TransferPolicyTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>
+pub type moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferPolicyTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+pub struct moverox_sui::sui::transfer_policy::TransferRequest<T>
+pub moverox_sui::sui::transfer_policy::TransferRequest::from: moverox_sui::sui::object::ID
+pub moverox_sui::sui::transfer_policy::TransferRequest::item: moverox_sui::sui::object::ID
+pub moverox_sui::sui::transfer_policy::TransferRequest::paid: u64
+pub moverox_sui::sui::transfer_policy::TransferRequest::receipts: moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>
+impl<T: moverox_traits::MoveType> moverox_sui::sui::transfer_policy::TransferRequest<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferRequest<T>::type_tag(type_t: <T as moverox_traits::MoveType>::TypeTag) -> moverox_sui::sui::transfer_policy::TransferRequestTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T> moverox_sui::sui::transfer_policy::TransferRequest<T>
+pub const fn moverox_sui::sui::transfer_policy::TransferRequest<T>::new(item: moverox_sui::sui::object::ID, paid: u64, from: moverox_sui::sui::object::ID, receipts: moverox_sui::sui::vec_set::VecSet<moverox_sui::move_stdlib::type_name::TypeName>) -> Self
+impl<T: moverox_traits::ConstTypeTag> moverox_traits::ConstStructTag for moverox_sui::sui::transfer_policy::TransferRequest<T>
+pub const moverox_sui::sui::transfer_policy::TransferRequest<T>::STRUCT_TAG: moverox_sui::sui::transfer_policy::TransferRequestTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveDatatype for moverox_sui::sui::transfer_policy::TransferRequest<T>
+pub type moverox_sui::sui::transfer_policy::TransferRequest<T>::StructTag = moverox_sui::sui::transfer_policy::TransferRequestTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+impl<T: moverox_traits::MoveType> moverox_traits::MoveType for moverox_sui::sui::transfer_policy::TransferRequest<T>
+pub type moverox_sui::sui::transfer_policy::TransferRequest<T>::TypeTag = moverox_sui::sui::transfer_policy::TransferRequestTypeTag<<T as moverox_traits::MoveType>::TypeTag>
+pub struct moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T: moverox_traits::MoveTypeTag>
+pub moverox_sui::sui::transfer_policy::TransferRequestTypeTag::type_t: T
+impl<'de, T: moverox_traits::MoveTypeTag> serde_core::de::Deserialize<'de> for moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+impl<T: moverox_traits::MoveTypeTag> core::fmt::Display for moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl<T: moverox_traits::MoveTypeTag> core::str::traits::FromStr for moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>
+pub type moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstAddress for moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::ADDRESS: moverox_types::address::Address
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstModule for moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::MODULE: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::ConstName for moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>
+pub const moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::NAME: &moverox_types::ident_str::IdentStr
+impl<T: moverox_traits::MoveTypeTag> moverox_traits::MoveDatatypeTag for moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl<T: moverox_traits::MoveTypeTag> serde_core::ser::Serialize for moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>
+pub fn moverox_sui::sui::transfer_policy::TransferRequestTypeTag<T>::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 pub mod moverox_sui::sui::tx_context
 pub struct moverox_sui::sui::tx_context::TxContext
 pub moverox_sui::sui::tx_context::TxContext::epoch: u64
@@ -2899,6 +4087,87 @@ impl serde_core::ser::Serialize for moverox_sui::sui::versioned::VersionedTypeTa
 pub fn moverox_sui::sui::versioned::VersionedTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
 impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::versioned::VersionedTypeTag
 pub fn moverox_sui::sui::versioned::VersionedTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub mod moverox_sui::sui::zklogin_verified_id
+pub struct moverox_sui::sui::zklogin_verified_id::VerifiedID
+pub moverox_sui::sui::zklogin_verified_id::VerifiedID::audience: moverox_sui::move_stdlib::string::String
+pub moverox_sui::sui::zklogin_verified_id::VerifiedID::id: moverox_sui::sui::object::UID
+pub moverox_sui::sui::zklogin_verified_id::VerifiedID::issuer: moverox_sui::move_stdlib::string::String
+pub moverox_sui::sui::zklogin_verified_id::VerifiedID::key_claim_name: moverox_sui::move_stdlib::string::String
+pub moverox_sui::sui::zklogin_verified_id::VerifiedID::key_claim_value: moverox_sui::move_stdlib::string::String
+pub moverox_sui::sui::zklogin_verified_id::VerifiedID::owner: moverox_types::address::Address
+impl moverox_sui::sui::zklogin_verified_id::VerifiedID
+pub const fn moverox_sui::sui::zklogin_verified_id::VerifiedID::new(id: moverox_sui::sui::object::UID, owner: moverox_types::address::Address, key_claim_name: moverox_sui::move_stdlib::string::String, key_claim_value: moverox_sui::move_stdlib::string::String, issuer: moverox_sui::move_stdlib::string::String, audience: moverox_sui::move_stdlib::string::String) -> Self
+impl moverox_sui::sui::zklogin_verified_id::VerifiedID
+pub const fn moverox_sui::sui::zklogin_verified_id::VerifiedID::type_tag() -> moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::zklogin_verified_id::VerifiedID
+pub const moverox_sui::sui::zklogin_verified_id::VerifiedID::STRUCT_TAG: moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+impl moverox_traits::HasKey for moverox_sui::sui::zklogin_verified_id::VerifiedID
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedID::address(&self) -> moverox_types::address::Address
+impl moverox_traits::MoveDatatype for moverox_sui::sui::zklogin_verified_id::VerifiedID
+pub type moverox_sui::sui::zklogin_verified_id::VerifiedID::StructTag = moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::zklogin_verified_id::VerifiedID
+pub type moverox_sui::sui::zklogin_verified_id::VerifiedID::TypeTag = moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub struct moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+impl core::fmt::Display for moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub type moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub const moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub const moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub const moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag
+pub fn moverox_sui::sui::zklogin_verified_id::VerifiedIDTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
+pub mod moverox_sui::sui::zklogin_verified_issuer
+pub struct moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer
+pub moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::id: moverox_sui::sui::object::UID
+pub moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::issuer: moverox_sui::move_stdlib::string::String
+pub moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::owner: moverox_types::address::Address
+impl moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer
+pub const fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::new(id: moverox_sui::sui::object::UID, owner: moverox_types::address::Address, issuer: moverox_sui::move_stdlib::string::String) -> Self
+impl moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer
+pub const fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::type_tag() -> moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+impl moverox_traits::ConstStructTag for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer
+pub const moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::STRUCT_TAG: moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+impl moverox_traits::HasKey for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::address(&self) -> moverox_types::address::Address
+impl moverox_traits::MoveDatatype for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer
+pub type moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::StructTag = moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+impl moverox_traits::MoveType for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer
+pub type moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuer::TypeTag = moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub struct moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+impl core::fmt::Display for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result
+impl core::str::traits::FromStr for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub type moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::Err = moverox_traits::ParseStructTagError
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::from_str(s: &str) -> core::result::Result<Self, Self::Err>
+impl moverox_traits::ConstAddress for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub const moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::ADDRESS: moverox_types::address::Address
+impl moverox_traits::ConstModule for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub const moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::MODULE: &moverox_types::ident_str::IdentStr
+impl moverox_traits::ConstName for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub const moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::NAME: &moverox_types::ident_str::IdentStr
+impl moverox_traits::MoveDatatypeTag for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::address(&self) -> moverox_types::address::Address
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::from_struct_tag(value: &moverox_types::type_tag::StructTag) -> core::result::Result<Self, moverox_traits::StructTagError>
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::module(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::name(&self) -> &moverox_types::ident_str::IdentStr
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::type_params(&self) -> alloc::boxed::Box<[&dyn moverox_traits::MoveTypeTag]>
+impl serde_core::ser::Serialize for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::serialize<S>(&self, serializer: S) -> core::result::Result<<S as serde_core::ser::Serializer>::Ok, <S as serde_core::ser::Serializer>::Error> where S: serde_core::ser::Serializer
+impl<'de> serde_core::de::Deserialize<'de> for moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag
+pub fn moverox_sui::sui::zklogin_verified_issuer::VerifiedIssuerTypeTag::deserialize<D>(deserializer: D) -> core::result::Result<Self, <D as serde_core::de::Deserializer>::Error> where D: serde_core::de::Deserializer<'de>
 pub trait moverox_sui::Compat: moverox_sui::sui_sdk::__seal_compat::Sealed
 pub type moverox_sui::Compat::To
 pub fn moverox_sui::Compat::from_sui(value: Self::To) -> Self
