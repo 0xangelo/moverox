@@ -2,4 +2,5 @@
 source: crates/move-syn/src/tests/imports/sui_framework.rs
 expression: flat_imports(ast)
 ---
-
+dynamic_field -> sui::dynamic_field
+sui_accumulator_root_address -> sui::object::sui_accumulator_root_address

@@ -12,6 +12,10 @@ fun join<T>(self: &mut Balance<T>, balance: Balance<T>): u64
 fun split<T>(self: &mut Balance<T>, value: u64): Balance<T>
 fun withdraw_all<T>(self: &mut Balance<T>): Balance<T>
 fun destroy_zero<T>(balance: Balance<T>)
+fun send_funds<T>(balance: Balance<T>, recipient: address)
+fun redeem_funds<T>(withdrawal: sui::funds_accumulator::Withdrawal<Balance<T>>): Balance<T>
+fun withdraw_funds_from_object<T>(obj: &mut sui::object::UID, value: u64): sui::funds_accumulator::Withdrawal<Balance<T>>
+fun settled_funds_value<T>(root: &sui::accumulator::AccumulatorRoot, address: address): u64
 fun create_for_testing<T>(value: u64): Balance<T>
 fun destroy_for_testing<T>(self: Balance<T>): u64
 fun create_supply_for_testing<T>(): Supply<T>

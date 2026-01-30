@@ -39,6 +39,400 @@ pub mod accumulator {
             self.id.id.bytes
         }
     }
+    #[cfg_attr(not(doctest), doc = " Storage for 128-bit accumulator values.")]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Currently only used to represent the sum of 64 bit values (such as `Balance<T>`)."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " The additional bits are necessary to prevent overflow, as it would take 2^64 deposits of U64_MAX"
+    )]
+    #[cfg_attr(not(doctest), doc = " to cause an overflow.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = accumulator)]
+    #[allow(non_snake_case)]
+    pub struct U128 {
+        pub value: u128,
+    }
+    impl U128 {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(value: u128) -> Self {
+            Self { value }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " `Key` is used only for computing the field id of accumulator objects."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " `T` is the type of the accumulated value, e.g. `Balance<SUI>`"
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = accumulator)]
+    #[allow(non_snake_case)]
+    pub struct Key<T> {
+        pub address: address,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> Key<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(address: address) -> Self {
+            Self {
+                address,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod accumulator_metadata {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(not(doctest), doc = " === Accumulator metadata ===")]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Metadata system has been removed, but structs must remain for backwards compatibility."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = accumulator_metadata)]
+    #[allow(non_snake_case)]
+    pub struct OwnerKey {
+        pub owner: address,
+    }
+    impl OwnerKey {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(owner: address) -> Self {
+            Self { owner }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " An owner field, to which all AccumulatorMetadata fields for the owner are"
+    )]
+    #[cfg_attr(not(doctest), doc = " attached.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = accumulator_metadata)]
+    #[allow(non_snake_case)]
+    pub struct Owner {
+        /// The individual balances owned by the owner.
+        pub balances: super::bag::Bag,
+        pub owner: address,
+    }
+    impl Owner {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(balances: super::bag::Bag, owner: address) -> Self {
+            Self { balances, owner }
+        }
+    }
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = accumulator_metadata)]
+    #[allow(non_snake_case)]
+    pub struct MetadataKey<T>(bool, #[serde(skip)] ::std::marker::PhantomData<T>);
+    impl<T> MetadataKey<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self(false, ::std::marker::PhantomData)
+        }
+    }
+    #[cfg_attr(not(doctest), doc = " A metadata field for a balance field with type T.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = accumulator_metadata)]
+    #[allow(non_snake_case)]
+    pub struct Metadata<T> {
+        /// Any per-balance fields we wish to add in the future.
+        pub fields: super::bag::Bag,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> Metadata<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(fields: super::bag::Bag) -> Self {
+            Self {
+                fields,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    #[cfg_attr(not(doctest), doc = " === Accumulator object count storage ===")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Key for storing the net count of accumulator objects as a dynamic field on the accumulator root."
+    )]
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = accumulator_metadata)]
+    #[allow(non_snake_case)]
+    pub struct AccumulatorObjectCountKey(bool);
+    impl AccumulatorObjectCountKey {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self(false)
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod accumulator_settlement {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = accumulator_settlement)]
+    #[allow(non_snake_case)]
+    pub struct EventStreamHead {
+        /// Merkle Mountain Range of all events in the stream.
+        pub mmr: vector<u256>,
+        /// Checkpoint sequence number at which the event stream was written.
+        pub checkpoint_seq: u64,
+        /// Number of events in the stream.
+        pub num_events: u64,
+    }
+    impl EventStreamHead {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            mmr: vector<u256>,
+            checkpoint_seq: u64,
+            num_events: u64,
+        ) -> Self {
+            Self {
+                mmr,
+                checkpoint_seq,
+                num_events,
+            }
+        }
+    }
+}
+#[allow(rustdoc::all)]
+pub mod address_alias {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " Singleton shared object which manages creation of AddressAliases state."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " The actual alias configs are created as derived objects with this object"
+    )]
+    #[cfg_attr(not(doctest), doc = " as the parent.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = address_alias)]
+    #[allow(non_snake_case)]
+    pub struct AddressAliasState {
+        pub id: super::object::UID,
+        pub version: u64,
+    }
+    impl AddressAliasState {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::UID, version: u64) -> Self {
+            Self { id, version }
+        }
+    }
+    impl ::moverox::traits::HasKey for AddressAliasState {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Tracks the set of addresses allowed to act as a given sender."
+    )]
+    #[cfg_attr(not(doctest), doc = "")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " An alias allows transactions signed by the alias address to act as the"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " original address. For example, if address X sets an alias of address Y, then"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " then a transaction signed by Y can set its sender address to X."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = address_alias)]
+    #[allow(non_snake_case)]
+    pub struct AddressAliases {
+        pub id: super::object::UID,
+        pub aliases: super::vec_set::VecSet<address>,
+    }
+    impl AddressAliases {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            id: super::object::UID,
+            aliases: super::vec_set::VecSet<address>,
+        ) -> Self {
+            Self { id, aliases }
+        }
+    }
+    impl ::moverox::traits::HasKey for AddressAliases {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Internal key used for derivation of AddressAliases object addresses."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = address_alias)]
+    #[allow(non_snake_case)]
+    pub struct AliasKey(pub address);
+    impl AliasKey {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(_0: address) -> Self {
+            Self(_0)
+        }
+    }
 }
 #[allow(rustdoc::all)]
 pub mod authenticator_state {
@@ -1908,6 +2302,127 @@ pub mod deny_list {
 }
 #[cfg_attr(
     not(doctest),
+    doc = " Enables the creation of objects with deterministic addresses derived from a parent object's UID."
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " This module provides a way to generate objects with predictable addresses based on a parent UID"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " and a key, creating a namespace that ensures uniqueness for each parent-key combination,"
+)]
+#[cfg_attr(not(doctest), doc = " which is usually how registries are built.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " Key features:")]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Deterministic address generation based on parent object UID and key"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " - Derived objects can exist and operate independently of their parent"
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " The derived UIDs, once created, are independent and do not require sequencing on the parent"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " object. They can be used without affecting the parent. The parent only maintains a record of"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " which derived addresses have been claimed to prevent duplicates."
+)]
+#[allow(rustdoc::all)]
+pub mod derived_object {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " Added as a DF to the parent's UID, to mark an ID as claimed."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = derived_object)]
+    #[allow(non_snake_case)]
+    pub struct Claimed(pub super::object::ID);
+    impl Claimed {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(_0: super::object::ID) -> Self {
+            Self(_0)
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " An internal key to protect from generating the same UID twice (e.g. collide with DFs)"
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = derived_object)]
+    #[allow(non_snake_case)]
+    pub struct DerivedObjectKey<K>(pub K);
+    impl<K> DerivedObjectKey<K> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(_0: K) -> Self {
+            Self(_0)
+        }
+    }
+    #[cfg_attr(not(doctest), doc = " The possible values of a claimed UID.")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " We make it an enum to make upgradeability easier in the future."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = derived_object)]
+    #[allow(non_snake_case)]
+    pub enum ClaimedStatus {
+        /// The UID has been claimed and cannot be re-claimed or used.
+        Reserved,
+    }
+}
+#[cfg_attr(
+    not(doctest),
     doc = " Defines a Display struct which defines the way an Object"
 )]
 #[cfg_attr(
@@ -2247,6 +2762,65 @@ pub mod dynamic_object_field {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
         pub const fn new(name: Name) -> Self {
             Self { name }
+        }
+    }
+}
+#[cfg_attr(
+    not(doctest),
+    doc = " A module for accumulating funds, i.e. Balance-like types."
+)]
+#[allow(rustdoc::all)]
+pub mod funds_accumulator {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " Allows for withdrawing funds from a given address. The `Withdrawal` can be created in PTBs for"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " the transaction sender, or dynamically from an object via `withdraw_from_object`."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " The redemption of the funds must be initiated from the module that defines `T`."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = funds_accumulator)]
+    #[allow(non_snake_case)]
+    pub struct Withdrawal<T> {
+        /// The owner of the funds, either an object or a transaction sender
+        pub owner: address,
+        /// At signing we check the limit <= balance when taking this as a call arg.
+        /// If this was generated from an object, we cannot check this until redemption.
+        pub limit: u256,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> Withdrawal<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(owner: address, limit: u256) -> Self {
+            Self {
+                owner,
+                limit,
+                _T: ::std::marker::PhantomData,
+            }
         }
     }
 }
@@ -4337,6 +4911,482 @@ pub mod random {
         }
     }
 }
+#[cfg_attr(
+    not(doctest),
+    doc = " Defines the system object for managing coin data in a central"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " registry. This module provides a centralized way to store and manage"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " metadata for all currencies in the Sui ecosystem, including their"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " supply information, regulatory status, and metadata capabilities."
+)]
+#[allow(rustdoc::all)]
+pub mod coin_registry {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(
+        not(doctest),
+        doc = " System object found at address `0xc` that stores coin data for all"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " registered coin types. This is a shared object that acts as a central"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " registry for coin metadata, supply information, and regulatory status."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub struct CoinRegistry {
+        pub id: super::object::UID,
+    }
+    impl CoinRegistry {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::UID) -> Self {
+            Self { id }
+        }
+    }
+    impl ::moverox::traits::HasKey for CoinRegistry {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Store only object that enables more flexible coin data"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " registration, allowing for additional fields to be added"
+    )]
+    #[cfg_attr(not(doctest), doc = " without changing the `Currency` structure.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub struct ExtraField(pub ::moverox_sui::std::type_name::TypeName, pub vector<u8>);
+    impl ExtraField {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            _0: ::moverox_sui::std::type_name::TypeName,
+            _1: vector<u8>,
+        ) -> Self {
+            Self(_0, _1)
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Key used to derive addresses when creating `Currency<T>` objects."
+    )]
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub struct CurrencyKey<T>(bool, #[serde(skip)] ::std::marker::PhantomData<T>);
+    impl<T> CurrencyKey<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self(false, ::std::marker::PhantomData)
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Key used to store the legacy `CoinMetadata` for a `Currency`."
+    )]
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub struct LegacyMetadataKey(bool);
+    impl LegacyMetadataKey {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self(false)
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Capability object that gates metadata (name, description, icon_url, symbol)"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " changes in the `Currency`. It can only be created (or claimed) once, and can"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " be deleted to prevent changes to the `Currency` metadata."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub struct MetadataCap<T> {
+        pub id: super::object::UID,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> MetadataCap<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(id: super::object::UID) -> Self {
+            Self {
+                id,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    impl<T> ::moverox::traits::HasKey for MetadataCap<T> {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Potato callback for the legacy `CoinMetadata` borrowing."
+    )]
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub struct Borrow<T> {
+        /// BCS for empty structs actually encodes a single boolean hidden field
+        dummy_field: bool,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> Borrow<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self {
+                dummy_field: false,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Currency stores metadata such as name, symbol, decimals, icon_url and description,"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " as well as supply states (optional) and regulatory status."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub struct Currency<T> {
+        pub id: super::object::UID,
+        /// Number of decimal places the coin uses for display purposes.
+        pub decimals: u8,
+        /// Human-readable name for the coin.
+        pub name: ::moverox_sui::std::string::String,
+        /// Short symbol/ticker for the coin.
+        pub symbol: ::moverox_sui::std::string::String,
+        /// Detailed description of the coin.
+        pub description: ::moverox_sui::std::string::String,
+        /// URL for the coin's icon/logo.
+        pub icon_url: ::moverox_sui::std::string::String,
+        /// Current supply state of the coin (fixed supply or unknown)
+        /// Note: We're using `Option` because `SupplyState` does not have drop,
+        /// meaning we cannot swap out its value at a later state.
+        pub supply: Option<SupplyState<T>>,
+        /// Regulatory status of the coin (regulated with deny cap or unknown)
+        pub regulated: RegulatedState,
+        /// ID of the treasury cap for this coin type, if registered.
+        pub treasury_cap_id: Option<super::object::ID>,
+        /// ID of the metadata capability for this coin type, if claimed.
+        pub metadata_cap_id: MetadataCapState,
+        /// Additional fields for extensibility.
+        pub extra_fields: super::vec_map::VecMap<
+            ::moverox_sui::std::string::String,
+            ExtraField,
+        >,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> Currency<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            id: super::object::UID,
+            decimals: u8,
+            name: ::moverox_sui::std::string::String,
+            symbol: ::moverox_sui::std::string::String,
+            description: ::moverox_sui::std::string::String,
+            icon_url: ::moverox_sui::std::string::String,
+            supply: Option<SupplyState<T>>,
+            regulated: RegulatedState,
+            treasury_cap_id: Option<super::object::ID>,
+            metadata_cap_id: MetadataCapState,
+            extra_fields: super::vec_map::VecMap<
+                ::moverox_sui::std::string::String,
+                ExtraField,
+            >,
+        ) -> Self {
+            Self {
+                id,
+                decimals,
+                name,
+                symbol,
+                description,
+                icon_url,
+                supply,
+                regulated,
+                treasury_cap_id,
+                metadata_cap_id,
+                extra_fields,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+    impl<T> ::moverox::traits::HasKey for Currency<T> {
+        fn address(&self) -> ::moverox::types::Address {
+            self.id.id.bytes
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Supply state marks the type of Currency Supply, which can be"
+    )]
+    #[cfg_attr(not(doctest), doc = " - Fixed: no minting or burning;")]
+    #[cfg_attr(not(doctest), doc = " - BurnOnly: no minting, burning is allowed;")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " - Unknown: flexible (supply is controlled by its `TreasuryCap`);"
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub enum SupplyState<T> {
+        /// Coin has a fixed supply with the given Supply object.
+        Fixed(super::balance::Supply<T>),
+        /// Coin has a supply that can ONLY decrease.
+        BurnOnly(super::balance::Supply<T>),
+        /// Supply information is not yet known or registered.
+        Unknown,
+    }
+    #[cfg_attr(not(doctest), doc = " Regulated state of a coin type.")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " - Regulated: `DenyCap` exists or a `RegulatedCoinMetadata` used to mark currency as regulated;"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " - Unregulated: the currency was created without deny list;"
+    )]
+    #[cfg_attr(not(doctest), doc = " - Unknown: the regulatory status is unknown.")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub enum RegulatedState {
+        /// Coin is regulated with a deny cap for address restrictions.
+        /// `allow_global_pause` is `None` if the information is unknown (has not been migrated from `DenyCapV2`).
+        Regulated {
+            cap: super::object::ID,
+            allow_global_pause: Option<bool>,
+            variant: u8,
+        },
+        /// The coin has been created without deny list.
+        Unregulated,
+        /// Regulatory status is unknown.
+        /// Result of a legacy migration for that coin (from `coin.move` constructors)
+        Unknown,
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " State of the `MetadataCap` for a single `Currency`."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub enum MetadataCapState {
+        /// The metadata cap has been claimed.
+        Claimed(super::object::ID),
+        /// The metadata cap has not been claimed.
+        Unclaimed,
+        /// The metadata cap has been claimed and then deleted.
+        Deleted,
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Hot potato wrapper to enforce registration after \"new_currency\" data creation."
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Destroyed in the `finalize` call and either transferred to the `CoinRegistry`"
+    )]
+    #[cfg_attr(
+        not(doctest),
+        doc = " (in case of an OTW registration) or shared directly (for dynamically created"
+    )]
+    #[cfg_attr(not(doctest), doc = " currencies).")]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = coin_registry)]
+    #[allow(non_snake_case)]
+    pub struct CurrencyInitializer<T> {
+        pub currency: Currency<T>,
+        pub extra_fields: super::bag::Bag,
+        pub is_otw: bool,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> CurrencyInitializer<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            currency: Currency<T>,
+            extra_fields: super::bag::Bag,
+            is_otw: bool,
+        ) -> Self {
+            Self {
+                currency,
+                extra_fields,
+                is_otw,
+                _T: ::std::marker::PhantomData,
+            }
+        }
+    }
+}
 #[cfg_attr(not(doctest), doc = " Coin<SUI> is the token used to pay for gas in Sui.")]
 #[cfg_attr(
     not(doctest),
@@ -4600,6 +5650,59 @@ pub mod test_scenario {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
         pub const fn new(txn_number: u64, ctx: super::tx_context::TxContext) -> Self {
             Self { txn_number, ctx }
+        }
+    }
+    #[cfg_attr(
+        not(doctest),
+        doc = " Builder for a `TxContext` to use in a test scenario."
+    )]
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x2")]
+    #[move_(module = test_scenario)]
+    #[allow(non_snake_case)]
+    pub struct TxContextBuilder {
+        pub sender: address,
+        pub epoch: u64,
+        pub epoch_timestamp_ms: u64,
+        pub ids_created: u64,
+        pub rgp: Option<u64>,
+        pub gas_price: u64,
+        pub gas_budget: u64,
+        pub sponsor: Option<address>,
+    }
+    impl TxContextBuilder {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(
+            sender: address,
+            epoch: u64,
+            epoch_timestamp_ms: u64,
+            ids_created: u64,
+            rgp: Option<u64>,
+            gas_price: u64,
+            gas_budget: u64,
+            sponsor: Option<address>,
+        ) -> Self {
+            Self {
+                sender,
+                epoch,
+                epoch_timestamp_ms,
+                ids_created,
+                rgp,
+                gas_price,
+                gas_budget,
+                sponsor,
+            }
         }
     }
     #[cfg_attr(not(doctest), doc = " The effects of a transaction")]

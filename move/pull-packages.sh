@@ -4,9 +4,9 @@ REPO_ROOT="$(git rev-parse --show-toplevel)"
 DIR=$( realpath $( dirname $0 ) )
 
 SUI_REPO=mystenlabs/sui
-SUI_TAG=mainnet-v1.51.5
+SUI_TAG=mainnet-v1.64.2
 DEEP_REPO=MystenLabs/deepbookv3
-DEEP_TAG=testnet-v12.0.0
+DEEP_TAG=v6.0.0
 
 
 set -ex

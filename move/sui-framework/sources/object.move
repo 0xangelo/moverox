@@ -46,6 +46,12 @@ const SUI_ACCUMULATOR_ROOT_OBJECT_ID: address = @0xacc;
 /// The hardcoded ID for the Bridge Object.
 const SUI_BRIDGE_ID: address = @0x9;
 
+/// The hardcoded ID for the Coin Registry Object.
+const SUI_COIN_REGISTRY_OBJECT_ID: address = @0xc;
+
+/// The hardcoded ID for the AddressAliasState Object.
+const SUI_ADDRESS_ALIAS_STATE_ID: address = @0xa;
+
 /// Sender is not @0x0 the system address.
 const ENotSystemAddress: u64 = 0;
 
@@ -149,12 +155,32 @@ public(package) fun sui_accumulator_root_address(): address {
     SUI_ACCUMULATOR_ROOT_OBJECT_ID
 }
 
+/// Create the `UID` for the singleton `CoinRegistry` object.
+/// This should only be called once from `coin_registry`.
+public(package) fun sui_coin_registry_object_id(): UID {
+    UID {
+        id: ID { bytes: SUI_COIN_REGISTRY_OBJECT_ID },
+    }
+}
+
+public(package) fun sui_coin_registry_address(): address {
+    SUI_COIN_REGISTRY_OBJECT_ID
+}
+
 #[allow(unused_function)]
 /// Create the `UID` for the singleton `Bridge` object.
 /// This should only be called once from `bridge`.
 fun bridge(): UID {
     UID {
         id: ID { bytes: SUI_BRIDGE_ID },
+    }
+}
+
+/// Create the `UID` for the singleton `AddressAliasState` object.
+/// This should only be called once from `address_alias`.
+public(package) fun address_alias_state(): UID {
+    UID {
+        id: ID { bytes: SUI_ADDRESS_ALIAS_STATE_ID },
     }
 }
 

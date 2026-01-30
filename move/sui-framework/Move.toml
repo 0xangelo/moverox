@@ -1,8 +1,7 @@
 [package]
-edition      = "2024.beta"
-name         = "Sui"
-published-at = "0x2"
-version      = "0.0.1"
+name = "Sui"
+edition = "2024.beta"
+published-at = "0x2" # Deprecated, kept for backwards compatibility
 
 [dependencies]
 MoveStdlib = { local = "../move-stdlib" }

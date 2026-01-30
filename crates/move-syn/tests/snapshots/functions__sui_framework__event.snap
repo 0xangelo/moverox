@@ -1,0 +1,5 @@
+---
+source: crates/move-syn/tests/functions.rs
+expression: signatures
+---
+fun emit_authenticated<T: copy + drop>(event: T)

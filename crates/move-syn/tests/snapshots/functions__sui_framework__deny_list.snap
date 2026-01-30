@@ -3,5 +3,6 @@ source: crates/move-syn/tests/functions.rs
 expression: signatures
 ---
 fun reserved_addresses(): vector<address>
-fun create_for_test(ctx: &mut sui::tx_context::TxContext)
+fun create_for_testing(ctx: &mut sui::tx_context::TxContext)
 fun new_for_testing(ctx: &mut sui::tx_context::TxContext): DenyList
+fun create_for_test(ctx: &mut sui::tx_context::TxContext)

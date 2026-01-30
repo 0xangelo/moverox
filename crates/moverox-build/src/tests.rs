@@ -29,6 +29,7 @@ fn generate_rust_for_move_stdlib() -> TestResult {
     debug.move
     fixed_point32.move
     hash.move
+    internal.move
     macros.move
     option.move
     string.move
@@ -73,7 +74,10 @@ fn generate_rust_for_sui_framework() -> TestResult {
         .join("\n");
     insta::assert_snapshot!(files_found, @r"
     accumulator.move
+    accumulator_metadata.move
+    accumulator_settlement.move
     address.move
+    address_alias.move
     authenticator_state.move
     bag.move
     balance.move
@@ -97,10 +101,12 @@ fn generate_rust_for_sui_framework() -> TestResult {
     zklogin_verified_id.move
     zklogin_verified_issuer.move
     deny_list.move
+    derived_object.move
     display.move
     dynamic_field.move
     dynamic_object_field.move
     event.move
+    funds_accumulator.move
     hex.move
     kiosk.move
     kiosk_extension.move
@@ -114,8 +120,10 @@ fn generate_rust_for_sui_framework() -> TestResult {
     party.move
     pay.move
     priority_queue.move
+    protocol_config.move
     prover.move
     random.move
+    coin_registry.move
     sui.move
     table.move
     table_vec.move

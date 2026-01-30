@@ -6,8 +6,13 @@
 /// custom coins with `Supply` and `Balance`s.
 module sui::balance;
 
+use sui::funds_accumulator::Withdrawal;
+
 /// Allows calling `.into_coin()` on a `Balance` to turn it into a coin.
 public use fun sui::coin::from_balance as Balance.into_coin;
+
+/// Allows calling `.value()` on a `Supply` to get the value.
+public use fun supply_value as Supply.value;
 
 /// For when trying to destroy a non-zero balance.
 const ENonZero: u64 = 0;
@@ -49,7 +54,7 @@ public fun create_supply<T: drop>(_: T): Supply<T> {
 
 /// Increase supply by `value` and create a new `Balance<T>` with this value.
 public fun increase_supply<T>(self: &mut Supply<T>, value: u64): Balance<T> {
-    assert!(value < (18446744073709551615u64 - self.value), EOverflow);
+    assert!(value <= (std::u64::max_value!() - self.value), EOverflow);
     self.value = self.value + value;
     Balance { value }
 }
@@ -93,6 +98,39 @@ public fun destroy_zero<T>(balance: Balance<T>) {
     let Balance { value: _ } = balance;
 }
 
+/// Send a `Balance` to an address's funds accumulator.
+public fun send_funds<T>(balance: Balance<T>, recipient: address) {
+    sui::funds_accumulator::add_impl(balance, recipient);
+}
+
+/// Redeem a `Withdrawal<Balance<T>>` to get the underlying `Balance<T>` from an address's funds
+/// accumulator.
+public fun redeem_funds<T>(withdrawal: sui::funds_accumulator::Withdrawal<Balance<T>>): Balance<T> {
+    withdrawal.redeem(internal::permit())
+}
+
+/// Create a `Withdrawal<Balance<T>>` from an object to withdraw funds from it.
+public fun withdraw_funds_from_object<T>(obj: &mut UID, value: u64): Withdrawal<Balance<T>> {
+    sui::funds_accumulator::withdraw_from_object(obj, value as u256)
+}
+
+/// Read the value of the funds of type T owned by `address` as of the beginning of
+/// the current consensus commit. Can read either address-owned or object-owned balances.
+public fun settled_funds_value<T>(root: &sui::accumulator::AccumulatorRoot, address: address): u64 {
+    if (!root.u128_exists<Balance<T>>(address)) {
+        return 0
+    };
+    let val: u128 = root.u128_read<Balance<T>>(address);
+    let val = std::u128::min(std::u64::max_value!() as u128, val);
+    val as u64
+}
+
+// === SUI specific operations ===
+
+public(package) fun create_supply_internal<T>(): Supply<T> {
+    Supply { value: 0 }
+}
+
 const SUI_TYPE_NAME: vector<u8> =
     b"0000000000000000000000000000000000000000000000000000000000000002::sui::SUI";
 
@@ -102,7 +140,10 @@ const SUI_TYPE_NAME: vector<u8> =
 /// and nowhere else.
 fun create_staking_rewards<T>(value: u64, ctx: &TxContext): Balance<T> {
     assert!(ctx.sender() == @0x0, ENotSystemAddress);
-    assert!(std::type_name::get<T>().into_string().into_bytes() == SUI_TYPE_NAME, ENotSUI);
+    assert!(
+        std::type_name::with_defining_ids<T>().into_string().into_bytes() == SUI_TYPE_NAME,
+        ENotSUI,
+    );
     Balance { value }
 }
 
@@ -112,7 +153,10 @@ fun create_staking_rewards<T>(value: u64, ctx: &TxContext): Balance<T> {
 /// and nowhere else.
 fun destroy_storage_rebates<T>(self: Balance<T>, ctx: &TxContext) {
     assert!(ctx.sender() == @0x0, ENotSystemAddress);
-    assert!(std::type_name::get<T>().into_string().into_bytes() == SUI_TYPE_NAME, ENotSUI);
+    assert!(
+        std::type_name::with_defining_ids<T>().into_string().into_bytes() == SUI_TYPE_NAME,
+        ENotSUI,
+    );
     let Balance { value: _ } = self;
 }
 
@@ -121,6 +165,8 @@ public(package) fun destroy_supply<T>(self: Supply<T>): u64 {
     let Supply { value } = self;
     value
 }
+
+// === Test functions ===
 
 #[test_only]
 /// Create a `Balance` of any coin for testing purposes.

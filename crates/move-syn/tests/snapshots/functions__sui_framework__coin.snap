@@ -13,6 +13,8 @@ fun from_balance<T>(balance: sui::balance::Balance<T>, ctx: &mut sui::tx_context
 fun into_balance<T>(coin: Coin<T>): sui::balance::Balance<T>
 fun take<T>(balance: &mut sui::balance::Balance<T>, value: u64, ctx: &mut sui::tx_context::TxContext): Coin<T>
 fun put<T>(balance: &mut sui::balance::Balance<T>, coin: Coin<T>)
+fun redeem_funds<T>(withdrawal: sui::funds_accumulator::Withdrawal<sui::balance::Balance<T>>, ctx: &mut sui::tx_context::TxContext): Coin<T>
+fun send_funds<T>(coin: Coin<T>, recipient: address)
 entry fun join<T>(self: &mut Coin<T>, c: Coin<T>)
 fun split<T>(self: &mut Coin<T>, split_amount: u64, ctx: &mut sui::tx_context::TxContext): Coin<T>
 fun divide_into_n<T>(self: &mut Coin<T>, n: u64, ctx: &mut sui::tx_context::TxContext): vector<Coin<T>>

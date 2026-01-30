@@ -10,6 +10,7 @@ use deepbook::{
         Self,
         BalanceManager,
         TradeProof,
+        DeepBookPoolReferral,
         DeepBookReferral,
         TradeCap,
         DepositCap,
@@ -64,6 +65,7 @@ const EInvalidReferralMultiplier: u64 = 16;
 const EInvalidEWMAAlpha: u64 = 17;
 const EInvalidZScoreThreshold: u64 = 18;
 const EInvalidAdditionalTakerFee: u64 = 19;
+const EWrongPoolReferral: u64 = 20;
 
 // === Structs ===
 public struct Pool<phantom BaseAsset, phantom QuoteAsset> has key {
@@ -462,7 +464,7 @@ public fun swap_exact_quantity_with_manager<BaseAsset, QuoteAsset>(
         ctx,
     );
 
-    let (base_out, quote_out) = if (is_bid) {
+    let (base_out_quantity, quote_out_quantity) = if (is_bid) {
         let quote_left = quote_quantity - order_info.cumulative_quote_quantity();
         (order_info.executed_quantity(), quote_left)
     } else {
@@ -470,8 +472,16 @@ public fun swap_exact_quantity_with_manager<BaseAsset, QuoteAsset>(
         (base_left, order_info.cumulative_quote_quantity())
     };
 
-    let base_out = balance_manager.withdraw_with_cap(withdraw_cap, base_out, ctx);
-    let quote_out = balance_manager.withdraw_with_cap(withdraw_cap, quote_out, ctx);
+    let base_out = if (base_out_quantity > 0) {
+        balance_manager.withdraw_with_cap(withdraw_cap, base_out_quantity, ctx)
+    } else {
+        coin::zero(ctx)
+    };
+    let quote_out = if (quote_out_quantity > 0) {
+        balance_manager.withdraw_with_cap(withdraw_cap, quote_out_quantity, ctx)
+    } else {
+        coin::zero(ctx)
+    };
 
     if (is_bid) {
         assert!(base_out.value() >= min_out, EMinimumQuantityOutNotMet);
@@ -859,7 +869,7 @@ public fun mint_referral<BaseAsset, QuoteAsset>(
     assert!(multiplier <= constants::referral_max_multiplier(), EInvalidReferralMultiplier);
     assert!(multiplier % constants::referral_multiplier() == 0, EInvalidReferralMultiplier);
     let _ = self.load_inner();
-    let referral_id = balance_manager::mint_referral(ctx);
+    let referral_id = balance_manager::mint_referral(self.id(), ctx);
     self
         .id
         .add(
@@ -888,10 +898,20 @@ public fun update_referral_multiplier<BaseAsset, QuoteAsset>(
     abort 1337
 }
 
-/// Update the multiplier for the referral.
+#[deprecated(note = b"This function is deprecated, use `update_pool_referral_multiplier` instead.")]
 public fun update_deepbook_referral_multiplier<BaseAsset, QuoteAsset>(
+    _self: &mut Pool<BaseAsset, QuoteAsset>,
+    _referral: &DeepBookReferral,
+    _multiplier: u64,
+    _ctx: &TxContext,
+) {
+    abort
+}
+
+/// Update the multiplier for the referral.
+public fun update_pool_referral_multiplier<BaseAsset, QuoteAsset>(
     self: &mut Pool<BaseAsset, QuoteAsset>,
-    referral: &DeepBookReferral,
+    referral: &DeepBookPoolReferral,
     multiplier: u64,
     ctx: &TxContext,
 ) {
@@ -906,10 +926,19 @@ public fun update_deepbook_referral_multiplier<BaseAsset, QuoteAsset>(
     referral_rewards.multiplier = multiplier;
 }
 
-/// Claim the rewards for the referral.
+#[deprecated(note = b"This function is deprecated, use `claim_pool_referral_rewards` instead.")]
 public fun claim_referral_rewards<BaseAsset, QuoteAsset>(
+    _self: &mut Pool<BaseAsset, QuoteAsset>,
+    _referral: &DeepBookReferral,
+    _ctx: &mut TxContext,
+): (Coin<BaseAsset>, Coin<QuoteAsset>, Coin<DEEP>) {
+    abort
+}
+
+/// Claim the rewards for the referral.
+public fun claim_pool_referral_rewards<BaseAsset, QuoteAsset>(
     self: &mut Pool<BaseAsset, QuoteAsset>,
-    referral: &DeepBookReferral,
+    referral: &DeepBookPoolReferral,
     ctx: &mut TxContext,
 ): (Coin<BaseAsset>, Coin<QuoteAsset>, Coin<DEEP>) {
     let _ = self.load_inner();
@@ -1499,7 +1528,7 @@ public fun can_place_limit_order<BaseAsset, QuoteAsset>(
     if (is_bid) {
         required_quote = quote_quantity;
         if (pay_with_deep) {
-            required_deep = fee_balances.deep();
+            required_deep = math::mul(fee_balances.deep(), taker_fee);
         } else {
             let fee_quote = math::mul(fee_balances.quote(), taker_fee);
             required_quote = required_quote + fee_quote;
@@ -1507,7 +1536,7 @@ public fun can_place_limit_order<BaseAsset, QuoteAsset>(
     } else {
         required_base = quantity;
         if (pay_with_deep) {
-            required_deep = fee_balances.deep();
+            required_deep = math::mul(fee_balances.deep(), taker_fee);
         } else {
             let fee_base = math::mul(fee_balances.base(), taker_fee);
             required_base = required_base + fee_base;
@@ -1558,16 +1587,16 @@ public fun can_place_market_order<BaseAsset, QuoteAsset>(
     let available_deep = balance_manager.balance<DEEP>() + settled_balances.deep();
 
     if (is_bid) {
-        // For bid orders: check if available quote can return desired base quantity
-        // get_quantity_out_input_fee already accounts for fees being deducted from quote
-        let (base_out, _, deep_required) = if (pay_with_deep) {
-            self.get_quantity_out(0, available_quote, clock)
-        } else {
-            self.get_quantity_out_input_fee(0, available_quote, clock)
-        };
+        // For bid orders: calculate quote needed to acquire desired base quantity
+        // get_quote_quantity_in returns (base_out, quote_needed, deep_required)
+        let (base_out, quote_needed, deep_required) = self.get_quote_quantity_in(
+            quantity,
+            pay_with_deep,
+            clock,
+        );
 
-        // Not enough quote balance for the base quantity
-        if (base_out < quantity) {
+        // Not enough liquidity or available quote for the base quantity
+        if (base_out < quantity || available_quote < quote_needed) {
             return false
         };
 
@@ -1693,17 +1722,41 @@ public fun id<BaseAsset, QuoteAsset>(self: &Pool<BaseAsset, QuoteAsset>): ID {
     self.load_inner().pool_id
 }
 
+#[deprecated(note = b"This function is deprecated, use `get_pool_referral_balances` instead.")]
 public fun get_referral_balances<BaseAsset, QuoteAsset>(
-    self: &Pool<BaseAsset, QuoteAsset>,
-    referral: &DeepBookReferral,
+    _self: &Pool<BaseAsset, QuoteAsset>,
+    _referral: &DeepBookReferral,
 ): (u64, u64, u64) {
-    let referral_id = object::id(referral);
-    let referral_rewards: &ReferralRewards<BaseAsset, QuoteAsset> = self.id.borrow(referral_id);
+    abort
+}
+
+public fun get_pool_referral_balances<BaseAsset, QuoteAsset>(
+    self: &Pool<BaseAsset, QuoteAsset>,
+    referral: &DeepBookPoolReferral,
+): (u64, u64, u64) {
+    let _ = self.load_inner();
+    assert!(referral.balance_manager_referral_pool_id() == self.id(), EWrongPoolReferral);
+    let referral_rewards: &ReferralRewards<BaseAsset, QuoteAsset> = self
+        .id
+        .borrow(object::id(referral));
     let base = referral_rewards.base.value();
     let quote = referral_rewards.quote.value();
     let deep = referral_rewards.deep.value();
 
     (base, quote, deep)
+}
+
+public fun pool_referral_multiplier<BaseAsset, QuoteAsset>(
+    self: &Pool<BaseAsset, QuoteAsset>,
+    referral: &DeepBookPoolReferral,
+): u64 {
+    let _ = self.load_inner();
+    assert!(referral.balance_manager_referral_pool_id() == self.id(), EWrongPoolReferral);
+    let referral_rewards: &ReferralRewards<BaseAsset, QuoteAsset> = self
+        .id
+        .borrow(object::id(referral));
+
+    referral_rewards.multiplier
 }
 
 // === Public-Package Functions ===
@@ -1883,7 +1936,7 @@ fun process_referral_fees<BaseAsset, QuoteAsset>(
     balance_manager: &mut BalanceManager,
     trade_proof: &TradeProof,
 ) {
-    let referral_id = balance_manager.get_referral_id();
+    let referral_id = balance_manager.get_balance_manager_referral_id(self.id());
     if (referral_id.is_some()) {
         let referral_id = referral_id.destroy_some();
         let referral_rewards: &mut ReferralRewards<BaseAsset, QuoteAsset> = self

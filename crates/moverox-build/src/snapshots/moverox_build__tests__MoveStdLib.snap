@@ -192,6 +192,84 @@ pub mod fixed_point32 {
 }
 #[cfg_attr(
     not(doctest),
+    doc = " Defines the `Permit` type, which can be used to constrain the logic of a"
+)]
+#[cfg_attr(
+    not(doctest),
+    doc = " generic function to be authorized only by the module that defines the type"
+)]
+#[cfg_attr(not(doctest), doc = " parameter.")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ```move")]
+#[cfg_attr(not(doctest), doc = " module example::use_permit;")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " public struct MyType { /* ... */ }")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " public fun test_permit() {")]
+#[cfg_attr(not(doctest), doc = "    let permit = internal::permit<MyType>();")]
+#[cfg_attr(not(doctest), doc = "    /* external_module::call_with_permit(permit); */")]
+#[cfg_attr(not(doctest), doc = " }")]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " To write a function that is guarded by a `Permit`, require it as an argument."
+)]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(not(doctest), doc = " ```move")]
+#[cfg_attr(
+    not(doctest),
+    doc = " // Silly mockup of a type registry where a type can be registered only by"
+)]
+#[cfg_attr(not(doctest), doc = " // the module that defines the type.")]
+#[cfg_attr(not(doctest), doc = " module example::type_registry;")]
+#[cfg_attr(not(doctest), doc = "")]
+#[cfg_attr(
+    not(doctest),
+    doc = " public fun register_type<T>(_: internal::Permit<T> /* ... */) {"
+)]
+#[cfg_attr(not(doctest), doc = "   /* ... */")]
+#[cfg_attr(not(doctest), doc = " }")]
+#[cfg_attr(not(doctest), doc = " ```")]
+#[allow(rustdoc::all)]
+pub mod internal {
+    #[allow(non_camel_case_types, unused)]
+    type address = ::moverox::types::Address;
+    #[allow(non_camel_case_types, unused)]
+    type u256 = ::moverox::types::U256;
+    #[allow(non_camel_case_types, unused)]
+    type vector<T> = ::std::vec::Vec<T>;
+    #[cfg_attr(not(doctest), doc = " A privileged witness of the `T` type.")]
+    #[cfg_attr(
+        not(doctest),
+        doc = " Instances can only be created by the module that defines the type `T`."
+    )]
+    #[derive(
+        Default,
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[move_(address = "0x1")]
+    #[move_(module = internal)]
+    #[allow(non_snake_case)]
+    pub struct Permit<T>(bool, #[serde(skip)] ::std::marker::PhantomData<T>);
+    impl<T> Permit<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new() -> Self {
+            Self(false, ::std::marker::PhantomData)
+        }
+    }
+}
+#[cfg_attr(
+    not(doctest),
     doc = " This module defines the Option type and its methods to represent and handle an optional value."
 )]
 #[allow(rustdoc::all)]
