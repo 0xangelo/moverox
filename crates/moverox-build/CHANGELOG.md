@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.1](https://github.com/0xangelo/moverox/compare/moverox-build-v0.2.0...moverox-build-v0.2.1)
+
+### 🐛 Bug Fixes
+
+- *(moverox-build)* Find Move files recursively - ([126edbc](https://github.com/0xangelo/moverox/commit/126edbc70a8f08969b35f31f331d5201b12063ed))
+
+### ⚙️ Miscellaneous Tasks
+
+- *(move)* Update Sui framework and Deepbook - ([ea45e66](https://github.com/0xangelo/moverox/commit/ea45e66803a3be9ffe9c2e5d501552826d3b4114))
+
+
 ## [0.2.0](https://github.com/0xangelo/moverox/compare/moverox-build-v0.1.2...moverox-build-v0.2.0)
 
 ### ⚙️ Miscellaneous Tasks

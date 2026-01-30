@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.6](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5...move-syn-v0.0.6)
+
+### ⚙️ Miscellaneous Tasks
+
+- *(move)* Update Sui framework and Deepbook - ([ea45e66](https://github.com/0xangelo/moverox/commit/ea45e66803a3be9ffe9c2e5d501552826d3b4114))
+
+
 ## [0.0.5](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5-beta.6...move-syn-v0.0.5)
 
 ### 🚜 Refactor
