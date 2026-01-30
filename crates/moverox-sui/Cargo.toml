@@ -1,7 +1,7 @@
 [package]
 description = "Oxidized Sui Move framework packages and compatibility layer for `sui_sdk_types`"
 name        = "moverox-sui"
-version     = "0.1.3"
+version     = "0.2.0"
 
 authors.workspace      = true
 categories.workspace   = true
