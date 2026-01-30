@@ -23,3 +23,9 @@ Move.lock
 # Environment variables
 .env
 .envrc
+
+# direnv
+.direnv
+
+# NixOS
+shell.nix
