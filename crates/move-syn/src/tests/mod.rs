@@ -77,6 +77,18 @@ fn struct_with_attr() {
 }
 
 #[test]
+fn struct_with_moverox_attr() {
+    ensure_roundtrip_move_struct(
+        "
+        #[ext(moverox(type_(T = OTW)))]
+        struct BalanceUpdated<phantom T> {
+            amount: u64,
+            is_neg: bool,
+        }",
+    )
+}
+
+#[test]
 fn struct_with_field() {
     ensure_roundtrip_move_struct(
         "
