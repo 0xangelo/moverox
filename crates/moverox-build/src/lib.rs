@@ -211,6 +211,7 @@ impl<'a> Builder<'a> {
             }
             let rust_code = module
                 .to_rust(&self.moverox_path, package_address.as_ref(), &address_map)
+                .map_err(|err| format!("module {}: {err}", module.ident))?
                 .to_string();
             generated_code.push_str(&rust_code);
             generated_code.push('\n');
