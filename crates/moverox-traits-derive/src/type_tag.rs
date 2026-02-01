@@ -470,6 +470,9 @@ fn datatype_generics_to_typetag_generics(mut generics: Generics, thecrate: Path)
             let mut bounds = Punctuated::new();
             bounds.push(parse_quote!(#thecrate::MoveTypeTag));
             type_param.bounds = bounds;
+            // Important: remove any type default
+            type_param.eq_token = None;
+            type_param.default = None;
         }
     }
     generics
