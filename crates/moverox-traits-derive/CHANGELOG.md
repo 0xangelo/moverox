@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.2](https://github.com/0xangelo/moverox/compare/moverox-traits-derive-v0.1.1...moverox-traits-derive-v0.1.2)
+
+### 🐛 Bug Fixes
+
+- *(moverox-traits-derive)* Handle type defaults - ([fffd1e5](https://github.com/0xangelo/moverox/commit/fffd1e5739d5605adc1e85a26212aaeadc26f89f))
+
+
 ## [0.1.1](https://github.com/0xangelo/moverox/compare/moverox-traits-derive-v0.1.0...moverox-traits-derive-v0.1.1)
 
 ### 🧪 Testing

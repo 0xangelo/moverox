@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.11](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.10...moverox-codegen-v0.0.11)
+
+### ⛰️ Features
+
+- *(moverox-codegen)* `#[ext(moverox(type_({T} = OTW)))]` annotations - ([2081a2f](https://github.com/0xangelo/moverox/commit/2081a2f5f14ed4c5ee7c4e4728de0f3c89ed7ba2))
+
+
 ## [0.0.10](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.9...moverox-codegen-v0.0.10)
 
 ### ⚙️ Miscellaneous Tasks

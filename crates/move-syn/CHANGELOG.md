@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.7](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.6...move-syn-v0.0.7)
+
+### 🧪 Testing
+
+- *(move-syn)* Ensure custom moverox attr parses - ([77b71f6](https://github.com/0xangelo/moverox/commit/77b71f6d3002143f89c8f94e7d705bdab4fc425d))
+
+
 ## [0.0.6](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.5...move-syn-v0.0.6)
 
 ### ⚙️ Miscellaneous Tasks

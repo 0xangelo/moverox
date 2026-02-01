@@ -1,7 +1,7 @@
 [package]
 description = "Build script utilities to oxidize an entire Move package"
 name        = "moverox-build"
-version     = "0.2.1"
+version     = "0.2.2"
 
 authors.workspace      = true
 categories.workspace   = true
@@ -26,8 +26,8 @@ ignored = ["moverox"]
 workspace = true
 
 [dependencies]
-move-syn        = { version = "0.0.6", path = "../move-syn" }
-moverox-codegen = { version = "0.0.10", path = "../moverox-codegen" }
+move-syn        = { version = "0.0.7", path = "../move-syn" }
+moverox-codegen = { version = "0.0.11", path = "../moverox-codegen" }
 
 anyhow = "1"
 
