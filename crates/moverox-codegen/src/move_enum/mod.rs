@@ -2,45 +2,46 @@ use std::collections::{HashMap, HashSet};
 
 use move_syn::{FieldsKind, ItemPath};
 use quote::quote;
-use unsynn::{Ident, LiteralString, ToTokens as _, TokenStream};
+use unsynn::{Ident, ToTokens as _, TokenStream};
 
 use crate::generics::GenericsExt;
-use crate::{named_fields, positional_fields};
+use crate::{ItemContext, Result, named_fields, positional_fields};
 
 /// The full Rust struct declaration and its `new` constructor.
 pub(super) fn to_rust(
     this: &move_syn::Enum,
-    thecrate: &TokenStream,
-    package: Option<&LiteralString>,
-    module: Option<&Ident>,
-    address_map: &HashMap<Ident, TokenStream>,
-) -> TokenStream {
+    otw_types: HashSet<Ident>,
+    ctx: ItemContext,
+) -> Result<TokenStream> {
     let move_syn::Enum {
         ident, generics, ..
     } = this;
 
-    let extra_attrs: TokenStream = package
+    let extra_attrs: TokenStream = ctx
+        .package
         .into_iter()
         .map(unsynn::ToTokens::to_token_stream)
         .map(|addr| quote!(#[move_(address = #addr)]))
-        .chain(module.map(|ident| quote!(#[move_(module = #ident)])))
+        .chain(ctx.module.map(|ident| quote!(#[move_(module = #ident)])))
         .collect();
 
-    let rust_generics = generics
+    let type_generics = generics
         .as_ref()
-        .map(GenericsExt::to_rust)
-        .unwrap_or_default();
+        .map(|g| g.type_generics(ctx.thecrate, otw_types))
+        .transpose()
+        .map(Option::unwrap_or_default)?;
 
     let mut phantoms = unused_phantoms(this);
     let variants = this
         .variants()
         // HACK: pipe unused phantom parameters into the first variant to become phantom data fields
-        .map(|var| variant_to_rust(var, &std::mem::take(&mut phantoms), address_map));
+        .map(|var| variant_to_rust(var, &std::mem::take(&mut phantoms), ctx.address_map));
 
     // NOTE: this has to be formatted as a string first, so that `quote!` will turn it into a
     // string literal later, which is what `#[serde(crate = ...)]` accepts
+    let thecrate = ctx.thecrate;
     let serde_crate = format!("{thecrate}::serde").replace(" ", "");
-    quote! {
+    Ok(quote! {
         #[derive(
             Clone,
             Debug,
@@ -55,10 +56,10 @@ pub(super) fn to_rust(
         #[serde(crate = #serde_crate)]
         #extra_attrs
         #[allow(non_snake_case)]
-        pub enum #ident #rust_generics {
+        pub enum #ident #type_generics {
             #(#variants),*
         }
-    }
+    })
 }
 
 /// Collect `this` enum's phantom types that aren't used in any of its field types.

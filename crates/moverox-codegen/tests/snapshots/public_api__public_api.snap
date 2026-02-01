@@ -3,11 +3,16 @@ source: crates/moverox-codegen/tests/public-api.rs
 expression: public_api
 ---
 pub mod moverox_codegen
+pub struct moverox_codegen::ItemContext<'a>
+pub moverox_codegen::ItemContext::address_map: &'a std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>
+pub moverox_codegen::ItemContext::module: core::option::Option<&'a proc_macro2::Ident>
+pub moverox_codegen::ItemContext::package: core::option::Option<&'a unsynn::literal::LiteralString>
+pub moverox_codegen::ItemContext::thecrate: &'a proc_macro2::TokenStream
 pub trait moverox_codegen::ItemGen: moverox_codegen::__seal_item_gen::Sealed
-pub fn moverox_codegen::ItemGen::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, module: core::option::Option<&proc_macro2::Ident>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> proc_macro2::TokenStream
+pub fn moverox_codegen::ItemGen::to_rust(&self, ctx: moverox_codegen::ItemContext<'_>) -> core::result::Result<proc_macro2::TokenStream, alloc::boxed::Box<(dyn core::error::Error + 'static)>>
 impl moverox_codegen::ItemGen for move_syn::Item
-pub fn move_syn::Item::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, module: core::option::Option<&proc_macro2::Ident>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> proc_macro2::TokenStream
+pub fn move_syn::Item::to_rust(&self, ctx: moverox_codegen::ItemContext<'_>) -> core::result::Result<proc_macro2::TokenStream, alloc::boxed::Box<(dyn core::error::Error + 'static)>>
 pub trait moverox_codegen::ModuleGen: moverox_codegen::__seal_module_gen::Sealed
-pub fn moverox_codegen::ModuleGen::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> proc_macro2::TokenStream
+pub fn moverox_codegen::ModuleGen::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> core::result::Result<proc_macro2::TokenStream, alloc::boxed::Box<(dyn core::error::Error + 'static)>>
 impl moverox_codegen::ModuleGen for move_syn::Module
-pub fn move_syn::Module::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> proc_macro2::TokenStream
+pub fn move_syn::Module::to_rust(&self, thecrate: &proc_macro2::TokenStream, package: core::option::Option<&unsynn::literal::LiteralString>, address_map: &std::collections::hash::map::HashMap<proc_macro2::Ident, proc_macro2::TokenStream>) -> core::result::Result<proc_macro2::TokenStream, alloc::boxed::Box<(dyn core::error::Error + 'static)>>

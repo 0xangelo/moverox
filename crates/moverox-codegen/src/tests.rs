@@ -7,14 +7,13 @@ use unsynn::{IParse as _, ToTokens as _};
 use crate::*;
 
 fn from_module(s: &str) -> impl Display {
-    let ast: Module = s.to_token_iter().parse_all().unwrap();
-    prettyplease::unparse(
-        &syn::parse_file(
-            &ast.to_rust(&quote!(::moverox), None, &Default::default())
-                .to_string(),
-        )
-        .unwrap(),
-    )
+    let module: Module = s.to_token_iter().parse_all().unwrap();
+    let result = module.to_rust(&quote!(::moverox), None, &Default::default());
+    let rust_code = match result {
+        Ok(tokens) => tokens.to_string(),
+        Err(err) => return format!("{err:#}"),
+    };
+    prettyplease::unparse(&syn::parse_file(&rust_code).unwrap())
 }
 
 fn from_struct(s: &str) -> impl Display {
@@ -26,13 +25,18 @@ fn from_struct(s: &str) -> impl Display {
             ..
         }
     ));
-    prettyplease::unparse(
-        &syn::parse_file(
-            &ast.to_rust(&quote!(::moverox), None, None, &Default::default())
-                .to_string(),
-        )
-        .unwrap(),
-    )
+    let ctx = ItemContext {
+        thecrate: &quote!(::moverox),
+        package: None,
+        module: None,
+        address_map: &Default::default(),
+    };
+    let result = ast.to_rust(ctx);
+    let rust_code = match result {
+        Ok(tokens) => tokens.to_string(),
+        Err(err) => return format!("{err:#}"),
+    };
+    prettyplease::unparse(&syn::parse_file(&rust_code).unwrap())
 }
 
 fn from_enum(s: &str) -> impl Display {
@@ -44,10 +48,18 @@ fn from_enum(s: &str) -> impl Display {
             ..
         }
     ));
-    let content = ast
-        .to_rust(&quote!(::moverox), None, None, &Default::default())
-        .to_string();
-    prettyplease::unparse(&syn::parse_file(&content).unwrap())
+    let ctx = ItemContext {
+        thecrate: &quote!(::moverox),
+        package: None,
+        module: None,
+        address_map: &Default::default(),
+    };
+    let result = ast.to_rust(ctx);
+    let rust_code = match result {
+        Ok(tokens) => tokens.to_string(),
+        Err(err) => return format!("{err:#}"),
+    };
+    prettyplease::unparse(&syn::parse_file(&rust_code).unwrap())
 }
 
 //=Test cases=======================================================================================
@@ -236,6 +248,48 @@ fn enum_with_used_phantom_type() {
         None,
     }
     "#);
+}
+
+#[test]
+fn enum_with_otw_type() {
+    let move_enum = indoc! {"
+        #[ext(moverox(type_(T = OTW)))]
+        public enum Collateral<phantom T> {
+            Some(Balance<T>),
+            None,
+        }
+    "};
+    insta::assert_snapshot!(from_enum(move_enum), @r#"
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub enum Collateral<T = ::moverox::Otw> {
+        Some(Balance<T>),
+        None,
+    }
+    "#);
+}
+
+#[test]
+fn enum_with_duplicate_type_annotations() {
+    let move_enum = indoc! {"
+        #[ext(moverox(type_(T = OTW, T = OTW)))]
+        public enum Collateral<phantom T> {
+            Some(Balance<T>),
+            None,
+        }
+    "};
+    insta::assert_snapshot!(from_enum(move_enum), @"enum Collateral: Type T declared twice");
 }
 
 #[test]
@@ -774,21 +828,72 @@ fn tuple_struct_with_generic_field_type_and_ability() {
 }
 
 #[test]
-fn module_with_struct() {
-    insta::assert_snapshot!(from_module(
-            "
-        module package::admin {
-            /// A general 'object admin'.
-            public struct Admin has key {
-                id: UID,
-                /// Transaction sender with irrevokable privileged access.
-                sender: address,
-                /// Object being admistrated. Never changes after construction.
-                object: ID
+fn struct_with_otw_type() {
+    let move_struct = indoc! {"
+    #[ext(moverox(type_(T = OTW)))]
+    public struct Balance<phantom T> has store {
+        value: u64,
+    }
+    "};
+    insta::assert_snapshot!(from_struct(move_struct), @r#"
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub struct Balance<T = ::moverox::Otw> {
+        pub value: u64,
+        #[serde(skip)]
+        _T: ::std::marker::PhantomData<T>,
+    }
+    impl<T> Balance<T> {
+        #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
+        pub const fn new(value: u64) -> Self {
+            Self {
+                value,
+                _T: ::std::marker::PhantomData,
             }
         }
-        "
-        ), @r#"
+    }
+    "#);
+}
+
+#[test]
+fn struct_with_duplicate_type_annotations() {
+    let move_struct = indoc! {"
+    #[ext(moverox(type_(T = OTW, T = OTW)))]
+    public struct Balance<phantom T> has store {
+        value: u64,
+    }
+    "};
+    insta::assert_snapshot!(from_struct(move_struct), @"struct Balance: Type T declared twice");
+}
+
+#[test]
+fn module_with_struct() {
+    let move_module = indoc! {"
+    /// Module admin for `package`
+    module package::admin {
+        /// A general 'object admin'.
+        public struct Admin has key {
+            id: UID,
+            /// Transaction sender with irrevokable privileged access.
+            sender: address,
+            /// Object being admistrated. Never changes after construction.
+            object: ID
+        }
+    }
+    "};
+    insta::assert_snapshot!(from_module(move_module), @r#"
+    #[cfg_attr(not(doctest), doc = " Module admin for `package`")]
     #[allow(rustdoc::all)]
     pub mod admin {
         #[allow(non_camel_case_types, unused)]
@@ -832,4 +937,17 @@ fn module_with_struct() {
         }
     }
     "#);
+}
+
+#[test]
+fn module_with_annotations() {
+    let move_module = indoc! {"
+    #[ext(moverox(type_(T = OTW)))]
+    module package::balance {
+        public struct Balance<phantom T> has store {
+            value: u64,
+        }
+    }
+    "};
+    insta::assert_snapshot!(from_module(move_module), @"Move modules cannot have custom `moverox` attributes");
 }
