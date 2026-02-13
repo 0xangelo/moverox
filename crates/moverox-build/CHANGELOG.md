@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3](https://github.com/0xangelo/moverox/compare/moverox-build-v0.2.2...moverox-build-v0.2.3)
+
+### ⛰️ Features
+
+- *(moverox-codegen)* Filter out used phantom types - ([11b9802](https://github.com/0xangelo/moverox/commit/11b9802c50507be0f8eb36001a1d38e7746114ba))
+
+
 ## [0.2.2](https://github.com/0xangelo/moverox/compare/moverox-build-v0.2.1...moverox-build-v0.2.2)
 
 ### ⚙️ Miscellaneous Tasks
