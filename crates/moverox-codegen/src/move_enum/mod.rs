@@ -5,6 +5,7 @@ use quote::quote;
 use unsynn::{Ident, ToTokens as _, TokenStream};
 
 use crate::generics::GenericsExt;
+use crate::iter::BoxedIter as _;
 use crate::{ItemContext, Result, named_fields, positional_fields};
 
 /// The full Rust struct declaration and its `new` constructor.
@@ -168,14 +169,3 @@ fn variant_to_rust(
         #ident #fields
     }
 }
-
-trait BoxedIter<'a>: Iterator + 'a {
-    fn boxed(self) -> Box<dyn Iterator<Item = Self::Item> + 'a>
-    where
-        Self: Sized,
-    {
-        Box::new(self)
-    }
-}
-
-impl<'a, T: Iterator + 'a> BoxedIter<'a> for T {}

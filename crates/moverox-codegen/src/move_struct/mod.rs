@@ -1,5 +1,6 @@
 use std::collections::{HashMap, HashSet};
 
+use move_syn::ItemPath;
 use proc_macro2::{Ident, TokenStream};
 use quote::quote;
 
@@ -10,6 +11,7 @@ use braced::BracedStructExt as _;
 use tuple::TupleStructExt as _;
 
 use crate::generics::GenericsExt;
+use crate::iter::BoxedIter as _;
 use crate::{ItemContext, Result};
 
 pub(super) trait StructGen {
@@ -64,7 +66,7 @@ trait StructExt {
     ) -> Result<TokenStream>;
 
     /// Identifiers of each phantom type of the struct.
-    fn phantom_types(&self) -> impl Iterator<Item = &Ident>;
+    fn unused_phantoms(&self) -> impl Iterator<Item = &Ident>;
 }
 
 impl StructExt for move_syn::Struct {
@@ -86,8 +88,8 @@ impl StructExt for move_syn::Struct {
         let extra_derives = self.extra_derives().unwrap_or_default();
         let type_generics = self.type_generics(ctx.thecrate, otw_types)?;
         let contents = match kind {
-            K::Braced(braced) => braced.to_rust_contents(self.phantom_types(), ctx.address_map),
-            K::Tuple(tuple) => tuple.to_rust_contents(self.phantom_types(), ctx.address_map),
+            K::Braced(braced) => braced.to_rust_contents(self.unused_phantoms(), ctx.address_map),
+            K::Tuple(tuple) => tuple.to_rust_contents(self.unused_phantoms(), ctx.address_map),
         };
         // NOTE: this has to be formatted as a string first, so that `quote!` will turn it into a
         // string literal later, which is what `#[serde(crate = ...)]` accepts
@@ -118,8 +120,8 @@ impl StructExt for move_syn::Struct {
         let Self { ident, kind, .. } = self;
         let generics = self.generics();
         let (args, assignments) = match kind {
-            StructKind::Braced(braced) => braced.impl_new(self.phantom_types(), address_map),
-            StructKind::Tuple(tuple) => tuple.impl_new(self.phantom_types(), address_map),
+            StructKind::Braced(braced) => braced.impl_new(self.unused_phantoms(), address_map),
+            StructKind::Tuple(tuple) => tuple.impl_new(self.unused_phantoms(), address_map),
         };
         quote! {
             impl #generics #ident #generics {
@@ -185,10 +187,52 @@ impl StructExt for move_syn::Struct {
             .map(Option::unwrap_or_default)
     }
 
-    fn phantom_types(&self) -> impl Iterator<Item = &Ident> {
-        self.generics
-            .as_ref()
-            .into_iter()
-            .flat_map(GenericsExt::phantoms)
+    /// Phantom types that don't appear in any field types.
+    fn unused_phantoms(&self) -> impl Iterator<Item = &Ident> {
+        unused_phantoms(self)
     }
+}
+
+/// Collect `this` struct's phantom types that aren't used in any of its field types.
+fn unused_phantoms(this: &move_syn::Struct) -> impl Iterator<Item = &Ident> {
+    let maybe_phantom_leaf_types: HashSet<_> = struct_leaf_types(this)
+        .filter_map(|path| match path {
+            ItemPath::Ident(ident) => Some(ident),
+            _ => None,
+        })
+        .collect();
+
+    this.generics
+        .iter()
+        .flat_map(|g| g.phantoms())
+        .filter(move |&ident| !maybe_phantom_leaf_types.contains(ident))
+}
+
+/// Find all type parameters of `this` enum's fields that are 'leaf's, recursively.
+///
+/// A type parameter is a 'leaf' if it has no type parameters itself
+fn struct_leaf_types(this: &move_syn::Struct) -> Box<dyn Iterator<Item = &ItemPath> + '_> {
+    match &this.kind {
+        move_syn::StructKind::Braced(named) => {
+            leaf_types_recursive(named.fields().map(|field| &field.ty).boxed())
+        }
+        move_syn::StructKind::Tuple(positional) => {
+            leaf_types_recursive(positional.fields().map(|field| &field.ty).boxed())
+        }
+    }
+    .boxed()
+}
+
+fn leaf_types_recursive<'a>(
+    types: Box<dyn Iterator<Item = &'a move_syn::Type> + 'a>,
+) -> Box<dyn Iterator<Item = &'a ItemPath> + 'a> {
+    types
+        .into_iter()
+        .flat_map(|t| {
+            t.type_args.as_ref().map_or_else(
+                || std::iter::once(&t.path).boxed(),
+                |t_args| leaf_types_recursive(t_args.types().boxed()),
+            )
+        })
+        .boxed()
 }

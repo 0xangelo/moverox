@@ -18,6 +18,7 @@ use unsynn::LiteralString;
 
 mod attributes;
 mod generics;
+mod iter;
 mod move_enum;
 mod move_struct;
 mod move_type;

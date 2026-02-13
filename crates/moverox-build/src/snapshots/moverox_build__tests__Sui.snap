@@ -1081,8 +1081,6 @@ pub mod coin {
     pub struct Coin<T> {
         pub id: super::object::UID,
         pub balance: super::balance::Balance<T>,
-        #[serde(skip)]
-        _T: ::std::marker::PhantomData<T>,
     }
     impl<T> Coin<T> {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
@@ -1090,11 +1088,7 @@ pub mod coin {
             id: super::object::UID,
             balance: super::balance::Balance<T>,
         ) -> Self {
-            Self {
-                id,
-                balance,
-                _T: ::std::marker::PhantomData,
-            }
+            Self { id, balance }
         }
     }
     impl<T> ::moverox::traits::HasKey for Coin<T> {
@@ -1238,8 +1232,6 @@ pub mod coin {
     pub struct TreasuryCap<T> {
         pub id: super::object::UID,
         pub total_supply: super::balance::Supply<T>,
-        #[serde(skip)]
-        _T: ::std::marker::PhantomData<T>,
     }
     impl<T> TreasuryCap<T> {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
@@ -1247,11 +1239,7 @@ pub mod coin {
             id: super::object::UID,
             total_supply: super::balance::Supply<T>,
         ) -> Self {
-            Self {
-                id,
-                total_supply,
-                _T: ::std::marker::PhantomData,
-            }
+            Self { id, total_supply }
         }
     }
     impl<T> ::moverox::traits::HasKey for TreasuryCap<T> {
@@ -5195,8 +5183,6 @@ pub mod coin_registry {
             ::moverox_sui::std::string::String,
             ExtraField,
         >,
-        #[serde(skip)]
-        _T: ::std::marker::PhantomData<T>,
     }
     impl<T> Currency<T> {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
@@ -5228,7 +5214,6 @@ pub mod coin_registry {
                 treasury_cap_id,
                 metadata_cap_id,
                 extra_fields,
-                _T: ::std::marker::PhantomData,
             }
         }
     }
@@ -5368,8 +5353,6 @@ pub mod coin_registry {
         pub currency: Currency<T>,
         pub extra_fields: super::bag::Bag,
         pub is_otw: bool,
-        #[serde(skip)]
-        _T: ::std::marker::PhantomData<T>,
     }
     impl<T> CurrencyInitializer<T> {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
@@ -5382,7 +5365,6 @@ pub mod coin_registry {
                 currency,
                 extra_fields,
                 is_otw,
-                _T: ::std::marker::PhantomData,
             }
         }
     }
@@ -5538,16 +5520,11 @@ pub mod table_vec {
     pub struct TableVec<Element> {
         /// The contents of the table vector.
         pub contents: super::table::Table<u64, Element>,
-        #[serde(skip)]
-        _Element: ::std::marker::PhantomData<Element>,
     }
     impl<Element> TableVec<Element> {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
         pub const fn new(contents: super::table::Table<u64, Element>) -> Self {
-            Self {
-                contents,
-                _Element: ::std::marker::PhantomData,
-            }
+            Self { contents }
         }
     }
 }
@@ -5856,8 +5833,6 @@ pub mod token {
         pub id: super::object::UID,
         /// The Balance of the `Token`.
         pub balance: super::balance::Balance<T>,
-        #[serde(skip)]
-        _T: ::std::marker::PhantomData<T>,
     }
     impl<T> Token<T> {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
@@ -5865,11 +5840,7 @@ pub mod token {
             id: super::object::UID,
             balance: super::balance::Balance<T>,
         ) -> Self {
-            Self {
-                id,
-                balance,
-                _T: ::std::marker::PhantomData,
-            }
+            Self { id, balance }
         }
     }
     impl<T> ::moverox::traits::HasKey for Token<T> {
@@ -5982,8 +5953,6 @@ pub mod token {
             ::moverox_sui::std::string::String,
             super::vec_set::VecSet<::moverox_sui::std::type_name::TypeName>,
         >,
-        #[serde(skip)]
-        _T: ::std::marker::PhantomData<T>,
     }
     impl<T> TokenPolicy<T> {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
@@ -5995,12 +5964,7 @@ pub mod token {
                 super::vec_set::VecSet<::moverox_sui::std::type_name::TypeName>,
             >,
         ) -> Self {
-            Self {
-                id,
-                spent_balance,
-                rules,
-                _T: ::std::marker::PhantomData,
-            }
+            Self { id, spent_balance, rules }
         }
     }
     impl<T> ::moverox::traits::HasKey for TokenPolicy<T> {
@@ -6053,8 +6017,6 @@ pub mod token {
         /// against `TokenPolicy.rules` to determine if the request can be
         /// confirmed.
         pub approvals: super::vec_set::VecSet<::moverox_sui::std::type_name::TypeName>,
-        #[serde(skip)]
-        _T: ::std::marker::PhantomData<T>,
     }
     impl<T> ActionRequest<T> {
         #[allow(clippy::just_underscores_and_digits, clippy::too_many_arguments)]
@@ -6073,7 +6035,6 @@ pub mod token {
                 recipient,
                 spent_balance,
                 approvals,
-                _T: ::std::marker::PhantomData,
             }
         }
     }
