@@ -17,7 +17,7 @@
         pkgs = (import nixpkgs) {
           inherit overlays system;
         };
-        rustToolChain = pkgs.rust-bin.nightly."2025-10-29".default;
+        rustToolChain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
       in {
         # For `nix develop`:
         devShell = pkgs.mkShell {
