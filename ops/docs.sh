@@ -15,4 +15,4 @@ set -ex
 
 RUSTDOCFLAGS="-A rustdoc::redundant-explicit-links -D warnings" \
   RUSTC_BOOTSTRAP=1 \
-  cargo +nightly-2025-10-29 doc $SCOPE --all-features ${@:2}
+  cargo doc $SCOPE --all-features ${@:2}
