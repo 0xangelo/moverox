@@ -1,35 +1,27 @@
 {
   inputs = {
     flake-utils.url = "github:numtide/flake-utils";
-    naersk = {
-      url = "github:nix-community/naersk";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = {
     flake-utils,
-    naersk,
     nixpkgs,
+    rust-overlay,
     ...
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
+        overlays = [(import rust-overlay)];
         pkgs = (import nixpkgs) {
-          inherit system;
+          inherit overlays system;
         };
-
-        naersk' = pkgs.callPackage naersk {};
+        rustToolChain = pkgs.rust-bin.nightly."2025-10-29".default;
       in {
-        # For `nix build` & `nix run`:
-        packages.default = naersk'.buildPackage {
-          src = ./.;
-        };
-
         # For `nix develop`:
         devShell = pkgs.mkShell {
-          nativeBuildInputs = with pkgs; [rustc cargo rustup];
+          buildInputs = [rustToolChain];
         };
       }
     );
