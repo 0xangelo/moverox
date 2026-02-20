@@ -2,7 +2,7 @@
 source: crates/moverox-build/src/tests.rs
 expression: sui_framework
 ---
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod accumulator {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -112,7 +112,7 @@ pub mod accumulator {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod accumulator_metadata {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -264,7 +264,7 @@ pub mod accumulator_metadata {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod accumulator_settlement {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -310,7 +310,7 @@ pub mod accumulator_settlement {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod address_alias {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -434,7 +434,7 @@ pub mod address_alias {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod authenticator_state {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -640,7 +640,7 @@ pub mod authenticator_state {
     doc = " deleted, even if it has dynamic fields associated with it, but a bag, on the other hand, must be"
 )]
 #[cfg_attr(not(doctest), doc = " empty to be destroyed.")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod bag {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -690,7 +690,7 @@ pub mod bag {
     doc = " module to allow balance operations and can be used to implement"
 )]
 #[cfg_attr(not(doctest), doc = " custom coins with `Supply` and `Balance`s.")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod balance {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -813,7 +813,7 @@ pub mod balance {
 #[cfg_attr(not(doctest), doc = "     (u8_value, u64_value, leftovers)")]
 #[cfg_attr(not(doctest), doc = " }")]
 #[cfg_attr(not(doctest), doc = " ```")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod bcs {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -872,7 +872,7 @@ pub mod bcs {
     not(doctest),
     doc = " sure the object is returned and was not swapped for another one."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod borrow {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -973,7 +973,7 @@ pub mod borrow {
     doc = " APIs for accessing time from move calls, via the `Clock`: a unique"
 )]
 #[cfg_attr(not(doctest), doc = " shared object that is created at 0x6 during genesis.")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod clock {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1051,7 +1051,7 @@ pub mod clock {
     doc = " tokens and coins. `Coin` can be described as a secure wrapper around"
 )]
 #[cfg_attr(not(doctest), doc = " `Balance` type.")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod coin {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1372,7 +1372,7 @@ pub mod coin {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod config {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1474,7 +1474,7 @@ pub mod config {
     }
 }
 #[cfg_attr(not(doctest), doc = " Group operations of BLS12-381.")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod bls12381 {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1613,7 +1613,7 @@ pub mod bls12381 {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod ecdsa_k1 {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1647,7 +1647,7 @@ pub mod ecdsa_k1 {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod groth16 {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1789,7 +1789,7 @@ pub mod groth16 {
     not(doctest),
     doc = " Generic Move and native functions for group operations."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod group_ops {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1827,7 +1827,7 @@ pub mod group_ops {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod nitro_attestation {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1918,7 +1918,7 @@ pub mod nitro_attestation {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod zklogin_verified_id {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -1985,7 +1985,7 @@ pub mod zklogin_verified_id {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod zklogin_verified_issuer {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2046,7 +2046,7 @@ pub mod zklogin_verified_issuer {
     doc = " instances of certain core types from being used as inputs by specified addresses in the deny"
 )]
 #[cfg_attr(not(doctest), doc = " list.")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod deny_list {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2324,7 +2324,7 @@ pub mod deny_list {
     not(doctest),
     doc = " which derived addresses have been claimed to prevent duplicates."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod derived_object {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2439,7 +2439,7 @@ pub mod derived_object {
     not(doctest),
     doc = " More entry functions might be added in the future depending on the use cases."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod display {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2656,7 +2656,7 @@ pub mod display {
     doc = " This gives Sui programmers the flexibility to extend objects on-the-fly, and it also serves as a"
 )]
 #[cfg_attr(not(doctest), doc = " building block for core collection types")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod dynamic_field {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2720,7 +2720,7 @@ pub mod dynamic_field {
     not(doctest),
     doc = " for external tools. The difference is otherwise not observable from within Move."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod dynamic_object_field {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -2757,7 +2757,7 @@ pub mod dynamic_object_field {
     not(doctest),
     doc = " A module for accumulating funds, i.e. Balance-like types."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod funds_accumulator {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3023,7 +3023,7 @@ pub mod funds_accumulator {
     not(doctest),
     doc = " See `transfer_policy` module for more details on how they function."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod kiosk {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3601,7 +3601,7 @@ pub mod kiosk {
     not(doctest),
     doc = " implement custom authorization scheme for `place` and `lock` respectively)."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod kiosk_extension {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -3776,7 +3776,7 @@ pub mod kiosk_extension {
     doc = " policies can be removed at any moment, and the change will affect all instances"
 )]
 #[cfg_attr(not(doctest), doc = " of the type at once.")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod transfer_policy {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4067,7 +4067,7 @@ pub mod transfer_policy {
     doc = " Similar to `sui::table` but the values are linked together, allowing for ordered insertion and"
 )]
 #[cfg_attr(not(doctest), doc = " removal")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod linked_table {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4155,7 +4155,7 @@ pub mod linked_table {
     }
 }
 #[cfg_attr(not(doctest), doc = " Sui object identifiers")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod object {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4276,7 +4276,7 @@ pub mod object {
     not(doctest),
     doc = " The difference is otherwise not observable from within Move."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod object_bag {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4333,7 +4333,7 @@ pub mod object_bag {
     not(doctest),
     doc = " The difference is otherwise not observable from within Move."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod object_table {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4395,7 +4395,7 @@ pub mod object_table {
     not(doctest),
     doc = " - Administering package upgrades through upgrade policies."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod package {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4611,7 +4611,7 @@ pub mod package {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod party {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4700,7 +4700,7 @@ pub mod party {
     }
 }
 #[cfg_attr(not(doctest), doc = " Priority queue implemented using a max heap.")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod priority_queue {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4782,7 +4782,7 @@ pub mod priority_queue {
     not(doctest),
     doc = " This module provides functionality for generating secure randomness."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod random {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -4915,7 +4915,7 @@ pub mod random {
     not(doctest),
     doc = " supply information, regulatory status, and metadata capabilities."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod coin_registry {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -5374,7 +5374,7 @@ pub mod coin_registry {
     not(doctest),
     doc = " It has 9 decimals, and the smallest unit (10^-9) is called \"mist\"."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod sui {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -5440,7 +5440,7 @@ pub mod sui {
 )]
 #[cfg_attr(not(doctest), doc = " assert!(&table1 != &table2);")]
 #[cfg_attr(not(doctest), doc = " ```")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod table {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -5494,7 +5494,7 @@ pub mod table {
     not(doctest),
     doc = " A basic scalable vector library implemented using `Table`."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod table_vec {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -5528,7 +5528,7 @@ pub mod table_vec {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod test_scenario {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -5798,7 +5798,7 @@ pub mod test_scenario {
     not(doctest),
     doc = " control over the currency which a simple open-loop system can't provide."
 )]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod token {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -6123,7 +6123,7 @@ pub mod token {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod transfer {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -6188,7 +6188,7 @@ pub mod transfer {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod tx_context {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -6256,7 +6256,7 @@ pub mod tx_context {
     }
 }
 #[cfg_attr(not(doctest), doc = " URL: standard Uniform Resource Locator string")]
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod url {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -6290,7 +6290,7 @@ pub mod url {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod vec_map {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -6370,7 +6370,7 @@ pub mod vec_map {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod vec_set {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -6423,7 +6423,7 @@ pub mod vec_set {
         }
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod versioned {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;

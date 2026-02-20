@@ -6,6 +6,7 @@ use unsynn::{IParse as _, Ident, ToTokens as _, TokenStream};
 
 use crate::Result;
 
+#[expect(clippy::result_large_err, reason = "Error from the unsynn crate")]
 mod grammar {
     use unsynn::*;
 

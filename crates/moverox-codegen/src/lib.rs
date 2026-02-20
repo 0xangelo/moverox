@@ -71,7 +71,7 @@ impl ModuleGen for Module {
 
         Ok(quote! {
             #docs
-            #[allow(rustdoc::all)]
+            #[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
             pub mod #ident {
                 #[allow(non_camel_case_types, unused)]
                 type address = #thecrate::types::Address;

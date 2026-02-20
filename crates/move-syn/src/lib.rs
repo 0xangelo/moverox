@@ -1,4 +1,5 @@
 #![cfg_attr(nightly, feature(doc_cfg))]
+#![expect(clippy::result_large_err, reason = "Error from the unsynn crate")]
 
 //! Move syntax parsing using [`unsynn`](::unsynn).
 

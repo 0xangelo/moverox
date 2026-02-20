@@ -2,7 +2,7 @@
 source: crates/moverox-build/src/tests.rs
 expression: enums
 ---
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod enums {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
@@ -71,7 +71,7 @@ pub mod enums {
         Struct { value: u64 },
     }
 }
-#[allow(rustdoc::all)]
+#[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
 pub mod other {
     #[allow(non_camel_case_types, unused)]
     type address = ::moverox::types::Address;
