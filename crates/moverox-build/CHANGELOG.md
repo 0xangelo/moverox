@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.4](https://github.com/0xangelo/moverox/compare/moverox-build-v0.2.3...moverox-build-v0.2.4)
+
+### 🐛 Bug Fixes
+
+- *(crates)* Address new lints - ([212edfb](https://github.com/0xangelo/moverox/commit/212edfbccb4df0254eeac07f810d639e4432d0b7))
+
+
 ## [0.2.3](https://github.com/0xangelo/moverox/compare/moverox-build-v0.2.2...moverox-build-v0.2.3)
 
 ### ⛰️ Features
