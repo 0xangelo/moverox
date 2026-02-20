@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.3](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.2.2...moverox-sui-v0.2.3)
+
+### ⚙️ Miscellaneous Tasks
+
+- Updated the following local packages: moverox-build, moverox - ([0000000](https://github.com/0xangelo/moverox/commit/0000000))
+
+
 ## [0.2.2](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.2.1...moverox-sui-v0.2.2)
 
 ### ⚙️ Miscellaneous Tasks

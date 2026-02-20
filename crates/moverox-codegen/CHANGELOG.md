@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.13](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.12...moverox-codegen-v0.0.13)
+
+### 🐛 Bug Fixes
+
+- *(crates)* Address new lints - ([212edfb](https://github.com/0xangelo/moverox/commit/212edfbccb4df0254eeac07f810d639e4432d0b7))
+
+
 ## [0.0.12](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.11...moverox-codegen-v0.0.12)
 
 ### ⛰️ Features
