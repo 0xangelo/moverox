@@ -38,7 +38,7 @@ thiserror    = "2"
 
 [dev-dependencies]
 insta            = "1"
-public-api       = "0.50"
+public-api       = "0.51"
 rustdoc-json     = "0.9"
 rustup-toolchain = "0.1"
 
