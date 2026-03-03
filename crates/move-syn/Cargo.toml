@@ -45,7 +45,7 @@ insta       = "1"
 itertools   = "0.14"
 testresult  = "0.4"
 
-public-api       = "0.50"
+public-api       = "0.51"
 rustdoc-json     = "0.9"
 rustup-toolchain = "0.1"
 

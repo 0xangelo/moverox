@@ -48,6 +48,6 @@ trybuild     = { version = "1", features = ["diff"] }
 
 moverox = { path = "../moverox" }
 
-public-api       = "0.50"
+public-api       = "0.51"
 rustdoc-json     = "0.9"
 rustup-toolchain = "0.1"
