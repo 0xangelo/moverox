@@ -43,7 +43,7 @@ public   = true
 version  = "1"
 
 [dependencies]
-bcs       = { version = "0.1", optional = true }
+bcs       = { version = "0.2", optional = true }
 thiserror = { version = "2", optional = true }
 
 [build-dependencies]
