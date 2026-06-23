@@ -39,7 +39,7 @@ rustversion = "1"
 [dev-dependencies]
 indoc        = "2"
 insta        = "1"
-itertools    = "0.14"
+itertools    = "0.15"
 prettyplease = "0.2"
 syn          = { version = "2", default-features = false, features = ["parsing"] }
 tempfile     = "3"
