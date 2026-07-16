@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.13](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.12...moverox-codegen-v0.0.13)
+
+### 🐛 Bug Fixes
+
+- *(codegen)* Tolerate sibling `#[ext(...)]` sub-attributes ([#104](https://github.com/0xangelo/moverox/pull/104)) - ([40dcb97](https://github.com/0xangelo/moverox/commit/40dcb9725d766f1791b6ffa7538846328b0bda60))
+- *(crates)* Address new lints - ([212edfb](https://github.com/0xangelo/moverox/commit/212edfbccb4df0254eeac07f810d639e4432d0b7))
+
+
 ## [0.0.12](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.11...moverox-codegen-v0.0.12)
 
 ### ⛰️ Features
