@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.8](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.7...move-syn-v0.0.8)
+
+### 🐛 Bug Fixes
+
+- *(crates)* Address new lints - ([212edfb](https://github.com/0xangelo/moverox/commit/212edfbccb4df0254eeac07f810d639e4432d0b7))
+
+
 ## [0.0.7](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.6...move-syn-v0.0.7)
 
 ### 🧪 Testing
