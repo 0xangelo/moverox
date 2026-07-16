@@ -281,6 +281,40 @@ fn enum_with_otw_type() {
 }
 
 #[test]
+fn enum_with_otw_type_and_sibling_ext_attrs() {
+    // `#[ext(...)]` is a shared namespace: other tooling attaches sibling sub-attributes
+    // alongside `moverox(...)` — both the `name(...)` shape (`versioned(...)`) and the
+    // `key = value` shape (`foo = b"bar"`). The `moverox(type_(T = OTW))` default must
+    // still be honored regardless of what siblings are present.
+    let move_enum = indoc! {r#"
+        #[ext(moverox(type_(T = OTW)), versioned(future_error = EFutureCollateral), foo = b"bar")]
+        public enum Collateral<phantom T> {
+            Some(Balance<T>),
+            None,
+        }
+    "#};
+    insta::assert_snapshot!(from_enum(move_enum), @r#"
+    #[derive(
+        Clone,
+        Debug,
+        PartialEq,
+        Eq,
+        Hash,
+        ::moverox::traits::MoveDatatype,
+        ::moverox::serde::Deserialize,
+        ::moverox::serde::Serialize,
+    )]
+    #[move_(crate = ::moverox::traits)]
+    #[serde(crate = "::moverox::serde")]
+    #[allow(non_snake_case)]
+    pub enum Collateral<T = ::moverox::Otw> {
+        Some(Balance<T>),
+        None,
+    }
+    "#);
+}
+
+#[test]
 fn enum_with_duplicate_type_annotations() {
     let move_enum = indoc! {"
         #[ext(moverox(type_(T = OTW, T = OTW)))]

@@ -2,7 +2,7 @@ use std::collections::HashSet;
 
 use move_syn::Attributes;
 use quote::quote;
-use unsynn::{IParse as _, Ident, ToTokens as _, TokenStream};
+use unsynn::{CommaDelimitedVec, IParse as _, Ident, ToTokens as _, TokenStream};
 
 use crate::Result;
 
@@ -56,6 +56,23 @@ mod grammar {
             /// For now, only defaults like `{T} = OTW` are supported
             default: kw::Otw,
         }
+
+        /// A single comma-separated entry inside an `#[ext(...)]` group.
+        ///
+        /// `#[ext(...)]` is a shared namespace: other tooling attaches its own sub-attributes
+        /// (e.g. `versioned(...)`, `dynamic_field(...)`) alongside `moverox(...)`. We parse the
+        /// whole group and keep only the `moverox(...)` entries, ignoring the rest.
+        pub(crate) enum ExtEntry {
+            Moverox(Annotation),
+            Other(OtherEntry),
+        }
+
+        /// Any non-`moverox` `#[ext(...)]` entry. Consumes everything up to the next comma,
+        /// so it accepts every shape other tooling might use — `versioned(EFoo)`,
+        /// `dynamic_field(name = ID, value = ID)`, `foo = b"bar"`, a bare `dev_inspect`, …
+        pub(crate) struct OtherEntry {
+            tokens: Vec<Cons<Except<Comma>, TokenTree>>,
+        }
     }
 
     impl Annotation {
@@ -101,8 +118,22 @@ pub(super) fn extract(attrs: &[Attributes]) -> Result<(TokenStream, HashSet<Iden
 }
 
 pub(super) fn as_moverox(attr: &Attributes) -> impl Iterator<Item = self::grammar::Annotation> {
+    // An `#[ext(...)]` group may carry sibling sub-attributes from other tooling
+    // (e.g. `#[ext(moverox(type_(T = OTW)), versioned(EFoo))]`). Parse the whole
+    // comma-delimited group and keep only the `moverox(...)` entries, so a sibling
+    // attribute never causes the `moverox(...)` annotation to be dropped.
     attr.external_attributes()
-        .filter_map(|ext| ext.to_token_iter().parse_all().ok())
+        .filter_map(|ext| {
+            ext.to_token_iter()
+                .parse_all::<CommaDelimitedVec<self::grammar::ExtEntry>>()
+                .ok()
+        })
+        .flat_map(|entries| {
+            entries.into_iter().filter_map(|entry| match entry.value {
+                self::grammar::ExtEntry::Moverox(annotation) => Some(annotation),
+                self::grammar::ExtEntry::Other(_) => None,
+            })
+        })
 }
 
 fn process_doc(attr: &Attributes) -> TokenStream {
