@@ -35,7 +35,7 @@ unsynn = "0.2"
 indoc        = "2"
 insta        = "1"
 prettyplease = "0.2"
-syn          = { version = "2", default-features = false, features = ["parsing"] }
+syn          = { version = "3", default-features = false, features = ["parsing"] }
 
 public-api       = "0.51"
 rustdoc-json     = "0.9"
