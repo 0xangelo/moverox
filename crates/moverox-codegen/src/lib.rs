@@ -32,14 +32,40 @@ use self::move_struct::StructGen as _;
 type BoxError = Box<dyn std::error::Error + 'static>;
 type Result<T = (), E = BoxError> = std::result::Result<T, E>;
 
+/// A Move module's oxidized datatypes, split into placeable pieces.
+///
+/// Lets the body be merged into an existing `mod` of the same name (e.g. one also holding PTB
+/// bindings) rather than forced into its own `pub mod`. Produced by [`ModuleGen::to_parts`];
+/// [`ModuleGen::to_rust`] wraps it back up.
+pub struct ModuleParts {
+    /// The module identifier.
+    pub ident: Ident,
+    /// The module's doc attributes.
+    pub docs: TokenStream,
+    /// What goes *inside* `pub mod <ident>`: the `address`/`u256`/`vector` type aliases followed
+    /// by the generated `struct`/`enum` datatypes.
+    pub body: TokenStream,
+}
+
 #[sealed::sealed]
 pub trait ModuleGen {
+    /// Generate the module's datatypes as a standalone `pub mod <ident> { .. }`.
     fn to_rust(
         &self,
         thecrate: &TokenStream,
         package: Option<&LiteralString>,
         address_map: &HashMap<Ident, TokenStream>,
     ) -> Result<TokenStream>;
+
+    /// Generate the module's datatypes as placeable [`ModuleParts`], so a caller can weave the
+    /// body into a `mod` of its own construction (e.g. alongside other generated items for the
+    /// same Move module).
+    fn to_parts(
+        &self,
+        thecrate: &TokenStream,
+        package: Option<&LiteralString>,
+        address_map: &HashMap<Ident, TokenStream>,
+    ) -> Result<ModuleParts>;
 }
 
 #[sealed::sealed]
@@ -50,6 +76,22 @@ impl ModuleGen for Module {
         package: Option<&LiteralString>,
         address_map: &HashMap<Ident, TokenStream>,
     ) -> Result<TokenStream> {
+        let ModuleParts { ident, docs, body } = self.to_parts(thecrate, package, address_map)?;
+        Ok(quote! {
+            #docs
+            #[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
+            pub mod #ident {
+                #body
+            }
+        })
+    }
+
+    fn to_parts(
+        &self,
+        thecrate: &TokenStream,
+        package: Option<&LiteralString>,
+        address_map: &HashMap<Ident, TokenStream>,
+    ) -> Result<ModuleParts> {
         let (docs, other) = crate::attributes::extract(&self.attrs)
             .map_err(|err| format!("Parsing `moverox` attributes: {err}"))?;
 
@@ -57,11 +99,11 @@ impl ModuleGen for Module {
             return Err("Move modules cannot have custom `moverox` attributes".into());
         }
 
-        let ident = &self.ident;
+        let ident = self.ident.clone();
         let item_ctx = ItemContext {
             thecrate,
             package,
-            module: Some(ident),
+            module: Some(&ident),
             address_map,
         };
         let datatypes: TokenStream = self
@@ -69,20 +111,18 @@ impl ModuleGen for Module {
             .map(|item| item.to_rust(item_ctx))
             .collect::<Result<_>>()?;
 
-        Ok(quote! {
-            #docs
-            #[allow(rustdoc::all, clippy::too_long_first_doc_paragraph)]
-            pub mod #ident {
-                #[allow(non_camel_case_types, unused)]
-                type address = #thecrate::types::Address;
-                #[allow(non_camel_case_types, unused)]
-                type u256 = #thecrate::types::U256;
-                #[allow(non_camel_case_types, unused)]
-                type vector<T> = ::std::vec::Vec<T>;
+        let body = quote! {
+            #[allow(non_camel_case_types, unused)]
+            type address = #thecrate::types::Address;
+            #[allow(non_camel_case_types, unused)]
+            type u256 = #thecrate::types::U256;
+            #[allow(non_camel_case_types, unused)]
+            type vector<T> = ::std::vec::Vec<T>;
 
-                #datatypes
-            }
-        })
+            #datatypes
+        };
+
+        Ok(ModuleParts { ident, docs, body })
     }
 }
 
