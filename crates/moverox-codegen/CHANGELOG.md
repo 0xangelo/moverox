@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.14](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.13...moverox-codegen-v0.0.14)
+
+### ⛰️ Features
+
+- *(codegen)* Add `ModuleGen::to_parts` for placeable module bodies ([#108](https://github.com/0xangelo/moverox/pull/108)) - ([5ed0557](https://github.com/0xangelo/moverox/commit/5ed0557d6f5ba076a998070ec7a7b5f3d467e9f1))
+
+
 ## [0.0.13](https://github.com/0xangelo/moverox/compare/moverox-codegen-v0.0.12...moverox-codegen-v0.0.13)
 
 ### 🐛 Bug Fixes
