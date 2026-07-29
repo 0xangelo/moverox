@@ -32,7 +32,7 @@ sui-sdk = ["dep:sealed", "dep:sui-sdk-types"]
 moverox       = { version = "0.1.4", path = "../moverox", public = true }
 sui-sdk-types = { version = "0.3.1", optional = true, public = true }
 
-sealed = { version = "0.6", optional = true }
+sealed = { version = "0.7", optional = true }
 
 
 [build-dependencies]
