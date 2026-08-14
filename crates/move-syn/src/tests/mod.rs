@@ -151,6 +151,19 @@ fn tuple_struct_with_generic_field_type_and_ability() {
 }
 
 #[test]
+fn attribute_with_name_access_chain_value() {
+    // `AttributeValue = <Value> | <NameAccessChain>`: a path like `widget::Widget` is a
+    // valid attribute assignment value, at any nesting depth.
+    for code in [
+        "#[ext(lineage = widget::Widget)]\nfun my_function() {}",
+        "#[ext(versioned(min = f, lineage = a::b::C))]\nfun my_function() {}",
+    ] {
+        let ast: Item = code.to_token_iter().parse_all().unwrap();
+        assert_eq!(ast.tokens_to_string(), code.tokens_to_string());
+    }
+}
+
+#[test]
 fn function_with_compound_attribute() {
     let code = indoc::indoc! {"
     #[allow(unused_function), ext(dev_inspect)]

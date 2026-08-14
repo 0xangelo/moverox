@@ -179,7 +179,7 @@ unsynn! {
             leading_name_access: Either<SyntaxIdent, Ident>,
             // NOTE: ignoring <OptionalTypeArgs> for now
             // https://github.com/MystenLabs/sui/blob/129788902da4afc54a10af4ae45971a57ef080be/external-crates/move/crates/move-compiler/src/parser/syntax.rs#L3168
-            path: DelimitedVec<PathSep, Ident, TrailingDelimiter::Forbidden>,
+            path: Vec<Cons<PathSep, Ident>>,
         },
     }
 
