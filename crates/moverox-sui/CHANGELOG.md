@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.2](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.3.1...moverox-sui-v0.3.2)
+
+### ⛰️ Features
+
+- *(deps)* Update sealed requirement from 0.6 to 0.7 ([#110](https://github.com/0xangelo/moverox/pull/110)) - ([3565c79](https://github.com/0xangelo/moverox/commit/3565c79ff6f8fd68098e457b12c92075d6b6a050))
+
+
 ## [0.3.1](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.3.0...moverox-sui-v0.3.1)
 
 ### ⚙️ Miscellaneous Tasks

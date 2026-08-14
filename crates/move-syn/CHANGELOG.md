@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.9](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.8...move-syn-v0.0.9)
+
+### 🐛 Bug Fixes
+
+- *(move-syn)* Parse name-access-chain attribute values ([#112](https://github.com/0xangelo/moverox/pull/112)) - ([4276dfe](https://github.com/0xangelo/moverox/commit/4276dfe13fbb2dddec4258ce71209aba34ea363f))
+
+
 ## [0.0.8](https://github.com/0xangelo/moverox/compare/move-syn-v0.0.7...move-syn-v0.0.8)
 
 ### 🐛 Bug Fixes
