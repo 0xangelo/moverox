@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.3.2...moverox-sui-v0.4.0)
+
+### ⛰️ Features
+
+- *(deps)* [**breaking**] Update sui-sdk-types requirement from 0.3.1 to 0.4.0 ([#114](https://github.com/0xangelo/moverox/pull/114)) - ([19335cd](https://github.com/0xangelo/moverox/commit/19335cdf25c58980e2e0d5b77b552167098a53bf))
+
+
 ## [0.3.2](https://github.com/0xangelo/moverox/compare/moverox-sui-v0.3.1...moverox-sui-v0.3.2)
 
 ### ⛰️ Features
